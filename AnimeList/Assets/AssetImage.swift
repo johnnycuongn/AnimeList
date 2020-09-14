@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct AssetImage {
     
-    static let star = "star-icon"
-    static let user = "user-icon"
+    static let star = UIImage(named: "star-icon")!
+    static let user = UIImage(named: "user-icon")!
     
 }

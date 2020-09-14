@@ -20,12 +20,32 @@ class TopAnimeCell: UICollectionViewCell {
     @IBOutlet weak var animeTitleLabel: UILabel!
     
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var starImageView: UIImageView!
+    @IBOutlet weak var scoreImageView: UIImageView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var memberImageView: UIImageView!
+    @IBOutlet weak var memberLabel: UILabel!
     
-    
+    @IBOutlet weak var typeEpisodeLabel: UILabel!
     
     override func awakeFromNib() {
-        <#code#>
+    }
+    
+    func config(with animeInfo: TopAnimeInfo) {
+        
+        self.animeImageView.loadUsingCache(with: animeInfo.imageURL)
+        
+        self.rankLabel.text = String(animeInfo.rank)
+        self.animeTitleLabel.text = animeInfo.title
+        
+        self.scoreLabel.text = String(animeInfo.score)
+        self.memberLabel.text = String(animeInfo.members)
+        
+        if animeInfo.episodes != nil {
+            self.typeEpisodeLabel.text = "\(animeInfo.type.rawValue)(\(animeInfo.episodes!))"
+        } else {
+            self.typeEpisodeLabel.text = "\(animeInfo.type.rawValue)"
+        }
+        
     }
     
     

@@ -52,7 +52,10 @@ class TopAnimeService {
                 
                 let topAnimeMain = try JSONDecoder().decode(TopAnimeMain.self, from: data)
                 
-                completion(topAnimeMain.top)
+                DispatchQueue.main.async {
+                    completion(topAnimeMain.top)
+                }
+                
             }
                 
             catch {
