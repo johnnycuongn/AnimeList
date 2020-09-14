@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol SubtypeDataServiceDelegate {
+    func didSelect(subtype: AnimeTopSubtype)
+}
+
 class TopSubtypeDataService: NSObject, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var delegate: SubtypeDataServiceDelegate!
     
     let subtypes: [AnimeTopSubtype] = [.bydefault, .bypopularity, .favorite, .airing, .tv, .movie, .ova, .special, .upcoming]
     
@@ -39,7 +44,7 @@ extension TopSubtypeDataService: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 50)
     }
     
 }
@@ -48,7 +53,8 @@ extension TopSubtypeDataService: UICollectionViewDelegateFlowLayout {
 extension TopSubtypeDataService: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Subtype Select: \(subtypes[indexPath.row].rawValue)")
+        print("Subtype did select: \(subtypes[indexPath.row])")
+        delegate.didSelect(subtype: subtypes[indexPath.row])
     }
     
 }

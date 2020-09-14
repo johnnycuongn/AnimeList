@@ -9,8 +9,30 @@
 import Foundation
 import UIKit
 
-extension TopViewController: UICollectionViewDelegate {
+extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegate {
+    
+    func didSelect(subtype: AnimeTopSubtype) {
+        guard subtype != currentSubtype else { return }
+        
+        self.topAnimes = []
+        self.topSubtypeCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
+        self.currentSubtype = subtype
+        loadAnime(subtype: currentSubtype)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Top Anime Select: \(topAnimes[indexPath.row].malID)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let willLoadPosition = topAnimes.count - 8
+        
+        if indexPath.row == willLoadPosition {
+            
+            let nextPage = didLoadedPages + 1
+            loadAnime(page: nextPage, subtype: currentSubtype)
+        }
     }
 }

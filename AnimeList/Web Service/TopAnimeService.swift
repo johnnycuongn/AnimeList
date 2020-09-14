@@ -9,9 +9,9 @@
 import Foundation
 
 enum AnimeTopSubtype: String {
-    case bydefault = "Default"
+    case bydefault = "Rating"
     case bypopularity = "Popularity"
-    case favorite = "Favourite"
+    case favorite = "Favorite"
     case airing = "Airing"
     case upcoming = "Upcoming"
     case tv = "TV"
@@ -26,6 +26,7 @@ class TopAnimeService {
     private init () {}
     
     static let shared = TopAnimeService()
+    static let numberOfItemsLoad = 50
     
     let topAnimeURL = URL(string: jikanStartAPI + "/top/anime")!
     
@@ -43,6 +44,8 @@ class TopAnimeService {
         default:
             fetchURL = fetchURL.appendingPathComponent(subtype.rawValue.lowercased())
         }
+        
+        print("Fetch URL: \(fetchURL)")
 
         URLSession.shared.dataTask(with: fetchURL) { (data, response, error) in
             guard let data = data else { return }

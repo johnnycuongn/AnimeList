@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct AnimeOfPage {
+    var page: Int
+    var anime: [TopAnimeInfo]
+}
+
 class TopViewController: UIViewController {
     
     @IBOutlet var topSubtypeDataService: TopSubtypeDataService!
@@ -15,7 +20,18 @@ class TopViewController: UIViewController {
     
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
     
-    var topAnimes: [TopAnimeInfo] = []
+    var currentSubtype: AnimeTopSubtype = .bydefault
+    var topAnimes: [TopAnimeInfo] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.topAnimeCollectionView.reloadData()
+            }
+        }
+    }
+    
+    var didLoadedPages: Int {
+        return topAnimes.count / TopAnimeService.numberOfItemsLoad
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,30 +39,34 @@ class TopViewController: UIViewController {
         topSubtypeCollectionView.dataSource = topSubtypeDataService
         topSubtypeCollectionView.delegate = topSubtypeDataService
         
+        topSubtypeDataService.delegate = self
+        
         topAnimeCollectionView.delegate = self
         topAnimeCollectionView.dataSource = self
         
-        TopAnimeService.shared.fetchTopAnime(subtype: .bypopularity) { (topAnimes) in
-            
-            self.topAnimes = topAnimes
-            self.topAnimeCollectionView.reloadData()
-            
-            for anime in topAnimes {
-                print("\(anime.malID): \(anime.title) with score: \(anime.score)")
-            }
-            
-        }
+        topAnimeCollectionView.scrollsToTop = true
+        
+        loadAnime(subtype: currentSubtype)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
     }
+    
+    func loadAnime(page: Int = 1, subtype: AnimeTopSubtype) {
+        guard page > didLoadedPages else { return }
+        
+        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { (topAnimes) in
+            self.topAnimes.append(contentsOf: topAnimes)
+        }
+    }
+    
 }
 
 extension TopViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = topAnimeCollectionView.frame.width / 2.2
-        let cellHeight = topAnimeCollectionView.frame.height / 3
+        let cellHeight = topAnimeCollectionView.frame.height / 2.8
         
         return CGSize(width: cellWidth, height: cellHeight)
     }
