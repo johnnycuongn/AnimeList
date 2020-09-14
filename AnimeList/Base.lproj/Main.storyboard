@@ -196,7 +196,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XrA-BE-EMF">
                                                     <rect key="frame" x="0.0" y="0.0" width="232" height="310"/>
                                                 </imageView>
-                                                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbr-s3-G3U">
+                                                <view alpha="0.77000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbr-s3-G3U">
                                                     <rect key="frame" x="5.9999999999999982" y="5.9999999999999982" width="23.333333333333329" height="23.333333333333329"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -205,18 +205,18 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBP-hn-Ibu">
                                                     <rect key="frame" x="7.9999999999999982" y="7.9999999999999982" width="19.333333333333329" height="19.333333333333329"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhK-G9-Isr">
-                                                    <rect key="frame" x="33.333333333333336" y="6.0000000000000009" width="40.000000000000007" height="15.333333333333336"/>
+                                                    <rect key="frame" x="33.333333333333343" y="4" width="37.666666666666657" height="18"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qk-bK-rWk">
-                                                    <rect key="frame" x="37.333333333333336" y="6.0000000000000009" width="32.000000000000007" height="15.333333333333336"/>
+                                                    <rect key="frame" x="38.333333333333336" y="6" width="29.666666666666664" height="14"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -292,16 +292,16 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6qk-bK-rWk" secondAttribute="trailing" constant="6" id="2sb-I7-dRe"/>
                                                 <constraint firstItem="XrA-BE-EMF" firstAttribute="top" secondItem="NuI-RY-6na" secondAttribute="top" id="3Ax-2l-ad6"/>
                                                 <constraint firstItem="PRV-zE-LwU" firstAttribute="width" secondItem="NuI-RY-6na" secondAttribute="width" id="5XK-N6-aef"/>
-                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="bottom" secondItem="6qk-bK-rWk" secondAttribute="bottom" id="613-OJ-eIj"/>
+                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="bottom" secondItem="6qk-bK-rWk" secondAttribute="bottom" constant="2" id="613-OJ-eIj"/>
                                                 <constraint firstItem="Xbr-s3-G3U" firstAttribute="leading" secondItem="NuI-RY-6na" secondAttribute="leading" constant="6" id="7iv-a4-uDa"/>
                                                 <constraint firstItem="XrA-BE-EMF" firstAttribute="leading" secondItem="NuI-RY-6na" secondAttribute="leading" id="95V-Yb-9FU"/>
                                                 <constraint firstAttribute="bottom" secondItem="wqX-tk-Q8D" secondAttribute="bottom" id="Ayq-nW-NrM"/>
-                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="top" secondItem="6qk-bK-rWk" secondAttribute="top" id="Baj-Tf-CK5"/>
-                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="leading" secondItem="6qk-bK-rWk" secondAttribute="leading" constant="-4" id="Cuv-KV-a90"/>
+                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="top" secondItem="6qk-bK-rWk" secondAttribute="top" constant="-2" id="Baj-Tf-CK5"/>
+                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="leading" secondItem="6qk-bK-rWk" secondAttribute="leading" constant="-5" id="Cuv-KV-a90"/>
                                                 <constraint firstAttribute="bottom" secondItem="XrA-BE-EMF" secondAttribute="bottom" id="JDu-rU-ddK"/>
                                                 <constraint firstItem="wqX-tk-Q8D" firstAttribute="leading" secondItem="NuI-RY-6na" secondAttribute="leading" id="Lr5-If-a7L"/>
                                                 <constraint firstItem="PRV-zE-LwU" firstAttribute="leading" secondItem="NuI-RY-6na" secondAttribute="leading" id="Oea-Da-2Ur"/>
-                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="height" secondItem="6qk-bK-rWk" secondAttribute="height" id="Ovc-Vp-UUD"/>
+                                                <constraint firstItem="lhK-G9-Isr" firstAttribute="height" secondItem="6qk-bK-rWk" secondAttribute="height" constant="4" id="Ovc-Vp-UUD"/>
                                                 <constraint firstItem="lhK-G9-Isr" firstAttribute="leading" secondItem="Xbr-s3-G3U" secondAttribute="trailing" constant="4.0000000000000142" id="SZs-SC-yV0"/>
                                                 <constraint firstItem="lhK-G9-Isr" firstAttribute="width" secondItem="6qk-bK-rWk" secondAttribute="width" constant="8" id="Ulo-V4-Fab"/>
                                                 <constraint firstItem="wBP-hn-Ibu" firstAttribute="leading" secondItem="Xbr-s3-G3U" secondAttribute="leading" constant="2" id="V6h-h7-arB"/>
@@ -319,6 +319,7 @@
                                         <connections>
                                             <outlet property="animeImageView" destination="XrA-BE-EMF" id="VEb-BX-25H"/>
                                             <outlet property="animeTitleLabel" destination="6qk-bK-rWk" id="bfC-qk-KBn"/>
+                                            <outlet property="animeTitleView" destination="lhK-G9-Isr" id="cqB-MB-qxF"/>
                                             <outlet property="bottomView" destination="PRV-zE-LwU" id="sgF-cd-eHm"/>
                                             <outlet property="memberImageView" destination="EKL-yv-HiU" id="HiE-aG-f3e"/>
                                             <outlet property="memberLabel" destination="xPA-VM-ufV" id="xxn-GW-R5M"/>

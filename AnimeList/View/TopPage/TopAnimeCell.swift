@@ -17,6 +17,7 @@ class TopAnimeCell: UICollectionViewCell {
     @IBOutlet weak var rankView: UIView!
     @IBOutlet weak var rankLabel: UILabel!
     
+    @IBOutlet weak var animeTitleView: UIView!
     @IBOutlet weak var animeTitleLabel: UILabel!
     
     @IBOutlet weak var bottomView: UIView!
@@ -28,6 +29,12 @@ class TopAnimeCell: UICollectionViewCell {
     @IBOutlet weak var typeEpisodeLabel: UILabel!
     
     override func awakeFromNib() {
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 5
+
+        rankView.layer.cornerRadius = rankView.frame.height/3
+        
+        animeTitleView.layer.cornerRadius = rankView.layer.cornerRadius
     }
     
     func config(with animeInfo: TopAnimeInfo) {
