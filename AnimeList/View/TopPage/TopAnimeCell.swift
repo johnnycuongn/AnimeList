@@ -37,7 +37,7 @@ class TopAnimeCell: UICollectionViewCell {
         animeTitleView.layer.cornerRadius = rankView.layer.cornerRadius
     }
     
-    func config(with animeInfo: TopAnimeInfo) {
+    func config(with animeInfo: TopAnime) {
         
         self.animeImageView.loadUsingCache(with: animeInfo.imageURL)
         

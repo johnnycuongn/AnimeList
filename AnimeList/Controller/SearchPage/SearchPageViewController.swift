@@ -13,9 +13,9 @@ class SearchPageViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     struct Searching {
-    static var animes: [AnimeDisplayInfo] = []
-    static var currentText: String = ""
-    static var lastPage: Int = 1
+        static var animes: [AnimeDisplayInfo] = []
+        static var currentText: String = ""
+        static var lastPage: Int = 1
     }
     
     override func viewDidLoad() {
@@ -31,9 +31,11 @@ class SearchPageViewController: UIViewController {
             
             if searchMain.results.isEmpty && text.contains(Searching.currentText) {
                 print("Search is Empty")
-            } else {
+            }
+            else {
                 Searching.animes = searchMain.results
             }
+            
             Searching.currentText = text
             print("New Search: \(Searching.animes.first!.title)")
         }
@@ -41,6 +43,7 @@ class SearchPageViewController: UIViewController {
     
     func loadPageForCurrentSearch(page: Int) {
         guard page <= Searching.lastPage else { return }
+        
         SearchAnimeService.shared.fetchSearch(page: page, text: Searching.currentText) { (searchMain) in
             Searching.animes.append(contentsOf: searchMain.results)
         }

@@ -20,17 +20,17 @@ enum AnimeTopSubtype: String {
     case special = "Special"
 }
 
-public let jikanStartAPI = "https://api.jikan.moe/v3"
+public let jikanAPI = "https://api.jikan.moe/v3"
 
 class TopAnimeService {
     private init () {}
-    
     static let shared = TopAnimeService()
+    
     static let numberOfItemsLoad = 50
     
-    let topAnimeURL = URL(string: jikanStartAPI + "/top/anime")!
+    let topAnimeURL = URL(string: jikanAPI + "/top/anime")!
     
-    func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnimeInfo]) -> Void ) {
+    func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnime]) -> Void ) {
         var fetchURL: URL = topAnimeURL.appendingPathComponent(String(page))
         
         switch subtype {
@@ -59,7 +59,7 @@ class TopAnimeService {
             }
                 
             catch {
-                print("TopAnimeSerVice error: \(error)")
+                print("Top Fetch Error: \(error)")
             }
         }
         .resume()

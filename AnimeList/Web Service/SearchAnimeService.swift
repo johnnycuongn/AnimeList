@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-extension URL {
-    func withQueries(_ queries: [SearchParameter: String]) -> URL? {
-        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
-        components?.queryItems = queries.map { URLQueryItem(name: $0.key.rawValue , value: $0.value ) }
-        return components?.url
-    }
-}
-
 enum SearchParameter: String {
     case q
     case page
@@ -27,31 +19,14 @@ enum SearchParameter: String {
     case letter
 }
 
-class SearchMain: Decodable {
-    var results: [AnimeDisplayInfo]
-    var lastPage: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case results
-        case lastPage = "last_page"
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.results = try container.decode([AnimeDisplayInfo].self, forKey: .results)
-        self.lastPage = try container.decode(Int.self, forKey: .lastPage)
-    }
-}
-
 class SearchAnimeService {
     private init() {}
-    
     static let shared = SearchAnimeService()
     
-    let searchURL = URL(string: jikanStartAPI + "/search/anime")!
+    let searchURL = URL(string: jikanAPI + "/search/anime")!
     
-    func fetchSearch(page: Int = 1, text: String, completion: @escaping (SearchMain) -> Void) {
+    func fetchSearch(page: Int = 1, text: String, completion: @escaping (SearchAnimeMain) -> Void) {
+        
         
         let query: [SearchParameter: String]
         guard text.count != 0 else { return }
@@ -80,7 +55,7 @@ class SearchAnimeService {
             do {
                 try validate(response)
                 
-                let searchMain = try JSONDecoder().decode(SearchMain.self, from: searchData)
+                let searchMain = try JSONDecoder().decode(SearchAnimeMain.self, from: searchData)
                 
                 DispatchQueue.main.async {
                     completion(searchMain)
@@ -90,7 +65,6 @@ class SearchAnimeService {
                 print("Search Fetch Error: \(error)")
             }
         }.resume()
-        
         
         
     }

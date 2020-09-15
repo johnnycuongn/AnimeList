@@ -10,7 +10,7 @@ import UIKit
 
 struct AnimeOfPage {
     var page: Int
-    var anime: [TopAnimeInfo]
+    var anime: [TopAnime]
 }
 
 class TopViewController: UIViewController {
@@ -21,7 +21,7 @@ class TopViewController: UIViewController {
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
     
     var currentSubtype: AnimeTopSubtype = .bydefault
-    var topAnimes: [TopAnimeInfo] = [] {
+    var topAnimes: [TopAnime] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.topAnimeCollectionView.reloadData()
