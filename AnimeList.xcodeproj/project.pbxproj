@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B652510B85400C8740E /* SearchPageViewController.swift */; };
+		406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B672510BCFF00C8740E /* SearchAnimeService.swift */; };
+		406C2B6A2510C77300C8740E /* AnimeDisplayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */; };
 		4079A63C250E3723001A9D3B /* AnimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A63B250E3723001A9D3B /* AnimeInfo.swift */; };
 		4079A63E250E3B9A001A9D3B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A63D250E3B9A001A9D3B /* Episode.swift */; };
 		4079A640250E3EEA001A9D3B /* TopAnime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A63F250E3EEA001A9D3B /* TopAnime.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		406C2B652510B85400C8740E /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
+		406C2B672510BCFF00C8740E /* SearchAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeService.swift; sourceTree = "<group>"; };
+		406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDisplayInfo.swift; sourceTree = "<group>"; };
 		4079A63B250E3723001A9D3B /* AnimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInfo.swift; sourceTree = "<group>"; };
 		4079A63D250E3B9A001A9D3B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		4079A63F250E3EEA001A9D3B /* TopAnime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnime.swift; sourceTree = "<group>"; };
@@ -61,12 +67,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		406C2B6425108B8B00C8740E /* SearchPage */ = {
+			isa = PBXGroup;
+			children = (
+				406C2B652510B85400C8740E /* SearchPageViewController.swift */,
+			);
+			path = SearchPage;
+			sourceTree = "<group>";
+		};
 		4079A63A250E36FE001A9D3B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4079A63B250E3723001A9D3B /* AnimeInfo.swift */,
 				4079A63D250E3B9A001A9D3B /* Episode.swift */,
 				4079A63F250E3EEA001A9D3B /* TopAnime.swift */,
+				406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -74,6 +89,7 @@
 		4079A643250E48AA001A9D3B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				406C2B6425108B8B00C8740E /* SearchPage */,
 				4079A645250E48C8001A9D3B /* TopPage */,
 			);
 			path = Controller;
@@ -103,6 +119,7 @@
 			children = (
 				4079A649250E5846001A9D3B /* HTTPValidation.swift */,
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
+				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
 				4079A65B250F8928001A9D3B /* ImageLoadHelper.swift */,
 			);
 			path = "Web Service";
@@ -245,12 +262,15 @@
 				4079A654250F7B0E001A9D3B /* TopSubtypeCell.swift in Sources */,
 				4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */,
 				4079A64A250E5846001A9D3B /* HTTPValidation.swift in Sources */,
+				406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */,
 				4079A648250E54CB001A9D3B /* TopAnimeService.swift in Sources */,
 				4079A658250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift in Sources */,
 				4079A64D250F73AE001A9D3B /* AssetImage.swift in Sources */,
 				4079A640250E3EEA001A9D3B /* TopAnime.swift in Sources */,
+				406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */,
 				40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */,
 				4079A63E250E3B9A001A9D3B /* Episode.swift in Sources */,
+				406C2B6A2510C77300C8740E /* AnimeDisplayInfo.swift in Sources */,
 				40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */,
 				4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */,
 			);

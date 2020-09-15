@@ -9,25 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search Page View Controller-->
         <scene sceneID="Ozq-vu-9W4">
             <objects>
-                <viewController id="Qvq-JU-vKY" sceneMemberID="viewController">
+                <viewController id="Qvq-JU-vKY" customClass="SearchPageViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Quy-bT-nD1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrG-be-RAK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJi-YA-sI1">
-                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="51.666666666666664"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSa-S2-K0v">
-                                                <rect key="frame" x="5" y="5" width="72.666666666666671" height="38"/>
+                                                <rect key="frame" x="5" y="5" width="72.666666666666671" height="41.666666666666664"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="super-light-grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -40,14 +40,14 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="960-57-3kw" userLabel="Divider">
-                                        <rect key="frame" x="82.666666666666671" y="0.0" width="1" height="48"/>
+                                        <rect key="frame" x="82.666666666666671" y="0.0" width="1" height="51.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="jyh-CJ-zUP"/>
                                         </constraints>
                                     </view>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-Sb-pt3">
-                                        <rect key="frame" x="83.666666666666657" y="0.0" width="330.33333333333337" height="48"/>
+                                        <rect key="frame" x="83.666666666666657" y="0.0" width="330.33333333333337" height="51.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="main-color"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -79,6 +79,9 @@
                         <viewLayoutGuide key="safeArea" id="3Xr-q9-FSv"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="oEd-do-9Oq"/>
+                    <connections>
+                        <outlet property="searchBar" destination="bqQ-Sb-pt3" id="faj-ed-4yG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-Md-MKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,26 +92,26 @@
             <objects>
                 <viewController id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXU-Rd-t6y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkW-BU-1fW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
                                 <subviews>
                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYR-HV-PFh" userLabel="Divider">
-                                        <rect key="frame" x="82.666666666666671" y="0.0" width="1" height="48"/>
+                                        <rect key="frame" x="82.666666666666671" y="0.0" width="1" height="51.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="5t6-gs-7Uj"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWK-Bp-MUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="51.666666666666664"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbk-VV-YY3">
-                                                <rect key="frame" x="5" y="5" width="72.666666666666671" height="38"/>
+                                                <rect key="frame" x="5" y="5" width="72.666666666666671" height="41.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="super-light-grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -121,7 +124,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K3V-Fl-0W3">
-                                        <rect key="frame" x="83.666666666666657" y="0.0" width="330.33333333333337" height="48"/>
+                                        <rect key="frame" x="83.666666666666657" y="0.0" width="330.33333333333337" height="51.666666666666664"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.67278711930000001" green="0.38069545090000001" blue="0.37840723679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zMJ-0s-fII">
@@ -132,7 +135,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopSubtypeCell" id="MJm-QY-8aA" customClass="TopSubtypeCell" customModule="AnimeList" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-5" width="92" height="58"/>
+                                                <rect key="frame" x="0.0" y="-3.3333333333333335" width="92" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yPM-EY-YVq">
                                                     <rect key="frame" x="0.0" y="0.0" width="92" height="58"/>
@@ -141,7 +144,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3b-4H-GO1">
                                                             <rect key="frame" x="4.9999999999999716" y="4.9999999999999645" width="82" height="48"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" name="super-light-grey"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -176,7 +179,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pmg-Uz-1vT">
-                                <rect key="frame" x="0.0" y="48" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="51.666666666666686" width="414" height="684.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Fu-Q3-98M">
@@ -220,7 +223,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqX-tk-Q8D" userLabel="Blur-Bottom-View">
+                                                <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqX-tk-Q8D" userLabel="Blur-Bottom-View">
                                                     <rect key="frame" x="0.0" y="278.33333333333331" width="232" height="31.666666666666686"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -368,10 +371,13 @@
             <objects>
                 <tabBarController id="dxu-YB-47h" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cek-Q0-cfN">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cek-Q0-cfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="tab-bar-color"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" name="tab-bar-color"/>
+                        <color key="selectedImageTintColor" name="super-light-grey"/>
                     </tabBar>
                     <connections>
                         <segue destination="t5b-Nb-KFA" kind="relationship" relationship="viewControllers" id="joR-KB-j2e"/>
@@ -392,6 +398,9 @@
         </namedColor>
         <namedColor name="main-color">
             <color red="0.23000000417232513" green="0.3449999988079071" blue="0.51499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="super-light-grey">
+            <color red="0.80199998617172241" green="0.80199998617172241" blue="0.80199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tab-bar-color">
             <color red="0.23399999737739563" green="0.37099999189376831" blue="0.57400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

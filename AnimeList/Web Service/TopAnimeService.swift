@@ -30,9 +30,6 @@ class TopAnimeService {
     
     let topAnimeURL = URL(string: jikanStartAPI + "/top/anime")!
     
-    // The Top page on MyAnimeList is paginated offers 50 items per page
-//    var currerentPage: Int = 1
-    
     func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnimeInfo]) -> Void ) {
         var fetchURL: URL = topAnimeURL.appendingPathComponent(String(page))
         
@@ -45,7 +42,7 @@ class TopAnimeService {
             fetchURL = fetchURL.appendingPathComponent(subtype.rawValue.lowercased())
         }
         
-        print("Fetch URL: \(fetchURL)")
+        print("Top Fetch URL: \(fetchURL)")
 
         URLSession.shared.dataTask(with: fetchURL) { (data, response, error) in
             guard let data = data else { return }

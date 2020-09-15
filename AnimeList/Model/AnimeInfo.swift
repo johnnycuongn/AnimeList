@@ -17,7 +17,7 @@ enum AnimeType: String, Codable {
     case music = "Music"
 }
 
-struct AnimeInfo: Decodable {
+class AnimeInfo: Decodable {
     
     var malID: Int
     var url: URL
@@ -52,7 +52,7 @@ struct AnimeInfo: Decodable {
     }
     
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         malID = try container.decode(Int.self, forKey: .malID)
