@@ -22,7 +22,7 @@ extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Top Anime Select: \(topAnimes[indexPath.row].malID)")
+        print("Top Anime Select: \(topAnimes[indexPath.row].malID) - \(topAnimes[indexPath.row].title)")
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

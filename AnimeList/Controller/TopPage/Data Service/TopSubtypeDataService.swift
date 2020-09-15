@@ -17,7 +17,7 @@ class TopSubtypeDataService: NSObject, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     var delegate: SubtypeDataServiceDelegate!
     
-    let subtypes: [AnimeTopSubtype] = [.bydefault, .bypopularity, .favorite, .airing, .tv, .movie, .ova, .special, .upcoming]
+    let subtypes: [AnimeTopSubtype] = [.bydefault, .bypopularity, .favorite, .airing, .tv, .movie, .ova, .upcoming]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return subtypes.count

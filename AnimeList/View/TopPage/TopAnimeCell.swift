@@ -44,14 +44,19 @@ class TopAnimeCell: UICollectionViewCell {
         self.rankLabel.text = String(animeInfo.rank)
         self.animeTitleLabel.text = animeInfo.title
         
-        self.scoreLabel.text = String(animeInfo.score)
+        if animeInfo.score == 0 { self.scoreLabel.text = "-" }
+        else {
+            self.scoreLabel.text = String(animeInfo.score)
+        }
+        
         self.memberLabel.text = String(animeInfo.members)
         
-        if animeInfo.episodes != nil {
-            self.typeEpisodeLabel.text = "\(animeInfo.type.rawValue)(\(animeInfo.episodes!))"
-        } else {
-            self.typeEpisodeLabel.text = "\(animeInfo.type.rawValue)"
-        }
+        self.typeEpisodeLabel.text = {
+            guard animeInfo.type != nil else { return "" }
+            guard animeInfo.episodes != nil else { return "\(animeInfo.type!.rawValue)" }
+            
+            return "\(animeInfo.type!.rawValue)(\(animeInfo.episodes!))"
+        }()
         
     }
     

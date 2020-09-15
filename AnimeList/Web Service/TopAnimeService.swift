@@ -30,6 +30,10 @@ class TopAnimeService {
     
     let topAnimeURL = URL(string: jikanAPI + "/top/anime")!
     
+    func fetchAllForCache() {
+        
+    }
+    
     func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnime]) -> Void ) {
         var fetchURL: URL = topAnimeURL.appendingPathComponent(String(page))
         
