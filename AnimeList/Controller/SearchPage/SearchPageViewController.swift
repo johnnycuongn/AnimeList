@@ -50,19 +50,21 @@ class SearchPageViewController: UIViewController {
     }
     
     func loadNewSearch(text: String) {
-        SearchAnimeService.shared.fetchSearch(text: text.lowercased()) { (searchMain) in
+        SearchAnimeService.shared.fetchSearch(text: text.lowercased()) { [weak self] (searchMain) in
+            guard let strongSelf = self else { return }
+            
             Searching.lastPage = searchMain.lastPage
             
             // Problem: Search two words return empty
             // Solution:
             if searchMain.results.isEmpty && text.contains(Searching.currentText) {
-                self.animes = self.animes.filter({ (searchAnime) -> Bool in
+                strongSelf.animes = strongSelf.animes.filter({ (searchAnime) -> Bool in
                     let titleMatch = searchAnime.title.range(of: text, options: .caseInsensitive)
                     return titleMatch != nil
                 })
             }
             else {
-                self.animes = searchMain.results
+                strongSelf.animes = searchMain.results
             }
             
             Searching.currentText = text

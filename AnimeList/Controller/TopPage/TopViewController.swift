@@ -56,8 +56,10 @@ class TopViewController: UIViewController {
     func loadAnime(page: Int = 1, subtype: AnimeTopSubtype) {
         guard page > didLoadedPages else { return }
         
-        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { (topAnimes) in
-            self.topAnimes.append(contentsOf: topAnimes)
+        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { [weak self] (topAnimes) in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.topAnimes.append(contentsOf: topAnimes)
         }
     }
     
