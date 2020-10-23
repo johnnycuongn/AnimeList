@@ -56,5 +56,4 @@ extension TopSubtypeDataService: UICollectionViewDelegate {
         print("Subtype did select: \(subtypes[indexPath.row])")
         delegate.didSelect(subtype: subtypes[indexPath.row])
     }
-    
 }

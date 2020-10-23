@@ -55,6 +55,12 @@ class TopViewController: UIViewController {
         super.viewWillAppear(true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        topSubtypeCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
+    }
+    
     func loadAnime(page: Int = 1, subtype: AnimeTopSubtype) {
         guard page > didLoadedPages else { return }
         

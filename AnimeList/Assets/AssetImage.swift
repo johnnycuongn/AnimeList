@@ -13,5 +13,6 @@ struct AssetImage {
     
     static let star = UIImage(named: "star-icon")!
     static let user = UIImage(named: "user-icon")!
+    static let emptyImage = UIImage(named: "emptyImage")
     
 }
