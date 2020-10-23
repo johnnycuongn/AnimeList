@@ -100,4 +100,5 @@ extension SearchPageViewController: UISearchBarDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
+    
 }

@@ -19,7 +19,7 @@ extension TopViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopAnimeCell.identifier, for: indexPath) as! TopAnimeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeDisplayCell.identifier, for: indexPath) as! AnimeDisplayCell
         
         cell.config(with: topAnimes[indexPath.row])
         

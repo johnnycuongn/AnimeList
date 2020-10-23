@@ -44,6 +44,8 @@ class TopViewController: UIViewController {
         topAnimeCollectionView.delegate = self
         topAnimeCollectionView.dataSource = self
         
+        topAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
+        
         topAnimeCollectionView.scrollsToTop = true
         
         loadAnime(subtype: currentSubtype)

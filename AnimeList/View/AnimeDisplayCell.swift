@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TopAnimeCell: UICollectionViewCell {
+class AnimeDisplayCell: UICollectionViewCell {
     
-    static let identifier = String(describing: TopAnimeCell.self)
+    static let identifier = String(describing: AnimeDisplayCell.self)
     
     @IBOutlet weak var animeImageView: UIImageView!
     
@@ -29,6 +29,8 @@ class TopAnimeCell: UICollectionViewCell {
     @IBOutlet weak var typeEpisodeLabel: UILabel!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 5
 
