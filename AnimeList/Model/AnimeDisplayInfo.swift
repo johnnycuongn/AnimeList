@@ -15,7 +15,7 @@ class AnimeDisplayInfo: Decodable {
     var type: AnimeType?
     var episodes: Int?
     var members: Int
-    var score: Double
+    var score: Double?
     
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"
@@ -36,6 +36,6 @@ class AnimeDisplayInfo: Decodable {
         type = try? container.decode(AnimeType.self, forKey: .type)
         episodes = try? container.decode(Int.self, forKey: .episodes)
         members = try container.decode(Int.self, forKey: .members)
-        score = try container.decode(Double.self, forKey: .score)
+        score = try? container.decode(Double.self, forKey: .score)
     }
 }

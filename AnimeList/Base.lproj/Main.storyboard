@@ -506,6 +506,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hqq-C4-uGU"/>
                     <connections>
+                        <outlet property="genreAnimeCollectionView" destination="sri-8e-nGb" id="oM5-6L-fWl"/>
                         <outlet property="genreLabel" destination="2bb-hT-T2W" id="Lbb-Fp-pax"/>
                     </connections>
                 </viewController>

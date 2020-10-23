@@ -39,16 +39,20 @@ class AnimeDisplayCell: UICollectionViewCell {
         animeTitleView.layer.cornerRadius = rankView.layer.cornerRadius
     }
     
-    func config(with animeInfo: TopAnime) {
+    func config(with animeInfo: AnimeDisplayInfo, rank: Int? = nil) {
         
         self.animeImageView.loadUsingCache(with: animeInfo.imageURL)
-        
-        self.rankLabel.text = String(animeInfo.rank)
+        if rank != nil {
+            self.rankLabel.text = String(rank!)
+        } else {
+            self.rankView.isHidden = true
+            self.rankLabel.isHidden = true
+        }
         self.animeTitleLabel.text = animeInfo.title
         
-        if animeInfo.score == 0 { self.scoreLabel.text = "-" }
+        if animeInfo.score == 0 || animeInfo.score == nil { self.scoreLabel.text = "-" }
         else {
-            self.scoreLabel.text = String(animeInfo.score)
+            self.scoreLabel.text = String(animeInfo.score!)
         }
         
         self.memberLabel.text = String(animeInfo.members)
