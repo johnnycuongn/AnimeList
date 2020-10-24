@@ -11,14 +11,17 @@ import UIKit
 
 extension SearchPageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if PageState.isSearching {
             print("isSearching Did Select: \(animes[indexPath.row].title)")
+            let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as! AnimeViewController
+            animeVC.animeDidSelect(with: animes[indexPath.row].malID)
+            self.navigationController?.pushViewController(animeVC, animated: true)
         }
         else {
             let genreID = genres[indexPath.row].rawValue
             print("Genre Did Select: \(genres[indexPath.row])")
             
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let genreVC = storyBoard.instantiateViewController(withIdentifier: "GenreViewController") as! GenreViewController
             genreVC.initialize(id: genreID)
 
