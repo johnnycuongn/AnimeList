@@ -14,9 +14,9 @@ extension SearchPageViewController: UICollectionViewDelegate {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if PageState.isSearching {
             print("isSearching Did Select: \(animes[indexPath.row].title)")
-            let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as! AnimeViewController
-            animeVC.animeDidSelect(with: animes[indexPath.row].malID)
-            self.navigationController?.pushViewController(animeVC, animated: true)
+            weak var animeVC = AnimeViewController.initialize(with: animes[indexPath.row].malID)
+            guard animeVC != nil else { return }
+            self.navigationController?.pushViewController(animeVC!, animated: true)
         }
         else {
             let genreID = genres[indexPath.row].rawValue

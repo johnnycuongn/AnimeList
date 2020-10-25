@@ -20,24 +20,26 @@ enum AnimeType: String, Codable {
 class AnimeInfo: Decodable {
     
     var malID: Int
-    var url: URL
-    var imageURL: URL
+    var url: String?
+    var imageURL: URL?
+    var trailerURL: String?
     var title: String
     var titleEnglish: String
-    var synopsis: String
+    var synopsis: String?
     var type: AnimeType
     var episodes: Int
-    var score: Double
-    var scoredBy: Int
-    var members: Int
-    var rank: Int
-    var popularity: Int
-    var premieredDate: String
+    var score: Double?
+    var scoredBy: Int?
+    var members: Int?
+    var rank: Int?
+    var popularity: Int?
+    var premieredDate: String?
     
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"
         case url
         case imageURL = "image_url"
+        case trailerURL = "trailer_url"
         case title
         case titleEnglish = "title_english"
         case synopsis
@@ -56,19 +58,20 @@ class AnimeInfo: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         malID = try container.decode(Int.self, forKey: .malID)
-        url = try container.decode(URL.self, forKey: .url)
+        url = try? container.decode(String.self, forKey: .url)
         imageURL = try container.decode(URL.self, forKey: .imageURL)
+        trailerURL = try? container.decode(String.self, forKey: .trailerURL)
         title = try container.decode(String.self, forKey: .title)
         titleEnglish = try container.decode(String.self, forKey: .titleEnglish)
         synopsis = try container.decode(String.self, forKey: .synopsis)
         type = try container.decode(AnimeType.self, forKey: .type)
         episodes = try container.decode(Int.self, forKey: .episodes)
-        score = try container.decode(Double.self, forKey: .score)
-        scoredBy = try container.decode(Int.self, forKey: .scoredBy)
-        members = try container.decode(Int.self, forKey: .members)
-        rank = try container.decode(Int.self, forKey: .rank)
-        popularity = try container.decode(Int.self, forKey: .popularity)
-        premieredDate = try container.decode(String.self, forKey: .premieredDate)
+        score = try? container.decode(Double.self, forKey: .score)
+        scoredBy = try? container.decode(Int.self, forKey: .scoredBy)
+        members = try? container.decode(Int.self, forKey: .members)
+        rank = try? container.decode(Int.self, forKey: .rank)
+        popularity = try? container.decode(Int.self, forKey: .popularity)
+        premieredDate = try? container.decode(String.self, forKey: .premieredDate)
     }
     
     

@@ -13,6 +13,8 @@
 		4050C7B22542E2B200A480CF /* GenreAnime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7B12542E2B200A480CF /* GenreAnime.swift */; };
 		4050C7B62542EE4600A480CF /* AssetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7B52542EE4600A480CF /* AssetColor.swift */; };
 		4050C7BB25444D4D00A480CF /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7BA25444D4D00A480CF /* AnimeViewController.swift */; };
+		4050C7C025446A6700A480CF /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7BF25446A6700A480CF /* PersonalViewController.swift */; };
+		4050C7C72545A88100A480CF /* AnimeInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7C62545A88100A480CF /* AnimeInfoService.swift */; };
 		406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B652510B85400C8740E /* SearchPageViewController.swift */; };
 		406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B672510BCFF00C8740E /* SearchAnimeService.swift */; };
 		406C2B6A2510C77300C8740E /* AnimeDisplayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */; };
@@ -50,6 +52,8 @@
 		4050C7B12542E2B200A480CF /* GenreAnime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnime.swift; sourceTree = "<group>"; };
 		4050C7B52542EE4600A480CF /* AssetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetColor.swift; sourceTree = "<group>"; };
 		4050C7BA25444D4D00A480CF /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
+		4050C7BF25446A6700A480CF /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		4050C7C62545A88100A480CF /* AnimeInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInfoService.swift; sourceTree = "<group>"; };
 		406C2B652510B85400C8740E /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		406C2B672510BCFF00C8740E /* SearchAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeService.swift; sourceTree = "<group>"; };
 		406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDisplayInfo.swift; sourceTree = "<group>"; };
@@ -109,6 +113,14 @@
 			path = AnimePage;
 			sourceTree = "<group>";
 		};
+		4050C7BE25446A4700A480CF /* PersonalPage */ = {
+			isa = PBXGroup;
+			children = (
+				4050C7BF25446A6700A480CF /* PersonalViewController.swift */,
+			);
+			path = PersonalPage;
+			sourceTree = "<group>";
+		};
 		406C2B6425108B8B00C8740E /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +167,7 @@
 		4079A643250E48AA001A9D3B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4050C7BE25446A4700A480CF /* PersonalPage */,
 				4050C7B925444D0800A480CF /* AnimePage */,
 				4050C7AA2542C89C00A480CF /* GenrePage */,
 				406C2B6425108B8B00C8740E /* SearchPage */,
@@ -189,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				406C2B6B2510D48800C8740E /* Helpers */,
+				4050C7C62545A88100A480CF /* AnimeInfoService.swift */,
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
 				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
 				4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */,
@@ -351,7 +365,9 @@
 				4079A63E250E3B9A001A9D3B /* Episode.swift in Sources */,
 				406C2B7625110A8700C8740E /* +CollectionViewDataSource(SearchPageVC).swift in Sources */,
 				406C2B7A25110EE200C8740E /* +CollectionViewDelegateFlowLayout(SearchPageVC).swift in Sources */,
+				4050C7C72545A88100A480CF /* AnimeInfoService.swift in Sources */,
 				4050C7B22542E2B200A480CF /* GenreAnime.swift in Sources */,
+				4050C7C025446A6700A480CF /* PersonalViewController.swift in Sources */,
 				406C2B6A2510C77300C8740E /* AnimeDisplayInfo.swift in Sources */,
 				406C2B6D2510D55300C8740E /* URLExtensions.swift in Sources */,
 				406C2B742511043400C8740E /* GenreCell.swift in Sources */,

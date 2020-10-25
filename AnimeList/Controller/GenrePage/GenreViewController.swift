@@ -71,10 +71,9 @@ extension GenreViewController: UICollectionViewDataSource {
 extension GenreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Genre Anime - \(animes[indexPath.row].title)")
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as! AnimeViewController
-        animeVC.animeDidSelect(with: animes[indexPath.row].malID)
-        self.navigationController?.pushViewController(animeVC, animated: true)
+        weak var animeVC = AnimeViewController.initialize(with: animes[indexPath.row].malID)
+        guard animeVC != nil else { return }
+        self.navigationController?.pushViewController(animeVC!, animated: true)
     }
 }
 

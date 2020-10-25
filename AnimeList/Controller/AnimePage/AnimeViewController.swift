@@ -13,13 +13,35 @@ protocol AnimeDelegate {
 }
 
 class AnimeViewController: UIViewController, AnimeDelegate {
+    
+    static func initialize(with id: Int) -> AnimeViewController? {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as? AnimeViewController else { return nil }
+        animeVC.id = id
+        
+        return animeVC
+    }
+    
+    private var id: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadAnime(id: self.id)
+    }
+    
+    func loadAnime(id: Int) {
+        AnimeInfoService.shared.fetchAnime(id: id) { (animeInfo) in
+            print("Anime Fetched: \(animeInfo.title) - \(animeInfo.url)")
+        }
     }
     
     func animeDidSelect(with id: Int) {
-        print("Anime Delefate Did Select - id: \(id)")
+        self.id = id
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {

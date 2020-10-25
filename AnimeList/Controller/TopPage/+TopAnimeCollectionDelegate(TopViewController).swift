@@ -24,10 +24,9 @@ extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Top Anime Select: \(topAnimes[indexPath.row].malID) - \(topAnimes[indexPath.row].title)")
         
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as! AnimeViewController
-        animeVC.animeDidSelect(with: topAnimes[indexPath.row].malID)
-        self.navigationController?.pushViewController(animeVC, animated: true)
+        weak var animeVC = AnimeViewController.initialize(with: topAnimes[indexPath.row].malID)
+        guard animeVC != nil else { return }
+        self.navigationController?.pushViewController(animeVC!, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

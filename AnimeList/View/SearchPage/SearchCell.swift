@@ -30,7 +30,12 @@ class SearchCell: UICollectionViewCell {
         self.imageView.loadUsingCache(with: anime.imageURL)
         
         self.titleLabel.text = anime.title
-        self.scoreLabel.text = "Score \(anime.score)"
+        if anime.score != nil {
+            self.scoreLabel.text = "Score \(anime.score!)"
+        } else {
+            self.scoreLabel.text = "No Score"
+        }
+        
         self.membersLabel.text = "\(anime.members)"
         self.typeEpisodes.text = "\(anime.type?.rawValue ?? "") \(anime.episodes ?? 0)eps"
         self.dateReleased.text = "10/10/2020"

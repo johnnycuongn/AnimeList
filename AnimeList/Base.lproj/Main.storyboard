@@ -285,7 +285,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-Md-MKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681.1594202898552" y="560.86956521739137"/>
+            <point key="canvasLocation" x="1681" y="819"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="pkn-iC-znQ">
@@ -428,7 +428,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1681.1594202898552" y="-205.43478260869566"/>
+            <point key="canvasLocation" x="1680" y="-15"/>
         </scene>
         <!--Genre View Controller-->
         <scene sceneID="RAZ-CX-fpV">
@@ -512,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAS-kf-Oow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2466.666666666667" y="560.86956521739137"/>
+            <point key="canvasLocation" x="2464" y="819"/>
         </scene>
         <!--Anime View Controller-->
         <scene sceneID="YkM-NL-HAI">
@@ -547,12 +547,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyZ-xj-rXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2510.144927536232" y="-205.43478260869566"/>
+            <point key="canvasLocation" x="-978" y="237"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="c8C-b8-Q7Z">
             <objects>
                 <tabBarController id="dxu-YB-47h" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SEW-Ab-XIM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cek-Q0-cfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -565,6 +566,8 @@
                     <connections>
                         <segue destination="Xd1-VC-6ak" kind="relationship" relationship="viewControllers" id="joR-KB-j2e"/>
                         <segue destination="ccW-u5-Dpo" kind="relationship" relationship="viewControllers" id="bj3-eo-0L6"/>
+                        <segue destination="xIA-KP-nvG" kind="relationship" relationship="viewControllers" id="2Eb-eN-Mw4"/>
+                        <segue destination="98e-jw-fks" kind="relationship" relationship="viewControllers" id="utY-UH-EMW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrO-oM-vhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -590,7 +593,39 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGM-5j-dJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="560.86956521739137"/>
+            <point key="canvasLocation" x="774" y="820"/>
+        </scene>
+        <!--Personal-->
+        <scene sceneID="UO0-uM-dOe">
+            <objects>
+                <viewController id="98e-jw-fks" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="utC-S7-7hB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Rbi-hm-0Sj"/>
+                        <color key="backgroundColor" name="main-background-color"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Personal" image="person" catalog="system" id="YUR-bj-iLy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SoP-qu-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="1615"/>
+        </scene>
+        <!--Random-->
+        <scene sceneID="Hah-Zc-hXV">
+            <objects>
+                <viewController id="xIA-KP-nvG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kLp-SQ-mYN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fct-U0-vWj"/>
+                        <color key="backgroundColor" name="main-background-color"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Random" image="repeat" catalog="system" id="Hbr-xH-0pC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMo-GF-MW1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="-737"/>
         </scene>
         <!--Top-->
         <scene sceneID="Y1a-b0-WnI">
@@ -611,11 +646,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbb-U1-U2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="-205.43478260869566"/>
+            <point key="canvasLocation" x="774" y="-15"/>
         </scene>
     </scenes>
     <resources>
         <image name="list.bullet.indent" catalog="system" width="128" height="74"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="repeat" catalog="system" width="128" height="99"/>
         <image name="user-icon" width="385" height="408"/>
         <namedColor name="main-background-color">
             <color red="0.23000000417232513" green="0.3449999988079071" blue="0.51499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
