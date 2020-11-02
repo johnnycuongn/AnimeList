@@ -18,25 +18,7 @@ class SearchAnimeService {
     let path: APIPath = JikanAnimeAPI()
     
     func fetchSearch(page: Int = 1, text: String, completion: @escaping (SearchAnimeMain) -> Void) {
-        
-        let query: [SearchParameter: String]
-        guard text.count != 0 else { return }
-        
-        if text.count == 1 {
-            query = [
-                .page : String(page),
-                .letter: text,
-                .orderBy: "members"
-            ]
-        }
-        else {
-            query = [
-                .q : text,
-                .page: String(page)
-                
-            ]
-        }
-        
+
         let fetchURL = path.search(page: page, text: text)
         print("Search Fetch URL: \(fetchURL)")
         

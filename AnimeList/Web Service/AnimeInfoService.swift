@@ -16,8 +16,8 @@ class AnimeInfoService {
     let path: APIPath = JikanAnimeAPI()
     
     func fetchAnime(id: Int, completion: @escaping (AnimeInfo) -> Void) {
-        let url = path.anime(id: id)
         
+        let url = path.anime(id: id)
         print("Fetch Anime URL - \(url)")
         
         networkManager.request(url: url) { (data) in

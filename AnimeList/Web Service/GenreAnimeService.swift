@@ -16,8 +16,8 @@ class GenreAnimeService {
     let path: APIPath = JikanAnimeAPI()
     
     func fetchGenre(id: Int, page: Int = 1, completion: @escaping (GenreAnimeMain) -> Void) {
-        let fetchURL = path.genre(id: id, page: page)
         
+        let fetchURL = path.genre(id: id, page: page)
         print("Genre Fetch URL: \(fetchURL)")
         
         networkManager.request(url: fetchURL) { (data) in
