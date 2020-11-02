@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B1370254FECBD001AE01A /* JikanAPI.swift */; };
+		400B13762550582A001AE01A /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B13752550582A001AE01A /* RandomViewController.swift */; };
 		4050C79E2542C25F00A480CF /* AnimeDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */; };
 		4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AB2542C8C400A480CF /* GenreViewController.swift */; };
 		4050C7AF2542E01D00A480CF /* GenreAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		400B1370254FECBD001AE01A /* JikanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanAPI.swift; sourceTree = "<group>"; };
+		400B13752550582A001AE01A /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
 		4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeDisplayCell.xib; sourceTree = "<group>"; };
 		4050C7AB2542C8C400A480CF /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimeService.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400B137425505818001AE01A /* RandomPage */ = {
+			isa = PBXGroup;
+			children = (
+				400B13752550582A001AE01A /* RandomViewController.swift */,
+			);
+			path = RandomPage;
+			sourceTree = "<group>";
+		};
 		4050C7AA2542C89C00A480CF /* GenrePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		4079A643250E48AA001A9D3B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				400B137425505818001AE01A /* RandomPage */,
 				4050C7BE25446A4700A480CF /* PersonalPage */,
 				4050C7B925444D0800A480CF /* AnimePage */,
 				4050C7AA2542C89C00A480CF /* GenrePage */,
@@ -357,6 +368,7 @@
 				4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */,
 				400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */,
 				4079A64A250E5846001A9D3B /* HTTPValidation.swift in Sources */,
+				400B13762550582A001AE01A /* RandomViewController.swift in Sources */,
 				406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */,
 				4079A648250E54CB001A9D3B /* TopAnimeService.swift in Sources */,
 				4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */,

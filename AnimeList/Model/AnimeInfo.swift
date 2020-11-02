@@ -24,7 +24,7 @@ class AnimeInfo: Decodable {
     var imageURL: URL?
     var trailerURL: String?
     var title: String
-    var titleEnglish: String
+    var titleEnglish: String?
     var synopsis: String?
     var type: AnimeType
     var episodes: Int
@@ -59,10 +59,10 @@ class AnimeInfo: Decodable {
         
         malID = try container.decode(Int.self, forKey: .malID)
         url = try? container.decode(String.self, forKey: .url)
-        imageURL = try container.decode(URL.self, forKey: .imageURL)
+        imageURL = try? container.decode(URL.self, forKey: .imageURL)
         trailerURL = try? container.decode(String.self, forKey: .trailerURL)
         title = try container.decode(String.self, forKey: .title)
-        titleEnglish = try container.decode(String.self, forKey: .titleEnglish)
+        titleEnglish = try? container.decode(String.self, forKey: .titleEnglish)
         synopsis = try container.decode(String.self, forKey: .synopsis)
         type = try container.decode(AnimeType.self, forKey: .type)
         episodes = try container.decode(Int.self, forKey: .episodes)
