@@ -15,6 +15,7 @@
 		4050C7BB25444D4D00A480CF /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7BA25444D4D00A480CF /* AnimeViewController.swift */; };
 		4050C7C025446A6700A480CF /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7BF25446A6700A480CF /* PersonalViewController.swift */; };
 		4050C7C72545A88100A480CF /* AnimeInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7C62545A88100A480CF /* AnimeInfoService.swift */; };
+		4050C7CB2545B27A00A480CF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7CA2545B27A00A480CF /* NetworkManager.swift */; };
 		406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B652510B85400C8740E /* SearchPageViewController.swift */; };
 		406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B672510BCFF00C8740E /* SearchAnimeService.swift */; };
 		406C2B6A2510C77300C8740E /* AnimeDisplayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */; };
@@ -54,6 +55,7 @@
 		4050C7BA25444D4D00A480CF /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
 		4050C7BF25446A6700A480CF /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		4050C7C62545A88100A480CF /* AnimeInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInfoService.swift; sourceTree = "<group>"; };
+		4050C7CA2545B27A00A480CF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		406C2B652510B85400C8740E /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		406C2B672510BCFF00C8740E /* SearchAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimeService.swift; sourceTree = "<group>"; };
 		406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDisplayInfo.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				406C2B6B2510D48800C8740E /* Helpers */,
+				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
 				4050C7C62545A88100A480CF /* AnimeInfoService.swift */,
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
 				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
@@ -356,6 +359,7 @@
 				406C2B722511042400C8740E /* SearchCell.swift in Sources */,
 				4079A658250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift in Sources */,
 				4079A64D250F73AE001A9D3B /* AssetImage.swift in Sources */,
+				4050C7CB2545B27A00A480CF /* NetworkManager.swift in Sources */,
 				4079A640250E3EEA001A9D3B /* TopAnime.swift in Sources */,
 				4050C7B62542EE4600A480CF /* AssetColor.swift in Sources */,
 				406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */,

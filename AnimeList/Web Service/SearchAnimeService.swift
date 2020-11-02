@@ -23,6 +23,8 @@ class SearchAnimeService {
     private init() {}
     static let shared = SearchAnimeService()
     
+    let networkManager: Networking = NetworkManager()
+    
     let searchURL = URL(string: jikanAPI + "/search/anime")!
     
     func fetchSearch(page: Int = 1, text: String, completion: @escaping (SearchAnimeMain) -> Void) {
@@ -50,23 +52,23 @@ class SearchAnimeService {
         let fetchURL = searchURL.withQueries(query)!
         print("Search Fetch URL: \(fetchURL)")
         
-        URLSession.shared.dataTask(with: fetchURL) { (data, response, error) in
-            guard let searchData = data else { return }
+        networkManager.request(url: fetchURL) { (data) in
+            guard let data = data else {
+                print("SearchAnimeService: Unable to retrive data")
+                return
+            }
+            
             do {
-                try validate(response)
-                
-                let searchMain = try JSONDecoder().decode(SearchAnimeMain.self, from: searchData)
+                let searchMain = try JSONDecoder().decode(SearchAnimeMain.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(searchMain)
                 }
             }
-            catch {
-                print("Search Fetch Error: \(error)")
+            catch let error {
+                print("SearchAnimeService: \(error)")
             }
-        }.resume()
-        
-        
+        }
     }
     
 }

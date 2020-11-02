@@ -12,6 +12,8 @@ class GenreAnimeService {
     private init () {}
     static let shared = GenreAnimeService()
     
+    let networkManager: Networking = NetworkManager()
+    
     private let genreURL = URL(string: jikanAPI + "/genre/anime")!
     
     func fetchGenre(id: Int, page: Int = 1, completion: @escaping (GenreAnimeMain) -> Void) {
@@ -20,23 +22,22 @@ class GenreAnimeService {
         
         print("Genre Fetch URL: \(fetchURL)")
         
-        URLSession.shared.dataTask(with: fetchURL) { (data, response, error) in
-            guard let data = data else { return }
+        networkManager.request(url: fetchURL) { (data) in
+            guard let data = data else {
+                print("GenreAnimeServicve: Unable to retrive data")
+                return
+            }
             
             do {
-                try validate(response)
-                
                 let genreAnimeMain = try JSONDecoder().decode(GenreAnimeMain.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(genreAnimeMain)
                 }
             }
-                
-            catch {
-                print("Top Fetch Error: \(error)")
+            catch let error {
+                print("GenreAnimeService: Fetch error \(error)")
             }
         }
-        .resume()
     }
 }

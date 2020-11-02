@@ -26,6 +26,8 @@ class TopAnimeService {
     private init () {}
     static let shared = TopAnimeService()
     
+    let networkManager: Networking = NetworkManager()
+    
     static let numberOfItemsLoad = 50
     
     let topAnimeURL = URL(string: jikanAPI + "/top/anime")!
@@ -47,26 +49,24 @@ class TopAnimeService {
         }
         
         print("Top Fetch URL: \(fetchURL)")
-
-        URLSession.shared.dataTask(with: fetchURL) { (data, response, error) in
-            guard let data = data else { return }
+        
+        networkManager.request(url: fetchURL) { (data) in
+            guard let data = data else {
+                print("TopAnimeService: Unable to retrive data")
+                return
+            }
             
             do {
-                try validate(response)
-                
                 let topAnimeMain = try JSONDecoder().decode(TopAnimeMain.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(topAnimeMain.top)
                 }
-                
             }
-                
-            catch {
-                print("Top Fetch Error: \(error)")
+            catch let error {
+                print("TopAnimeService: Fetch Error - \(error)")
             }
         }
-        .resume()
     }
     
     

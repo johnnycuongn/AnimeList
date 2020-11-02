@@ -12,6 +12,8 @@ class AnimeInfoService {
     private init() {}
     static let shared = AnimeInfoService()
     
+    let networkManager: Networking = NetworkManager()
+    
     let animeURL = URL(string: jikanAPI + "/anime")!
     
     func fetchAnime(id: Int, completion: @escaping (AnimeInfo) -> Void) {
@@ -19,23 +21,22 @@ class AnimeInfoService {
         
         print("Fetch Anime URL - \(url)")
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
+        networkManager.request(url: url) { (data) in
+            guard let data = data else {
+                print("AnimeInfoService: Unable to retrieve data")
+                return
+            }
+            
             do {
-                try validate(response)
-                
                 let anime = try JSONDecoder().decode(AnimeInfo.self, from: data)
-                
+            
                 DispatchQueue.main.async {
                     completion(anime)
                 }
-                
             }
-            catch {
+            catch let error {
                 print("Anime Fetch Error: \(error)")
             }
         }
-        .resume()
-        
     }
 }
