@@ -9,7 +9,7 @@
 import Foundation
 
 extension URL {
-    func withQueries(_ queries: [SearchParameter: String]) -> URL? {
+    func searchWithQueries(_ queries: [SearchParameter: String]) -> URL? {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
         components?.queryItems = queries.map { URLQueryItem(name: $0.key.rawValue , value: $0.value ) }
         return components?.url

@@ -13,11 +13,10 @@ class AnimeInfoService {
     static let shared = AnimeInfoService()
     
     let networkManager: Networking = NetworkManager()
-    
-    let animeURL = URL(string: jikanAPI + "/anime")!
+    let path: APIPath = JikanAnimeAPI()
     
     func fetchAnime(id: Int, completion: @escaping (AnimeInfo) -> Void) {
-        let url = animeURL.appendingPathComponent(String(id))
+        let url = path.anime(id: id)
         
         print("Fetch Anime URL - \(url)")
         

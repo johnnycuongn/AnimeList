@@ -28,7 +28,7 @@ final class NetworkManager: Networking {
             do {
                 try validate(response)
 
-                guard error != nil else {
+                guard error == nil else {
                     print("Network Error: \(String(describing: error))")
                     return
                 }

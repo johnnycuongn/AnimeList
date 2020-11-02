@@ -9,26 +9,15 @@
 import Foundation
 import UIKit
 
-enum SearchParameter: String {
-    case q
-    case page
-    case type
-    case genre
-    case orderBy = "order_by"
-    case members
-    case letter
-}
 
 class SearchAnimeService {
     private init() {}
     static let shared = SearchAnimeService()
     
     let networkManager: Networking = NetworkManager()
-    
-    let searchURL = URL(string: jikanAPI + "/search/anime")!
+    let path: APIPath = JikanAnimeAPI()
     
     func fetchSearch(page: Int = 1, text: String, completion: @escaping (SearchAnimeMain) -> Void) {
-        
         
         let query: [SearchParameter: String]
         guard text.count != 0 else { return }
@@ -48,8 +37,7 @@ class SearchAnimeService {
             ]
         }
         
-    
-        let fetchURL = searchURL.withQueries(query)!
+        let fetchURL = path.search(page: page, text: text)
         print("Search Fetch URL: \(fetchURL)")
         
         networkManager.request(url: fetchURL) { (data) in

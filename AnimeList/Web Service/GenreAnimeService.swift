@@ -13,12 +13,10 @@ class GenreAnimeService {
     static let shared = GenreAnimeService()
     
     let networkManager: Networking = NetworkManager()
-    
-    private let genreURL = URL(string: jikanAPI + "/genre/anime")!
+    let path: APIPath = JikanAnimeAPI()
     
     func fetchGenre(id: Int, page: Int = 1, completion: @escaping (GenreAnimeMain) -> Void) {
-        let fetchURL: URL = genreURL.appendingPathComponent(String(id))
-                            .appendingPathComponent(String(page))
+        let fetchURL = path.genre(id: id, page: page)
         
         print("Genre Fetch URL: \(fetchURL)")
         

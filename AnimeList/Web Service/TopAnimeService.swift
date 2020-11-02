@@ -8,17 +8,7 @@
 
 import Foundation
 
-enum AnimeTopSubtype: String {
-    case bydefault = "Rating"
-    case bypopularity = "Popularity"
-    case favorite = "Favorite"
-    case airing = "Airing"
-    case upcoming = "Upcoming"
-    case tv = "TV"
-    case movie = "Movie"
-    case ova = "OVA"
-    case special = "Special"
-}
+
 
 public let jikanAPI = "https://api.jikan.moe/v3"
 
@@ -27,6 +17,7 @@ class TopAnimeService {
     static let shared = TopAnimeService()
     
     let networkManager: Networking = NetworkManager()
+    let path: APIPath = JikanAnimeAPI()
     
     static let numberOfItemsLoad = 50
     
@@ -37,16 +28,8 @@ class TopAnimeService {
     }
     
     func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnime]) -> Void ) {
-        var fetchURL: URL = topAnimeURL.appendingPathComponent(String(page))
         
-        switch subtype {
-        case .bydefault:
-            print()
-        case .bypopularity:
-            fetchURL = fetchURL.appendingPathComponent("bypopularity")
-        default:
-            fetchURL = fetchURL.appendingPathComponent(subtype.rawValue.lowercased())
-        }
+        let fetchURL = path.top(at: page, subtype: subtype)
         
         print("Top Fetch URL: \(fetchURL)")
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B1370254FECBD001AE01A /* JikanAPI.swift */; };
 		4050C79E2542C25F00A480CF /* AnimeDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */; };
 		4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AB2542C8C400A480CF /* GenreViewController.swift */; };
 		4050C7AF2542E01D00A480CF /* GenreAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400B1370254FECBD001AE01A /* JikanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanAPI.swift; sourceTree = "<group>"; };
 		4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeDisplayCell.xib; sourceTree = "<group>"; };
 		4050C7AB2542C8C400A480CF /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimeService.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				406C2B6B2510D48800C8740E /* Helpers */,
+				400B1370254FECBD001AE01A /* JikanAPI.swift */,
 				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
 				4050C7C62545A88100A480CF /* AnimeInfoService.swift */,
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
@@ -352,6 +355,7 @@
 				406C2B6F2510D59400C8740E /* SearchAnime.swift in Sources */,
 				4079A654250F7B0E001A9D3B /* TopSubtypeCell.swift in Sources */,
 				4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */,
+				400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */,
 				4079A64A250E5846001A9D3B /* HTTPValidation.swift in Sources */,
 				406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */,
 				4079A648250E54CB001A9D3B /* TopAnimeService.swift in Sources */,
