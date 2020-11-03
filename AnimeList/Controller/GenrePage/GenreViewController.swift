@@ -73,7 +73,7 @@ extension GenreViewController: UICollectionViewDelegate {
         print("Genre Anime - \(animes[indexPath.row].title)")
         weak var animeVC = AnimeViewController.initialize(with: animes[indexPath.row].malID)
         guard animeVC != nil else { return }
-        self.navigationController?.pushViewController(animeVC!, animated: true)
+        self.present(animeVC!, animated: true, completion: nil)
     }
 }
 

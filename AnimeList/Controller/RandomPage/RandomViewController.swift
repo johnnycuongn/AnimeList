@@ -8,11 +8,12 @@
 
 import UIKit
 
-class RandomViewController: UIViewController {
+class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var randomAnimeView: UIView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var visualEffectAnimeView: UIVisualEffectView!
     @IBOutlet weak var descriptionScrollView: UIScrollView!
     @IBOutlet weak var bottomView: UIVisualEffectView!
     
@@ -30,6 +31,8 @@ class RandomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAnime()
+        descriptionScrollView.delegate = self
+        visualEffectAnimeView.effect = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,8 +40,15 @@ class RandomViewController: UIViewController {
 //        loadAnime()
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 5) {
+            self.visualEffectAnimeView.effect = UIBlurEffect(style: .systemThinMaterialDark)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
+        descriptionScrollView.contentInset.top = randomAnimeView.frame.height/2 + 50
     }
     
     private func loadAnime() {

@@ -25,7 +25,7 @@ class RecommendService {
         
         var id: Int!
         
-        var page = Int.random(in: 1...50)
+        var page = Int.random(in: 1...15)
         TopAnimeService.shared.fetchTopAnime(page: page, subtype: .bydefault) { (topAnimes) in
             id = topAnimes[Int.random(in: 0..<50)].malID
             completion(id)
