@@ -26,7 +26,8 @@ extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegat
         
         weak var animeVC = AnimeViewController.initialize(with: topAnimes[indexPath.row].malID)
         guard animeVC != nil else { return }
-        self.navigationController?.pushViewController(animeVC!, animated: true)
+        self.present(animeVC!, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(animeVC!, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

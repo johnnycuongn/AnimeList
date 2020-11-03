@@ -9,6 +9,9 @@
 import UIKit
 
 class RandomViewController: UIViewController {
+    @IBOutlet weak var randomAnimeView: UIView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var descriptionScrollView: UIScrollView!
     @IBOutlet weak var bottomView: UIVisualEffectView!
@@ -26,12 +29,12 @@ class RandomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadAnime()
+        loadAnime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadAnime()
+//        loadAnime()
     }
     
     override func viewDidLayoutSubviews() {

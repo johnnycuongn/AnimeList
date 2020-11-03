@@ -12,11 +12,21 @@ class RecommendService {
     private init() {}
     static let shared = RecommendService()
     
+    private func topRecommend() -> Int {
+        // AnimeTopSubtype.bydefault
+        // AnimeTopSubtype.bypopularity
+        // AnimeTopSubtype.favorite
+        var page = Int.random(in: 1...100)
+        
+        return 1
+    }
+    
     func recommendID(_ completion: @escaping (Int) -> Void) {
         
         var id: Int!
- 
-        TopAnimeService.shared.fetchTopAnime(page: 1, subtype: .bypopularity) { (topAnimes) in
+        
+        var page = Int.random(in: 1...50)
+        TopAnimeService.shared.fetchTopAnime(page: page, subtype: .bydefault) { (topAnimes) in
             id = topAnimes[Int.random(in: 0..<50)].malID
             completion(id)
         }

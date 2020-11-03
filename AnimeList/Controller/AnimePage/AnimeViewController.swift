@@ -18,6 +18,7 @@ class AnimeViewController: UIViewController, AnimeDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as? AnimeViewController else { return nil }
         animeVC.id = id
+        animeVC.modalPresentationStyle = .overFullScreen
         
         return animeVC
     }
@@ -45,6 +46,6 @@ class AnimeViewController: UIViewController, AnimeDelegate {
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -655,6 +655,9 @@
                                                         <constraint firstAttribute="trailing" secondItem="vsR-Ye-Z1t" secondAttribute="trailing" id="feD-c9-Glb"/>
                                                     </constraints>
                                                 </scrollView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-Lg-zGK">
+                                                    <rect key="frame" x="177" y="278.66666666666669" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5K-Ah-a3s">
                                                     <rect key="frame" x="0.0" y="526" width="374" height="51"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6aj-ca-v8c">
@@ -785,7 +788,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="i2N-Dr-i4f" secondAttribute="bottom" priority="999" constant="8" id="6rN-yv-Q5F"/>
                                                 <constraint firstItem="i2N-Dr-i4f" firstAttribute="leading" secondItem="bt1-8I-fDl" secondAttribute="leading" constant="8" id="82k-P2-dkf"/>
                                                 <constraint firstItem="b1d-hN-yDJ" firstAttribute="top" secondItem="bt1-8I-fDl" secondAttribute="top" constant="15" id="IKU-95-2cT"/>
+                                                <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerY" secondItem="bt1-8I-fDl" secondAttribute="centerY" id="bOX-f2-u1b"/>
                                                 <constraint firstAttribute="trailing" secondItem="i2N-Dr-i4f" secondAttribute="trailing" constant="8" id="biH-WH-8VL"/>
+                                                <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerX" secondItem="bt1-8I-fDl" secondAttribute="centerX" id="by9-nZ-i0Q"/>
                                                 <constraint firstItem="b1d-hN-yDJ" firstAttribute="leading" secondItem="bt1-8I-fDl" secondAttribute="leading" constant="8" id="cHM-5P-HhO"/>
                                                 <constraint firstAttribute="trailing" secondItem="b1d-hN-yDJ" secondAttribute="trailing" constant="8" id="w3I-Oh-FTK"/>
                                             </constraints>
@@ -844,6 +849,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Random" image="repeat" catalog="system" id="Hbr-xH-0pC"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="hAK-Lg-zGK" id="0js-yL-jNk"/>
                         <outlet property="animeImageView" destination="hiO-BB-Jbd" id="bqD-iZ-oPE"/>
                         <outlet property="animeMembers" destination="PNw-fx-zrU" id="SzG-PX-w27"/>
                         <outlet property="animePopularity" destination="D6A-hR-cMe" id="BVf-IZ-eYg"/>
@@ -855,6 +861,7 @@
                         <outlet property="animeTypeEpisode" destination="WGS-Mn-6or" id="gkj-Uq-out"/>
                         <outlet property="bottomView" destination="J5K-Ah-a3s" id="Elk-8p-YYM"/>
                         <outlet property="descriptionScrollView" destination="i2N-Dr-i4f" id="RAw-I6-tbO"/>
+                        <outlet property="randomAnimeView" destination="A9u-vG-cyc" id="vrg-us-xjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMo-GF-MW1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
