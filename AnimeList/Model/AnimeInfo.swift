@@ -27,7 +27,7 @@ class AnimeInfo: Decodable {
     var titleEnglish: String?
     var synopsis: String?
     var type: AnimeType
-    var episodes: Int
+    var episodes: Int?
     var score: Double?
     var scoredBy: Int?
     var members: Int?
@@ -65,7 +65,7 @@ class AnimeInfo: Decodable {
         titleEnglish = try? container.decode(String.self, forKey: .titleEnglish)
         synopsis = try container.decode(String.self, forKey: .synopsis)
         type = try container.decode(AnimeType.self, forKey: .type)
-        episodes = try container.decode(Int.self, forKey: .episodes)
+        episodes = try? container.decode(Int.self, forKey: .episodes)
         score = try? container.decode(Double.self, forKey: .score)
         scoredBy = try? container.decode(Int.self, forKey: .scoredBy)
         members = try? container.decode(Int.self, forKey: .members)
