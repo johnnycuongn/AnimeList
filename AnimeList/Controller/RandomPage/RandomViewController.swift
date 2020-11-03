@@ -28,11 +28,16 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var animeStudio: UILabel!
     @IBOutlet weak var animeTypeEpisode: UILabel!
     
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    @IBOutlet weak var genreCollectionViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAnime()
         descriptionScrollView.delegate = self
-        visualEffectAnimeView.effect = nil
+        
+        genreCollectionView.delegate = self
+        genreCollectionView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,19 +45,25 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
 //        loadAnime()
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 5) {
-            self.visualEffectAnimeView.effect = UIBlurEffect(style: .systemThinMaterialDark)
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
+        randomAnimeView.layer.cornerRadius = 7
+        
+        let height = genreCollectionView.collectionViewLayout.collectionViewContentSize.height
+        
+        genreCollectionViewHeight.constant = height
+        self.view.layoutIfNeeded()
+        
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
         descriptionScrollView.contentInset.top = randomAnimeView.frame.height/2 + 50
     }
     
+    var anime: AnimeInfo?
+    
     private func loadAnime() {
         let startTime = NSDate()
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         RecommendService.shared.recommendID { (id) in
             AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
@@ -73,11 +84,16 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
                     strongSelf.animeScore.text = "\(validateLabel(animeInfo.score))"
                     strongSelf.animeMembers.text = "\(validateLabel( animeInfo.members))"
                     
-                    strongSelf.animeStudio.text = "Studio"
+                    strongSelf.animeStudio.text = "\(validateLabel(animeInfo.studios[0].name))"
                     strongSelf.animeTypeEpisode.text = "\(animeInfo.type.rawValue)(\(validateLabel(animeInfo.episodes)))"
+                    
+                    strongSelf.anime = animeInfo
+                    strongSelf.genreCollectionView.reloadData()
                 }
                 let endTime = NSDate()
-                print("Fetch && Display Completed in \(endTime.timeIntervalSince(startTime as Date)) seconds")
+                print("Random: Fetch && Display Completed in \(endTime.timeIntervalSince(startTime as Date)) seconds")
+                strongSelf.activityIndicator.stopAnimating()
+                
             }
         }
     }
@@ -88,4 +104,37 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: Helper
 
+}
+
+extension RandomViewController: UICollectionViewDelegateFlowLayout {
+    
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+}
+
+extension RandomViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard anime != nil else {return 0}
+        
+        return anime!.genres.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard anime != nil else {
+            return UICollectionViewCell()
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.identifier, for: indexPath) as! GenreCollectionViewCell
+        
+        cell.configure(with: anime!.genres[indexPath.row].name)
+        
+        return cell
+    }
 }
