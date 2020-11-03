@@ -38,22 +38,10 @@ class RandomViewController: UIViewController {
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
     }
     
-    func reccomendID(_ completion: @escaping (Int) -> Void) {
-        
-        var id: Int!
- 
-        TopAnimeService.shared.fetchTopAnime(page: 1, subtype: .bypopularity) { (topAnimes) in
-            id = topAnimes[Int.random(in: 0..<50)].malID
-            print("QUEUE1: \(id)")
-            completion(id)
-        }
-        
-    }
-    
     private func loadAnime() {
         let startTime = NSDate()
         
-        reccomendID { (id) in
+        RecommendService.shared.recommendID { (id) in
             AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
                 guard let strongSelf = self else { return }
                 

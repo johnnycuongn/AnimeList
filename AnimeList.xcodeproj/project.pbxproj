@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B1370254FECBD001AE01A /* JikanAPI.swift */; };
 		400B13762550582A001AE01A /* RandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B13752550582A001AE01A /* RandomViewController.swift */; };
+		400B137C2551457E001AE01A /* RecommendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B137B2551457E001AE01A /* RecommendService.swift */; };
 		4050C79E2542C25F00A480CF /* AnimeDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */; };
 		4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AB2542C8C400A480CF /* GenreViewController.swift */; };
 		4050C7AF2542E01D00A480CF /* GenreAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		400B1370254FECBD001AE01A /* JikanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanAPI.swift; sourceTree = "<group>"; };
 		400B13752550582A001AE01A /* RandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewController.swift; sourceTree = "<group>"; };
+		400B137B2551457E001AE01A /* RecommendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendService.swift; sourceTree = "<group>"; };
 		4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeDisplayCell.xib; sourceTree = "<group>"; };
 		4050C7AB2542C8C400A480CF /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimeService.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 				400B13752550582A001AE01A /* RandomViewController.swift */,
 			);
 			path = RandomPage;
+			sourceTree = "<group>";
+		};
+		400B137A25514538001AE01A /* Recommend Service */ = {
+			isa = PBXGroup;
+			children = (
+				400B137B2551457E001AE01A /* RecommendService.swift */,
+			);
+			path = "Recommend Service";
 			sourceTree = "<group>";
 		};
 		4050C7AA2542C89C00A480CF /* GenrePage */ = {
@@ -273,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				4079A64E250F73B7001A9D3B /* Assets */,
+				400B137A25514538001AE01A /* Recommend Service */,
 				4079A646250E54B6001A9D3B /* Web Service */,
 				4079A63A250E36FE001A9D3B /* Model */,
 				4079A644250E48B9001A9D3B /* View */,
@@ -358,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400B137C2551457E001AE01A /* RecommendService.swift in Sources */,
 				4079A651250F7604001A9D3B /* TopSubtypeDataService.swift in Sources */,
 				4050C7BB25444D4D00A480CF /* AnimeViewController.swift in Sources */,
 				4079A642250E489F001A9D3B /* TopViewController.swift in Sources */,
