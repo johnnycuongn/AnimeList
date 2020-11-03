@@ -50,18 +50,18 @@ class AnimeDisplayCell: UICollectionViewCell {
         }
         self.animeTitleLabel.text = animeInfo.title
         
-        if animeInfo.score == 0 || animeInfo.score == nil { self.scoreLabel.text = "-" }
-        else {
-            self.scoreLabel.text = String(animeInfo.score!)
-        }
+        self.scoreLabel.text = validateLabel(animeInfo.score)
         
         self.memberLabel.text = String(animeInfo.members)
         
         self.typeEpisodeLabel.text = {
-            guard animeInfo.type != nil else { return "" }
-            guard animeInfo.episodes != nil else { return "\(animeInfo.type!.rawValue)" }
+//            guard animeInfo.type != nil else { return "" }
+//            guard animeInfo.episodes != nil else { return "\(animeInfo.type!.rawValue)" }
             
-            return "\(animeInfo.type!.rawValue)(\(animeInfo.episodes!))"
+            let type = validateLabel(animeInfo.type?.rawValue, return: .none)
+            let episode = validateLabel(animeInfo.episodes)
+            
+            return "\(type)(\(episode))"
         }()
         
     }

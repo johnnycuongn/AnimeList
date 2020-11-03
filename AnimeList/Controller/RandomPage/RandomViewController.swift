@@ -54,14 +54,14 @@ class RandomViewController: UIViewController {
                     strongSelf.animeTitle.text = animeInfo.title
                     strongSelf.animeSynopsis.text = animeInfo.synopsis
 
-                    strongSelf.animeRank.text = "#\(strongSelf.validateLabel(animeInfo.rank))"
-                    strongSelf.animePopularity.text = "#\(strongSelf.validateLabel(animeInfo.popularity))"
+                    strongSelf.animeRank.text = "#\(validateLabel(animeInfo.rank))"
+                    strongSelf.animePopularity.text = "#\(validateLabel(animeInfo.popularity))"
                     
-                    strongSelf.animeScore.text = "\(strongSelf.validateLabel(animeInfo.score))"
-                    strongSelf.animeMembers.text = "\(strongSelf.validateLabel( animeInfo.members))"
+                    strongSelf.animeScore.text = "\(validateLabel(animeInfo.score))"
+                    strongSelf.animeMembers.text = "\(validateLabel( animeInfo.members))"
                     
                     strongSelf.animeStudio.text = "Studio"
-                    strongSelf.animeTypeEpisode.text = "\(animeInfo.type.rawValue)(\(strongSelf.validateLabel(animeInfo.episodes)))"
+                    strongSelf.animeTypeEpisode.text = "\(animeInfo.type.rawValue)(\(validateLabel(animeInfo.episodes)))"
                 }
                 let endTime = NSDate()
                 print("Fetch && Display Completed in \(endTime.timeIntervalSince(startTime as Date)) seconds")
@@ -74,10 +74,5 @@ class RandomViewController: UIViewController {
     }
     
     // MARK: Helper
-    func validateLabel<T>(_ label: T?) -> String {
-        if label == nil { return "-" }
-        
-        return String(describing: label!)
-    }
-    
+
 }

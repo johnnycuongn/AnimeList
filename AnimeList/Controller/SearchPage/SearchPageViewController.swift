@@ -49,7 +49,7 @@ class SearchPageViewController: UIViewController {
        
     }
     
-    func loadNewSearch(text: String) {
+    @objc func loadNewSearch(text: String) {
         SearchAnimeService.shared.fetchSearch(text: text.lowercased()) { [weak self] (searchMain) in
             guard let strongSelf = self else { return }
             
