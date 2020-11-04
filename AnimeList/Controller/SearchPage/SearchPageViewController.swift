@@ -44,6 +44,8 @@ class SearchPageViewController: UIViewController {
         super.viewDidLoad()
         searchBar.delegate = self
         
+        navigationItem.titleView = searchBar
+        
         pageCollectionView.delegate = self
         pageCollectionView.dataSource = self
        

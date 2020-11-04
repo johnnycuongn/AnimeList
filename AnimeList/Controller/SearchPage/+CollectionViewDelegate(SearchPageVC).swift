@@ -24,6 +24,7 @@ extension SearchPageViewController: UICollectionViewDelegate {
             
             let genreVC = storyBoard.instantiateViewController(withIdentifier: "GenreViewController") as! GenreViewController
             genreVC.initialize(id: genreID)
+            genreVC.title = String(describing: genres[indexPath.row])
 
             self.navigationController?.pushViewController(genreVC, animated: true)
         }
