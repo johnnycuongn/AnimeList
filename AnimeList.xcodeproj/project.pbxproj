@@ -45,6 +45,7 @@
 		4079A658250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A657250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift */; };
 		4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A659250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift */; };
 		4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A65B250F8928001A9D3B /* ImageLoadHelper.swift */; };
+		4082B64F255285CC00DC14A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4082B64E255285CC00DC14A2 /* README.md */; };
 		40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90256250A35BA009D4225 /* AppDelegate.swift */; };
 		40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90258250A35BA009D4225 /* SceneDelegate.swift */; };
 		40C9025E250A35BA009D4225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C9025C250A35BA009D4225 /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		4079A657250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TopAnimeCollectionDataSource(TopViewController).swift"; sourceTree = "<group>"; };
 		4079A659250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TopAnimeCollectionDelegate(TopViewController).swift"; sourceTree = "<group>"; };
 		4079A65B250F8928001A9D3B /* ImageLoadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadHelper.swift; sourceTree = "<group>"; };
+		4082B64E255285CC00DC14A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		40C90253250A35BA009D4225 /* AnimeList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C90256250A35BA009D4225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C90258250A35BA009D4225 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		40C9024A250A35BA009D4225 = {
 			isa = PBXGroup;
 			children = (
+				4082B64E255285CC00DC14A2 /* README.md */,
 				40C90255250A35BA009D4225 /* AnimeList */,
 				40C90254250A35BA009D4225 /* Products */,
 			);
@@ -382,6 +385,7 @@
 			files = (
 				4050C79E2542C25F00A480CF /* AnimeDisplayCell.xib in Resources */,
 				40C90263250A35BF009D4225 /* LaunchScreen.storyboard in Resources */,
+				4082B64F255285CC00DC14A2 /* README.md in Resources */,
 				40C90260250A35BF009D4225 /* Assets.xcassets in Resources */,
 				40C9025E250A35BA009D4225 /* Main.storyboard in Resources */,
 			);
