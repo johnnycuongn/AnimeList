@@ -34,6 +34,8 @@ class AnimeInfo: Decodable {
     var rank: Int?
     var popularity: Int?
     var premieredDate: String?
+    var favorites: Int?
+    var rating: String?
     
     var genres: [GenreDisplay]
     var studios: [StudioDisplay]
@@ -54,6 +56,8 @@ class AnimeInfo: Decodable {
         case rank
         case popularity
         case premieredDate = "premiered"
+        case favorites
+        case rating
         
         case genres
         case studios
@@ -78,6 +82,8 @@ class AnimeInfo: Decodable {
         rank = try? container.decode(Int.self, forKey: .rank)
         popularity = try? container.decode(Int.self, forKey: .popularity)
         premieredDate = try? container.decode(String.self, forKey: .premieredDate)
+        favorites = try? container.decode(Int.self, forKey: .favorites)
+        rating = try? container.decode(String.self, forKey: .rating)
         
         genres = try container.decode([GenreDisplay].self, forKey: .genres)
         studios = try container.decode([StudioDisplay].self, forKey: .studios)

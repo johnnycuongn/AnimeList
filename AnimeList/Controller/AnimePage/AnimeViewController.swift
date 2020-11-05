@@ -8,11 +8,7 @@
 
 import UIKit
 
-protocol AnimeDelegate {
-    func animeDidSelect(with id: Int)
-}
-
-class AnimeViewController: UIViewController, AnimeDelegate {
+class AnimeViewController: UIViewController {
     
     static func initialize(with id: Int) -> AnimeViewController? {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -23,11 +19,38 @@ class AnimeViewController: UIViewController, AnimeDelegate {
         return animeVC
     }
     
+    @IBOutlet weak var backgroundAnimeImage: UIImageView!
+    @IBOutlet weak var animeImage: UIImageView!
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var popularityLabel: UILabel!
+    @IBOutlet weak var membersLabel: UILabel!
+    @IBOutlet weak var favoritesLabel: UILabel!
+    
+    @IBOutlet weak var studioLabel: UILabel!
+    @IBOutlet weak var premieredLabel: UILabel!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var typeEpisodesLabel: UILabel!
+    
+    @IBOutlet weak var ratingLabel: UILabel!
+   
+    @IBOutlet weak var animeTitleLabel: UILabel!
+    @IBOutlet weak var animeEngTitleLabel: UILabel!
+    
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    
+    @IBOutlet weak var synopsisLabel: UILabel!
     private var id: Int = 0
+    
+    private var anime: AnimeInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        genreCollectionView.delegate = self
+        genreCollectionView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,16 +59,65 @@ class AnimeViewController: UIViewController, AnimeDelegate {
     }
     
     func loadAnime(id: Int) {
-        AnimeInfoService.shared.fetchAnime(id: id) { (animeInfo) in
+        AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
             print("Anime Fetched: \(animeInfo.title) - \(animeInfo.url)")
+            guard let strongSelf = self else {return}
+            DispatchQueue.main.async {
+                if animeInfo.imageURL != nil {
+                    strongSelf.animeImage.loadUsingCache(with: animeInfo.imageURL!)
+                    strongSelf.backgroundAnimeImage.image = strongSelf.animeImage.image
+                }
+                
+                strongSelf.scoreLabel.text = validateLabel(animeInfo.score)
+                strongSelf.rankLabel.text = "#\(validateLabel(animeInfo.rank))"
+                strongSelf.popularityLabel.text = "#\(validateLabel(animeInfo.popularity))"
+                strongSelf.membersLabel.text = validateLabel(animeInfo.members)
+                strongSelf.favoritesLabel.text = validateLabel(animeInfo.favorites)
+                
+                strongSelf.studioLabel.text = validateLabel(animeInfo.studios[0].name)
+                strongSelf.typeEpisodesLabel.text = "\(validateLabel(animeInfo.type.rawValue, return: .none))(\(validateLabel(animeInfo.episodes)))"
+                
+                strongSelf.ratingLabel.text = validateLabel(animeInfo.rating)
+                strongSelf.animeTitleLabel.text = validateLabel(animeInfo.title)
+                strongSelf.animeEngTitleLabel.text = validateLabel(animeInfo.titleEnglish)
+                
+                strongSelf.synopsisLabel.text = validateLabel(animeInfo.synopsis)
+                
+                strongSelf.anime = animeInfo
+                strongSelf.genreCollectionView.reloadData()
+            }
         }
-    }
-    
-    func animeDidSelect(with id: Int) {
-        self.id = id
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard anime != nil else {return 0}
+        
+        return anime!.genres.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard anime != nil else {
+            return UICollectionViewCell()
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.identifier, for: indexPath) as! GenreCollectionViewCell
+        
+        cell.configure(with: anime!.genres[indexPath.row].name)
+        
+        return cell
     }
 }
