@@ -19,6 +19,8 @@ class AnimeViewController: UIViewController {
         return animeVC
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var backgroundAnimeImage: UIImageView!
     @IBOutlet weak var animeImage: UIImageView!
     
@@ -59,6 +61,7 @@ class AnimeViewController: UIViewController {
     }
     
     func loadAnime(id: Int) {
+        activityIndicator.startAnimating()
         AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
             print("Anime Fetched: \(animeInfo.title) - \(animeInfo.url)")
             guard let strongSelf = self else {return}
@@ -88,6 +91,8 @@ class AnimeViewController: UIViewController {
                 
                 strongSelf.anime = animeInfo
                 strongSelf.genreCollectionView.reloadData()
+                
+                strongSelf.activityIndicator.stopAnimating()
             }
         }
     }

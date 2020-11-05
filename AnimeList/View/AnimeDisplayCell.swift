@@ -50,7 +50,12 @@ class AnimeDisplayCell: UICollectionViewCell {
         }
         self.animeTitleLabel.text = animeInfo.title
         
-        self.scoreLabel.text = validateLabel(animeInfo.score)
+        if animeInfo.score == 0 {
+            self.scoreLabel.text = "-"
+        }
+        else {
+            self.scoreLabel.text = validateLabel(animeInfo.score)
+        }
         
         self.memberLabel.text = String(animeInfo.members)
         
