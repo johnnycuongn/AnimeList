@@ -77,6 +77,9 @@ class AnimeViewController: UIViewController {
                 strongSelf.studioLabel.text = validateLabel(animeInfo.studios[0].name)
                 strongSelf.typeEpisodesLabel.text = "\(validateLabel(animeInfo.type.rawValue, return: .none))(\(validateLabel(animeInfo.episodes)))"
                 
+                strongSelf.premieredLabel.text = validateLabel(animeInfo.premieredDate)
+                strongSelf.statusLabel.text = validateLabel( animeInfo.status)
+                
                 strongSelf.ratingLabel.text = validateLabel(animeInfo.rating)
                 strongSelf.animeTitleLabel.text = validateLabel(animeInfo.title)
                 strongSelf.animeEngTitleLabel.text = validateLabel(animeInfo.titleEnglish)

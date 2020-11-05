@@ -21,6 +21,7 @@ class SearchPageViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var pageCollectionView: UICollectionView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     struct PageState {
         static var isSearching = false
     }
@@ -52,8 +53,11 @@ class SearchPageViewController: UIViewController {
     }
     
     @objc func loadNewSearch(text: String) {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         SearchAnimeService.shared.fetchSearch(text: text.lowercased()) { [weak self] (searchMain) in
             guard let strongSelf = self else { return }
+//            strongSelf.
             
             Searching.lastPage = searchMain.lastPage
             
@@ -70,6 +74,7 @@ class SearchPageViewController: UIViewController {
             }
             
             Searching.currentText = text
+            strongSelf.activityIndicator.stopAnimating()
         }
     }
     

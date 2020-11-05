@@ -12,8 +12,9 @@ class GenreViewController: UIViewController {
     
     private var id: Int = 0
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var genreAnimeCollectionView: UICollectionView!
-    @IBOutlet weak var genreLabel: UILabel!
     
     private var animes: [AnimeDisplayInfo] = [] {
         didSet {
@@ -35,11 +36,13 @@ class GenreViewController: UIViewController {
     }
     
     func loadAnime(page: Int = 1) {
-        print("Genre; \(id)")
+        print("Genre: \(id)")
+        activityIndicator.startAnimating()
         GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
             guard let strongSelf = self else { return }
             
             strongSelf.animes.append(contentsOf: genreMain.anime)
+            strongSelf.activityIndicator.stopAnimating()
         }
     }
     

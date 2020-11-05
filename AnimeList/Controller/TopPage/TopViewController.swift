@@ -15,7 +15,9 @@ struct AnimeOfPage {
 
 class TopViewController: UIViewController {
     
-    @IBOutlet var topSubtypeDataService: TopSubtypeDataService!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var topSubtypeDataService: TopSubtypeDataService!
     @IBOutlet weak var topSubtypeCollectionView: UICollectionView!
     
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
@@ -44,6 +46,8 @@ class TopViewController: UIViewController {
         topAnimeCollectionView.delegate = self
         topAnimeCollectionView.dataSource = self
         
+        self.tabBarController?.delegate = self
+        
         topAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
         
         topAnimeCollectionView.scrollsToTop = true
@@ -63,11 +67,12 @@ class TopViewController: UIViewController {
     
     func loadAnime(page: Int = 1, subtype: AnimeTopSubtype) {
         guard page > didLoadedPages else { return }
-        
+        activityIndicator.startAnimating()
         TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { [weak self] (topAnimes) in
             guard let strongSelf = self else { return }
             
             strongSelf.topAnimes.append(contentsOf: topAnimes)
+            strongSelf.activityIndicator.stopAnimating()
         }
     }
     
@@ -91,5 +96,15 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
+    }
+}
+
+extension TopViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let selectedIndex = tabBarController.selectedIndex
+        
+        if selectedIndex == 0 {
+            self.topAnimeCollectionView.setContentOffset(CGPoint.zero, animated: true)
+        }
     }
 }
