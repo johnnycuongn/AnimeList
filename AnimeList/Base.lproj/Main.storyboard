@@ -841,18 +841,113 @@
         <!--Personal-->
         <scene sceneID="UO0-uM-dOe">
             <objects>
-                <viewController id="98e-jw-fks" sceneMemberID="viewController">
+                <viewController id="98e-jw-fks" customClass="PersonalViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utC-S7-7hB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IRc-2q-RHT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bGS-Gq-m9y">
+                                    <size key="itemSize" width="212" height="291"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PersonalAnimeCollectionViewCell" id="3uZ-Ri-TsM" customClass="PersonalAnimeCollectionViewCell" customModule="AnimeList" customModuleProvider="target">
+                                        <rect key="frame" x="101" y="0.0" width="212" height="291"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xuE-ym-IDG">
+                                            <rect key="frame" x="0.0" y="0.0" width="212" height="291"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3u2-sH-NCF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="212" height="291"/>
+                                                </imageView>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LT2-2J-lk3">
+                                                    <rect key="frame" x="0.0" y="247.33333333333334" width="212" height="43.666666666666657"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dvq-N9-M5c">
+                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="43.666666666666657"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
+                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Nzy-AA-Ta7" firstAttribute="top" secondItem="dvq-N9-M5c" secondAttribute="top" constant="3" id="Dcd-yH-hTH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Nzy-AA-Ta7" secondAttribute="trailing" constant="3" id="T7F-he-odg"/>
+                                                            <constraint firstItem="Nzy-AA-Ta7" firstAttribute="leading" secondItem="dvq-N9-M5c" secondAttribute="leading" constant="3" id="Wlh-wj-nBK"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Nzy-AA-Ta7" secondAttribute="bottom" constant="3" id="kGJ-Gs-exH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <blurEffect style="dark"/>
+                                                </visualEffectView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-wx-MMM">
+                                                    <rect key="frame" x="137" y="209.33333333333334" width="67" height="30"/>
+                                                    <state key="normal" title="Complete">
+                                                        <color key="titleColor" name="super-light-grey"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="completeButtonTapped:" destination="3uZ-Ri-TsM" eventType="touchUpInside" id="iQr-bA-0M3"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-f6-mEs">
+                                                    <rect key="frame" x="84" y="209.33333333333334" width="45" height="30"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleColor" red="0.67278711930000001" green="0.38069545090000001" blue="0.37840723679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="deleteButtonTapped:" destination="3uZ-Ri-TsM" eventType="touchUpInside" id="FCt-cA-6U4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LT2-2J-lk3" firstAttribute="top" secondItem="uWf-f6-mEs" secondAttribute="bottom" constant="8" id="ARZ-xK-7KJ"/>
+                                                <constraint firstItem="LT2-2J-lk3" firstAttribute="leading" secondItem="xuE-ym-IDG" secondAttribute="leading" id="EBj-Pp-HLF"/>
+                                                <constraint firstAttribute="trailing" secondItem="7w8-wx-MMM" secondAttribute="trailing" constant="8" id="IiT-y0-27y"/>
+                                                <constraint firstItem="LT2-2J-lk3" firstAttribute="top" secondItem="7w8-wx-MMM" secondAttribute="bottom" constant="8" id="LQR-eM-bsy"/>
+                                                <constraint firstAttribute="bottom" secondItem="3u2-sH-NCF" secondAttribute="bottom" id="TlL-CZ-WyS"/>
+                                                <constraint firstAttribute="trailing" secondItem="LT2-2J-lk3" secondAttribute="trailing" id="giJ-EM-s1K"/>
+                                                <constraint firstAttribute="trailing" secondItem="3u2-sH-NCF" secondAttribute="trailing" id="h1h-J4-PW3"/>
+                                                <constraint firstItem="3u2-sH-NCF" firstAttribute="leading" secondItem="xuE-ym-IDG" secondAttribute="leading" id="hTf-Oz-1Ie"/>
+                                                <constraint firstItem="7w8-wx-MMM" firstAttribute="leading" secondItem="uWf-f6-mEs" secondAttribute="trailing" constant="8" id="mMM-FS-Oil"/>
+                                                <constraint firstItem="LT2-2J-lk3" firstAttribute="height" secondItem="xuE-ym-IDG" secondAttribute="height" multiplier="0.15" id="pH6-LC-ZUW"/>
+                                                <constraint firstAttribute="bottom" secondItem="LT2-2J-lk3" secondAttribute="bottom" id="s3D-XF-8xB"/>
+                                                <constraint firstItem="3u2-sH-NCF" firstAttribute="top" secondItem="xuE-ym-IDG" secondAttribute="top" id="soO-V9-lKx"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="212" height="291"/>
+                                        <connections>
+                                            <outlet property="animeImageView" destination="3u2-sH-NCF" id="ddm-2k-aXN"/>
+                                            <outlet property="animeTitle" destination="Nzy-AA-Ta7" id="GBf-Cj-zjz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Rbi-hm-0Sj"/>
                         <color key="backgroundColor" name="main-background-color"/>
+                        <constraints>
+                            <constraint firstItem="IRc-2q-RHT" firstAttribute="top" secondItem="Rbi-hm-0Sj" secondAttribute="top" id="JNf-ha-Y9T"/>
+                            <constraint firstItem="Rbi-hm-0Sj" firstAttribute="trailing" secondItem="IRc-2q-RHT" secondAttribute="trailing" id="JwC-2N-HX3"/>
+                            <constraint firstItem="Rbi-hm-0Sj" firstAttribute="bottom" secondItem="IRc-2q-RHT" secondAttribute="bottom" id="NWj-Rb-wDH"/>
+                            <constraint firstItem="IRc-2q-RHT" firstAttribute="leading" secondItem="Rbi-hm-0Sj" secondAttribute="leading" id="jEP-GT-4Jy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Personal" image="person" catalog="system" id="YUR-bj-iLy"/>
+                    <connections>
+                        <outlet property="animeCollectionView" destination="IRc-2q-RHT" id="u80-zY-5vu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoP-qu-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="1615"/>
+            <point key="canvasLocation" x="773.91304347826087" y="1614.9456521739132"/>
         </scene>
         <!--Random-->
         <scene sceneID="Hah-Zc-hXV">

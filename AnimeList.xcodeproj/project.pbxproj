@@ -47,6 +47,7 @@
 		4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079A65B250F8928001A9D3B /* ImageLoadHelper.swift */; };
 		4082B64F255285CC00DC14A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4082B64E255285CC00DC14A2 /* README.md */; };
 		4082B6522552888800DC14A2 /* ShortInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6512552888800DC14A2 /* ShortInfo.swift */; };
+		4082B6A0255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */; };
 		40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90256250A35BA009D4225 /* AppDelegate.swift */; };
 		40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90258250A35BA009D4225 /* SceneDelegate.swift */; };
 		40C9025E250A35BA009D4225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C9025C250A35BA009D4225 /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		4079A65B250F8928001A9D3B /* ImageLoadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadHelper.swift; sourceTree = "<group>"; };
 		4082B64E255285CC00DC14A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4082B6512552888800DC14A2 /* ShortInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfo.swift; sourceTree = "<group>"; };
+		4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAnimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		40C90253250A35BA009D4225 /* AnimeList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C90256250A35BA009D4225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C90258250A35BA009D4225 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		4079A644250E48B9001A9D3B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4082B69E255415A400DC14A2 /* PersonalPage */,
 				400B138B2551A509001AE01A /* RandomPage */,
 				4079A655250F80B9001A9D3B /* AnimeDisplayCell.swift */,
 				4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */,
@@ -290,6 +293,14 @@
 				4079A653250F7B0E001A9D3B /* TopSubtypeCell.swift */,
 			);
 			path = TopPage;
+			sourceTree = "<group>";
+		};
+		4082B69E255415A400DC14A2 /* PersonalPage */ = {
+			isa = PBXGroup;
+			children = (
+				4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */,
+			);
+			path = PersonalPage;
 			sourceTree = "<group>";
 		};
 		40C9024A250A35BA009D4225 = {
@@ -417,6 +428,7 @@
 				406C2B682510BCFF00C8740E /* SearchAnimeService.swift in Sources */,
 				4079A648250E54CB001A9D3B /* TopAnimeService.swift in Sources */,
 				4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */,
+				4082B6A0255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift in Sources */,
 				406C2B722511042400C8740E /* SearchCell.swift in Sources */,
 				4079A658250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift in Sources */,
 				4079A64D250F73AE001A9D3B /* AssetImage.swift in Sources */,
