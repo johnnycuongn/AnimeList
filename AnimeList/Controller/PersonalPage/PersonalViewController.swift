@@ -12,12 +12,16 @@ class PersonalViewController: UIViewController {
 
     @IBOutlet weak var animeCollectionView: UICollectionView!
     
-    var anime: [String] = ["Aaaaaaa aaaaaaaa", "Bbbbbb bbbbb", "CCCcc ccccccccscdcdcdcdcdcddc"]
+    var animes: [PersonalAnime] {
+        return PersonalAnimeDataManager.fetchFromDB()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         animeCollectionView.delegate = self
         animeCollectionView.dataSource = self
+        
+        animeCollectionView.reloadData()
     }
 
 }
@@ -51,8 +55,12 @@ extension PersonalViewController: PersonalAnimeActionDelegate {
     }
     
     func delete(_ cell: PersonalAnimeCollectionViewCell) {
-        let index = animeCollectionView.indexPath(for: cell)
-        print("Did Delete Cell: \(index)")
+        
+        guard let indexPath = animeCollectionView.indexPath(for: cell) else { return }
+        print("Did Remove Cell: \(index)")
+        PersonalAnimeDataManager.remove(at: indexPath.row)
+        
+        animeCollectionView.reloadData()
     }
     
     
@@ -60,13 +68,13 @@ extension PersonalViewController: PersonalAnimeActionDelegate {
 
 extension PersonalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return anime.count
+        return animes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonalAnimeCollectionViewCell.identifier, for: indexPath) as! PersonalAnimeCollectionViewCell
         
-        cell.configure(with: anime[indexPath.row])
+        cell.configure(with: animes[indexPath.row])
         cell.actionDelegate = self
         
         return cell

@@ -68,7 +68,7 @@ class AnimeViewController: UIViewController {
             DispatchQueue.main.async {
                 if animeInfo.imageURL != nil {
                     strongSelf.animeImage.loadUsingCache(with: animeInfo.imageURL!)
-                    strongSelf.backgroundAnimeImage.image = strongSelf.animeImage.image
+//                    strongSelf.backgroundAnimeImage.image = strongSelf.animeImage.image
                 }
                 
                 strongSelf.scoreLabel.text = validateLabel(animeInfo.score)
@@ -100,6 +100,16 @@ class AnimeViewController: UIViewController {
     @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let currentAnime = anime else {
+            return
+        }
+        
+        PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImage.image,
+                                     title: currentAnime.title, date: Date())
+    }
+    
 }
 
 extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

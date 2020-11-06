@@ -26,8 +26,14 @@ class PersonalAnimeCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(with anime: String) {
-        self.animeTitle.text = anime
+    func configure(with anime: PersonalAnime) {
+        if anime.image != nil {
+            DispatchQueue.main.async {
+                self.animeImageView.image = UIImage(data: anime.image!)
+            }
+        }
+        
+        self.animeTitle.text = anime.title
     }
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {

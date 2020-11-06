@@ -48,6 +48,11 @@
 		4082B64F255285CC00DC14A2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4082B64E255285CC00DC14A2 /* README.md */; };
 		4082B6522552888800DC14A2 /* ShortInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6512552888800DC14A2 /* ShortInfo.swift */; };
 		4082B6A0255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */; };
+		4082B6A425551E6400DC14A2 /* AnimeList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6A225551E6400DC14A2 /* AnimeList.xcdatamodeld */; };
+		4082B6AC25551F3100DC14A2 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6AB25551F3100DC14A2 /* PersistenceService.swift */; };
+		4082B6B52555247C00DC14A2 /* PersonalAnimeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */; };
+		4082B6BA2555292200DC14A2 /* PersonalAnime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6B82555292200DC14A2 /* PersonalAnime+CoreDataClass.swift */; };
+		4082B6BB2555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082B6B92555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift */; };
 		40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90256250A35BA009D4225 /* AppDelegate.swift */; };
 		40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C90258250A35BA009D4225 /* SceneDelegate.swift */; };
 		40C9025E250A35BA009D4225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C9025C250A35BA009D4225 /* Main.storyboard */; };
@@ -97,6 +102,11 @@
 		4082B64E255285CC00DC14A2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4082B6512552888800DC14A2 /* ShortInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfo.swift; sourceTree = "<group>"; };
 		4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAnimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		4082B6A325551E6400DC14A2 /* AnimeList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimeList.xcdatamodel; sourceTree = "<group>"; };
+		4082B6AB25551F3100DC14A2 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAnimeDataManager.swift; sourceTree = "<group>"; };
+		4082B6B82555292200DC14A2 /* PersonalAnime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonalAnime+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4082B6B92555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonalAnime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		40C90253250A35BA009D4225 /* AnimeList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C90256250A35BA009D4225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C90258250A35BA009D4225 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,14 +216,8 @@
 		4079A63A250E36FE001A9D3B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4079A63B250E3723001A9D3B /* AnimeInfo.swift */,
-				4079A63D250E3B9A001A9D3B /* Episode.swift */,
-				4082B6512552888800DC14A2 /* ShortInfo.swift */,
-				400B138625519EE2001AE01A /* Genre&Studio.swift */,
-				406C2B6E2510D59400C8740E /* SearchAnime.swift */,
-				4079A63F250E3EEA001A9D3B /* TopAnime.swift */,
-				4050C7B12542E2B200A480CF /* GenreAnime.swift */,
-				406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */,
+				4082B6AA25551F1900DC14A2 /* CoreData */,
+				4082B6A725551EF000DC14A2 /* WebModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +307,32 @@
 			path = PersonalPage;
 			sourceTree = "<group>";
 		};
+		4082B6A725551EF000DC14A2 /* WebModel */ = {
+			isa = PBXGroup;
+			children = (
+				4079A63B250E3723001A9D3B /* AnimeInfo.swift */,
+				4079A63D250E3B9A001A9D3B /* Episode.swift */,
+				4082B6512552888800DC14A2 /* ShortInfo.swift */,
+				400B138625519EE2001AE01A /* Genre&Studio.swift */,
+				406C2B6E2510D59400C8740E /* SearchAnime.swift */,
+				4079A63F250E3EEA001A9D3B /* TopAnime.swift */,
+				4050C7B12542E2B200A480CF /* GenreAnime.swift */,
+				406C2B692510C77300C8740E /* AnimeDisplayInfo.swift */,
+			);
+			path = WebModel;
+			sourceTree = "<group>";
+		};
+		4082B6AA25551F1900DC14A2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4082B6AB25551F3100DC14A2 /* PersistenceService.swift */,
+				4082B6B82555292200DC14A2 /* PersonalAnime+CoreDataClass.swift */,
+				4082B6B92555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift */,
+				4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		40C9024A250A35BA009D4225 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +365,7 @@
 				40C9025C250A35BA009D4225 /* Main.storyboard */,
 				40C90261250A35BF009D4225 /* LaunchScreen.storyboard */,
 				40C90264250A35BF009D4225 /* Info.plist */,
+				4082B6A225551E6400DC14A2 /* AnimeList.xcdatamodeld */,
 			);
 			path = AnimeList;
 			sourceTree = "<group>";
@@ -412,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4082B6BB2555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift in Sources */,
 				400B137C2551457E001AE01A /* RecommendService.swift in Sources */,
 				4079A651250F7604001A9D3B /* TopSubtypeDataService.swift in Sources */,
 				4050C7BB25444D4D00A480CF /* AnimeViewController.swift in Sources */,
@@ -420,6 +452,7 @@
 				4079A63C250E3723001A9D3B /* AnimeInfo.swift in Sources */,
 				406C2B6F2510D59400C8740E /* SearchAnime.swift in Sources */,
 				400B138725519EE2001AE01A /* Genre&Studio.swift in Sources */,
+				4082B6BA2555292200DC14A2 /* PersonalAnime+CoreDataClass.swift in Sources */,
 				4079A654250F7B0E001A9D3B /* TopSubtypeCell.swift in Sources */,
 				4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */,
 				400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */,
@@ -429,13 +462,16 @@
 				4079A648250E54CB001A9D3B /* TopAnimeService.swift in Sources */,
 				4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */,
 				4082B6A0255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift in Sources */,
+				4082B6B52555247C00DC14A2 /* PersonalAnimeDataManager.swift in Sources */,
 				406C2B722511042400C8740E /* SearchCell.swift in Sources */,
 				4079A658250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift in Sources */,
 				4079A64D250F73AE001A9D3B /* AssetImage.swift in Sources */,
 				4050C7CB2545B27A00A480CF /* NetworkManager.swift in Sources */,
 				4079A640250E3EEA001A9D3B /* TopAnime.swift in Sources */,
 				4050C7B62542EE4600A480CF /* AssetColor.swift in Sources */,
+				4082B6AC25551F3100DC14A2 /* PersistenceService.swift in Sources */,
 				4082B6522552888800DC14A2 /* ShortInfo.swift in Sources */,
+				4082B6A425551E6400DC14A2 /* AnimeList.xcdatamodeld in Sources */,
 				406C2B662510B85400C8740E /* SearchPageViewController.swift in Sources */,
 				40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */,
 				406C2B7825110A9F00C8740E /* +CollectionViewDelegate(SearchPageVC).swift in Sources */,
@@ -650,6 +686,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4082B6A225551E6400DC14A2 /* AnimeList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4082B6A325551E6400DC14A2 /* AnimeList.xcdatamodel */,
+			);
+			currentVersion = 4082B6A325551E6400DC14A2 /* AnimeList.xcdatamodel */;
+			path = AnimeList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 40C9024B250A35BA009D4225 /* Project object */;
 }

@@ -13,12 +13,13 @@ enum EmptyReturnType: String {
     case none = ""
 }
 /// Validate for optional Label?
+///
 /// Usage:
 ///
 ///     animeRankTitle.text = validateLabel(animeInfo.rank, return: .dash)
 ///
 /// - Parameter label: Label to validate
-/// - Parameter return: String to return when `Label` is empty
+/// - Parameter return: String to return when `Label` is empty/nil
 ///
 /// - Returns: Valid string return
 func validateLabel<T>(_ label: T?, return stringType: EmptyReturnType = .dash) -> String {

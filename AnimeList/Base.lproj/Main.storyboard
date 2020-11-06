@@ -420,7 +420,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bav-h1-C7w">
-                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="686" width="289.66666666666669" height="50"/>
                                 <color key="backgroundColor" red="0.16436811239999999" green="0.16473853860000001" blue="0.17039119259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZP4-xf-1Zg"/>
@@ -745,21 +745,36 @@
                                     <constraint firstItem="f6I-LH-noB" firstAttribute="top" secondItem="9Ei-2e-Zrz" secondAttribute="bottom" constant="20" id="yaV-n7-8D1"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-0L-n2E">
+                                <rect key="frame" x="291.66666666666669" y="688" width="120.33333333333331" height="46"/>
+                                <color key="backgroundColor" red="0.93640942258883253" green="0.62312408110086148" blue="0.54146387098686621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="main-background-color"/>
+                                <state key="normal" title="Save" image="bookmark" catalog="system">
+                                    <color key="titleColor" name="main-background-color"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="tch-mC-RHV" eventType="touchUpInside" id="GY9-mj-vrP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ac-R7-E9A"/>
                         <color key="backgroundColor" name="main-background-color"/>
                         <constraints>
+                            <constraint firstItem="6Dx-0L-n2E" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="bottom" constant="2" id="1av-0f-j4J"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="6qc-aE-pPh"/>
                             <constraint firstItem="bav-h1-C7w" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="9rE-kr-hjF"/>
+                            <constraint firstItem="8Ac-R7-E9A" firstAttribute="bottom" secondItem="6Dx-0L-n2E" secondAttribute="bottom" constant="2" id="APY-GF-nOQ"/>
                             <constraint firstItem="4Is-o6-X93" firstAttribute="top" secondItem="8Ac-R7-E9A" secondAttribute="top" id="D85-1M-fzu"/>
                             <constraint firstItem="ZYB-3A-BpC" firstAttribute="top" secondItem="4Is-o6-X93" secondAttribute="bottom" id="EuY-kt-wdR"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="height" secondItem="4Is-o6-X93" secondAttribute="height" id="KTi-OZ-ETk"/>
-                            <constraint firstItem="8Ac-R7-E9A" firstAttribute="trailing" secondItem="bav-h1-C7w" secondAttribute="trailing" id="P3B-hk-Glt"/>
+                            <constraint firstItem="6Dx-0L-n2E" firstAttribute="leading" secondItem="bav-h1-C7w" secondAttribute="trailing" constant="2" id="UVL-sr-kkQ"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="trailing" secondItem="8Ac-R7-E9A" secondAttribute="trailing" id="dXA-Kc-gtA"/>
                             <constraint firstItem="ZYB-3A-BpC" firstAttribute="trailing" secondItem="8Ac-R7-E9A" secondAttribute="trailing" id="e3n-Qe-mBj"/>
                             <constraint firstItem="4Is-o6-X93" firstAttribute="trailing" secondItem="8Ac-R7-E9A" secondAttribute="trailing" id="e96-ym-LRp"/>
                             <constraint firstItem="4Is-o6-X93" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="hjT-5n-nFx"/>
+                            <constraint firstItem="bav-h1-C7w" firstAttribute="width" secondItem="HyV-VY-lvh" secondAttribute="width" multiplier="0.7" id="hpG-86-OWh"/>
                             <constraint firstItem="ZYB-3A-BpC" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="mi9-eh-HDV"/>
+                            <constraint firstItem="8Ac-R7-E9A" firstAttribute="trailing" secondItem="6Dx-0L-n2E" secondAttribute="trailing" constant="2" id="oC4-ar-Gud"/>
                             <constraint firstItem="8Ac-R7-E9A" firstAttribute="bottom" secondItem="bav-h1-C7w" secondAttribute="bottom" id="pGk-oc-Gyx"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="top" secondItem="8Ac-R7-E9A" secondAttribute="top" id="rAo-Ke-AnN"/>
                             <constraint firstItem="bav-h1-C7w" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="bottom" id="rNZ-0r-5I7"/>
@@ -898,8 +913,8 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-f6-mEs">
-                                                    <rect key="frame" x="84" y="209.33333333333334" width="45" height="30"/>
-                                                    <state key="normal" title="Delete">
+                                                    <rect key="frame" x="74" y="209.33333333333334" width="55" height="30"/>
+                                                    <state key="normal" title="Remove">
                                                         <color key="titleColor" red="0.67278711930000001" green="0.38069545090000001" blue="0.37840723679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -1284,6 +1299,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="list.bullet.indent" catalog="system" width="128" height="74"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
