@@ -19,10 +19,11 @@ class AnimeViewController: UIViewController {
         return animeVC
     }
     
+    // MARK: - View Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var backgroundAnimeImage: UIImageView!
-    @IBOutlet weak var animeImage: UIImageView!
+    @IBOutlet weak var backgroundAnimeImageView: UIImageView!
+    @IBOutlet weak var animeImageView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreLabelView: UIView!
@@ -46,21 +47,46 @@ class AnimeViewController: UIViewController {
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
     @IBOutlet weak var synopsisLabel: UILabel!
-    private var id: Int = 0
     
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    // MARK: - View Controller's Variables
+    private var id: Int = 0
     private var anime: AnimeInfo?
 
+    private var isAnimeSaved: Bool {
+        // FIXME: Query from Core Data
+        return false
+    }
+    // MARK: - View Loading
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
         
         scoreLabelView.layer.cornerRadius = 7
+        
+        if isAnimeSaved == false {
+            saveButton.imageView?.image = UIImage(systemName: "bookmark")
+        }
+        else {
+            saveButton.imageView?.image = UIImage(systemName: "bookmark.fill")
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadAnime(id: self.id)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        closeButton.layer.cornerRadius = 5
+        saveButton.layer.cornerRadius = 5
+        
     }
     
     func loadAnime(id: Int) {
@@ -70,7 +96,7 @@ class AnimeViewController: UIViewController {
             guard let strongSelf = self else {return}
             DispatchQueue.main.async {
                 if animeInfo.imageURL != nil {
-                    strongSelf.animeImage.loadUsingCache(with: animeInfo.imageURL!)
+                    strongSelf.animeImageView.loadUsingCache(with: animeInfo.imageURL!)
 //                    strongSelf.backgroundAnimeImage.image = strongSelf.animeImage.image
                 }
                 
@@ -99,7 +125,9 @@ class AnimeViewController: UIViewController {
             }
         }
     }
-
+    
+    // MARK: - Button Action
+    //------------------------
     @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -109,12 +137,20 @@ class AnimeViewController: UIViewController {
             return
         }
         
-        PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImage.image,
-                                     title: currentAnime.title, date: Date())
+        if isAnimeSaved == false {
+            PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImageView.image,
+                                         title: currentAnime.title, date: Date())
+            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        else {
+            // FIXME: Unsave Anime
+        }
+
     }
     
 }
 
+    // MARK: - Collection View
 extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8

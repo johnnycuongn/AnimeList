@@ -421,7 +421,7 @@
                                 <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bav-h1-C7w">
-                                <rect key="frame" x="0.0" y="686" width="289.66666666666669" height="50"/>
+                                <rect key="frame" x="2" y="684" width="289.66666666666669" height="50"/>
                                 <color key="backgroundColor" red="0.16436811239999999" green="0.16473853860000001" blue="0.17039119259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZP4-xf-1Zg"/>
@@ -656,7 +656,7 @@
                                 <blurEffect style="systemMaterialDark"/>
                             </visualEffectView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-3A-BpC">
-                                <rect key="frame" x="0.0" y="229" width="414" height="457"/>
+                                <rect key="frame" x="0.0" y="229" width="414" height="453"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Ei-2e-Zrz">
                                         <rect key="frame" x="8" y="78.666666666666686" width="393.33333333333331" height="30"/>
@@ -747,7 +747,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-0L-n2E">
-                                <rect key="frame" x="291.66666666666669" y="688" width="120.33333333333331" height="46"/>
+                                <rect key="frame" x="293.66666666666669" y="684" width="118.33333333333331" height="50"/>
                                 <color key="backgroundColor" red="0.93640942258883253" green="0.62312408110086148" blue="0.54146387098686621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="main-background-color"/>
                                 <state key="normal" title="Save" image="bookmark" catalog="system">
@@ -761,9 +761,9 @@
                         <viewLayoutGuide key="safeArea" id="8Ac-R7-E9A"/>
                         <color key="backgroundColor" name="main-background-color"/>
                         <constraints>
-                            <constraint firstItem="6Dx-0L-n2E" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="bottom" constant="2" id="1av-0f-j4J"/>
+                            <constraint firstItem="6Dx-0L-n2E" firstAttribute="height" secondItem="bav-h1-C7w" secondAttribute="height" id="6Gd-1p-O7D"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="6qc-aE-pPh"/>
-                            <constraint firstItem="bav-h1-C7w" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="9rE-kr-hjF"/>
+                            <constraint firstItem="bav-h1-C7w" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" constant="2" id="9rE-kr-hjF"/>
                             <constraint firstItem="8Ac-R7-E9A" firstAttribute="bottom" secondItem="6Dx-0L-n2E" secondAttribute="bottom" constant="2" id="APY-GF-nOQ"/>
                             <constraint firstItem="4Is-o6-X93" firstAttribute="top" secondItem="8Ac-R7-E9A" secondAttribute="top" id="D85-1M-fzu"/>
                             <constraint firstItem="ZYB-3A-BpC" firstAttribute="top" secondItem="4Is-o6-X93" secondAttribute="bottom" id="EuY-kt-wdR"/>
@@ -778,17 +778,18 @@
                             <constraint firstItem="ZYB-3A-BpC" firstAttribute="leading" secondItem="8Ac-R7-E9A" secondAttribute="leading" id="mi9-eh-HDV"/>
                             <constraint firstItem="7eF-f9-rpE" firstAttribute="centerY" secondItem="HyV-VY-lvh" secondAttribute="centerY" id="ntS-Tt-sFc"/>
                             <constraint firstItem="8Ac-R7-E9A" firstAttribute="trailing" secondItem="6Dx-0L-n2E" secondAttribute="trailing" constant="2" id="oC4-ar-Gud"/>
-                            <constraint firstItem="8Ac-R7-E9A" firstAttribute="bottom" secondItem="bav-h1-C7w" secondAttribute="bottom" id="pGk-oc-Gyx"/>
+                            <constraint firstItem="8Ac-R7-E9A" firstAttribute="bottom" secondItem="bav-h1-C7w" secondAttribute="bottom" constant="2" id="pGk-oc-Gyx"/>
                             <constraint firstItem="58M-Pt-Ajc" firstAttribute="top" secondItem="8Ac-R7-E9A" secondAttribute="top" id="rAo-Ke-AnN"/>
-                            <constraint firstItem="bav-h1-C7w" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="bottom" id="rNZ-0r-5I7"/>
+                            <constraint firstItem="bav-h1-C7w" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="bottom" constant="2" id="rNZ-0r-5I7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="7eF-f9-rpE" id="Ptx-IK-1Wa"/>
                         <outlet property="animeEngTitleLabel" destination="QZx-HV-jR1" id="a3C-QR-IIs"/>
-                        <outlet property="animeImage" destination="GrC-Id-0rr" id="sQL-jO-0Tq"/>
+                        <outlet property="animeImageView" destination="GrC-Id-0rr" id="sQL-jO-0Tq"/>
                         <outlet property="animeTitleLabel" destination="c10-mh-vxw" id="WIh-qb-sOC"/>
-                        <outlet property="backgroundAnimeImage" destination="4Is-o6-X93" id="2jX-14-Dtp"/>
+                        <outlet property="backgroundAnimeImageView" destination="4Is-o6-X93" id="2jX-14-Dtp"/>
+                        <outlet property="closeButton" destination="bav-h1-C7w" id="Ykx-ZG-dce"/>
                         <outlet property="favoritesLabel" destination="VpH-0c-pn0" id="NTG-Cf-wVr"/>
                         <outlet property="genreCollectionView" destination="9Ei-2e-Zrz" id="Y29-sw-TyE"/>
                         <outlet property="membersLabel" destination="sYz-kF-xE2" id="2jW-Ft-1WG"/>
@@ -796,6 +797,7 @@
                         <outlet property="premieredLabel" destination="FL8-RO-mAp" id="7qf-eU-9Hm"/>
                         <outlet property="rankLabel" destination="2yA-vD-dYP" id="W2D-0a-ibF"/>
                         <outlet property="ratingLabel" destination="39p-AW-sZp" id="fN3-Vm-Z1N"/>
+                        <outlet property="saveButton" destination="6Dx-0L-n2E" id="RcK-rk-hZd"/>
                         <outlet property="scoreLabel" destination="djS-7x-lGI" id="ddJ-YS-ncx"/>
                         <outlet property="scoreLabelView" destination="fFd-Ro-2Pb" id="S0m-td-i4V"/>
                         <outlet property="statusLabel" destination="sOK-tn-29y" id="nIL-rv-BkR"/>
@@ -916,7 +918,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="37"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -1226,18 +1228,25 @@
                                     <constraint firstAttribute="bottom" secondItem="l4S-r3-HH0" secondAttribute="bottom" id="ZVU-AS-rjb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJD-8p-0iF">
-                                <rect key="frame" x="190.66666666666666" y="642" width="33" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJD-8p-0iF">
+                                <rect key="frame" x="179" y="642" width="56.333333333333343" height="30"/>
+                                <color key="backgroundColor" red="0.93640942260000004" green="0.62312408109999995" blue="0.54146387100000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="RAf-T2-dqV"/>
                                 </constraints>
-                                <state key="normal" title="Love">
-                                    <color key="titleColor" red="0.95399746190000001" green="0.68118828170000001" blue="0.60420817159999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="main-background-color"/>
+                                <state key="normal" title="Save" image="bookmark" catalog="system">
+                                    <color key="titleColor" name="main-background-color"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="xIA-KP-nvG" eventType="touchUpInside" id="UOe-o7-wSE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ctx-q2-EE3">
-                                <rect key="frame" x="362" y="642" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                                <rect key="frame" x="352" y="642" width="32" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="nextBtnTapped:" destination="xIA-KP-nvG" eventType="touchUpInside" id="sB6-mq-YAL"/>
                                 </connections>
@@ -1251,10 +1260,9 @@
                             <constraint firstItem="nJD-8p-0iF" firstAttribute="centerX" secondItem="kLp-SQ-mYN" secondAttribute="centerX" id="HTN-rc-zfd"/>
                             <constraint firstItem="fct-U0-vWj" firstAttribute="bottom" secondItem="nJD-8p-0iF" secondAttribute="bottom" constant="15" id="bsD-VQ-RPu"/>
                             <constraint firstItem="A9u-vG-cyc" firstAttribute="leading" secondItem="fct-U0-vWj" secondAttribute="leading" constant="20" id="gfr-g3-UVY"/>
-                            <constraint firstItem="Ctx-q2-EE3" firstAttribute="trailing" secondItem="A9u-vG-cyc" secondAttribute="trailing" id="lHi-to-T45"/>
+                            <constraint firstItem="Ctx-q2-EE3" firstAttribute="trailing" secondItem="A9u-vG-cyc" secondAttribute="trailing" constant="-10" id="lHi-to-T45"/>
                             <constraint firstItem="nJD-8p-0iF" firstAttribute="top" secondItem="A9u-vG-cyc" secondAttribute="bottom" constant="15" id="uBG-ae-xxm"/>
                             <constraint firstItem="fct-U0-vWj" firstAttribute="trailing" secondItem="A9u-vG-cyc" secondAttribute="trailing" constant="20" id="uU6-fH-tJe"/>
-                            <constraint firstItem="nJD-8p-0iF" firstAttribute="centerX" secondItem="A9u-vG-cyc" secondAttribute="centerX" id="wLz-x8-yFQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Random" image="repeat" catalog="system" id="Hbr-xH-0pC"/>
@@ -1274,6 +1282,7 @@
                         <outlet property="genreCollectionView" destination="hlc-x9-CWk" id="ZP1-S4-lGT"/>
                         <outlet property="genreCollectionViewHeight" destination="u6V-B6-zRp" id="m01-wl-xn1"/>
                         <outlet property="randomAnimeView" destination="A9u-vG-cyc" id="vrg-us-xjW"/>
+                        <outlet property="saveButton" destination="nJD-8p-0iF" id="SAU-aV-gcA"/>
                         <outlet property="visualEffectAnimeView" destination="l4S-r3-HH0" id="tLn-pr-V0V"/>
                     </connections>
                 </viewController>

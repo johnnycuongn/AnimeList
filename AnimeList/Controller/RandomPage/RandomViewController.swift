@@ -9,6 +9,8 @@
 import UIKit
 
 class RandomViewController: UIViewController, UIScrollViewDelegate {
+    
+    //MARK: - Outlets
     @IBOutlet weak var randomAnimeView: UIView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -31,6 +33,16 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var genreCollectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
+    // MARK: - View Controller's Variables
+    var anime: AnimeInfo?
+    private var isAnimeSaved: Bool {
+        // FIXME: Query from Coredata
+        return false
+    }
+    
+    // MARK: - Loading
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAnime()
@@ -56,8 +68,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
         descriptionScrollView.contentInset.top = randomAnimeView.frame.height/2 + 50
     }
-    
-    var anime: AnimeInfo?
+
     
     private func loadAnime() {
         let startTime = NSDate()
@@ -97,13 +108,28 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
+    
+    // MARK: - Buttons Action
     @IBAction func nextBtnTapped(_ sender: Any) {
         loadAnime()
     }
     
-    // MARK: Helper
-
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        guard let currentAnime = anime else {
+            return
+        }
+        
+        if isAnimeSaved == false {
+            PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImageView.image,
+                                         title: currentAnime.title, date: Date())
+            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        else {
+            // FIXME: Unsave Anime
+        }
+    }
+    
 }
 
 extension RandomViewController: UICollectionViewDelegateFlowLayout {
