@@ -21,6 +21,12 @@ class PersonalViewController: UIViewController {
         animeCollectionView.delegate = self
         animeCollectionView.dataSource = self
         
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         animeCollectionView.reloadData()
     }
 
@@ -30,7 +36,7 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = collectionView.frame.width / 2.2
-        let cellHeight = collectionView.frame.height / 2.8
+        let cellHeight = collectionView.frame.height / 2.6
         
         return CGSize(width: cellWidth, height: cellHeight)
     }

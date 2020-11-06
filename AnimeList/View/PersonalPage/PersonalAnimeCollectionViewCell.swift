@@ -20,10 +20,18 @@ class PersonalAnimeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var animeImageView: UIImageView!
     @IBOutlet weak var animeTitle: UILabel!
     
+    @IBOutlet weak var removeVisualView: UIVisualEffectView!
+    
     var actionDelegate: PersonalAnimeActionDelegate?
     
     override func awakeFromNib() {
+        animeImageView.contentMode = .scaleAspectFill
         
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 5
+        
+        removeVisualView.layer.cornerRadius = 5
+        removeVisualView.clipsToBounds = true
     }
     
     func configure(with anime: PersonalAnime) {
@@ -38,9 +46,5 @@ class PersonalAnimeCollectionViewCell: UICollectionViewCell {
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         actionDelegate?.delete(self)
-    }
-    
-    @IBAction func completeButtonTapped(_ sender: Any) {
-        actionDelegate?.complete(self)
     }
 }

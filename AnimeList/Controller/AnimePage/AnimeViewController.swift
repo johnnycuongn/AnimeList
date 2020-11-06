@@ -25,6 +25,7 @@ class AnimeViewController: UIViewController {
     @IBOutlet weak var animeImage: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreLabelView: UIView!
     
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
@@ -53,6 +54,8 @@ class AnimeViewController: UIViewController {
         super.viewDidLoad()
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
+        
+        scoreLabelView.layer.cornerRadius = 7
     }
     
     override func viewWillAppear(_ animated: Bool) {
