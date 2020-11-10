@@ -90,17 +90,21 @@ class SearchPageViewController: UIViewController {
 extension SearchPageViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        if searchBar.text == "" || searchBar.text == nil {
+            PageState.isSearching = false
+            self.pageCollectionView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" || searchBar.text == nil {
             PageState.isSearching = false
             self.pageCollectionView.reloadData()
         } else {
             PageState.isSearching = true
-            self.loadNewSearch(text: searchText)
+            self.loadNewSearch(text: searchBar.text!)
         }
-       
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         searchBar.endEditing(true)
     }
     
