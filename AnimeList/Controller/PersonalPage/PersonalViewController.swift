@@ -21,7 +21,6 @@ class PersonalViewController: UIViewController {
         animeCollectionView.delegate = self
         animeCollectionView.dataSource = self
         
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +62,7 @@ extension PersonalViewController: PersonalAnimeActionDelegate {
     func delete(_ cell: PersonalAnimeCollectionViewCell) {
         
         guard let indexPath = animeCollectionView.indexPath(for: cell) else { return }
-        print("Did Remove Cell: \(index)")
+        print("Did Remove Cell: \(indexPath.row)")
         PersonalAnimeDataManager.remove(at: indexPath.row)
         
         animeCollectionView.reloadData()

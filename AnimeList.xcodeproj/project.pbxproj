@@ -213,14 +213,14 @@
 			path = SearchPage;
 			sourceTree = "<group>";
 		};
-		4079A63A250E36FE001A9D3B /* Database Model */ = {
+		4079A63A250E36FE001A9D3B /* Database Service */ = {
 			isa = PBXGroup;
 			children = (
 				4082B6AB25551F3100DC14A2 /* PersistenceService.swift */,
 				4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */,
 				4082B6AA25551F1900DC14A2 /* CoreData Class */,
 			);
-			path = "Database Model";
+			path = "Database Service";
 			sourceTree = "<group>";
 		};
 		4079A643250E48AA001A9D3B /* Controller */ = {
@@ -357,7 +357,7 @@
 				4079A64E250F73B7001A9D3B /* Assets */,
 				400B137A25514538001AE01A /* Recommend Service */,
 				4079A646250E54B6001A9D3B /* Web Service */,
-				4079A63A250E36FE001A9D3B /* Database Model */,
+				4079A63A250E36FE001A9D3B /* Database Service */,
 				4079A644250E48B9001A9D3B /* View */,
 				4079A643250E48AA001A9D3B /* Controller */,
 				40C90256250A35BA009D4225 /* AppDelegate.swift */,

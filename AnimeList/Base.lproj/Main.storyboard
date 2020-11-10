@@ -888,15 +888,14 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="212" height="291"/>
                                                 </imageView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDK-5W-tLx">
-                                                    <rect key="frame" x="144" y="205.33333333333334" width="63" height="37"/>
+                                                    <rect key="frame" x="177" y="5" width="30" height="30"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P3J-Km-RWu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="37"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-f6-mEs">
-                                                                <rect key="frame" x="4" y="3" width="55" height="30"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Remove">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-f6-mEs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                <state key="normal" title="X">
                                                                     <color key="titleColor" red="0.67278711930000001" green="0.38069545090000001" blue="0.37840723679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
@@ -904,10 +903,16 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="uWf-f6-mEs" firstAttribute="top" secondItem="P3J-Km-RWu" secondAttribute="top" id="5fV-x0-ZwN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="uWf-f6-mEs" secondAttribute="bottom" id="fX7-6l-C4G"/>
+                                                            <constraint firstAttribute="trailing" secondItem="uWf-f6-mEs" secondAttribute="trailing" id="xuz-Ah-gZi"/>
+                                                            <constraint firstItem="uWf-f6-mEs" firstAttribute="leading" secondItem="P3J-Km-RWu" secondAttribute="leading" id="z0Z-ZG-PVh"/>
+                                                        </constraints>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="63" id="RA0-jq-vKc"/>
-                                                        <constraint firstAttribute="height" constant="37" id="xsR-hB-gdV"/>
+                                                        <constraint firstAttribute="width" constant="30" id="RA0-jq-vKc"/>
+                                                        <constraint firstAttribute="width" secondItem="CDK-5W-tLx" secondAttribute="height" multiplier="1:1" id="z6q-NP-Ek7"/>
                                                     </constraints>
                                                     <blurEffect style="dark"/>
                                                 </visualEffectView>
@@ -935,10 +940,10 @@
                                                 </visualEffectView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LT2-2J-lk3" firstAttribute="top" secondItem="CDK-5W-tLx" secondAttribute="bottom" constant="5" id="DLh-i6-1cX"/>
                                                 <constraint firstItem="LT2-2J-lk3" firstAttribute="leading" secondItem="xuE-ym-IDG" secondAttribute="leading" id="EBj-Pp-HLF"/>
                                                 <constraint firstAttribute="trailing" secondItem="CDK-5W-tLx" secondAttribute="trailing" constant="5" id="PAa-j5-FiZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="3u2-sH-NCF" secondAttribute="bottom" id="TlL-CZ-WyS"/>
+                                                <constraint firstItem="CDK-5W-tLx" firstAttribute="top" secondItem="xuE-ym-IDG" secondAttribute="top" constant="5" id="Y2s-Xr-4jd"/>
                                                 <constraint firstAttribute="trailing" secondItem="LT2-2J-lk3" secondAttribute="trailing" id="giJ-EM-s1K"/>
                                                 <constraint firstAttribute="trailing" secondItem="3u2-sH-NCF" secondAttribute="trailing" id="h1h-J4-PW3"/>
                                                 <constraint firstItem="3u2-sH-NCF" firstAttribute="leading" secondItem="xuE-ym-IDG" secondAttribute="leading" id="hTf-Oz-1Ie"/>

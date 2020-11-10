@@ -37,9 +37,15 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - View Controller's Variables
     var anime: AnimeInfo?
-    private var isAnimeSaved: Bool {
-        // FIXME: Query from Coredata
-        return false
+    private var isAnimeSaved: Bool = false {
+        didSet {
+            if isAnimeSaved == true {
+                saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            }
+            else {
+                saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            }
+        }
     }
     
     // MARK: - Loading
@@ -108,6 +114,14 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
                 strongSelf.activityIndicator.stopAnimating()
                 
             }
+            
+            PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
+                if isExisted {
+                    self?.isAnimeSaved = true
+                } else {
+                    self?.isAnimeSaved = false
+                }
+            }
         }
     }
     
@@ -123,12 +137,14 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         }
         
         if isAnimeSaved == false {
-            PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImageView.image,
+            PersonalAnimeDataManager.add(id: currentAnime.malID,
+                                         image: self.animeImageView.image,
                                          title: currentAnime.title, date: Date())
-            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            isAnimeSaved = true
         }
         else {
-            // FIXME: Unsave Anime
+            PersonalAnimeDataManager.remove(id: currentAnime.malID)
+            isAnimeSaved = false
         }
     }
     

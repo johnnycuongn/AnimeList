@@ -30,7 +30,7 @@ class PersonalAnimeCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 5
         
-        removeVisualView.layer.cornerRadius = 5
+        removeVisualView.layer.cornerRadius = removeVisualView.frame.height/2
         removeVisualView.clipsToBounds = true
     }
     

@@ -57,7 +57,6 @@ class AnimeViewController: UIViewController {
 
     private var isAnimeSaved: Bool = false {
         didSet {
-            print(isAnimeSaved)
             if isAnimeSaved == true {
                 saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             }
@@ -79,15 +78,6 @@ class AnimeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadAnime(id: self.id)
-        
-        PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
-            if isExisted {
-                self?.isAnimeSaved = true
-            } else {
-                self?.isAnimeSaved = false
-            }
-        }
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,6 +122,14 @@ class AnimeViewController: UIViewController {
                 strongSelf.genreCollectionView.reloadData()
                 
                 strongSelf.activityIndicator.stopAnimating()
+            }
+        }
+        
+        PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
+            if isExisted {
+                self?.isAnimeSaved = true
+            } else {
+                self?.isAnimeSaved = false
             }
         }
     }
