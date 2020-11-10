@@ -213,13 +213,14 @@
 			path = SearchPage;
 			sourceTree = "<group>";
 		};
-		4079A63A250E36FE001A9D3B /* Model */ = {
+		4079A63A250E36FE001A9D3B /* Database Model */ = {
 			isa = PBXGroup;
 			children = (
-				4082B6AA25551F1900DC14A2 /* CoreData */,
-				4082B6A725551EF000DC14A2 /* WebModel */,
+				4082B6AB25551F3100DC14A2 /* PersistenceService.swift */,
+				4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */,
+				4082B6AA25551F1900DC14A2 /* CoreData Class */,
 			);
-			path = Model;
+			path = "Database Model";
 			sourceTree = "<group>";
 		};
 		4079A643250E48AA001A9D3B /* Controller */ = {
@@ -262,6 +263,7 @@
 		4079A646250E54B6001A9D3B /* Web Service */ = {
 			isa = PBXGroup;
 			children = (
+				4082B6A725551EF000DC14A2 /* WebModel */,
 				406C2B6B2510D48800C8740E /* Helpers */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
 				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
@@ -322,15 +324,13 @@
 			path = WebModel;
 			sourceTree = "<group>";
 		};
-		4082B6AA25551F1900DC14A2 /* CoreData */ = {
+		4082B6AA25551F1900DC14A2 /* CoreData Class */ = {
 			isa = PBXGroup;
 			children = (
-				4082B6AB25551F3100DC14A2 /* PersistenceService.swift */,
 				4082B6B82555292200DC14A2 /* PersonalAnime+CoreDataClass.swift */,
 				4082B6B92555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift */,
-				4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */,
 			);
-			path = CoreData;
+			path = "CoreData Class";
 			sourceTree = "<group>";
 		};
 		40C9024A250A35BA009D4225 = {
@@ -357,7 +357,7 @@
 				4079A64E250F73B7001A9D3B /* Assets */,
 				400B137A25514538001AE01A /* Recommend Service */,
 				4079A646250E54B6001A9D3B /* Web Service */,
-				4079A63A250E36FE001A9D3B /* Model */,
+				4079A63A250E36FE001A9D3B /* Database Model */,
 				4079A644250E48B9001A9D3B /* View */,
 				4079A643250E48AA001A9D3B /* Controller */,
 				40C90256250A35BA009D4225 /* AppDelegate.swift */,
