@@ -52,4 +52,60 @@ class PersonalAnimeDataManager {
         PersistenceService.saveContext()
     }
     
+    static func remove(id: Int) {
+        let request = requestFor(id: id)
+        
+        do {
+            let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: request) { (asyncFetchResult) in
+                guard let idArray = asyncFetchResult.finalResult else { return }
+                
+                for id in idArray {
+                    PersistenceService.context.delete(id)
+                }
+                
+                PersistenceService.saveContext()
+            }
+            
+            try PersistenceService.context.execute(asyncFetchRequest)
+        }
+        catch let error {
+            print("Data Manager Error: \(error)")
+        }
+    }
+    
+    static func isIDExist(_ id: Int, completion: @escaping (Bool) -> Void) {
+        let privateManagedObjectContext = PersistenceService.persistentContainer.newBackgroundContext()
+        
+        let request = requestFor(id: id)
+        
+        do {
+            let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: request) { (asyncFetchResult) in
+                guard let idArray = asyncFetchResult.finalResult else { return }
+                
+                DispatchQueue.main.async {
+                    if idArray.isEmpty {
+                        completion(false)
+                    }
+                    else { completion(true) }
+                }
+            }
+            
+            
+            try privateManagedObjectContext.execute(asyncFetchRequest)
+            
+        }
+        catch let error {
+            print("Data Manager Error: \(error)")
+        }
+    }
+    
+    // MARK: Helpers
+    static func requestFor(id: Int) -> NSFetchRequest<PersonalAnime> {
+        let request = PersonalAnime.fetchRequest() as NSFetchRequest<PersonalAnime>
+        let predicate = NSPredicate(format: "id == %d", id)
+        request.predicate = predicate
+        
+        return request
+    }
+    
 }

@@ -55,9 +55,16 @@ class AnimeViewController: UIViewController {
     private var id: Int = 0
     private var anime: AnimeInfo?
 
-    private var isAnimeSaved: Bool {
-        // FIXME: Query from Core Data
-        return false
+    private var isAnimeSaved: Bool = false {
+        didSet {
+            print(isAnimeSaved)
+            if isAnimeSaved == true {
+                saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            }
+            else {
+                saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            }
+        }
     }
     // MARK: - View Loading
     
@@ -66,24 +73,27 @@ class AnimeViewController: UIViewController {
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
         
-        scoreLabelView.layer.cornerRadius = 7
         
-        if isAnimeSaved == false {
-            saveButton.imageView?.image = UIImage(systemName: "bookmark")
-        }
-        else {
-            saveButton.imageView?.image = UIImage(systemName: "bookmark.fill")
-        }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadAnime(id: self.id)
+        
+        PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
+            if isExisted {
+                self?.isAnimeSaved = true
+            } else {
+                self?.isAnimeSaved = false
+            }
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        scoreLabelView.layer.cornerRadius = 7
+        
         closeButton.layer.cornerRadius = 5
         saveButton.layer.cornerRadius = 5
         
@@ -138,19 +148,21 @@ class AnimeViewController: UIViewController {
         }
         
         if isAnimeSaved == false {
-            PersonalAnimeDataManager.add(id: currentAnime.malID, image: self.animeImageView.image,
+            PersonalAnimeDataManager.add(id: currentAnime.malID,
+                                         image: self.animeImageView.image,
                                          title: currentAnime.title, date: Date())
-            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            isAnimeSaved = true
         }
         else {
-            // FIXME: Unsave Anime
+            PersonalAnimeDataManager.remove(id: currentAnime.malID)
+            isAnimeSaved = false
         }
 
     }
     
 }
 
-    // MARK: - Collection View
+    // MARK: - Genre Collection View
 extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
