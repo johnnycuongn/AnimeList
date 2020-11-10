@@ -67,6 +67,8 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
         descriptionScrollView.contentInset.top = randomAnimeView.frame.height/2 + 50
+        
+        saveButton.layer.cornerRadius = 5
     }
 
     
@@ -87,7 +89,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
                     }
                     
                     strongSelf.animeTitle.text = animeInfo.title
-                    strongSelf.animeSynopsis.text = animeInfo.synopsis
+                    strongSelf.animeSynopsis.text = validateLabel(animeInfo.synopsis, return: .none)
 
                     strongSelf.animeRank.text = "#\(validateLabel(animeInfo.rank))"
                     strongSelf.animePopularity.text = "#\(validateLabel(animeInfo.popularity))"
