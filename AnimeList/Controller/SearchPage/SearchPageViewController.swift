@@ -55,7 +55,17 @@ class SearchPageViewController: UIViewController {
     @objc func loadNewSearch(text: String) {
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
-        SearchAnimeService.shared.fetchSearch(text: text.lowercased()) { [weak self] (searchMain) in
+        
+        let textFetch: String = {
+            var textResult = text
+            if text.count == 2 {
+                textResult = String(text.prefix(1))
+            }
+            
+            return textResult
+        }()
+        
+        SearchAnimeService.shared.fetchSearch(text: textFetch.lowercased()) { [weak self] (searchMain) in
             guard let strongSelf = self else { return }
 //            strongSelf.
             

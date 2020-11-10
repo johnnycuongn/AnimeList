@@ -919,11 +919,11 @@
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LT2-2J-lk3">
                                                     <rect key="frame" x="0.0" y="247.33333333333334" width="212" height="43.666666666666657"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dvq-N9-M5c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="43.666666666666657"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
