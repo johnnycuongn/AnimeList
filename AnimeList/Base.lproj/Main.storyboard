@@ -713,13 +713,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sysnopis" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6I-LH-noB">
-                                        <rect key="frame" x="8" y="128.66666666666669" width="393.33333333333331" height="31"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                        <rect key="frame" x="8" y="116.66666666666669" width="393.33333333333331" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOJ-zb-nuw">
-                                        <rect key="frame" x="8" y="168.66666666666669" width="393.33333333333331" height="20.333333333333343"/>
+                                        <rect key="frame" x="8" y="149.66666666666669" width="393.33333333333331" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -742,8 +742,9 @@
                                     <constraint firstAttribute="trailing" secondItem="QZx-HV-jR1" secondAttribute="trailing" constant="8" id="nxb-BH-scq"/>
                                     <constraint firstItem="c10-mh-vxw" firstAttribute="top" secondItem="ZYB-3A-BpC" secondAttribute="top" constant="8" id="puq-uX-oMR"/>
                                     <constraint firstAttribute="trailing" secondItem="9Ei-2e-Zrz" secondAttribute="trailing" constant="8" id="qa7-J3-gd6"/>
+                                    <constraint firstItem="9Ei-2e-Zrz" firstAttribute="width" secondItem="c10-mh-vxw" secondAttribute="width" id="sWh-PH-FSN"/>
                                     <constraint firstAttribute="trailing" secondItem="aOJ-zb-nuw" secondAttribute="trailing" constant="8" id="ufL-1I-IUG"/>
-                                    <constraint firstItem="f6I-LH-noB" firstAttribute="top" secondItem="9Ei-2e-Zrz" secondAttribute="bottom" constant="20" id="yaV-n7-8D1"/>
+                                    <constraint firstItem="f6I-LH-noB" firstAttribute="top" secondItem="9Ei-2e-Zrz" secondAttribute="bottom" constant="8" id="yaV-n7-8D1"/>
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-0L-n2E">
@@ -792,6 +793,7 @@
                         <outlet property="closeButton" destination="bav-h1-C7w" id="Ykx-ZG-dce"/>
                         <outlet property="favoritesLabel" destination="VpH-0c-pn0" id="NTG-Cf-wVr"/>
                         <outlet property="genreCollectionView" destination="9Ei-2e-Zrz" id="Y29-sw-TyE"/>
+                        <outlet property="genreCollectionViewHeight" destination="iq3-o9-68x" id="YHI-v6-hK9"/>
                         <outlet property="membersLabel" destination="sYz-kF-xE2" id="2jW-Ft-1WG"/>
                         <outlet property="popularityLabel" destination="Shw-5w-1CD" id="FUJ-DQ-aGW"/>
                         <outlet property="premieredLabel" destination="FL8-RO-mAp" id="7qf-eU-9Hm"/>
@@ -888,13 +890,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="212" height="291"/>
                                                 </imageView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDK-5W-tLx">
-                                                    <rect key="frame" x="177" y="5" width="30" height="30"/>
+                                                    <rect key="frame" x="182" y="5" width="25" height="25"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P3J-Km-RWu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-f6-mEs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                 <state key="normal" title="X">
                                                                     <color key="titleColor" red="0.67278711930000001" green="0.38069545090000001" blue="0.37840723679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
@@ -911,7 +913,7 @@
                                                         </constraints>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="RA0-jq-vKc"/>
+                                                        <constraint firstAttribute="width" constant="25" id="RA0-jq-vKc"/>
                                                         <constraint firstAttribute="width" secondItem="CDK-5W-tLx" secondAttribute="height" multiplier="1:1" id="z6q-NP-Ek7"/>
                                                     </constraints>
                                                     <blurEffect style="dark"/>
@@ -923,7 +925,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>

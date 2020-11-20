@@ -51,6 +51,9 @@ class AnimeViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
+    // MARK: - Layout Constraints
+    @IBOutlet weak var genreCollectionViewHeight: NSLayoutConstraint!
+    
     // MARK: - View Controller's Variables
     private var id: Int = 0
     private var anime: AnimeInfo?
@@ -69,23 +72,32 @@ class AnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadAnime(id: self.id)
+        
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
         
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadAnime(id: self.id)
+        
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+//        super.viewDidLayoutSubviews()    
         scoreLabelView.layer.cornerRadius = 7
         
         closeButton.layer.cornerRadius = 5
         saveButton.layer.cornerRadius = 5
+        
+//        let height =
+//            genreCollectionView.collectionViewLayout.collectionViewContentSize.height
+//
+//        genreCollectionViewHeight.constant = height
+//        self.genreCollectionView.layoutIfNeeded()
         
     }
     
@@ -120,7 +132,7 @@ class AnimeViewController: UIViewController {
                 
                 strongSelf.anime = animeInfo
                 strongSelf.genreCollectionView.reloadData()
-                
+
                 strongSelf.activityIndicator.stopAnimating()
             }
         }
