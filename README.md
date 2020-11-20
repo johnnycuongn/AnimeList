@@ -2,10 +2,29 @@
 
 ## Project Scope
 
-Helping user, especially newbie, to easily find and discover awesome anime
+---
+
+- Explore anime series and movies from top ranking, top popularity, and much more. Discover anime to watch by randomly pick one.
+- Save plan-to-watch anime into offline storage
 
 ## Application
 
-- API, Webservices
-- Handling caching and fetching
+---
+
+- REST API, Webservices
+- Handling caching, fetching and loading
 - Protocol-Object Oriented with SOLID principles
+- Core Data
+
+## Languages/ Frameworks
+
+---
+
+- Swift 5
+- CoreData
+
+## Credits
+
+---
+
+**Cuong Duc Nguyen**
