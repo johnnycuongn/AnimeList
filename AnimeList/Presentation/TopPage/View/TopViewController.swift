@@ -36,7 +36,7 @@ class TopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.create()
         bind(to: self.viewModel)
 
         

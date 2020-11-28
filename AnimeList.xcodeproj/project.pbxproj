@@ -12,7 +12,7 @@
 		400B137C2551457E001AE01A /* RecommendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B137B2551457E001AE01A /* RecommendService.swift */; };
 		400B13812551462F001AE01A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B13802551462F001AE01A /* Helpers.swift */; };
 		400B138725519EE2001AE01A /* Genre&Studio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B138625519EE2001AE01A /* Genre&Studio.swift */; };
-		400B138D2551A520001AE01A /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B138C2551A520001AE01A /* GenreCollectionViewCell.swift */; };
+		400B138D2551A520001AE01A /* AnimeGenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B138C2551A520001AE01A /* AnimeGenreCollectionViewCell.swift */; };
 		4050C79E2542C25F00A480CF /* AnimeDisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */; };
 		4050C7AC2542C8C400A480CF /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AB2542C8C400A480CF /* GenreViewController.swift */; };
 		4050C7AF2542E01D00A480CF /* GenreAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */; };
@@ -70,7 +70,7 @@
 		400B137B2551457E001AE01A /* RecommendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendService.swift; sourceTree = "<group>"; };
 		400B13802551462F001AE01A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		400B138625519EE2001AE01A /* Genre&Studio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Genre&Studio.swift"; sourceTree = "<group>"; };
-		400B138C2551A520001AE01A /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		400B138C2551A520001AE01A /* AnimeGenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeGenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeDisplayCell.xib; sourceTree = "<group>"; };
 		4050C7AB2542C8C400A480CF /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimeService.swift; sourceTree = "<group>"; };
@@ -177,13 +177,13 @@
 			isa = PBXGroup;
 			children = (
 				4082B6A725551EF000DC14A2 /* WebModel */,
-				406C2B6B2510D48800C8740E /* Helpers */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
 				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
 				4050C7C62545A88100A480CF /* AnimeInfoService.swift */,
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
 				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
 				4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */,
+				406C2B6B2510D48800C8740E /* Helpers */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4050C7BA25444D4D00A480CF /* AnimeViewController.swift */,
-				400B138C2551A520001AE01A /* GenreCollectionViewCell.swift */,
+				400B138C2551A520001AE01A /* AnimeGenreCollectionViewCell.swift */,
 			);
 			path = AnimeDetailsPage;
 			sourceTree = "<group>";
@@ -535,7 +535,7 @@
 				406C2B6D2510D55300C8740E /* URLExtensions.swift in Sources */,
 				406C2B742511043400C8740E /* GenreCell.swift in Sources */,
 				40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */,
-				400B138D2551A520001AE01A /* GenreCollectionViewCell.swift in Sources */,
+				400B138D2551A520001AE01A /* AnimeGenreCollectionViewCell.swift in Sources */,
 				4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
