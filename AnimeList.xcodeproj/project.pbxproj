@@ -127,71 +127,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		400B137425505818001AE01A /* RandomPage */ = {
-			isa = PBXGroup;
-			children = (
-				400B13752550582A001AE01A /* RandomViewController.swift */,
-			);
-			path = RandomPage;
-			sourceTree = "<group>";
-		};
-		400B137A25514538001AE01A /* Recommend Service */ = {
+		400B137A25514538001AE01A /* RecommendService */ = {
 			isa = PBXGroup;
 			children = (
 				400B137B2551457E001AE01A /* RecommendService.swift */,
 			);
-			path = "Recommend Service";
+			path = RecommendService;
 			sourceTree = "<group>";
 		};
-		400B137F25514620001AE01A /* Helpers */ = {
+		400B137F25514620001AE01A /* Global Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				400B13802551462F001AE01A /* Helpers.swift */,
 			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		400B138B2551A509001AE01A /* RandomPage */ = {
-			isa = PBXGroup;
-			children = (
-				400B138C2551A520001AE01A /* GenreCollectionViewCell.swift */,
-			);
-			path = RandomPage;
-			sourceTree = "<group>";
-		};
-		4050C7AA2542C89C00A480CF /* GenrePage */ = {
-			isa = PBXGroup;
-			children = (
-				4050C7AB2542C8C400A480CF /* GenreViewController.swift */,
-			);
-			path = GenrePage;
-			sourceTree = "<group>";
-		};
-		4050C7B925444D0800A480CF /* AnimePage */ = {
-			isa = PBXGroup;
-			children = (
-				4050C7BA25444D4D00A480CF /* AnimeViewController.swift */,
-			);
-			path = AnimePage;
-			sourceTree = "<group>";
-		};
-		4050C7BE25446A4700A480CF /* PersonalPage */ = {
-			isa = PBXGroup;
-			children = (
-				4050C7BF25446A6700A480CF /* PersonalViewController.swift */,
-			);
-			path = PersonalPage;
-			sourceTree = "<group>";
-		};
-		406C2B6425108B8B00C8740E /* SearchPage */ = {
-			isa = PBXGroup;
-			children = (
-				406C2B652510B85400C8740E /* SearchPageViewController.swift */,
-				406C2B7925110EE200C8740E /* +CollectionViewDelegateFlowLayout(SearchPageVC).swift */,
-				406C2B7525110A8700C8740E /* +CollectionViewDataSource(SearchPageVC).swift */,
-				406C2B7725110A9F00C8740E /* +CollectionViewDelegate(SearchPageVC).swift */,
-			);
-			path = SearchPage;
+			path = "Global Helpers";
 			sourceTree = "<group>";
 		};
 		406C2B6B2510D48800C8740E /* Helpers */ = {
@@ -204,63 +153,18 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		406C2B70251103F700C8740E /* SearchPage */ = {
-			isa = PBXGroup;
-			children = (
-				406C2B712511042400C8740E /* SearchCell.swift */,
-				406C2B732511043400C8740E /* GenreCell.swift */,
-			);
-			path = SearchPage;
-			sourceTree = "<group>";
-		};
-		4079A63A250E36FE001A9D3B /* Database Service */ = {
+		4079A63A250E36FE001A9D3B /* PersistenceStorage */ = {
 			isa = PBXGroup;
 			children = (
 				4082B6AB25551F3100DC14A2 /* PersistenceService.swift */,
+				4082B6A225551E6400DC14A2 /* AnimeList.xcdatamodeld */,
 				4082B6B42555247C00DC14A2 /* PersonalAnimeDataManager.swift */,
-				4082B6AA25551F1900DC14A2 /* CoreData Class */,
+				4082B6AA25551F1900DC14A2 /* CoreDataClass */,
 			);
-			path = "Database Service";
+			path = PersistenceStorage;
 			sourceTree = "<group>";
 		};
-		4079A643250E48AA001A9D3B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				400B137425505818001AE01A /* RandomPage */,
-				4050C7BE25446A4700A480CF /* PersonalPage */,
-				4050C7B925444D0800A480CF /* AnimePage */,
-				4050C7AA2542C89C00A480CF /* GenrePage */,
-				406C2B6425108B8B00C8740E /* SearchPage */,
-				4079A645250E48C8001A9D3B /* TopPage */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4079A644250E48B9001A9D3B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4082B69E255415A400DC14A2 /* PersonalPage */,
-				400B138B2551A509001AE01A /* RandomPage */,
-				4079A655250F80B9001A9D3B /* AnimeDisplayCell.swift */,
-				4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */,
-				406C2B70251103F700C8740E /* SearchPage */,
-				4079A652250F7AE5001A9D3B /* TopPage */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4079A645250E48C8001A9D3B /* TopPage */ = {
-			isa = PBXGroup;
-			children = (
-				4079A641250E489F001A9D3B /* TopViewController.swift */,
-				4079A657250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift */,
-				4079A659250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift */,
-				4079A64F250F7536001A9D3B /* Data Service */,
-			);
-			path = TopPage;
-			sourceTree = "<group>";
-		};
-		4079A646250E54B6001A9D3B /* Web Service */ = {
+		4079A646250E54B6001A9D3B /* WebService */ = {
 			isa = PBXGroup;
 			children = (
 				4082B6A725551EF000DC14A2 /* WebModel */,
@@ -272,7 +176,7 @@
 				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
 				4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */,
 			);
-			path = "Web Service";
+			path = WebService;
 			sourceTree = "<group>";
 		};
 		4079A64E250F73B7001A9D3B /* Assets */ = {
@@ -288,25 +192,162 @@
 		4079A64F250F7536001A9D3B /* Data Service */ = {
 			isa = PBXGroup;
 			children = (
+				4079A653250F7B0E001A9D3B /* TopSubtypeCell.swift */,
 				4079A650250F7604001A9D3B /* TopSubtypeDataService.swift */,
 			);
 			path = "Data Service";
 			sourceTree = "<group>";
 		};
-		4079A652250F7AE5001A9D3B /* TopPage */ = {
+		407A5F3A257204D200533052 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				4079A653250F7B0E001A9D3B /* TopSubtypeCell.swift */,
+				407A5F41257205B400533052 /* AnimeDetailsPage */,
+				407A5F3B257204E300533052 /* TopPage */,
+				407A5F442572078900533052 /* SearchPage */,
+				407A5F49257207AF00533052 /* GenrePage */,
+				407A5F3E2572058500533052 /* RandomPage */,
+				407A5F4C257207DF00533052 /* PersonalPage */,
+				407A5F5525720B3200533052 /* AnimeDisplayCell */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		407A5F3B257204E300533052 /* TopPage */ = {
+			isa = PBXGroup;
+			children = (
+				407A5F3D2572050500533052 /* ViewModel */,
+				407A5F3C2572050000533052 /* View */,
 			);
 			path = TopPage;
 			sourceTree = "<group>";
 		};
-		4082B69E255415A400DC14A2 /* PersonalPage */ = {
+		407A5F3C2572050000533052 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4079A641250E489F001A9D3B /* TopViewController.swift */,
+				4079A657250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift */,
+				4079A659250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift */,
+				4079A64F250F7536001A9D3B /* Data Service */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		407A5F3D2572050500533052 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		407A5F3E2572058500533052 /* RandomPage */ = {
+			isa = PBXGroup;
+			children = (
+				400B13752550582A001AE01A /* RandomViewController.swift */,
+			);
+			path = RandomPage;
+			sourceTree = "<group>";
+		};
+		407A5F41257205B400533052 /* AnimeDetailsPage */ = {
+			isa = PBXGroup;
+			children = (
+				4050C7BA25444D4D00A480CF /* AnimeViewController.swift */,
+			);
+			path = AnimeDetailsPage;
+			sourceTree = "<group>";
+		};
+		407A5F442572078900533052 /* SearchPage */ = {
+			isa = PBXGroup;
+			children = (
+				407A5F462572079C00533052 /* ViewModel */,
+				407A5F452572079700533052 /* View */,
+			);
+			path = SearchPage;
+			sourceTree = "<group>";
+		};
+		407A5F452572079700533052 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				407A5F5625720B9200533052 /* Cell */,
+				406C2B652510B85400C8740E /* SearchPageViewController.swift */,
+				406C2B7925110EE200C8740E /* +CollectionViewDelegateFlowLayout(SearchPageVC).swift */,
+				406C2B7525110A8700C8740E /* +CollectionViewDataSource(SearchPageVC).swift */,
+				406C2B7725110A9F00C8740E /* +CollectionViewDelegate(SearchPageVC).swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		407A5F462572079C00533052 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		407A5F49257207AF00533052 /* GenrePage */ = {
+			isa = PBXGroup;
+			children = (
+				4050C7AB2542C8C400A480CF /* GenreViewController.swift */,
+				400B138C2551A520001AE01A /* GenreCollectionViewCell.swift */,
+				406C2B732511043400C8740E /* GenreCell.swift */,
+			);
+			path = GenrePage;
+			sourceTree = "<group>";
+		};
+		407A5F4C257207DF00533052 /* PersonalPage */ = {
+			isa = PBXGroup;
+			children = (
+				4050C7BF25446A6700A480CF /* PersonalViewController.swift */,
 				4082B69F255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift */,
 			);
 			path = PersonalPage;
+			sourceTree = "<group>";
+		};
+		407A5F4E2572081400533052 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				40C90256250A35BA009D4225 /* AppDelegate.swift */,
+				40C90258250A35BA009D4225 /* SceneDelegate.swift */,
+				40C9025C250A35BA009D4225 /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		407A5F4F2572085C00533052 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40C90261250A35BF009D4225 /* LaunchScreen.storyboard */,
+				40C90264250A35BF009D4225 /* Info.plist */,
+				400B137F25514620001AE01A /* Global Helpers */,
+				4079A64E250F73B7001A9D3B /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		407A5F5025720A7D00533052 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				400B137A25514538001AE01A /* RecommendService */,
+				4079A646250E54B6001A9D3B /* WebService */,
+				4079A63A250E36FE001A9D3B /* PersistenceStorage */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		407A5F5525720B3200533052 /* AnimeDisplayCell */ = {
+			isa = PBXGroup;
+			children = (
+				4079A655250F80B9001A9D3B /* AnimeDisplayCell.swift */,
+				4050C79D2542C25F00A480CF /* AnimeDisplayCell.xib */,
+			);
+			path = AnimeDisplayCell;
+			sourceTree = "<group>";
+		};
+		407A5F5625720B9200533052 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				406C2B712511042400C8740E /* SearchCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4082B6A725551EF000DC14A2 /* WebModel */ = {
@@ -324,13 +365,13 @@
 			path = WebModel;
 			sourceTree = "<group>";
 		};
-		4082B6AA25551F1900DC14A2 /* CoreData Class */ = {
+		4082B6AA25551F1900DC14A2 /* CoreDataClass */ = {
 			isa = PBXGroup;
 			children = (
 				4082B6B82555292200DC14A2 /* PersonalAnime+CoreDataClass.swift */,
 				4082B6B92555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift */,
 			);
-			path = "CoreData Class";
+			path = CoreDataClass;
 			sourceTree = "<group>";
 		};
 		40C9024A250A35BA009D4225 = {
@@ -353,19 +394,10 @@
 		40C90255250A35BA009D4225 /* AnimeList */ = {
 			isa = PBXGroup;
 			children = (
-				400B137F25514620001AE01A /* Helpers */,
-				4079A64E250F73B7001A9D3B /* Assets */,
-				400B137A25514538001AE01A /* Recommend Service */,
-				4079A646250E54B6001A9D3B /* Web Service */,
-				4079A63A250E36FE001A9D3B /* Database Service */,
-				4079A644250E48B9001A9D3B /* View */,
-				4079A643250E48AA001A9D3B /* Controller */,
-				40C90256250A35BA009D4225 /* AppDelegate.swift */,
-				40C90258250A35BA009D4225 /* SceneDelegate.swift */,
-				40C9025C250A35BA009D4225 /* Main.storyboard */,
-				40C90261250A35BF009D4225 /* LaunchScreen.storyboard */,
-				40C90264250A35BF009D4225 /* Info.plist */,
-				4082B6A225551E6400DC14A2 /* AnimeList.xcdatamodeld */,
+				407A5F4F2572085C00533052 /* Resources */,
+				407A5F4E2572081400533052 /* Application */,
+				407A5F3A257204D200533052 /* Presentation */,
+				407A5F5025720A7D00533052 /* Data */,
 			);
 			path = AnimeList;
 			sourceTree = "<group>";

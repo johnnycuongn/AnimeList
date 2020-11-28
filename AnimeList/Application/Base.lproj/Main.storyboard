@@ -238,6 +238,9 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="efe-Fg-EgZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="Her-RJ-1Ni"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="PAP-bt-JkL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="W4q-l1-qev" id="tBM-fY-LtU"/>
@@ -407,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAS-kf-Oow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2464" y="819"/>
+            <point key="canvasLocation" x="3484" y="819"/>
         </scene>
         <!--Anime View Controller-->
         <scene sceneID="YkM-NL-HAI">
