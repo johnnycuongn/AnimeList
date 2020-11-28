@@ -13,6 +13,12 @@ struct AnimeOfPage {
     var anime: [TopAnime]
 }
 
+struct TabBarIndex {
+    static let topViewController = 0
+    static let searchViewController = 1
+    static let randomViewController = 1
+}
+
 class TopViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -22,37 +28,30 @@ class TopViewController: UIViewController {
     
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
     
-    var currentSubtype: AnimeTopSubtype = .bydefault
-    var topAnimes: [TopAnime] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.topAnimeCollectionView.reloadData()
-            }
-        }
-    }
+    var viewModel: TopAnimesViewModel!
     
-    var didLoadedPages: Int {
-        return topAnimes.count / TopAnimeService.numberOfItemsLoad
+    func create(viewModel: TopAnimesViewModel =  DefaultTopAnimesViewModel()) {
+        self.viewModel = viewModel
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        bind(to: self.viewModel)
+
         
         topSubtypeCollectionView.dataSource = topSubtypeDataService
         topSubtypeCollectionView.delegate = topSubtypeDataService
-        
         topSubtypeDataService.delegate = self
+        
         
         topAnimeCollectionView.delegate = self
         topAnimeCollectionView.dataSource = self
-        
-        self.tabBarController?.delegate = self
-        
         topAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
-        
         topAnimeCollectionView.scrollsToTop = true
         
-        loadAnime(subtype: currentSubtype)
+        
+        self.tabBarController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,14 +64,24 @@ class TopViewController: UIViewController {
         topSubtypeCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
     }
     
-    func loadAnime(page: Int = 1, subtype: AnimeTopSubtype) {
-        guard page > didLoadedPages else { return }
-        activityIndicator.startAnimating()
-        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { [weak self] (topAnimes) in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.topAnimes.append(contentsOf: topAnimes)
-            strongSelf.activityIndicator.stopAnimating()
+    private func bind(to viewModel: TopAnimesViewModel) {
+        viewModel.topAnimes.observe(on: self) { [weak self] in self?.updateCollectionView($0) }
+        viewModel.loadingStyle.observe(on: self) { [weak self] in self?.updateLoading($0)}
+    }
+    
+    private func updateCollectionView(_ animes: [TopAnime]) {
+        if animes.isEmpty {
+            self.topAnimeCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+        self.topAnimeCollectionView.reloadData()
+    }
+
+    private func updateLoading(_ loadingStyle: LoadingStyle?) {
+        switch loadingStyle {
+        case .fullscreen:
+            self.activityIndicator.startAnimating()
+        case .none:
+            self.activityIndicator.stopAnimating()
         }
     }
     

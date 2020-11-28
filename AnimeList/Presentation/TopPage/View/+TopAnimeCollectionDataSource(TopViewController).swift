@@ -15,15 +15,15 @@ extension TopViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return topAnimes.count
+        return viewModel.topAnimes.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeDisplayCell.identifier, for: indexPath) as! AnimeDisplayCell
         
-        let topAnime = topAnimes[indexPath.row]
-        
-        cell.config(with: topAnime, rank: topAnime.rank)
+        let topAnimeViewModel = viewModel.topAnimeDisplayViewModel(at: indexPath)
+
+        cell.fill(with: topAnimeViewModel, rank: topAnimeViewModel.rank)
         
         return cell
     }

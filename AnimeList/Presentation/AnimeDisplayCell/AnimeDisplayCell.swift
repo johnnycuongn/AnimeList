@@ -68,7 +68,22 @@ class AnimeDisplayCell: UICollectionViewCell {
             
             return "\(type)(\(episode))"
         }()
+    }
+    
+    func fill(with viewModel: AnimeDisplayViewModel, rank: String? = nil) {
+        self.animeImageView.loadUsingCache(with: viewModel.imageURL)
         
+        if rank != nil {
+            self.rankLabel.text = rank!
+        } else {
+            self.rankView.isHidden = true
+            self.rankLabel.isHidden = true
+        }
+        
+        self.animeTitleLabel.text = viewModel.title
+        self.scoreLabel.text = viewModel.score
+        self.memberLabel.text = viewModel.members
+        self.typeEpisodeLabel.text = "\(viewModel.type)(\(viewModel.episode))"
     }
     
     

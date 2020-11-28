@@ -12,32 +12,21 @@ import UIKit
 extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegate {
     
     func didSelect(subtype: AnimeTopSubtype) {
-        guard subtype != currentSubtype else { return }
-        
-        self.topAnimes = []
-        self.topSubtypeCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        
-        self.currentSubtype = subtype
-        loadAnime(subtype: currentSubtype)
+        viewModel.didSelect(subtype: subtype)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Top Anime Select: \(topAnimes[indexPath.row].malID) - \(topAnimes[indexPath.row].title)")
         
-        weak var animeVC = AnimeViewController.initialize(with: topAnimes[indexPath.row].malID)
+        let selectedAnime = viewModel.topAnimes.value[indexPath.row]
+        let selectedID = selectedAnime.malID
+        
+        weak var animeVC = AnimeViewController.initialize(with: selectedID)
         guard animeVC != nil else { return }
         self.present(animeVC!, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(animeVC!, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        let willLoadPosition = topAnimes.count - 8
-        
-        if indexPath.row == willLoadPosition {
-            
-            let nextPage = didLoadedPages + 1
-            loadAnime(page: nextPage, subtype: currentSubtype)
-        }
+        viewModel.loadNextPage(at: indexPath)
     }
 }
