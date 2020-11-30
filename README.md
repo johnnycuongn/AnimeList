@@ -10,7 +10,8 @@
 
 - REST API, Webservices
 - Handling caching, fetching and loading
-- Protocol-Object Oriented with SOLID principles
+- MVVM presentational architecture
+- SOLID principle in mind
 - Core Data
 
 ## Languages/ Frameworks
