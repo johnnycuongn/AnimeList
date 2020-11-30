@@ -13,7 +13,9 @@ class AnimeViewController: UIViewController {
     static func initialize(with id: Int) -> AnimeViewController? {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as? AnimeViewController else { return nil }
-        animeVC.id = id
+        
+        animeVC.viewModel = DefaultAnimeDetailsPageViewModel(animeID: id)
+
         animeVC.modalPresentationStyle = .overFullScreen
         
         return animeVC
@@ -55,25 +57,17 @@ class AnimeViewController: UIViewController {
     @IBOutlet weak var genreCollectionViewHeight: NSLayoutConstraint!
     
     // MARK: - View Controller's Variables
-    private var id: Int = 0
-    private var anime: AnimeInfo?
-
-    private var isAnimeSaved: Bool = false {
-        didSet {
-            if isAnimeSaved == true {
-                saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            }
-            else {
-                saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
-            }
-        }
-    }
+    
+    var viewModel: AnimeDetailsPageViewModel!
+    
     // MARK: - View Loading
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadAnime(id: self.id)
+        viewModel.loadAnime(id: viewModel.id)
+        bind(to: self.viewModel)
+        
         
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
@@ -101,48 +95,58 @@ class AnimeViewController: UIViewController {
         
     }
     
-    func loadAnime(id: Int) {
-        activityIndicator.startAnimating()
-        AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
-            print("Anime Fetched: \(animeInfo.title) - \(animeInfo.url)")
-            guard let strongSelf = self else {return}
-            DispatchQueue.main.async {
-                if animeInfo.imageURL != nil {
-                    strongSelf.animeImageView.loadUsingCache(with: animeInfo.imageURL!)
-//                    strongSelf.backgroundAnimeImage.image = strongSelf.animeImage.image
-                }
-                
-                strongSelf.scoreLabel.text = validateLabel(animeInfo.score)
-                strongSelf.rankLabel.text = "#\(validateLabel(animeInfo.rank))"
-                strongSelf.popularityLabel.text = "#\(validateLabel(animeInfo.popularity))"
-                strongSelf.membersLabel.text = validateLabel(animeInfo.members)
-                strongSelf.favoritesLabel.text = validateLabel(animeInfo.favorites)
-                
-                strongSelf.studioLabel.text = validateLabel(animeInfo.studios[0].name)
-                strongSelf.typeEpisodesLabel.text = "\(validateLabel(animeInfo.type.rawValue, return: .none))(\(validateLabel(animeInfo.episodes)))"
-                
-                strongSelf.premieredLabel.text = validateLabel(animeInfo.premieredDate)
-                strongSelf.statusLabel.text = validateLabel( animeInfo.status)
-                
-                strongSelf.ratingLabel.text = validateLabel(animeInfo.rating)
-                strongSelf.animeTitleLabel.text = validateLabel(animeInfo.title)
-                strongSelf.animeEngTitleLabel.text = validateLabel(animeInfo.titleEnglish)
-                
-                strongSelf.synopsisLabel.text = validateLabel(animeInfo.synopsis)
-                
-                strongSelf.anime = animeInfo
-                strongSelf.genreCollectionView.reloadData()
-
-                strongSelf.activityIndicator.stopAnimating()
-            }
+    private func bind(to viewModel: AnimeDetailsPageViewModel) {
+        viewModel.animeDetailsViewModel.value.posterImageData.observe(on: self) { [weak self] (imageData) in
+            self?.animeImageView.image = imageData.flatMap(UIImage.init)
         }
         
-        PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
-            if isExisted {
-                self?.isAnimeSaved = true
-            } else {
-                self?.isAnimeSaved = false
-            }
+        viewModel.isAnimeSaved.observe(on: self) { [weak self] in
+            self?.updateSaveButton($0)
+        }
+        
+        viewModel.loadingStyle.observe(on: self) { [weak self] in
+            self?.updateLoading($0)
+        }
+        
+        viewModel.animeDetailsViewModel.observe(on: self) { [unowned self] in
+            self.scoreLabel.text = $0.score
+            self.rankLabel.text = "#\($0.rank)"
+            self.popularityLabel.text = "#\($0.popularity)"
+            self.membersLabel.text = $0.members
+            self.favoritesLabel.text = $0.favorites
+            
+            self.studioLabel.text = $0.studio
+            
+            self.typeEpisodesLabel.text = "\($0.type)(\($0.episodes))"
+            
+            self.premieredLabel.text = $0.premiered
+            self.statusLabel.text = $0.status
+            
+            self.ratingLabel.text = $0.rating
+            
+            self.animeTitleLabel.text = $0.title
+            self.animeEngTitleLabel.text = $0.engTitle
+            self.synopsisLabel.text = $0.synopsis
+            
+            self.genreCollectionView.reloadData()
+        }
+    }
+    
+    private func updateSaveButton(_ isAnimeSaved: Bool) {
+        if isAnimeSaved == true {
+            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        else {
+            self.saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+    }
+    
+    private func updateLoading(_ loadingStyle: LoadingStyle?) {
+        switch loadingStyle {
+        case .fullscreen:
+            self.activityIndicator.startAnimating()
+        case .none:
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -153,21 +157,7 @@ class AnimeViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let currentAnime = anime else {
-            return
-        }
-        
-        if isAnimeSaved == false {
-            PersonalAnimeDataManager.add(id: currentAnime.malID,
-                                         image: self.animeImageView.image,
-                                         title: currentAnime.title, date: Date())
-            isAnimeSaved = true
-        }
-        else {
-            PersonalAnimeDataManager.remove(id: currentAnime.malID)
-            isAnimeSaved = false
-        }
-
+        viewModel.updateSave()
     }
     
 }
@@ -183,19 +173,16 @@ extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard anime != nil else {return 0}
-        
-        return anime!.genres.count
+    
+        return viewModel.animeDetailsViewModel.value.genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard anime != nil else {
-            return UICollectionViewCell()
-        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeGenreCollectionViewCell.identifier, for: indexPath) as! AnimeGenreCollectionViewCell
         
-        cell.configure(with: anime!.genres[indexPath.row].name)
+
+        cell.configure(with: viewModel.animeDetailsViewModel.value.genres[indexPath.row].name)
         
         return cell
     }
