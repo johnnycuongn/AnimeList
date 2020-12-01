@@ -25,7 +25,7 @@ class SearchCell: UICollectionViewCell {
     @IBOutlet weak var typeEpisodes: UILabel!
     @IBOutlet weak var dateReleased: UILabel!
     
-    func configure(with anime: AnimeDisplayInfo) {
+    func configure(with anime: AnimeThumbnailDTO) {
         self.backgroundImageView.loadUsingCache(with: anime.imageURL)
         self.imageView.loadUsingCache(with: anime.imageURL)
         

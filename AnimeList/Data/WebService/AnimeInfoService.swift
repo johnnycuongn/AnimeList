@@ -15,7 +15,7 @@ class AnimeInfoService {
     let networkManager: Networking = NetworkManager()
     let path: APIPath = JikanAnimeAPI()
     
-    func fetchAnime(id: Int, completion: @escaping (AnimeInfo) -> Void) {
+    func fetchAnime(id: Int, completion: @escaping (AnimeDetailsDTO) -> Void) {
         
         let url = path.anime(id: id)
         print("Fetch Anime URL - \(url)")
@@ -27,7 +27,7 @@ class AnimeInfoService {
             }
             
             do {
-                let anime = try JSONDecoder().decode(AnimeInfo.self, from: data)
+                let anime = try JSONDecoder().decode(AnimeDetailsDTO.self, from: data)
             
                 DispatchQueue.main.async {
                     completion(anime)

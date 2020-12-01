@@ -16,7 +16,7 @@ class GenreViewController: UIViewController {
     
     @IBOutlet weak var genreAnimeCollectionView: UICollectionView!
     
-    private var animes: [AnimeDisplayInfo] = [] {
+    private var animes: [AnimeThumbnailDTO] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.genreAnimeCollectionView.reloadData()

@@ -27,7 +27,7 @@ class TopAnimeService {
         
     }
     
-    func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnime]) -> Void ) {
+    func fetchTopAnime(page: Int = 1, subtype: AnimeTopSubtype, completion: @escaping ([TopAnimeDTO]) -> Void ) {
         
         let fetchURL = path.top(at: page, subtype: subtype)
         print("Top Fetch URL: \(fetchURL)")

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Episode: Decodable {
+struct EpisodeDTO: Decodable {
     var episodeID: Int
     var title: String
     

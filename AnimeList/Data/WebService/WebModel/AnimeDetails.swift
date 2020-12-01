@@ -17,7 +17,7 @@ enum AnimeType: String, Codable {
     case music = "Music"
 }
 
-class AnimeInfo: Decodable {
+class AnimeDetailsDTO: Decodable {
     
     var malID: Int
     var url: String?
@@ -38,8 +38,8 @@ class AnimeInfo: Decodable {
     var rating: String?
     var status: String?
     
-    var genres: [GenreDisplay]
-    var studios: [StudioDisplay]
+    var genres: [GenreDisplayDTO]
+    var studios: [StudioDisplayDTO]
     
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"
@@ -88,8 +88,8 @@ class AnimeInfo: Decodable {
         rating = try? container.decode(String.self, forKey: .rating)
         status = try? container.decode(String.self, forKey: .status)
         
-        genres = try container.decode([GenreDisplay].self, forKey: .genres)
-        studios = try container.decode([StudioDisplay].self, forKey: .studios)
+        genres = try container.decode([GenreDisplayDTO].self, forKey: .genres)
+        studios = try container.decode([StudioDisplayDTO].self, forKey: .studios)
     }
     
     

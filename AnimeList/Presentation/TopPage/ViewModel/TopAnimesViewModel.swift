@@ -14,7 +14,7 @@ enum LoadingStyle {
 
 protocol TopAnimesViewModel {
     var currentSubtype: AnimeTopSubtype { get set }
-    var topAnimes: Observable<[TopAnime]> { get set }
+    var topAnimes: Observable<[TopAnimeDTO]> { get set }
     var loadingStyle: Observable<LoadingStyle?> { get set }
     
     var didLoadedPages: Int { get }
@@ -29,7 +29,7 @@ protocol TopAnimesViewModel {
 class DefaultTopAnimesViewModel: TopAnimesViewModel {
     
     var currentSubtype: AnimeTopSubtype = .bydefault
-    var topAnimes: Observable<[TopAnime]> = Observable([])
+    var topAnimes: Observable<[TopAnimeDTO]> = Observable([])
     
     var didLoadedPages: Int {
         return topAnimes.value.count / TopAnimeService.numberOfItemsLoad

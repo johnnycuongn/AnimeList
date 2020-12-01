@@ -10,7 +10,7 @@ import Foundation
 
 
 class SearchAnimeMain: Decodable {
-    var results: [AnimeDisplayInfo]
+    var results: [AnimeThumbnailDTO]
     var lastPage: Int
     
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ class SearchAnimeMain: Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.results = try container.decode([AnimeDisplayInfo].self, forKey: .results)
+        self.results = try container.decode([AnimeThumbnailDTO].self, forKey: .results)
         self.lastPage = try container.decode(Int.self, forKey: .lastPage)
     }
 }

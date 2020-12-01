@@ -9,20 +9,20 @@
 import Foundation
 
 class TopAnimeMain: Decodable {
-    var top: [TopAnime]
+    var top: [TopAnimeDTO]
     
     enum CodingKeys: String, CodingKey { case top }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        top = try container.decode([TopAnime].self, forKey: .top)
+        top = try container.decode([TopAnimeDTO].self, forKey: .top)
     }
 }
 
 
 
-class TopAnime: AnimeDisplayInfo {
+class TopAnimeDTO: AnimeThumbnailDTO {
     var rank: Int
     
     enum TopCodingKeys: String, CodingKey {

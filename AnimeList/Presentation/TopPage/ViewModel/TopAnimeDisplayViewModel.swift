@@ -11,7 +11,7 @@ import Foundation
 protocol TopAnimeDisplayViewModel: AnimeDisplayViewModel {
     var rank: String { get }
     
-    init(animeInfo: TopAnime)
+    init(animeInfo: TopAnimeDTO)
 }
 
 struct DefaultTopAnimeDisplayViewModel: TopAnimeDisplayViewModel {
@@ -25,7 +25,7 @@ struct DefaultTopAnimeDisplayViewModel: TopAnimeDisplayViewModel {
     var type: String
     var episode: String
     
-    init(animeInfo: TopAnime) {
+    init(animeInfo: TopAnimeDTO) {
         self.imageURL = animeInfo.imageURL
         
         self.rank = String(animeInfo.rank)

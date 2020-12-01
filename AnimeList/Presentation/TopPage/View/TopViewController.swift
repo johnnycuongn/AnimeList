@@ -10,7 +10,7 @@ import UIKit
 
 struct AnimeOfPage {
     var page: Int
-    var anime: [TopAnime]
+    var anime: [TopAnimeDTO]
 }
 
 struct TabBarIndex {
@@ -69,7 +69,7 @@ class TopViewController: UIViewController {
         viewModel.loadingStyle.observe(on: self) { [weak self] in self?.updateLoading($0)}
     }
     
-    private func updateCollectionView(_ animes: [TopAnime]) {
+    private func updateCollectionView(_ animes: [TopAnimeDTO]) {
         if animes.isEmpty {
             self.topAnimeCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }

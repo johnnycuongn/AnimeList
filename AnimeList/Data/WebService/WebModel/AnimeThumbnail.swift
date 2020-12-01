@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AnimeDisplayInfo: Decodable {
+class AnimeThumbnailDTO: Decodable {
     var malID: Int
     var imageURL: URL
     var title: String

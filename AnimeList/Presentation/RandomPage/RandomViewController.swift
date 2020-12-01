@@ -36,7 +36,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - View Controller's Variables
-    var anime: AnimeInfo?
+    var anime: AnimeDetailsDTO?
     private var isAnimeSaved: Bool = false {
         didSet {
             if isAnimeSaved == true {

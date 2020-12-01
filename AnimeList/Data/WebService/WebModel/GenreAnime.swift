@@ -9,8 +9,8 @@
 import Foundation
 
 class GenreAnimeMain: Decodable {
-    var anime: [AnimeDisplayInfo]
-    var malURL: ShortInfo
+    var anime: [AnimeThumbnailDTO]
+    var malURL: DisplayInfoDTO
     var itemCount: Int
     
     enum CodingKeys: String, CodingKey {
@@ -22,8 +22,8 @@ class GenreAnimeMain: Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.anime = try container.decode([AnimeDisplayInfo].self, forKey: .anime)
-        self.malURL = try container.decode(ShortInfo.self, forKey: .malURL)
+        self.anime = try container.decode([AnimeThumbnailDTO].self, forKey: .anime)
+        self.malURL = try container.decode(DisplayInfoDTO.self, forKey: .malURL)
         self.itemCount = try container.decode(Int.self, forKey: .itemCount)
     }
 }

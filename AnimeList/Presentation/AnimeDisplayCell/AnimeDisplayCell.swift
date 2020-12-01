@@ -39,7 +39,7 @@ class AnimeDisplayCell: UICollectionViewCell {
         animeTitleView.layer.cornerRadius = rankView.layer.cornerRadius
     }
     
-    func config(with animeInfo: AnimeDisplayInfo, rank: Int? = nil) {
+    func config(with animeInfo: AnimeThumbnailDTO, rank: Int? = nil) {
         
         self.animeImageView.loadUsingCache(with: animeInfo.imageURL)
         if rank != nil {

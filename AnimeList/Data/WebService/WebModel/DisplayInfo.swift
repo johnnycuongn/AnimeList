@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShortInfo: Decodable {
+class DisplayInfoDTO: Decodable {
     var malID: Int
     var name: String
     

@@ -36,7 +36,7 @@ protocol AnimeDetailsViewModel {
 
     var synopsis: String { get set }
 
-    var genres: [GenreDisplay] { get set }
+    var genres: [GenreDisplayDTO] { get set }
 }
 
 
@@ -69,6 +69,6 @@ class DefaultAnimeDetailsViewModel: AnimeDetailsViewModel {
     var engTitle: String = ""
     
     var synopsis: String = ""
-    var genres: [GenreDisplay] = []
+    var genres: [GenreDisplayDTO] = []
 
 }

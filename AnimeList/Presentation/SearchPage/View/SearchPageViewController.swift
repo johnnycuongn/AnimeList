@@ -28,7 +28,7 @@ class SearchPageViewController: UIViewController {
     
     var genres = Genre.allCases
     
-    var animes: [AnimeDisplayInfo] = [] {
+    var animes: [AnimeThumbnailDTO] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.pageCollectionView.reloadData()
