@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenreViewController: UIViewController {
+class GenreAnimesViewController: UIViewController {
     
     private var id: Int = 0
     
@@ -55,7 +55,7 @@ class GenreViewController: UIViewController {
     }
 }
 
-extension GenreViewController: UICollectionViewDataSource {
+extension GenreAnimesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.animes.count
     }
@@ -71,7 +71,7 @@ extension GenreViewController: UICollectionViewDataSource {
     }
 }
 
-extension GenreViewController: UICollectionViewDelegate {
+extension GenreAnimesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Genre Anime - \(animes[indexPath.row].title)")
         weak var animeVC = AnimeViewController.initialize(with: animes[indexPath.row].malID)
@@ -80,7 +80,7 @@ extension GenreViewController: UICollectionViewDelegate {
     }
 }
 
-extension GenreViewController: UICollectionViewDelegateFlowLayout {
+extension GenreAnimesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = genreAnimeCollectionView.frame.width / 2.2
         let cellHeight = genreAnimeCollectionView.frame.height / 2.8
