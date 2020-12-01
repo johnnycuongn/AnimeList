@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AnimeService {
+protocol AnimeWebService {
     var networkManager: Networking { get set }
     var apiPath: APIPath { get set }
     
@@ -21,7 +21,7 @@ protocol AnimeService {
     func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void )
 }
 
-class DefaultAnimeService: AnimeService {
+class DefaultAnimeWebService: AnimeWebService {
     
     var networkManager: Networking
     var apiPath: APIPath

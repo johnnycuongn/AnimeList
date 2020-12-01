@@ -46,11 +46,24 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         guard page > didLoadedPages else { return }
         
         loadingStyle.value = .fullscreen
-        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) {
-            [weak self] (topAnimes) in
+//        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) {
+//            [weak self] (topAnimes) in
+//                self?.topAnimes.value.append(contentsOf: topAnimes)
+//                self?.loadingStyle.value = .none
+//        }
+        
+        let animeService: AnimeWebService = DefaultAnimeWebService()
+        
+        animeService.fetchTop(page: page, subtype: subtype) { [weak self] (result) in
+            switch result {
+            case .success(let topAnimes):
                 self?.topAnimes.value.append(contentsOf: topAnimes)
                 self?.loadingStyle.value = .none
+            case .failure(let error):
+                print("Error: \(error)")
+            }
         }
+        
     }
     
     func loadNextPage(at indexPath: IndexPath) {
