@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AnimeViewController: UIViewController {
+class AnimeDetailsViewController: UIViewController {
     
-    static func initialize(with id: Int) -> AnimeViewController? {
+    static func initialize(with id: Int) -> AnimeDetailsViewController? {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeViewController") as? AnimeViewController else { return nil }
+        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeDetailsViewController") as? AnimeDetailsViewController else { return nil }
         
         animeVC.viewModel = DefaultAnimeDetailsPageViewModel(animeID: id)
 
@@ -163,7 +163,7 @@ class AnimeViewController: UIViewController {
 }
 
     // MARK: - Genre Collection View
-extension AnimeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AnimeDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }

@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol TopAnimeDisplayViewModel: AnimeDisplayViewModel {
+protocol TopAnimeThumbnailViewModel: AnimeDisplayViewModel {
     var rank: String { get }
     
     init(animeInfo: TopAnimeDTO)
 }
 
-struct DefaultTopAnimeDisplayViewModel: TopAnimeDisplayViewModel {
+struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
     
     var imageURL: URL
     

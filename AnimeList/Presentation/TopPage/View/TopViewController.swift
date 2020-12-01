@@ -28,9 +28,9 @@ class TopViewController: UIViewController {
     
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
     
-    var viewModel: TopAnimesViewModel!
+    var viewModel: TopAnimesPageViewModel!
     
-    func create(viewModel: TopAnimesViewModel =  DefaultTopAnimesViewModel()) {
+    func create(viewModel: TopAnimesPageViewModel =  DefaultTopAnimesPageViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -64,7 +64,7 @@ class TopViewController: UIViewController {
         topSubtypeCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: [])
     }
     
-    private func bind(to viewModel: TopAnimesViewModel) {
+    private func bind(to viewModel: TopAnimesPageViewModel) {
         viewModel.topAnimes.observe(on: self) { [weak self] in self?.updateCollectionView($0) }
         viewModel.loadingStyle.observe(on: self) { [weak self] in self?.updateLoading($0)}
     }

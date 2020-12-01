@@ -20,7 +20,7 @@ extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegat
         let selectedAnime = viewModel.topAnimes.value[indexPath.row]
         let selectedID = selectedAnime.malID
         
-        weak var animeVC = AnimeViewController.initialize(with: selectedID)
+        weak var animeVC = AnimeDetailsViewController.initialize(with: selectedID)
         guard animeVC != nil else { return }
         self.present(animeVC!, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(animeVC!, animated: true)

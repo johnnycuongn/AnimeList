@@ -12,7 +12,7 @@ enum LoadingStyle {
     case fullscreen
 }
 
-protocol TopAnimesViewModel {
+protocol TopAnimesPageViewModel {
     var currentSubtype: AnimeTopSubtype { get set }
     var topAnimes: Observable<[TopAnimeDTO]> { get set }
     var loadingStyle: Observable<LoadingStyle?> { get set }
@@ -22,11 +22,11 @@ protocol TopAnimesViewModel {
     func loadAnimes(page: Int, subtype: AnimeTopSubtype)
     func loadNextPage(at indexPath: IndexPath)
     func didSelect(subtype: AnimeTopSubtype)
-    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeDisplayViewModel
+    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeThumbnailViewModel
 }
 
 // MARK: - Default Implementation
-class DefaultTopAnimesViewModel: TopAnimesViewModel {
+class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     
     var currentSubtype: AnimeTopSubtype = .bydefault
     var topAnimes: Observable<[TopAnimeDTO]> = Observable([])
@@ -71,9 +71,9 @@ class DefaultTopAnimesViewModel: TopAnimesViewModel {
         loadAnimes(subtype: currentSubtype)
     }
     
-    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeDisplayViewModel {
+    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeThumbnailViewModel {
         let topAnime = topAnimes.value[indexPath.row]
-        let viewModel = DefaultTopAnimeDisplayViewModel(animeInfo: topAnime)
+        let viewModel = DefaultTopAnimeThumbnailViewModel(animeInfo: topAnime)
         
         return viewModel
     }
