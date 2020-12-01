@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension SearchPageViewController: UICollectionViewDelegateFlowLayout {
+extension DiscoverPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.pageCollectionView.frame.width/3 - 16, height: self.pageCollectionView.frame.height / 4)
         
@@ -27,7 +27,7 @@ extension SearchPageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension SearchPageViewController: UICollectionViewDataSource {
+extension DiscoverPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.genres.count
@@ -44,7 +44,7 @@ extension SearchPageViewController: UICollectionViewDataSource {
     }
 }
 
-extension SearchPageViewController: UICollectionViewDelegate {
+extension DiscoverPageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         

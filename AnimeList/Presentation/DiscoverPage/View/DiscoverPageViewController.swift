@@ -16,7 +16,7 @@ enum Genre: Int, CaseIterable {
     case Dementia, Demons, Mystery, Drama, Ecchi, Fantasy, Game, Hentai, Historical, Horror, Kids, Magic, Mecha, Music, Parody, Samurai, Romance, School, Scifi, Shoujo, ShoujiAi, Shounen, ShounenAi, Space, Sports, SuperPower, Vampire, Yaoi, Yuri, Harem, SliceOfLife, SuperNatural, Military, Police, Psychological, Thriller, Seinen, Josei
 }
 
-class SearchPageViewController: UIViewController {
+class DiscoverPageViewController: UIViewController {
 
     
     @IBOutlet weak var pageCollectionView: UICollectionView!
