@@ -41,11 +41,13 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     func loadAnime(id: Int) {
         loadingStyle.value = .fullscreen
         
-        AnimeInfoService.shared.fetchAnime(id: self.id) {
+        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        animeWS.fetchAnimeDetails(id: self.id) {
         
-        [weak self] (animeInfo) in
+        [weak self] (result) in
             print("AnimeDetailsPageViewModel: Anime Did Fetch - \(id)")
-            
+            switch result {
+            case .success(let animeInfo):
             self?.posterImagePath = animeInfo.imageURL
             self?.loadImage()
 
@@ -74,6 +76,9 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
             self?.animeDetailsViewModel.value.genres = animeInfo.genres
             
         self?.loadingStyle.value = .none
+            case.failure(let error):
+                print("Error: \(error)")
+            }
         }
         
         loadSave(id: self.id)

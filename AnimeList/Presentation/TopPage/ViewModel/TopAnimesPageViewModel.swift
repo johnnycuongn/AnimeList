@@ -60,7 +60,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
                 self?.topAnimes.value.append(contentsOf: topAnimes)
                 self?.loadingStyle.value = .none
             case .failure(let error):
-                print("Error: \(error)")
+                print("Top Animes Error: \(error)")
             }
         }
         

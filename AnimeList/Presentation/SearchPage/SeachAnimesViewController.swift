@@ -79,25 +79,50 @@ extension SeachAnimesViewController: UISearchBarDelegate {
             return textResult
         }()
         
-        SearchAnimeService.shared.fetchSearch(text: textFetch.lowercased()) { [weak self] (searchMain) in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.lastPage = searchMain.lastPage
-            
-            // Problem: Search two words return empty
-            // Solution:
-            if searchMain.results.isEmpty && text.contains(strongSelf.currentText) {
-                strongSelf.animes = strongSelf.animes.filter({ (searchAnime) -> Bool in
-                    let titleMatch = searchAnime.title.range(of: text, options: .caseInsensitive)
-                    return titleMatch != nil
-                })
+//        SearchAnimeService.shared.fetchSearch(text: textFetch.lowercased()) { [weak self] (searchMain) in
+//            guard let strongSelf = self else { return }
+//
+//            strongSelf.lastPage = searchMain.lastPage
+//
+//            // Problem: Search two words return empty
+//            // Solution:
+//            if searchMain.results.isEmpty && text.contains(strongSelf.currentText) {
+//                strongSelf.animes = strongSelf.animes.filter({ (searchAnime) -> Bool in
+//                    let titleMatch = searchAnime.title.range(of: text, options: .caseInsensitive)
+//                    return titleMatch != nil
+//                })
+//            }
+//            else {
+//                strongSelf.animes = searchMain.results
+//            }
+//
+//            strongSelf.currentText = text
+//            strongSelf.activityIndicator.stopAnimating()
+//        }
+        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        animeWS.fetchSearch(page: 1, query: textFetch.lowercased()) { [weak self] (result) in
+            switch result {
+            case .success(let searchMain):
+                guard let strongSelf = self else { return }
+                strongSelf.lastPage = searchMain.lastPage
+                
+                // Problem: Search two words return empty
+                // Solution:
+                if searchMain.results.isEmpty && text.contains(strongSelf.currentText) {
+                    strongSelf.animes = strongSelf.animes.filter({ (searchAnime) -> Bool in
+                        let titleMatch = searchAnime.title.range(of: text, options: .caseInsensitive)
+                        return titleMatch != nil
+                    })
+                }
+                else {
+                    strongSelf.animes = searchMain.results
+                }
+                
+                strongSelf.currentText = text
+                strongSelf.activityIndicator.stopAnimating()
+            case .failure(let error):
+                print("Error: \(error)")
             }
-            else {
-                strongSelf.animes = searchMain.results
-            }
-            
-            strongSelf.currentText = text
-            strongSelf.activityIndicator.stopAnimating()
         }
     }
     

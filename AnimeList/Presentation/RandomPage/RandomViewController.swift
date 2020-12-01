@@ -85,7 +85,13 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         activityIndicator.startAnimating()
         
         RecommendService.shared.recommendID { (id) in
-            AnimeInfoService.shared.fetchAnime(id: id) { [weak self] (animeInfo) in
+            let animeWS: AnimeWebService = DefaultAnimeWebService()
+    
+            animeWS.fetchAnimeDetails(id: id) { [weak self] (result) in
+                switch result {
+                case .success(let animeInfo):
+                    
+                    
                 guard let strongSelf = self else { return }
                 
                 DispatchQueue.main.async {
@@ -112,7 +118,11 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
                 let endTime = NSDate()
                 print("Random: Fetch && Display Completed in \(endTime.timeIntervalSince(startTime as Date)) seconds")
                 strongSelf.activityIndicator.stopAnimating()
-                
+                    
+                    
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
             }
             
             PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in

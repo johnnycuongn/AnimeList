@@ -38,11 +38,21 @@ class GenreAnimesViewController: UIViewController {
     func loadAnime(page: Int = 1) {
         print("Genre: \(id)")
         activityIndicator.startAnimating()
-        GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.animes.append(contentsOf: genreMain.anime)
-            strongSelf.activityIndicator.stopAnimating()
+//        GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
+//            guard let strongSelf = self else { return }
+//
+//            strongSelf.animes.append(contentsOf: genreMain.anime)
+//            strongSelf.activityIndicator.stopAnimating()
+//        }
+        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        animeWS.fetchGenre(id: self.id, page: page) { [weak self] (result) in
+            switch result {
+            case .success(let genreMain):
+                self?.animes.append(contentsOf: genreMain.anime)
+                self?.activityIndicator.stopAnimating()
+            case .failure(let error):
+                print("Error: \(error)")
+            }
         }
     }
     
