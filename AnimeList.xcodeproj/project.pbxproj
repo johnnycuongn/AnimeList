@@ -65,6 +65,7 @@
 		40EEEC7325760827009DF86F /* SeachAnimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */; };
 		40EEEC76257609D7009DF86F /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EEEC75257609D7009DF86F /* SearchCell.xib */; };
 		40EEEC7925761424009DF86F /* +CollectionView(SearchAnimesViewController).swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */; };
+		40EEEC8725762190009DF86F /* AnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC8625762190009DF86F /* AnimeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachAnimesViewController.swift; sourceTree = "<group>"; };
 		40EEEC75257609D7009DF86F /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+CollectionView(SearchAnimesViewController).swift"; sourceTree = "<group>"; };
+		40EEEC8625762190009DF86F /* AnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				4079A647250E54CB001A9D3B /* TopAnimeService.swift */,
 				406C2B672510BCFF00C8740E /* SearchAnimeService.swift */,
 				4050C7AE2542E01D00A480CF /* GenreAnimeService.swift */,
+				40EEEC8625762190009DF86F /* AnimeService.swift */,
 				406C2B6B2510D48800C8740E /* Helpers */,
 			);
 			path = WebService;
@@ -564,6 +567,7 @@
 				40EEEC3B2573C456009DF86F /* AnimeDetailsPageViewModel.swift in Sources */,
 				40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */,
 				400B138D2551A520001AE01A /* AnimeGenreCollectionViewCell.swift in Sources */,
+				40EEEC8725762190009DF86F /* AnimeService.swift in Sources */,
 				4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
