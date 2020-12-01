@@ -218,7 +218,8 @@
 			children = (
 				407A5F41257205B400533052 /* AnimeDetailsPage */,
 				407A5F3B257204E300533052 /* TopPage */,
-				407A5F442572078900533052 /* SearchPage */,
+				407A5F442572078900533052 /* DiscoverPage */,
+				40EEEC80257615DA009DF86F /* SearchPage */,
 				407A5F49257207AF00533052 /* GenrePage */,
 				407A5F3E2572058500533052 /* RandomPage */,
 				407A5F4C257207DF00533052 /* PersonalPage */,
@@ -274,21 +275,18 @@
 			path = AnimeDetailsPage;
 			sourceTree = "<group>";
 		};
-		407A5F442572078900533052 /* SearchPage */ = {
+		407A5F442572078900533052 /* DiscoverPage */ = {
 			isa = PBXGroup;
 			children = (
 				407A5F462572079C00533052 /* ViewModel */,
 				407A5F452572079700533052 /* View */,
-				40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */,
-				40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */,
 			);
-			path = SearchPage;
+			path = DiscoverPage;
 			sourceTree = "<group>";
 		};
 		407A5F452572079700533052 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				407A5F5625720B9200533052 /* Cell */,
 				406C2B652510B85400C8740E /* DiscoverPageViewController.swift */,
 				406C2B7925110EE200C8740E /* +CollectionView(DiscoverPageVC).swift */,
 			);
@@ -429,6 +427,16 @@
 				40EEEC3E2573C512009DF86F /* AnimeDetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		40EEEC80257615DA009DF86F /* SearchPage */ = {
+			isa = PBXGroup;
+			children = (
+				407A5F5625720B9200533052 /* Cell */,
+				40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */,
+				40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */,
+			);
+			path = SearchPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
