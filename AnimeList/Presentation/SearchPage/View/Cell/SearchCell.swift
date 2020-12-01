@@ -13,6 +13,7 @@ class SearchCell: UICollectionViewCell {
     static let identifier = String(describing: SearchCell.self)
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         self.contentView.layer.cornerRadius = 5
     }
     
