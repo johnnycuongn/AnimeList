@@ -8,17 +8,27 @@
 
 import Foundation
 
-protocol AnimeWebService {
-    
+protocol AnimeDetailsWebService {
     func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetailsDTO, Error>) -> Void)
-    
+}
+
+protocol TopAnimeWebService {
     func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void)
     var topItemsLoadPerPage: Int { get }
-    
+}
+
+protocol SearchAnimeWebService {
     func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
-    
+}
+
+protocol GenreAnimeWebService {
     func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void )
 }
+
+protocol AnimeWebService: AnimeDetailsWebService,
+                          TopAnimeWebService,
+                          SearchAnimeWebService,
+                          GenreAnimeWebService {}
 
 class DefaultAnimeWebService: AnimeWebService {
     
