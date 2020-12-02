@@ -16,7 +16,7 @@ struct AnimeOfPage {
 struct TabBarIndex {
     static let topViewController = 0
     static let searchViewController = 1
-    static let randomViewController = 1
+    static let randomViewController = 2
 }
 
 class TopViewController: UIViewController {
@@ -67,6 +67,12 @@ class TopViewController: UIViewController {
     private func bind(to viewModel: TopAnimesPageViewModel) {
         viewModel.topAnimes.observe(on: self) { [weak self] in self?.updateCollectionView($0) }
         viewModel.loadingStyle.observe(on: self) { [weak self] in self?.updateLoading($0)}
+        viewModel.error.observe(on: self) { [weak self] in self?.updateError($0) }
+    }
+    
+    private func updateError(_ error: String?) {
+        guard let error = error, !error.isEmpty else { return }
+        print("TopVC Error: \(error)")
     }
     
     private func updateCollectionView(_ animes: [TopAnimeDTO]) {

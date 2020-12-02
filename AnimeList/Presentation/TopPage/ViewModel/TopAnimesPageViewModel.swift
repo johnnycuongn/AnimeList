@@ -15,7 +15,9 @@ enum LoadingStyle {
 protocol TopAnimesPageViewModel {
     var currentSubtype: AnimeTopSubtype { get set }
     var topAnimes: Observable<[TopAnimeDTO]> { get set }
+    
     var loadingStyle: Observable<LoadingStyle?> { get set }
+    var error: Observable<String?> { get }
     
     var didLoadedPages: Int { get }
     
@@ -36,10 +38,12 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     }
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
+    var error: Observable<String?> = Observable(.none)
     
-    private let animeWS: AnimeWebService = DefaultAnimeWebService()
+    private let animeWS: AnimeWebService
     
-    init() {
+    init(animeWebSerivce: AnimeWebService = DefaultAnimeWebService()) {
+        self.animeWS = animeWebSerivce
         loadAnimes(page: 1, subtype: currentSubtype)
     }
     
@@ -53,12 +57,26 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
             switch result {
             case .success(let topAnimes):
                 self?.topAnimes.value.append(contentsOf: topAnimes)
-                self?.loadingStyle.value = .none
+                
             case .failure(let error):
                 print("Top Animes Error: \(error)")
+                self?.handleError(error)
             }
+            
+            self?.loadingStyle.value = .none
         }
         
+    }
+    
+    fileprivate func handleError(_ error: Error) {
+        if let error = error as? HTTPError {
+            switch error {
+            case .invalidResponse:
+                self.error.value = "Unable to load animes"
+            default:
+                self.error.value = "Failed to load"
+            }
+        }
     }
     
     func loadNextPage(at indexPath: IndexPath) {

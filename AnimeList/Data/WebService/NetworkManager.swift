@@ -42,7 +42,7 @@ final class NetworkManager: Networking {
             catch let error {
                 // TODO: Catch reponse error
                 completion(nil, error)
-                print("Network Error: \(error)")
+                print("Network Validation Error: \(error)")
             }
         }.resume()
     }
