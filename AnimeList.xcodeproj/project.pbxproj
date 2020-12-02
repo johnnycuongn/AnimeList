@@ -316,8 +316,8 @@
 			children = (
 				40C90256250A35BA009D4225 /* AppDelegate.swift */,
 				40C90258250A35BA009D4225 /* SceneDelegate.swift */,
-				40C9025C250A35BA009D4225 /* Main.storyboard */,
 				40EEEC94257727B0009DF86F /* Storyboard.swift */,
+				40C9025C250A35BA009D4225 /* Main.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";

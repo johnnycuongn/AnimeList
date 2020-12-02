@@ -10,6 +10,13 @@ import UIKit
 
 class SeachAnimesViewController: UIViewController {
     
+    static func create() -> SeachAnimesViewController? {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let searchVC = storyBoard.instantiateViewController(withIdentifier: "SeachAnimesViewController") as? SeachAnimesViewController else { return nil }
+        
+        return searchVC
+    }
+    
     var searchBar = UISearchBar()
     
     @IBOutlet weak var collectionView: UICollectionView!

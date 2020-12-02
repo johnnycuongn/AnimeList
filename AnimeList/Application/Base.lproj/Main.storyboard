@@ -98,7 +98,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="PAP-bt-JkL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="sqM-H8-ptk" kind="show" animates="NO" id="7aa-9H-stv"/>
+                                <action selector="searchButtonDidTap:" destination="Qvq-JU-vKY" id="SWJ-3Y-Igl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -114,13 +114,13 @@
         <!--Seach Animes View Controller-->
         <scene sceneID="qFc-2a-L5b">
             <objects>
-                <viewController id="sqM-H8-ptk" customClass="SeachAnimesViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeachAnimesViewController" id="sqM-H8-ptk" customClass="SeachAnimesViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JgU-Ue-eMf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="asv-N2-SGU">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" name="main-background-color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1HW-1y-JOV">
                                     <size key="itemSize" width="363" height="175"/>
@@ -840,7 +840,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>

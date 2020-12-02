@@ -32,5 +32,11 @@ class DiscoverPageViewController: UIViewController {
        
     }
 
+    @IBAction func searchButtonDidTap(_ sender: Any) {
+        guard let searchVC = SeachAnimesViewController.create() else {
+            return
+        }
+        navigationController?.pushViewController(searchVC, animated: false)
+    }
 }
 
