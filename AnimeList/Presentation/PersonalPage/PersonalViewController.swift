@@ -56,7 +56,7 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout {
 extension PersonalViewController: PersonalAnimeActionDelegate {
     func complete(_ cell: PersonalAnimeCollectionViewCell) {
         let index = animeCollectionView.indexPath(for: cell)
-        print("Did Complete Cell: \(index)")
+        print("Did Complete Cell: \(String(describing: index))")
     }
     
     func delete(_ cell: PersonalAnimeCollectionViewCell) {

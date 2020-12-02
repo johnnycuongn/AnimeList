@@ -27,9 +27,16 @@ class RecommendService {
         let subtypes: [AnimeTopSubtype] = [.bydefault, .bypopularity, .favorite, .tv, .movie]
         let page = Int.random(in: 1...5)
         let subtype: AnimeTopSubtype = subtypes[Int.random(in: 0..<subtypes.count)]
-        TopAnimeService.shared.fetchTopAnime(page: page, subtype: subtype) { (topAnimes) in
-            id = topAnimes[Int.random(in: 0..<50)].malID
-            completion(id)
+        
+        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        animeWS.fetchTop(page: page, subtype: subtype) { (result) in
+            switch result {
+            case .success(let topAnimes):
+                id = topAnimes[Int.random(in: 0..<50)].malID
+                completion(id)
+            case .failure(let error):
+                print("Recommend Error: \(error)")
+            }
         }
         
     }

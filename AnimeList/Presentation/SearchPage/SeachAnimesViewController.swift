@@ -129,8 +129,15 @@ extension SeachAnimesViewController: UISearchBarDelegate {
     func loadPageForCurrentSearch(page: Int) {
         guard page <= lastPage else { return }
         
-        SearchAnimeService.shared.fetchSearch(page: page, text: currentText) { (searchMain) in
-            self.animes.append(contentsOf: searchMain.results)
+        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        animeWS.fetchSearch(page: page, query: currentText) { [weak self] (result) in
+            switch result {
+            case .success(let searchMain):
+                self?.animes.append(contentsOf: searchMain.results)
+            case .failure(let error):
+                print("Search Error: \(error)")
+            }
+            
         }
     }
 }

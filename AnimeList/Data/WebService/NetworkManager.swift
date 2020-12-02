@@ -13,7 +13,7 @@ enum NetworkError: Error {
 }
 
 protocol Networking {
-    func request(url: URL, completion: @escaping (Data?) -> Void)
+    func request(url: URL, completion: @escaping (Data?, Error?) -> Void)
 }
 
 final class NetworkManager: Networking {
@@ -23,23 +23,25 @@ final class NetworkManager: Networking {
         self.session = session
     }
     
-    func request(url: URL, completion: @escaping (Data?) -> Void) {
+    func request(url: URL, completion: @escaping (Data?, Error?) -> Void) {
         session.dataTask(with: url) { (data, response, error) in
             do {
                 try validate(response)
 
                 guard error == nil else {
                     print("Network Error: \(String(describing: error))")
+                    completion(nil, error)
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    completion(data)
+                    completion(data, nil)
                 }
                 
             }
             catch let error {
                 // TODO: Catch reponse error
+                completion(nil, error)
                 print("Network Error: \(error)")
             }
         }.resume()

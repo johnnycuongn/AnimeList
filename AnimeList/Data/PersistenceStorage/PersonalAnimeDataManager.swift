@@ -42,7 +42,7 @@ class PersonalAnimeDataManager {
         addedAnime.dateSaved = date
         
         PersistenceService.saveContext()
-        print("\(title) saved!!!")
+        print("\(String(describing: title)) saved!!!")
     }
     
     static func remove(at index: Int) {

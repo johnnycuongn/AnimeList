@@ -9,12 +9,11 @@
 import Foundation
 
 protocol AnimeWebService {
-    var networkManager: Networking { get set }
-    var apiPath: APIPath { get set }
     
     func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetailsDTO, Error>) -> Void)
     
     func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void)
+    var topItemsLoadPerPage: Int { get }
     
     func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
     
@@ -23,8 +22,8 @@ protocol AnimeWebService {
 
 class DefaultAnimeWebService: AnimeWebService {
     
-    var networkManager: Networking
-    var apiPath: APIPath
+    private var networkManager: Networking
+    private var apiPath: APIPath
     
     init(networkManager: Networking = NetworkManager(), apiPath: APIPath = JikanAnimeAPI()) {
         self.networkManager = networkManager
@@ -36,9 +35,14 @@ class DefaultAnimeWebService: AnimeWebService {
         let endpointURL = apiPath.anime(id: id)
         print("Fetch Anime URL - \(endpointURL)")
         
-        networkManager.request(url: endpointURL) { (data) in
+        networkManager.request(url: endpointURL) { (data,error)  in
             guard let data = data else {
                 print("AnimeInfoService: Unable to retrieve data")
+                return
+            }
+            
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
             
@@ -57,17 +61,24 @@ class DefaultAnimeWebService: AnimeWebService {
     }
 
     // MARK: TOP ANIMES
+    var topItemsLoadPerPage: Int = 50
+    
     func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void) {
         
         let endpointURL = apiPath.top(at: page, subtype: subtype)
         print("Top Fetch URL: \(endpointURL)")
         
-        networkManager.request(url: endpointURL) { (data) in
+        networkManager.request(url: endpointURL) { (data,error)  in
+            guard error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
             guard let data = data else {
                 print("TopAnimeService: Unable to retrive data")
                 return
             }
-            
+
             do {
                 let topAnimeMain = try JSONDecoder().decode(TopAnimeMain.self, from: data)
                 
@@ -87,7 +98,7 @@ class DefaultAnimeWebService: AnimeWebService {
         let endpointURL = apiPath.search(page: page, text: query)
         print("Search Fetch URL: \(endpointURL)")
         
-        networkManager.request(url: endpointURL) { (data) in
+        networkManager.request(url: endpointURL) { (data,error) in
             guard let data = data else {
                 print("SearchAnimeService: Unable to retrive data")
                 return
@@ -111,7 +122,7 @@ class DefaultAnimeWebService: AnimeWebService {
         let endpointURL = apiPath.genre(id: id, page: page)
         print("Genre Fetch URL: \(endpointURL)")
         
-        networkManager.request(url: endpointURL) { (data) in
+        networkManager.request(url: endpointURL) { (data,error)  in
             guard let data = data else {
                 print("GenreAnimeServicve: Unable to retrive data")
                 return
