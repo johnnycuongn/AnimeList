@@ -16,13 +16,7 @@ class GenreAnimesViewController: UIViewController {
     
     @IBOutlet weak var genreAnimeCollectionView: UICollectionView!
     
-    private var animes: [AnimeThumbnailDTO] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.genreAnimeCollectionView.reloadData()
-            }
-        }
-    }
+    var viewModel: GenreAnimesPageViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,31 +26,54 @@ class GenreAnimesViewController: UIViewController {
         
         genreAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
         
-        loadAnime()
+//        loadAnime()
+        bind(to: self.viewModel)
+        viewModel.loadAnimes(page: 1)
     }
     
-    func loadAnime(page: Int = 1) {
-        print("Genre: \(id)")
-        activityIndicator.startAnimating()
-//        GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
-//            guard let strongSelf = self else { return }
-//
-//            strongSelf.animes.append(contentsOf: genreMain.anime)
-//            strongSelf.activityIndicator.stopAnimating()
-//        }
-        let animeWS: AnimeWebService = DefaultAnimeWebService()
-        animeWS.fetchGenre(id: self.id, page: page) { [weak self] (result) in
-            switch result {
-            case .success(let genreMain):
-                self?.animes.append(contentsOf: genreMain.anime)
-                self?.activityIndicator.stopAnimating()
-            case .failure(let error):
-                print("Error: \(error)")
-            }
+    private func bind(to viewModel: GenreAnimesPageViewModel) {
+        viewModel.loading.observe(on: self) { [weak self] in
+            self?.updateLoading($0)
+        }
+        
+        viewModel.animes.observe(on: self) { [weak self] _ in
+            self?.genreAnimeCollectionView.reloadData()
         }
     }
     
+    private func updateLoading(_ loadingStyle: LoadingStyle?) {
+        switch loadingStyle {
+        case .fullscreen:
+            self.activityIndicator.startAnimating()
+        case .none:
+            self.activityIndicator.stopAnimating()
+        }
+    }
+
+    
+//    func loadAnime(page: Int = 1) {
+//        print("Genre: \(id)")
+//        activityIndicator.startAnimating()
+////        GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
+////            guard let strongSelf = self else { return }
+////
+////            strongSelf.animes.append(contentsOf: genreMain.anime)
+////            strongSelf.activityIndicator.stopAnimating()
+////        }
+//        let animeWS: AnimeWebService = DefaultAnimeWebService()
+//        animeWS.fetchGenre(id: self.id, page: page) { [weak self] (result) in
+//            switch result {
+//            case .success(let genreMain):
+//                self?.animes.append(contentsOf: genreMain.anime)
+//                self?.activityIndicator.stopAnimating()
+//            case .failure(let error):
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+    
     public func initialize(id: Int) {
+        self.viewModel = DefaultGenreAnimesPageViewModel(id: id)
         self.id = id
     }
 
@@ -67,13 +84,13 @@ class GenreAnimesViewController: UIViewController {
 
 extension GenreAnimesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.animes.count
+        return viewModel.animes.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeDisplayCell.identifier, for: indexPath) as! AnimeDisplayCell
         
-        let anime = animes[indexPath.row]
+        let anime = viewModel.animes.value[indexPath.row]
         
         cell.config(with: anime)
         
@@ -83,8 +100,8 @@ extension GenreAnimesViewController: UICollectionViewDataSource {
 
 extension GenreAnimesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Genre Anime - \(animes[indexPath.row].title)")
-        weak var animeVC = AnimeDetailsViewController.initialize(with: animes[indexPath.row].malID)
+        print("Genre Anime - \(viewModel.animes.value[indexPath.row].title)")
+        weak var animeVC = AnimeDetailsViewController.initialize(with: viewModel.animes.value[indexPath.row].malID)
         guard animeVC != nil else { return }
         self.present(animeVC!, animated: true, completion: nil)
     }

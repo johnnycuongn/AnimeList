@@ -40,9 +40,9 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     var error: Observable<String?> = Observable(.none)
     
-    private let animeWS: AnimeWebService
+    private let animeWS: TopAnimeWebService
     
-    init(animeWebSerivce: AnimeWebService = DefaultAnimeWebService()) {
+    init(animeWebSerivce: TopAnimeWebService = DefaultAnimeWebService()) {
         self.animeWS = animeWebSerivce
         loadAnimes(page: 1, subtype: currentSubtype)
     }

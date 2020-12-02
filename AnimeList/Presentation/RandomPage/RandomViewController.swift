@@ -36,31 +36,23 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - View Controller's Variables
-    var anime: AnimeDetailsDTO?
-    private var isAnimeSaved: Bool = false {
-        didSet {
-            if isAnimeSaved == true {
-                saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            }
-            else {
-                saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
-            }
-        }
-    }
+    var viewModel: RandomPageViewModel = DefaultRandomPageViewModel()
     
     // MARK: - Loading
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadAnime()
         descriptionScrollView.delegate = self
         
         genreCollectionView.delegate = self
         genreCollectionView.dataSource = self
+        
+        bind(to: self.viewModel)
+        viewModel.loadAnime()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        loadAnime()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,93 +68,67 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         
         saveButton.layer.cornerRadius = 5
     }
-
     
-    private func loadAnime() {
-        let startTime = NSDate()
+    private func bind(to viewModel: RandomPageViewModel) {
+        viewModel.isAnimeSaved.observe(on: self) { [weak self] in self?.updateSaveButton($0)}
         
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        viewModel.loadingStyle.observe(on: self) { [weak self] in self?.updateLoading($0) }
         
-        RecommendService.shared.recommendID { (id) in
-            let animeWS: AnimeWebService = DefaultAnimeWebService()
-    
-            animeWS.fetchAnimeDetails(id: id) { [weak self] (result) in
-                switch result {
-                case .success(let animeInfo):
-                    
-                    
-                guard let strongSelf = self else { return }
-                
-                DispatchQueue.main.async {
-                    if animeInfo.imageURL == nil { strongSelf.animeImageView.isHidden = true }
-                    else {
-                        strongSelf.animeImageView.loadUsingCache(with: animeInfo.imageURL!)
-                    }
-                    
-                    strongSelf.animeTitle.text = animeInfo.title
-                    strongSelf.animeSynopsis.text = validateLabel(animeInfo.synopsis, return: .none)
-
-                    strongSelf.animeRank.text = "#\(validateLabel(animeInfo.rank))"
-                    strongSelf.animePopularity.text = "#\(validateLabel(animeInfo.popularity))"
-                    
-                    strongSelf.animeScore.text = "\(validateLabel(animeInfo.score))"
-                    strongSelf.animeMembers.text = "\(validateLabel( animeInfo.members))"
-                    
-                    strongSelf.animeStudio.text = "\(validateLabel(animeInfo.studios[0].name))"
-                    strongSelf.animeTypeEpisode.text = "\(animeInfo.type.rawValue)(\(validateLabel(animeInfo.episodes)))"
-                    
-                    strongSelf.anime = animeInfo
-                    strongSelf.genreCollectionView.reloadData()
-                }
-                let endTime = NSDate()
-                print("Random: Fetch && Display Completed in \(endTime.timeIntervalSince(startTime as Date)) seconds")
-                strongSelf.activityIndicator.stopAnimating()
-                    
-                    
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
-            }
+        viewModel.animeViewModel.observe(on: self) { [unowned self] in
+            animeTitle.text = $0.title
+            animeSynopsis.text = $0.synopsis
             
-            PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
-                if isExisted {
-                    self?.isAnimeSaved = true
-                } else {
-                    self?.isAnimeSaved = false
-                }
-            }
+            animeRank.text = "#\($0.rank)"
+            animePopularity.text = "#\($0.popularity)"
+            
+            animeScore.text = $0.score
+            animeMembers.text = $0.members
+            
+            animeStudio.text = $0.studios
+            animeTypeEpisode.text = "\($0.type)(\($0.episodes))"
+            
+            self.genreCollectionView.reloadData()
+        }
+        
+        viewModel.animeViewModel.value.animeImageData.observe(on: self) {
+            [weak self] (imageData) in
+            print("Anime Did Set")
+            self?.animeImageView.image = imageData.flatMap(UIImage.init)
+        }
+    }
+    
+    private func updateLoading(_ loadingStyle: LoadingStyle?) {
+        switch loadingStyle {
+        case .fullscreen:
+            self.activityIndicator.startAnimating()
+        case .none:
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    private func updateSaveButton(_ isAnimeSaved: Bool) {
+        if isAnimeSaved == true {
+            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
+        else {
+            self.saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
     }
     
     // MARK: - Buttons Action
     @IBAction func nextBtnTapped(_ sender: Any) {
-        loadAnime()
+        viewModel.loadAnime()
     }
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        guard let currentAnime = anime else {
-            return
-        }
-        
-        if isAnimeSaved == false {
-            PersonalAnimeDataManager.add(id: currentAnime.malID,
-                                         image: self.animeImageView.image,
-                                         title: currentAnime.title, date: Date())
-            isAnimeSaved = true
-        }
-        else {
-            PersonalAnimeDataManager.remove(id: currentAnime.malID)
-            isAnimeSaved = false
-        }
+        viewModel.updateSave()
     }
     
 }
 
 extension RandomViewController: UICollectionViewDelegateFlowLayout {
     
-
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
@@ -175,19 +141,15 @@ extension RandomViewController: UICollectionViewDelegateFlowLayout {
 
 extension RandomViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard anime != nil else {return 0}
         
-        return anime!.genres.count
+        return viewModel.animeViewModel.value.genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard anime != nil else {
-            return UICollectionViewCell()
-        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeGenreCollectionViewCell.identifier, for: indexPath) as! AnimeGenreCollectionViewCell
         
-        cell.configure(with: anime!.genres[indexPath.row].name)
+        cell.configure(with: viewModel.animeViewModel.value.genres[indexPath.row].name)
         
         return cell
     }

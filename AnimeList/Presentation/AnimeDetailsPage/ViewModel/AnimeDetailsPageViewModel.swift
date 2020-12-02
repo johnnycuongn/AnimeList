@@ -34,6 +34,8 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
+    let animeWS: AnimeDetailsWebService = DefaultAnimeWebService()
+    
     init(animeID: Int) {
         self.id = animeID
     }
@@ -41,7 +43,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     func loadAnime(id: Int) {
         loadingStyle.value = .fullscreen
         
-        let animeWS: AnimeWebService = DefaultAnimeWebService()
+        
         animeWS.fetchAnimeDetails(id: self.id) {
         
         [weak self] (result) in

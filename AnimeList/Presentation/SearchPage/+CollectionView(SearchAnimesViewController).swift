@@ -35,22 +35,21 @@ extension SeachAnimesViewController: UICollectionViewDelegateFlowLayout {
 extension SeachAnimesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animes.count
+        return viewModel.animes.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
         
-        cell.configure(with: self.animes[indexPath.row])
+        cell.configure(with: self.viewModel.animes.value[indexPath.row])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("isSearching Did Select: \(animes[indexPath.row].title)")
-        weak var animeVC = AnimeDetailsViewController.initialize(with: animes[indexPath.row].malID)
+        print("isSearching Did Select: \(self.viewModel.animes.value[indexPath.row].title)")
+        weak var animeVC = AnimeDetailsViewController.initialize(with: self.viewModel.animes.value[indexPath.row].malID)
         guard animeVC != nil else { return }
         self.present(animeVC!, animated: true, completion: nil)
         

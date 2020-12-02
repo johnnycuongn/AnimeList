@@ -63,6 +63,9 @@
 		40EEEC7925761424009DF86F /* +CollectionView(SearchAnimesViewController).swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */; };
 		40EEEC8725762190009DF86F /* AnimeWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC8625762190009DF86F /* AnimeWebService.swift */; };
 		40EEEC95257727B0009DF86F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC94257727B0009DF86F /* Storyboard.swift */; };
+		40EEEC9925775E66009DF86F /* SearchAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */; };
+		40EEEC9F25776741009DF86F /* GenreAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */; };
+		40EEECA525776C3F009DF86F /* RandomPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEECA425776C3F009DF86F /* RandomPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +127,9 @@
 		40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+CollectionView(SearchAnimesViewController).swift"; sourceTree = "<group>"; };
 		40EEEC8625762190009DF86F /* AnimeWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeWebService.swift; sourceTree = "<group>"; };
 		40EEEC94257727B0009DF86F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimesPageViewModel.swift; sourceTree = "<group>"; };
+		40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimesPageViewModel.swift; sourceTree = "<group>"; };
+		40EEECA425776C3F009DF86F /* RandomPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +259,7 @@
 		407A5F3E2572058500533052 /* RandomPage */ = {
 			isa = PBXGroup;
 			children = (
+				40EEECA325776BA8009DF86F /* ViewModel */,
 				400B13752550582A001AE01A /* RandomViewController.swift */,
 			);
 			path = RandomPage;
@@ -296,6 +303,7 @@
 		407A5F49257207AF00533052 /* GenrePage */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEC9D25776721009DF86F /* ViewModel */,
 				4050C7AB2542C8C400A480CF /* GenreAnimesViewController.swift */,
 				406C2B732511043400C8740E /* GenreCell.swift */,
 			);
@@ -426,11 +434,36 @@
 		40EEEC80257615DA009DF86F /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEC9B25775E71009DF86F /* ViewModel */,
 				407A5F5625720B9200533052 /* Cell */,
 				40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */,
 				40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */,
 			);
 			path = SearchPage;
+			sourceTree = "<group>";
+		};
+		40EEEC9B25775E71009DF86F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		40EEEC9D25776721009DF86F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		40EEECA325776BA8009DF86F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				40EEECA425776C3F009DF86F /* RandomPageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40EEECA525776C3F009DF86F /* RandomPageViewModel.swift in Sources */,
 				4082B6BB2555292200DC14A2 /* PersonalAnime+CoreDataProperties.swift in Sources */,
 				400B137C2551457E001AE01A /* RecommendService.swift in Sources */,
 				4079A651250F7604001A9D3B /* TopSubtypeDataService.swift in Sources */,
@@ -527,6 +561,7 @@
 				40EEEC7325760827009DF86F /* SeachAnimesViewController.swift in Sources */,
 				407A5F5E25721AE700533052 /* Observable.swift in Sources */,
 				407A5F6525726B5B00533052 /* AnimeDisplayViewModel.swift in Sources */,
+				40EEEC9F25776741009DF86F /* GenreAnimesPageViewModel.swift in Sources */,
 				4050C7AC2542C8C400A480CF /* GenreAnimesViewController.swift in Sources */,
 				4082B6A0255415D200DC14A2 /* PersonalAnimeCollectionViewCell.swift in Sources */,
 				4082B6B52555247C00DC14A2 /* PersonalAnimeDataManager.swift in Sources */,
@@ -550,6 +585,7 @@
 				406C2B6A2510C77300C8740E /* AnimeThumbnail.swift in Sources */,
 				406C2B6D2510D55300C8740E /* URLExtensions.swift in Sources */,
 				406C2B742511043400C8740E /* GenreCell.swift in Sources */,
+				40EEEC9925775E66009DF86F /* SearchAnimesPageViewModel.swift in Sources */,
 				40EEEC3F2573C512009DF86F /* AnimeDetailsViewModel.swift in Sources */,
 				40EEEC3B2573C456009DF86F /* AnimeDetailsPageViewModel.swift in Sources */,
 				40C90259250A35BA009D4225 /* SceneDelegate.swift in Sources */,
