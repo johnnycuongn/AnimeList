@@ -34,7 +34,7 @@ class PersonalAnimeCollectionViewCell: UICollectionViewCell {
         removeVisualView.clipsToBounds = true
     }
     
-    func configure(with anime: PersonalAnime) {
+    func configure(with anime: PersonalAnimeEntity) {
         if anime.image != nil {
             DispatchQueue.main.async {
                 self.animeImageView.image = UIImage(data: anime.image!)

@@ -12,7 +12,7 @@ class PersonalViewController: UIViewController {
 
     @IBOutlet weak var animeCollectionView: UICollectionView!
     
-    var animes: [PersonalAnime] {
+    var animes: [PersonalAnimeEntity] {
         return PersonalAnimeDataManager.fetchFromDB()
     }
     

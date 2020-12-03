@@ -12,15 +12,15 @@ import CoreData
 
 class PersonalAnimeDataManager {
     
-    static var animes: [PersonalAnime] {
+    static var animes: [PersonalAnimeEntity] {
         return fetchFromDB()
     }
     
-    static func fetchFromDB() -> [PersonalAnime] {
-        var tempList = [PersonalAnime]()
+    static func fetchFromDB() -> [PersonalAnimeEntity] {
+        var tempList = [PersonalAnimeEntity]()
         
         do {
-            let request = PersonalAnime.fetchRequest() as NSFetchRequest<PersonalAnime>
+            let request = PersonalAnimeEntity.fetchRequest() as NSFetchRequest<PersonalAnimeEntity>
             
             request.sortDescriptors = [NSSortDescriptor(key: "dateSaved", ascending: true)]
             
@@ -34,7 +34,7 @@ class PersonalAnimeDataManager {
     }
     
     static func add(id: Int, image: UIImage?, title: String?, date: Date) {
-        let addedAnime = PersonalAnime(context: PersistenceService.context)
+        let addedAnime = PersonalAnimeEntity(context: PersistenceService.context)
         
         addedAnime.id = Int64(id)
         addedAnime.image = image?.pngData()
@@ -100,8 +100,8 @@ class PersonalAnimeDataManager {
     }
     
     // MARK: Helpers
-    static func requestFor(id: Int) -> NSFetchRequest<PersonalAnime> {
-        let request = PersonalAnime.fetchRequest() as NSFetchRequest<PersonalAnime>
+    static func requestFor(id: Int) -> NSFetchRequest<PersonalAnimeEntity> {
+        let request = PersonalAnimeEntity.fetchRequest() as NSFetchRequest<PersonalAnimeEntity>
         let predicate = NSPredicate(format: "id == %d", id)
         request.predicate = predicate
         
