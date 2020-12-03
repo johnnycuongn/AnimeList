@@ -188,7 +188,6 @@
 			children = (
 				4082B6A725551EF000DC14A2 /* WebModel */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
-				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
 				40EEEC8625762190009DF86F /* AnimeWebService.swift */,
 				406C2B6B2510D48800C8740E /* Helpers */,
 			);
@@ -419,6 +418,7 @@
 				407A5F4E2572081400533052 /* Application */,
 				407A5F3A257204D200533052 /* Presentation */,
 				407A5F5025720A7D00533052 /* Data */,
+				40EEECE1257904FB009DF86F /* Infrastructure */,
 			);
 			path = AnimeList;
 			sourceTree = "<group>";
@@ -475,6 +475,22 @@
 				407A5F4C257207DF00533052 /* PersonalPage */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		40EEECE1257904FB009DF86F /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				40EEECE225790511009DF86F /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		40EEECE225790511009DF86F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4050C7CA2545B27A00A480CF /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
