@@ -37,9 +37,17 @@ class SeachAnimesViewController: UIViewController {
         collectionView.register(UINib(nibName: SearchCell.identifier, bundle: nil), forCellWithReuseIdentifier: SearchCell.identifier)
         collectionView.scrollsToTop = true
         
+        let leftBarButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(cancelSearch))
+        leftBarButton.tintColor = AssetColor.superLightGrey
+        
+        navigationItem.leftBarButtonItem = leftBarButton
         
         bind(to: self.viewModel)
 
+    }
+    
+    @objc func cancelSearch() {
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

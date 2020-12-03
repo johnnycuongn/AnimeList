@@ -66,6 +66,7 @@
 		40EEEC9925775E66009DF86F /* SearchAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */; };
 		40EEEC9F25776741009DF86F /* GenreAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */; };
 		40EEECA525776C3F009DF86F /* RandomPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEECA425776C3F009DF86F /* RandomPageViewModel.swift */; };
+		40EEECD6257893AD009DF86F /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEECD5257893AD009DF86F /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimesPageViewModel.swift; sourceTree = "<group>"; };
 		40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimesPageViewModel.swift; sourceTree = "<group>"; };
 		40EEECA425776C3F009DF86F /* RandomPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPageViewModel.swift; sourceTree = "<group>"; };
+		40EEECD5257893AD009DF86F /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 		407A5F3A257204D200533052 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				40EEECD42578938D009DF86F /* TabBar */,
 				407A5F41257205B400533052 /* AnimeDetailsPage */,
 				407A5F3B257204E300533052 /* TopPage */,
 				407A5F442572078900533052 /* DiscoverPage */,
@@ -466,6 +469,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		40EEECD42578938D009DF86F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				40EEECD5257893AD009DF86F /* BaseTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -578,6 +589,7 @@
 				406C2B662510B85400C8740E /* DiscoverPageViewController.swift in Sources */,
 				40C90257250A35BA009D4225 /* AppDelegate.swift in Sources */,
 				4079A63E250E3B9A001A9D3B /* Episode.swift in Sources */,
+				40EEECD6257893AD009DF86F /* BaseTabBarController.swift in Sources */,
 				406C2B7A25110EE200C8740E /* +CollectionView(DiscoverPageVC).swift in Sources */,
 				4050C7B22542E2B200A480CF /* GenreAnime.swift in Sources */,
 				400B13812551462F001AE01A /* Helpers.swift in Sources */,

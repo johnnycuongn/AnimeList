@@ -11,4 +11,5 @@ import UIKit
 
 struct AssetColor {
     static var darkBlue = UIColor(named: "darkBlue")
+    static var superLightGrey = UIColor(named: "super-light-grey")
 }
