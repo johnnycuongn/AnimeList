@@ -25,6 +25,7 @@ class TopViewController: UIViewController {
     @IBOutlet weak var topAnimeCollectionView: UICollectionView!
     
     var viewModel: TopAnimesPageViewModel!
+    let pageThumbnailCell = AnimeThumbnailCell.self
     
     func create(viewModel: TopAnimesPageViewModel =  DefaultTopAnimesPageViewModel()) {
         self.viewModel = viewModel
@@ -43,7 +44,7 @@ class TopViewController: UIViewController {
         
         topAnimeCollectionView.delegate = self
         topAnimeCollectionView.dataSource = self
-        topAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
+        topAnimeCollectionView.register(UINib(nibName: pageThumbnailCell.identifier, bundle: nil), forCellWithReuseIdentifier:  pageThumbnailCell.identifier)
         topAnimeCollectionView.scrollsToTop = true
         
         
@@ -91,10 +92,7 @@ class TopViewController: UIViewController {
 
 extension TopViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = topAnimeCollectionView.frame.width / 2.2
-        let cellHeight = topAnimeCollectionView.frame.height / 2.8
-        
-        return CGSize(width: cellWidth, height: cellHeight)
+        return pageThumbnailCell.size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

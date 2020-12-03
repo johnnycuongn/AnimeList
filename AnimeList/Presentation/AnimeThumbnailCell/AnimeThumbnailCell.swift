@@ -8,9 +8,15 @@
 
 import UIKit
 
-class AnimeDisplayCell: UICollectionViewCell {
+class AnimeThumbnailCell: UICollectionViewCell {
     
-    static let identifier = String(describing: AnimeDisplayCell.self)
+    static let identifier = String(describing: AnimeThumbnailCell.self)
+    
+    static let size: CGSize = CGSize(
+        width: UIScreen.main.bounds.width / 2.2,
+        height: UIScreen.main.bounds.height / 3)
+
+    
     
     @IBOutlet weak var animeImageView: UIImageView!
     
@@ -70,7 +76,7 @@ class AnimeDisplayCell: UICollectionViewCell {
         }()
     }
     
-    func fill(with viewModel: AnimeDisplayViewModel, rank: String? = nil) {
+    func fill(with viewModel: AnimeThumbnailViewModel, rank: String? = nil) {
         self.animeImageView.loadUsingCache(with: viewModel.imageURL)
         
         if rank != nil {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TopAnimeThumbnailViewModel: AnimeDisplayViewModel {
+protocol TopAnimeThumbnailViewModel: AnimeThumbnailViewModel {
     var rank: String { get }
     
     init(animeInfo: TopAnimeDTO)

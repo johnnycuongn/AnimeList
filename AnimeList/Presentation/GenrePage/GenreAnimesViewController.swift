@@ -12,6 +12,11 @@ class GenreAnimesViewController: UIViewController {
     
     private var id: Int = 0
     
+    public func initialize(id: Int) {
+        self.viewModel = DefaultGenreAnimesPageViewModel(id: id)
+        self.id = id
+    }
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var genreAnimeCollectionView: UICollectionView!
@@ -24,7 +29,7 @@ class GenreAnimesViewController: UIViewController {
         genreAnimeCollectionView.dataSource = self
         genreAnimeCollectionView.delegate = self
         
-        genreAnimeCollectionView.register(UINib(nibName: AnimeDisplayCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeDisplayCell.identifier)
+        genreAnimeCollectionView.register(UINib(nibName: AnimeThumbnailCell.identifier, bundle: nil), forCellWithReuseIdentifier:  AnimeThumbnailCell.identifier)
         
 //        loadAnime()
         bind(to: self.viewModel)
@@ -49,33 +54,8 @@ class GenreAnimesViewController: UIViewController {
             self.activityIndicator.stopAnimating()
         }
     }
-
     
-//    func loadAnime(page: Int = 1) {
-//        print("Genre: \(id)")
-//        activityIndicator.startAnimating()
-////        GenreAnimeService.shared.fetchGenre(id: self.id, page: page) { [weak self] (genreMain) in
-////            guard let strongSelf = self else { return }
-////
-////            strongSelf.animes.append(contentsOf: genreMain.anime)
-////            strongSelf.activityIndicator.stopAnimating()
-////        }
-//        let animeWS: AnimeWebService = DefaultAnimeWebService()
-//        animeWS.fetchGenre(id: self.id, page: page) { [weak self] (result) in
-//            switch result {
-//            case .success(let genreMain):
-//                self?.animes.append(contentsOf: genreMain.anime)
-//                self?.activityIndicator.stopAnimating()
-//            case .failure(let error):
-//                print("Error: \(error)")
-//            }
-//        }
-//    }
     
-    public func initialize(id: Int) {
-        self.viewModel = DefaultGenreAnimesPageViewModel(id: id)
-        self.id = id
-    }
 
     @IBAction func closeButtonTapped(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
@@ -88,7 +68,7 @@ extension GenreAnimesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeDisplayCell.identifier, for: indexPath) as! AnimeDisplayCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeThumbnailCell.identifier, for: indexPath) as! AnimeThumbnailCell
         
         let anime = viewModel.animes.value[indexPath.row]
         
@@ -109,10 +89,7 @@ extension GenreAnimesViewController: UICollectionViewDelegate {
 
 extension GenreAnimesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = genreAnimeCollectionView.frame.width / 2.2
-        let cellHeight = genreAnimeCollectionView.frame.height / 2.8
-        
-        return CGSize(width: cellWidth, height: cellHeight)
+        return AnimeThumbnailCell.size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

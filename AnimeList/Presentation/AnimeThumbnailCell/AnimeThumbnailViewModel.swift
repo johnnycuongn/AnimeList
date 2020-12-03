@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AnimeDisplayViewModel {
+protocol AnimeThumbnailViewModel {
     
     var id: Int { get }
     

@@ -19,7 +19,7 @@ extension TopViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeDisplayCell.identifier, for: indexPath) as! AnimeDisplayCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageThumbnailCell.identifier, for: indexPath) as! AnimeThumbnailCell
         
         let topAnimeViewModel =
             viewModel.topAnimes.value[indexPath.row]
