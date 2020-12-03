@@ -144,7 +144,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            if animeViewModel.value.animeImageData.value != nil  {
+            if animeViewModel.value.animeImageData.value == nil  {
             PersonalAnimeDataManager.add(id: self.id,
                                          image: nil,
                                          title: animeViewModel.value.title,

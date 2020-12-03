@@ -116,7 +116,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            if animeDetailsViewModel.value.posterImageData.value != nil  {
+            if animeDetailsViewModel.value.posterImageData.value == nil  {
             PersonalAnimeDataManager.add(id: self.id,
                                          image: nil,
                                          title: animeDetailsViewModel.value.title,
