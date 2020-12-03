@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAS-kf-Oow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571" y="1348"/>
+            <point key="canvasLocation" x="2572" y="819"/>
         </scene>
         <!--Anime Details View Controller-->
         <scene sceneID="YkM-NL-HAI">
@@ -729,6 +729,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KyG-X4-g3k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="main-background-color"/>
+                        <color key="tintColor" name="super-light-grey"/>
                         <color key="barTintColor" name="tab-bar-color"/>
                     </navigationBar>
                     <connections>
@@ -744,12 +746,20 @@
             <objects>
                 <tabBarController id="dxu-YB-47h" customClass="BaseTabBarController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Na3-n1-uve">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="w11-6h-hgO">
-                            <color key="tintColor" name="super-light-grey"/>
-                            <connections>
-                                <action selector="searchButtonDidTapped:" destination="dxu-YB-47h" id="r2S-g0-U0G"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="person.fill" catalog="system" id="sJ5-JD-FEr">
+                                <color key="tintColor" name="super-light-grey"/>
+                                <connections>
+                                    <segue destination="98e-jw-fks" kind="show" id="HrQ-Z1-nNq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="w11-6h-hgO">
+                                <color key="tintColor" name="super-light-grey"/>
+                                <connections>
+                                    <action selector="searchButtonDidTapped:" destination="dxu-YB-47h" id="r2S-g0-U0G"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -762,10 +772,10 @@
                         <color key="selectedImageTintColor" name="super-light-grey"/>
                     </tabBar>
                     <connections>
+                        <outlet property="searchBarButton" destination="w11-6h-hgO" id="NGg-4x-UoM"/>
                         <segue destination="Xd1-VC-6ak" kind="relationship" relationship="viewControllers" id="joR-KB-j2e"/>
                         <segue destination="ccW-u5-Dpo" kind="relationship" relationship="viewControllers" id="bj3-eo-0L6"/>
                         <segue destination="xIA-KP-nvG" kind="relationship" relationship="viewControllers" id="2Eb-eN-Mw4"/>
-                        <segue destination="98e-jw-fks" kind="relationship" relationship="viewControllers" id="utY-UH-EMW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrO-oM-vhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -775,7 +785,6 @@
         <!--Discover-->
         <scene sceneID="LhI-Jz-TZt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WGM-5j-dJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ccW-u5-Dpo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass" catalog="system" id="oEd-do-9Oq"/>
                     <toolbarItems/>
@@ -792,10 +801,11 @@
                         <segue destination="Qvq-JU-vKY" kind="relationship" relationship="rootViewController" id="Jaq-YA-GLy"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGM-5j-dJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="774" y="820"/>
         </scene>
-        <!--Personal-->
+        <!--Saved Animes-->
         <scene sceneID="UO0-uM-dOe">
             <objects>
                 <viewController id="98e-jw-fks" customClass="PersonalViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
@@ -804,7 +814,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IRc-2q-RHT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bGS-Gq-m9y">
                                     <size key="itemSize" width="212" height="291"/>
@@ -859,7 +869,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -908,13 +918,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Personal" image="person" catalog="system" id="YUR-bj-iLy"/>
+                    <navigationItem key="navigationItem" title="Saved Animes" largeTitleDisplayMode="never" id="a3C-pS-f0v"/>
                     <connections>
                         <outlet property="animeCollectionView" destination="IRc-2q-RHT" id="u80-zY-5vu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoP-qu-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="1614.9456521739132"/>
+            <point key="canvasLocation" x="-146" y="1013"/>
         </scene>
         <!--Random-->
         <scene sceneID="Hah-Zc-hXV">
@@ -1264,6 +1275,7 @@
         <image name="list.bullet.indent" catalog="system" width="128" height="74"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
         <image name="star-icon" width="512" height="512"/>
         <image name="user-icon" width="385" height="408"/>

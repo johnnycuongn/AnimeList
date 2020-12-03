@@ -10,6 +10,8 @@ import UIKit
 
 class BaseTabBarController: UITabBarController {
 
+    @IBOutlet weak var searchBarButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
