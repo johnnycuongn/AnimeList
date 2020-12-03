@@ -89,9 +89,11 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
     private var animeWS: AnimeDetailsWebService
+    private let animeStorage: PersonalAnimeStorageCreateDelete
     
-    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService()) {
+    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService(), animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
         self.animeWS = animeWebService
+        self.animeStorage = animeStorage
     }
     
     func loadAnime() {
@@ -145,22 +147,23 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
             if animeViewModel.value.animeImageData.value == nil  {
-            PersonalAnimeDataManager.add(id: self.id,
-                                         image: nil,
+                animeStorage.add(id: self.id,
+                                 imageData: nil,
                                          title: animeViewModel.value.title,
                                          date: Date())
             }
             else {
-            PersonalAnimeDataManager.add(id: self.id,
-                                         image: UIImage(data: animeViewModel.value.animeImageData.value!),
+                animeStorage.add(id: self.id,
+                                 imageData: animeViewModel.value.animeImageData.value!,
                                          title: animeViewModel.value.title,
                                          date: Date())
             }
             isAnimeSaved.value = true
         }
         else {
-            PersonalAnimeDataManager.remove(id: self.id)
-            isAnimeSaved.value = false
+            animeStorage.remove(id: self.id) {
+                self.isAnimeSaved.value = false
+            }
         }
     }
         
@@ -178,7 +181,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     }
     
     private func isIDExist(_ id: Int) {
-        PersonalAnimeDataManager.isIDExist(id) {[weak self] isExisted in
+        animeStorage.isIDExist(id) {[weak self] isExisted in
             if isExisted {
                 self?.isAnimeSaved.value = true
             } else {

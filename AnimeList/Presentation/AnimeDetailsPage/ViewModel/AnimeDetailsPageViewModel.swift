@@ -35,6 +35,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
     let animeWS: AnimeDetailsWebService = DefaultAnimeWebService()
+    let animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()
     
     init(animeID: Int) {
         self.id = animeID
@@ -87,7 +88,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     }
     
     private func loadSave(id: Int) {
-        PersonalAnimeDataManager.isIDExist(id) {
+        animeStorage.isIDExist(id) {
         
         [weak self] isExisted in
             
@@ -117,22 +118,24 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
             if animeDetailsViewModel.value.posterImageData.value == nil  {
-            PersonalAnimeDataManager.add(id: self.id,
-                                         image: nil,
+                animeStorage.add(id: self.id,
+                                 imageData: nil,
                                          title: animeDetailsViewModel.value.title,
                                          date: Date())
             }
             else {
-            PersonalAnimeDataManager.add(id: self.id,
-                                         image: UIImage(data: animeDetailsViewModel.value.posterImageData.value!),
+                animeStorage.add(id: self.id,
+                                 imageData:  animeDetailsViewModel.value.posterImageData.value!,
                                          title: animeDetailsViewModel.value.title,
                                          date: Date())
             }
             isAnimeSaved.value = true
+            print("Viewmdel: Anime is saved!!!")
         }
         else {
-            PersonalAnimeDataManager.remove(id: self.id)
-            isAnimeSaved.value = false
+            animeStorage.remove(id: self.id) {
+                self.isAnimeSaved.value = false
+            }
         }
     }
     

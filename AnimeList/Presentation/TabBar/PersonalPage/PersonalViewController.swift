@@ -12,8 +12,14 @@ class PersonalViewController: UIViewController {
 
     @IBOutlet weak var animeCollectionView: UICollectionView!
     
-    var animes: [PersonalAnimeEntity] {
-        return PersonalAnimeDataManager.fetchFromDB()
+    let storage: PersonalAnimeStorage = PersonalAnimeCoreDataStorage()
+    
+    var animes: [PersonalAnimeDTO] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.animeCollectionView.reloadData()
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -26,7 +32,18 @@ class PersonalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        animeCollectionView.reloadData()
+        loadAnimes()
+    }
+    
+    private func loadAnimes() {
+        storage.getAnimes { (result) in
+            switch result {
+            case .success(let animes):
+                self.animes = animes
+            case .failure(let error):
+                print("Can't load personal anime from core data: \(error)")
+            }
+        }
     }
 
 }
@@ -63,9 +80,11 @@ extension PersonalViewController: PersonalAnimeActionDelegate {
         
         guard let indexPath = animeCollectionView.indexPath(for: cell) else { return }
         print("Did Remove Cell: \(indexPath.row)")
-        PersonalAnimeDataManager.remove(at: indexPath.row)
+        print("ID Removed: \(animes[indexPath.row].id)")
         
-        animeCollectionView.reloadData()
+        storage.remove(id: animes[indexPath.row].id) {
+            self.loadAnimes()
+        }
     }
     
     

@@ -24,6 +24,12 @@ extension PersonalAnimeEntity {
 
 }
 
+extension PersonalAnimeEntity {
+    func toDTO() -> PersonalAnimeDTO {
+        return .init(id: Int(id), title: title, imageData: image, dateSaved: dateSaved)
+    }
+}
+
 extension PersonalAnimeEntity : Identifiable {
 
 }
