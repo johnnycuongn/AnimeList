@@ -205,13 +205,13 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		4079A64F250F7536001A9D3B /* Data Service */ = {
+		4079A64F250F7536001A9D3B /* SubtypeDataService */ = {
 			isa = PBXGroup;
 			children = (
 				4079A650250F7604001A9D3B /* TopSubtypeDataService.swift */,
 				4079A653250F7B0E001A9D3B /* TopSubtypeCell.swift */,
 			);
-			path = "Data Service";
+			path = SubtypeDataService;
 			sourceTree = "<group>";
 		};
 		407A5F3A257204D200533052 /* Presentation */ = {
@@ -243,7 +243,7 @@
 				4079A641250E489F001A9D3B /* TopViewController.swift */,
 				4079A657250F8632001A9D3B /* +TopAnimeCollectionDataSource(TopViewController).swift */,
 				4079A659250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift */,
-				4079A64F250F7536001A9D3B /* Data Service */,
+				4079A64F250F7536001A9D3B /* SubtypeDataService */,
 			);
 			path = View;
 			sourceTree = "<group>";

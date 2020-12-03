@@ -30,6 +30,8 @@ protocol AnimeWebService: AnimeDetailsWebService,
                           SearchAnimeWebService,
                           GenreAnimeWebService {}
 
+
+//MARK: - Default Implementation
 class DefaultAnimeWebService: AnimeWebService {
     
     private var networkManager: Networking
@@ -128,6 +130,7 @@ class DefaultAnimeWebService: AnimeWebService {
         }
     }
     
+    // MARK: GENRE ANIMES
     func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void) {
         let endpointURL = apiPath.genre(id: id, page: page)
         print("Genre Fetch URL: \(endpointURL)")
