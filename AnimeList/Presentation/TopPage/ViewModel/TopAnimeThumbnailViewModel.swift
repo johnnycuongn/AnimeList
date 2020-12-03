@@ -16,6 +16,8 @@ protocol TopAnimeThumbnailViewModel: AnimeDisplayViewModel {
 
 struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
     
+    var id: Int
+    
     var imageURL: URL
     
     var rank: String
@@ -26,6 +28,7 @@ struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
     var episode: String
     
     init(animeInfo: TopAnimeDTO) {
+        self.id = animeInfo.malID
         self.imageURL = animeInfo.imageURL
         
         self.rank = String(animeInfo.rank)

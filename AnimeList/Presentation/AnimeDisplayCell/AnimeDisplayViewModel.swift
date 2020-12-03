@@ -9,6 +9,9 @@
 import Foundation
 
 protocol AnimeDisplayViewModel {
+    
+    var id: Int { get }
+    
     var imageURL: URL { get }
     var title: String { get }
     var score: String { get }

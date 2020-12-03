@@ -221,10 +221,8 @@
 				407A5F41257205B400533052 /* AnimeDetailsPage */,
 				407A5F3B257204E300533052 /* TopPage */,
 				407A5F442572078900533052 /* DiscoverPage */,
-				40EEEC80257615DA009DF86F /* SearchPage */,
 				407A5F49257207AF00533052 /* GenrePage */,
 				407A5F3E2572058500533052 /* RandomPage */,
-				407A5F4C257207DF00533052 /* PersonalPage */,
 				407A5F5525720B3200533052 /* AnimeDisplayCell */,
 			);
 			path = Presentation;
@@ -473,6 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				40EEECD5257893AD009DF86F /* BaseTabBarController.swift */,
+				40EEEC80257615DA009DF86F /* SearchPage */,
+				407A5F4C257207DF00533052 /* PersonalPage */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";

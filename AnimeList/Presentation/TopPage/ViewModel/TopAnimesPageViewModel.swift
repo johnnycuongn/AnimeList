@@ -14,7 +14,7 @@ enum LoadingStyle {
 
 protocol TopAnimesPageViewModel {
     var currentSubtype: AnimeTopSubtype { get set }
-    var topAnimes: Observable<[TopAnimeDTO]> { get set }
+    var topAnimes: Observable<[TopAnimeThumbnailViewModel]> { get }
     
     var loadingStyle: Observable<LoadingStyle?> { get set }
     var error: Observable<String?> { get }
@@ -24,14 +24,14 @@ protocol TopAnimesPageViewModel {
     func loadAnimes(page: Int, subtype: AnimeTopSubtype)
     func loadNextPage(at indexPath: IndexPath)
     func didSelect(subtype: AnimeTopSubtype)
-    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeThumbnailViewModel
 }
 
 // MARK: - Default Implementation
 class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     
+    var topAnimes: Observable<[TopAnimeThumbnailViewModel]> = Observable([])
+
     var currentSubtype: AnimeTopSubtype = .bydefault
-    var topAnimes: Observable<[TopAnimeDTO]> = Observable([])
     
     var didLoadedPages: Int {
         return topAnimes.value.count / animeWS.topItemsLoadPerPage
@@ -54,9 +54,13 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         loadingStyle.value = .fullscreen
         
         animeWS.fetchTop(page: page, subtype: subtype) { [weak self] (result) in
+            guard let strongSelf = self else { return }
             switch result {
             case .success(let topAnimes):
-                self?.topAnimes.value.append(contentsOf: topAnimes)
+                self?.topAnimes.value.append(contentsOf: topAnimes.map({
+                    strongSelf.topAnimeThumbnailViewModel(for: $0)
+                }))
+                
                 
             case .failure(let error):
                 print("Top Animes Error: \(error)")
@@ -93,14 +97,13 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         guard subtype != currentSubtype else { return }
         
         self.topAnimes.value = []
+        
         self.currentSubtype = subtype
         loadAnimes(subtype: currentSubtype)
     }
     
-    func topAnimeDisplayViewModel(at indexPath: IndexPath) -> TopAnimeThumbnailViewModel {
-        let topAnime = topAnimes.value[indexPath.row]
-        let viewModel = DefaultTopAnimeThumbnailViewModel(animeInfo: topAnime)
-        
+    func topAnimeThumbnailViewModel(for topAnime: TopAnimeDTO) -> TopAnimeThumbnailViewModel {
+        let viewModel: TopAnimeThumbnailViewModel = DefaultTopAnimeThumbnailViewModel(animeInfo: topAnime)
         return viewModel
     }
 }

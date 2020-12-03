@@ -71,7 +71,7 @@ class TopViewController: UIViewController {
         print("TopVC Error: \(error)")
     }
     
-    private func updateCollectionView(_ animes: [TopAnimeDTO]) {
+    private func updateCollectionView(_ animes: [TopAnimeThumbnailViewModel]) {
         if animes.isEmpty {
             self.topAnimeCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
