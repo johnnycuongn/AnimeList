@@ -1,8 +1,8 @@
 //
-//  AnimeDisplayInfo.swift
+//  AnimeThumbnailDTO.swift
 //  AnimeList
 //
-//  Created by Johnny on 15/9/20.
+//  Created by Johnny on 4/12/20.
 //  Copyright © 2020 Johnny. All rights reserved.
 //
 
