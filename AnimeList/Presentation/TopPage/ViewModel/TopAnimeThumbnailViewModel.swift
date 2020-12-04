@@ -10,8 +10,6 @@ import Foundation
 
 protocol TopAnimeThumbnailViewModel: AnimeThumbnailViewModel {
     var rank: String { get }
-    
-    init(animeInfo: TopAnimeDTO)
 }
 
 struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
