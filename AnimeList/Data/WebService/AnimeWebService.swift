@@ -18,11 +18,11 @@ protocol TopAnimeWebService {
 }
 
 protocol SearchAnimeWebService {
-    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
+    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void)
 }
 
 protocol GenreAnimeWebService {
-    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void )
+    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimesResponseDTO, Error>) -> Void )
 }
 
 protocol AnimeWebService: AnimeDetailsWebService,
@@ -92,7 +92,7 @@ class DefaultAnimeWebService: AnimeWebService {
             }
 
             do {
-                let topAnimeMain = try JSONDecoder().decode(TopAnimeMain.self, from: data)
+                let topAnimeMain = try JSONDecoder().decode(TopAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(.success(topAnimeMain.top))
@@ -106,7 +106,7 @@ class DefaultAnimeWebService: AnimeWebService {
     }
     
     // MARK: SEARCH ANIMES
-    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void) {
+    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void) {
         let endpointURL = apiPath.search(page: page, text: query)
         print("Search Fetch URL: \(endpointURL)")
         
@@ -117,7 +117,7 @@ class DefaultAnimeWebService: AnimeWebService {
             }
             
             do {
-                let searchMain = try JSONDecoder().decode(SearchAnimeMain.self, from: data)
+                let searchMain = try JSONDecoder().decode(SearchAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(.success(searchMain))
@@ -131,7 +131,7 @@ class DefaultAnimeWebService: AnimeWebService {
     }
     
     // MARK: GENRE ANIMES
-    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void) {
+    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimesResponseDTO, Error>) -> Void) {
         let endpointURL = apiPath.genre(id: id, page: page)
         print("Genre Fetch URL: \(endpointURL)")
         
@@ -142,7 +142,7 @@ class DefaultAnimeWebService: AnimeWebService {
             }
             
             do {
-                let genreAnimeMain = try JSONDecoder().decode(GenreAnimeMain.self, from: data)
+                let genreAnimeMain = try JSONDecoder().decode(GenreAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
                     completion(.success(genreAnimeMain))

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenreAnimeMain: Decodable {
+class GenreAnimesResponseDTO: Decodable {
     var anime: [AnimeThumbnailDTO]
     var malURL: DisplayInfoDTO
     var itemCount: Int

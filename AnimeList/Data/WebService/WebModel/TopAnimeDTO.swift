@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TopAnimeMain: Decodable {
+class TopAnimesResponseDTO: Decodable {
     var top: [TopAnimeDTO]
     
     enum CodingKeys: String, CodingKey { case top }

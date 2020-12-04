@@ -9,7 +9,7 @@
 import Foundation
 
 
-class SearchAnimeMain: Decodable {
+class SearchAnimesResponseDTO: Decodable {
     var results: [AnimeThumbnailDTO]
     var lastPage: Int
     
