@@ -37,7 +37,9 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     let animeWS: AnimeDetailsWebService = DefaultAnimeWebService()
     let animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()
     
-    init(animeID: Int) {
+    init(animeID: Int,
+         animeWebService: AnimeDetailsWebService = DefaultAnimeWebService(),
+         animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
         self.id = animeID
     }
     
