@@ -38,3 +38,9 @@ class TopAnimeDTO: AnimeThumbnailDTO {
         
     }
 }
+
+extension TopAnimeDTO {
+    func toDomain() -> TopAnimeMain.TopAnime {
+        return .init(rank: rank, malID: malID, imagePath: imageURL.absoluteString, title: title, type: type, episodes: episodes, members: members, score: score)
+    }
+}
