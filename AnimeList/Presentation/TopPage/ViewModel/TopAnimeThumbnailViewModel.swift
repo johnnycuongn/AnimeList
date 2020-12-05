@@ -25,9 +25,14 @@ struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
     var type: String
     var episode: String
     
-    init(animeInfo: TopAnimeDTO) {
+    init(animeInfo: TopAnimeMain.TopAnime) {
         self.id = animeInfo.malID
-        self.imageURL = animeInfo.imageURL
+        
+        if let urlPath = URL(string: animeInfo.imagePath) {
+            self.imageURL = urlPath
+        } else {
+            self.imageURL = URL(string: "")!
+        }
         
         self.rank = String(animeInfo.rank)
         

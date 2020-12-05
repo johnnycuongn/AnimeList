@@ -34,16 +34,18 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     var currentSubtype: AnimeTopSubtype = .bydefault
     
     var didLoadedPages: Int {
-        return topAnimes.value.count / animeWS.topItemsLoadPerPage
+        return topAnimes.value.count / 50
     }
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     var error: Observable<String?> = Observable(.none)
     
-    private let animeWS: TopAnimeWebService
+    private let animeUseCase: TopAnimesReadUseCase
     
-    init(animeWebSerivce: TopAnimeWebService = DefaultAnimeWebService()) {
-        self.animeWS = animeWebSerivce
+    init(
+        animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase()
+    ) {
+        self.animeUseCase = animeUseCase
         loadAnimes(page: 1, subtype: currentSubtype)
     }
     
@@ -53,7 +55,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         
         loadingStyle.value = .fullscreen
         
-        animeWS.fetchTop(page: page, subtype: subtype) { [weak self] (result) in
+        animeUseCase.getAnimes(page: page, subtype: subtype) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let topAnimes):
@@ -102,7 +104,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         loadAnimes(subtype: currentSubtype)
     }
     
-    func topAnimeThumbnailViewModel(for topAnime: TopAnimeDTO) -> TopAnimeThumbnailViewModel {
+    func topAnimeThumbnailViewModel(for topAnime: TopAnimeMain.TopAnime) -> TopAnimeThumbnailViewModel {
         let viewModel: TopAnimeThumbnailViewModel = DefaultTopAnimeThumbnailViewModel(animeInfo: topAnime)
         return viewModel
     }
