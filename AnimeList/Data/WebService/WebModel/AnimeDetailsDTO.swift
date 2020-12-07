@@ -8,13 +8,24 @@
 
 import Foundation
 
-enum AnimeType: String, Codable {
+enum AnimeTypeDTO: String, Codable {
     case tv = "TV"
     case movie = "Movie"
     case ova = "OVA"
     case special = "Special"
     case ona = "ONA"
     case music = "Music"
+    
+    func toDomain() -> AnimeType {
+        switch self {
+        case .tv: return .tv
+        case .movie: return .movie
+        case .ova: return .ova
+        case .special: return .special
+        case .ona: return .ona
+        case .music: return .music
+        }
+    }
 }
 
 class AnimeDetailsDTO: Decodable {
@@ -26,7 +37,7 @@ class AnimeDetailsDTO: Decodable {
     var title: String
     var titleEnglish: String?
     var synopsis: String?
-    var type: AnimeType
+    var type: AnimeTypeDTO
     var episodes: Int?
     var score: Double?
     var scoredBy: Int?
@@ -76,7 +87,7 @@ class AnimeDetailsDTO: Decodable {
         title = try container.decode(String.self, forKey: .title)
         titleEnglish = try? container.decode(String.self, forKey: .titleEnglish)
         synopsis = try container.decode(String.self, forKey: .synopsis)
-        type = try container.decode(AnimeType.self, forKey: .type)
+        type = try container.decode(AnimeTypeDTO.self, forKey: .type)
         episodes = try? container.decode(Int.self, forKey: .episodes)
         score = try? container.decode(Double.self, forKey: .score)
         scoredBy = try? container.decode(Int.self, forKey: .scoredBy)

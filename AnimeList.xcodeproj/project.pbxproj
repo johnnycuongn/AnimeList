@@ -74,6 +74,7 @@
 		40EEED54257A0A44009DF86F /* AnimeThumbnailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED53257A0A44009DF86F /* AnimeThumbnailDTO.swift */; };
 		40EEED58257A0B16009DF86F /* AnimeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED57257A0B16009DF86F /* AnimeThumbnail.swift */; };
 		40EEEDA5257B643F009DF86F /* TopAnimesReadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDA4257B643F009DF86F /* TopAnimesReadUseCase.swift */; };
+		40EEEDA9257E1A8F009DF86F /* AnimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDA8257E1A8F009DF86F /* AnimeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		40EEED53257A0A44009DF86F /* AnimeThumbnailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeThumbnailDTO.swift; sourceTree = "<group>"; };
 		40EEED57257A0B16009DF86F /* AnimeThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeThumbnail.swift; sourceTree = "<group>"; };
 		40EEEDA4257B643F009DF86F /* TopAnimesReadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimesReadUseCase.swift; sourceTree = "<group>"; };
+		40EEEDA8257E1A8F009DF86F /* AnimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -576,6 +578,7 @@
 		40EEED3C257A0772009DF86F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEDA8257E1A8F009DF86F /* AnimeType.swift */,
 				40EEEDA3257B6254009DF86F /* TopAnime */,
 			);
 			path = Entities;
@@ -724,6 +727,7 @@
 				4079A64D250F73AE001A9D3B /* AssetImage.swift in Sources */,
 				4050C7CB2545B27A00A480CF /* NetworkManager.swift in Sources */,
 				4079A640250E3EEA001A9D3B /* TopAnimeDTO.swift in Sources */,
+				40EEEDA9257E1A8F009DF86F /* AnimeType.swift in Sources */,
 				4050C7B62542EE4600A480CF /* AssetColor.swift in Sources */,
 				40EEEC7925761424009DF86F /* +CollectionView(SearchAnimesViewController).swift in Sources */,
 				4082B6522552888800DC14A2 /* DisplayInfoDTO.swift in Sources */,
