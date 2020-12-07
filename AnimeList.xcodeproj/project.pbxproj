@@ -577,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				40EEED3C257A0772009DF86F /* Entities */,
+				40EEEDD7257E279B009DF86F /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -585,19 +586,10 @@
 			isa = PBXGroup;
 			children = (
 				40EEEDC6257E2037009DF86F /* Common&Properties */,
-				40EEEDA3257B6254009DF86F /* TopAnime */,
+				40EEED3D257A0780009DF86F /* TopAnime.swift */,
 				40EEEDC9257E20AB009DF86F /* AnimeDetails.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		40EEEDA3257B6254009DF86F /* TopAnime */ = {
-			isa = PBXGroup;
-			children = (
-				40EEED3D257A0780009DF86F /* TopAnime.swift */,
-				40EEEDA4257B643F009DF86F /* TopAnimesReadUseCase.swift */,
-			);
-			path = TopAnime;
 			sourceTree = "<group>";
 		};
 		40EEEDB2257E1DAD009DF86F /* ShortDisplayDTOs */ = {
@@ -628,6 +620,14 @@
 				40EEEDCD257E21AA009DF86F /* Genre.swift */,
 			);
 			path = "Common&Properties";
+			sourceTree = "<group>";
+		};
+		40EEEDD7257E279B009DF86F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEDA4257B643F009DF86F /* TopAnimesReadUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
