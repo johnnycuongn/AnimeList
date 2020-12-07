@@ -10,7 +10,7 @@ import Foundation
 
 class GenreAnimesResponseDTO: Decodable {
     var anime: [AnimeThumbnailDTO]
-    var malURL: DisplayInfoDTO
+    var malURL: ShortDisplayDTO
     var itemCount: Int
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ class GenreAnimesResponseDTO: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.anime = try container.decode([AnimeThumbnailDTO].self, forKey: .anime)
-        self.malURL = try container.decode(DisplayInfoDTO.self, forKey: .malURL)
+        self.malURL = try container.decode(ShortDisplayDTO.self, forKey: .malURL)
         self.itemCount = try container.decode(Int.self, forKey: .itemCount)
     }
 }

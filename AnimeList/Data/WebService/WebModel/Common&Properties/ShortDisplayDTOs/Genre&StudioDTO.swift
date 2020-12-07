@@ -8,10 +8,10 @@
 
 import Foundation
 
-class GenreDisplayDTO: DisplayInfoDTO {
+class GenreDisplayDTO: ShortDisplayDTO {
 
 }
 
-class StudioDisplayDTO: DisplayInfoDTO {
+class StudioDisplayDTO: ShortDisplayDTO {
     
 }
