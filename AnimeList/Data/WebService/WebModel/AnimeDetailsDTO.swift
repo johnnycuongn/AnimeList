@@ -8,26 +8,6 @@
 
 import Foundation
 
-enum AnimeTypeDTO: String, Codable {
-    case tv = "TV"
-    case movie = "Movie"
-    case ova = "OVA"
-    case special = "Special"
-    case ona = "ONA"
-    case music = "Music"
-    
-    func toDomain() -> AnimeType {
-        switch self {
-        case .tv: return .tv
-        case .movie: return .movie
-        case .ova: return .ova
-        case .special: return .special
-        case .ona: return .ona
-        case .music: return .music
-        }
-    }
-}
-
 class AnimeDetailsDTO: Decodable {
     
     var malID: Int
@@ -37,7 +17,7 @@ class AnimeDetailsDTO: Decodable {
     var title: String
     var titleEnglish: String?
     var synopsis: String?
-    var type: AnimeTypeDTO
+    var type: AnimeTypeDTO?
     var episodes: Int?
     var score: Double?
     var scoredBy: Int?

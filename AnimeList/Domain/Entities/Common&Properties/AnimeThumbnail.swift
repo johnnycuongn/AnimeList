@@ -1,8 +1,8 @@
 //
-//  ThumbnailAnime.swift
+//  AnimeThumbnial.swift
 //  AnimeList
 //
-//  Created by Johnny on 4/12/20.
+//  Created by Johnny on 7/12/20.
 //  Copyright © 2020 Johnny. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 
 struct AnimeThumbnail {
     var malID: Int
-    var imageURL: String
+    var imagePath: String
     var title: String
     var type: AnimeType?
     var episodes: Int?
