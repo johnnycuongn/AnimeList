@@ -13,7 +13,7 @@ class AnimeDetailsDTO: Decodable {
     var malID: Int
     var url: String?
     var imageURL: URL?
-    var trailerURL: String?
+    var trailerURL: URL?
     var title: String
     var titleEnglish: String?
     var synopsis: String?
@@ -63,11 +63,11 @@ class AnimeDetailsDTO: Decodable {
         malID = try container.decode(Int.self, forKey: .malID)
         url = try? container.decode(String.self, forKey: .url)
         imageURL = try? container.decode(URL.self, forKey: .imageURL)
-        trailerURL = try? container.decode(String.self, forKey: .trailerURL)
+        trailerURL = try? container.decode(URL.self, forKey: .trailerURL)
         title = try container.decode(String.self, forKey: .title)
         titleEnglish = try? container.decode(String.self, forKey: .titleEnglish)
-        synopsis = try container.decode(String.self, forKey: .synopsis)
-        type = try container.decode(AnimeTypeDTO.self, forKey: .type)
+        synopsis = try? container.decode(String.self, forKey: .synopsis)
+        type = try? container.decode(AnimeTypeDTO.self, forKey: .type)
         episodes = try? container.decode(Int.self, forKey: .episodes)
         score = try? container.decode(Double.self, forKey: .score)
         scoredBy = try? container.decode(Int.self, forKey: .scoredBy)

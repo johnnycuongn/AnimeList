@@ -10,11 +10,11 @@ import Foundation
 
 class AnimeThumbnailDTO: Decodable {
     var malID: Int
-    var imageURL: URL
+    var imageURL: URL?
     var title: String
     var type: AnimeTypeDTO?
     var episodes: Int?
-    var members: Int
+    var members: Int?
     var score: Double?
     
     enum CodingKeys: String, CodingKey {
@@ -32,10 +32,10 @@ class AnimeThumbnailDTO: Decodable {
         
         malID = try container.decode(Int.self, forKey: .malID)
         title = try container.decode(String.self, forKey: .title)
-        imageURL = try container.decode(URL.self, forKey: .imageURL)
+        imageURL = try? container.decode(URL.self, forKey: .imageURL)
         type = try? container.decode(AnimeTypeDTO.self, forKey: .type)
         episodes = try? container.decode(Int.self, forKey: .episodes)
-        members = try container.decode(Int.self, forKey: .members)
+        members = try? container.decode(Int.self, forKey: .members)
         score = try? container.decode(Double.self, forKey: .score)
     }
 }

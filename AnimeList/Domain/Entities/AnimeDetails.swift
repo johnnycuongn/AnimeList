@@ -11,8 +11,8 @@ import Foundation
 struct AnimeDetails {
     var malID: Int
     var url: String?
-    var imagePath: String?
-    var trailerURLPath: String?
+    var imageURL: URL?
+    var trailerURL: URL?
     
     var title: String
     var titleEnglish: String?

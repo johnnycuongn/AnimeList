@@ -46,8 +46,10 @@ class AnimeThumbnailCell: UICollectionViewCell {
     }
     
     func config(with animeInfo: AnimeThumbnailDTO, rank: Int? = nil) {
+        if let imageURL = animeInfo.imageURL {
+            self.animeImageView.loadUsingCache(with: imageURL)
+        }
         
-        self.animeImageView.loadUsingCache(with: animeInfo.imageURL)
         if rank != nil {
             self.rankLabel.text = String(rank!)
         } else {
@@ -63,7 +65,7 @@ class AnimeThumbnailCell: UICollectionViewCell {
             self.scoreLabel.text = validateLabel(animeInfo.score)
         }
         
-        self.memberLabel.text = String(animeInfo.members)
+        self.memberLabel.text = validateLabel(animeInfo.members)
         
         self.typeEpisodeLabel.text = {
 //            guard animeInfo.type != nil else { return "" }

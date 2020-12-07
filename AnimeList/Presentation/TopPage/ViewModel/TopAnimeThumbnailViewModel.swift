@@ -28,7 +28,7 @@ struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
     init(animeInfo: TopAnimeMain.TopAnime) {
         self.id = animeInfo.malID
         
-        if let urlPath = URL(string: animeInfo.imagePath) {
+        if let urlPath = animeInfo.imageURL {
             self.imageURL = urlPath
         } else {
             self.imageURL = URL(string: "")!
@@ -43,7 +43,7 @@ struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
         else {
             self.score = validateLabel(animeInfo.score) }
         
-        self.members = String(animeInfo.members)
+        self.members = validateLabel(animeInfo.members)
         
         self.type = validateLabel(animeInfo.type?.rawValue, return: .none)
         

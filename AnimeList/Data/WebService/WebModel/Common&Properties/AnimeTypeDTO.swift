@@ -15,15 +15,4 @@ enum AnimeTypeDTO: String, Codable {
     case special = "Special"
     case ona = "ONA"
     case music = "Music"
-    
-    func toDomain() -> AnimeType {
-        switch self {
-        case .tv: return .tv
-        case .movie: return .movie
-        case .ova: return .ova
-        case .special: return .special
-        case .ona: return .ona
-        case .music: return .music
-        }
-    }
 }

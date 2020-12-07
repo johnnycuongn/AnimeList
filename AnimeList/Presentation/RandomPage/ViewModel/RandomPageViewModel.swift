@@ -122,7 +122,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
 
                     strongSelf.animeViewModel.value.studios = validateLabel(animeInfo.studios[0].name)
 
-                    strongSelf.animeViewModel.value.type = validateLabel(animeInfo.type.rawValue)
+                    strongSelf.animeViewModel.value.type = validateLabel(animeInfo.type?.rawValue)
                     strongSelf.animeViewModel.value.episodes = validateLabel(animeInfo.episodes)
 
                     strongSelf.animeViewModel.value.genres = animeInfo.genres

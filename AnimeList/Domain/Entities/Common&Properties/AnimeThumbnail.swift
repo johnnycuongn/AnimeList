@@ -10,10 +10,10 @@ import Foundation
 
 struct AnimeThumbnail {
     var malID: Int
-    var imagePath: String
+    var imageURL: URL?
     var title: String
     var type: AnimeType?
     var episodes: Int?
-    var members: Int
+    var members: Int?
     var score: Double?
 }

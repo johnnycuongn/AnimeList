@@ -65,7 +65,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
             // FIXME: Should have multiple studios
             self?.animeDetailsViewModel.value.studio = validateLabel(animeInfo.studios[0].name)
 
-            self?.animeDetailsViewModel.value.type = validateLabel(animeInfo.type.rawValue)
+                self?.animeDetailsViewModel.value.type = validateLabel(animeInfo.type?.rawValue)
             self?.animeDetailsViewModel.value.episodes = validateLabel(animeInfo.episodes)
 
             self?.animeDetailsViewModel.value.premiered = validateLabel(animeInfo.premieredDate)

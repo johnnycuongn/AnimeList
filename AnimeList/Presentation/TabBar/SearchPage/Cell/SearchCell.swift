@@ -27,8 +27,10 @@ class SearchCell: UICollectionViewCell {
     @IBOutlet weak var dateReleased: UILabel!
     
     func configure(with anime: AnimeThumbnailDTO) {
-        self.backgroundImageView.loadUsingCache(with: anime.imageURL)
-        self.imageView.loadUsingCache(with: anime.imageURL)
+        if let imageURL = anime.imageURL {
+            self.backgroundImageView.loadUsingCache(with: imageURL)
+            self.imageView.loadUsingCache(with: imageURL)
+        }
         
         self.titleLabel.text = anime.title
         if anime.score != nil {
