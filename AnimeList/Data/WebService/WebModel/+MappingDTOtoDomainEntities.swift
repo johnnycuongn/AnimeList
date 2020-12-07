@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// MARK: AnimeTypeDTO
 extension AnimeTypeDTO {
     func toDomain() -> AnimeType {
         switch self {
@@ -21,6 +23,8 @@ extension AnimeTypeDTO {
     }
 }
 
+
+
 // MARK: TopAnimeDTO
 extension TopAnimeDTO {
     func toDomain() -> TopAnimeMain.TopAnime {
@@ -28,13 +32,12 @@ extension TopAnimeDTO {
         let domainType = type?.toDomain()
         
         return .init(rank: rank, malID: malID, imageURL: imageURL, title: title, type: domainType, episodes: episodes, members: members, score: score)
-        
-        
-        
     }
 }
 
-// MARK: SearchAnimeDTO
+
+
+// MARK: AnimeThumbnailDTO
 extension AnimeThumbnailDTO {
     func toDomain() -> AnimeThumbnail {
         
@@ -44,6 +47,9 @@ extension AnimeThumbnailDTO {
     }
 }
 
+
+
+// MARK: AnimeDetailsDTO
 extension AnimeDetailsDTO {
     func toDomain() -> AnimeDetails {
         
