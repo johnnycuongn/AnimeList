@@ -11,3 +11,23 @@ import Foundation
 protocol AnimeDetailsUseCase {
     func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void)
 }
+
+class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
+    
+    private let animeWS: AnimeDetailsWebService
+    
+    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService()) {
+        self.animeWS = animeWebService
+    }
+    
+    func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void) {
+        animeWS.fetchAnimeDetails(id: id) { (result) in
+            switch result {
+            case .success(let responseDTO):
+                completion(.success(responseDTO.toDomain()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
