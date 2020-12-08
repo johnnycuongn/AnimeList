@@ -42,14 +42,16 @@ extension SeachAnimesViewController: UICollectionViewDelegate, UICollectionViewD
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
         
-        cell.configure(with: self.viewModel.animes.value[indexPath.row])
+//        cell.configure(with: self.viewModel.animes.value[indexPath.row])
+        
+        cell.fill(with: self.viewModel.animes.value[indexPath.row])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("isSearching Did Select: \(self.viewModel.animes.value[indexPath.row].title)")
-        weak var animeVC = AnimeDetailsViewController.initialize(with: self.viewModel.animes.value[indexPath.row].malID)
+        weak var animeVC = AnimeDetailsViewController.initialize(with: self.viewModel.animes.value[indexPath.row].id)
         guard animeVC != nil else { return }
         self.present(animeVC!, animated: true, completion: nil)
         

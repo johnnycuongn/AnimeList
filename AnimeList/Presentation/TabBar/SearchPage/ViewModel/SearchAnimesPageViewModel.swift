@@ -13,7 +13,7 @@ protocol SearchAnimesPageViewModel {
     var currentSearchText: String { get }
     var loadingStyle: Observable<LoadingStyle?> { get }
     
-    var animes: Observable<[AnimeThumbnailDTO]> { get }
+    var animes: Observable<[AnimeThumbnailViewModel]> { get }
 
     func loadSearch(page: Int, _ text: String)
     func loadSearch(for nextPage: Int)
@@ -28,12 +28,13 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
     var currentSearchText: String = ""
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
-    var animes: Observable<[AnimeThumbnailDTO]> = Observable([])
+    var animes: Observable<[AnimeThumbnailViewModel]> = Observable([])
     
-    private let animeWS: SearchAnimeWebService
     
-    init(animeWebService: SearchAnimeWebService = DefaultAnimeWebService()) {
-        self.animeWS = animeWebService
+    private let searchUseCase: SearchAnimesUseCase
+    
+    init(searchUseCase: SearchAnimesUseCase = DefaultSearchAnimesUseCase()) {
+        self.searchUseCase = searchUseCase
     }
     
     func loadSearch(page: Int = 1, _ text: String) {
@@ -48,7 +49,7 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
             return textResult
         }()
         
-        animeWS.fetchSearch(page: page, query: textFetch.lowercased()) { [weak self] (result) in
+        searchUseCase.getAnimes(page: page, searchText: textFetch.lowercased()) { [weak self] (result) in
             switch result {
             
             case .success(let searchMain):
@@ -57,14 +58,14 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
                 
                 // Problem: Search two words return empty
                 // Solution:
-                if searchMain.results.isEmpty && text.contains(strongSelf.currentSearchText) {
+                if searchMain.animes.isEmpty && text.contains(strongSelf.currentSearchText) {
                     strongSelf.animes.value = strongSelf.animes.value.filter({ (searchAnime) -> Bool in
                         let titleMatch = searchAnime.title.range(of: text, options: .caseInsensitive)
                         return titleMatch != nil
                     })
                 }
                 else {
-                    strongSelf.animes.value = searchMain.results
+                    strongSelf.animes.value = searchMain.animes.compactMap(DefaultAnimeThumbnailViewModel.init)
                 }
                 
                 strongSelf.currentSearchText = text
@@ -81,10 +82,11 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
     func loadSearch(for nextPage: Int) {
         guard nextPage > lastPage else { return }
         
-        animeWS.fetchSearch(page: nextPage, query: currentSearchText) { [weak self] (result) in
+        searchUseCase.getAnimes(page: nextPage, searchText: currentSearchText){
+            [weak self] (result) in
             switch result {
             case .success(let searchMain):
-                self?.animes.value.append(contentsOf: searchMain.results)
+                self?.animes.value.append(contentsOf: searchMain.animes.compactMap(DefaultAnimeThumbnailViewModel.init))
             case .failure(let error):
                 print("Search Error: \(error)")
             }

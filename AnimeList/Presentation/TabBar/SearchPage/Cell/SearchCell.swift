@@ -26,22 +26,33 @@ class SearchCell: UICollectionViewCell {
     @IBOutlet weak var typeEpisodes: UILabel!
     @IBOutlet weak var dateReleased: UILabel!
     
-    func configure(with anime: AnimeThumbnailDTO) {
-        if let imageURL = anime.imageURL {
-            self.backgroundImageView.loadUsingCache(with: imageURL)
-            self.imageView.loadUsingCache(with: imageURL)
-        }
+//    func configure(with anime: AnimeThumbnailDTO) {
+//        if let imageURL = anime.imageURL {
+//            self.backgroundImageView.loadUsingCache(with: imageURL)
+//            self.imageView.loadUsingCache(with: imageURL)
+//        }
+//
+//        self.titleLabel.text = anime.title
+//        if anime.score != nil {
+//            self.scoreLabel.text = "Score \(anime.score!)"
+//        } else {
+//            self.scoreLabel.text = "No Score"
+//        }
+//
+//        self.membersLabel.text = "\(anime.members)"
+//        self.typeEpisodes.text = "\(anime.type?.rawValue ?? "") \(anime.episodes ?? 0)eps"
+//        self.dateReleased.text = "10/10/2020"
+//    }
+    
+    func fill(with viewModel: AnimeThumbnailViewModel, rank: String? = nil) {
+
+        self.backgroundImageView.loadUsingCache(with: viewModel.imageURL)
+        self.imageView.loadUsingCache(with: viewModel.imageURL)
         
-        self.titleLabel.text = anime.title
-        if anime.score != nil {
-            self.scoreLabel.text = "Score \(anime.score!)"
-        } else {
-            self.scoreLabel.text = "No Score"
-        }
-        
-        self.membersLabel.text = "\(anime.members)"
-        self.typeEpisodes.text = "\(anime.type?.rawValue ?? "") \(anime.episodes ?? 0)eps"
+        self.titleLabel.text = viewModel.title
+        self.scoreLabel.text = viewModel.score
+        self.membersLabel.text = viewModel.members
+        self.typeEpisodes.text = "\(viewModel.type)(\(viewModel.episode))"
         self.dateReleased.text = "10/10/2020"
-        
     }
 }
