@@ -9,5 +9,26 @@
 import Foundation
 
 protocol SearchAnimesUseCase {
-    func getAnimes(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
+    func getAnimes(page: Int, searchText: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
+}
+
+class DefaultSearchAnimesUseCase: SearchAnimesUseCase {
+    
+    private let animeWS: SearchAnimeWebService
+    
+    init(animeWebService: SearchAnimeWebService = DefaultAnimeWebService()) {
+        self.animeWS = animeWebService
+    }
+    
+    func getAnimes(page: Int, searchText: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void) {
+        
+        animeWS.fetchSearch(page: page, query: searchText) { (result) in
+            switch result {
+            case .success(let reponseDTO):
+                completion(.success(reponseDTO.toDomain()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
