@@ -10,7 +10,7 @@ import Foundation
 
 protocol GenreAnimesPageViewModel {
     var id: Int { get }
-    var animes: Observable<[AnimeThumbnailDTO]> { get }
+    var animes: Observable<[GenreAnimeMain.GenreAnime]> { get }
     
     var loading: Observable<LoadingStyle?> { get }
     
@@ -19,23 +19,26 @@ protocol GenreAnimesPageViewModel {
 
 class DefaultGenreAnimesPageViewModel: GenreAnimesPageViewModel {
     var id: Int
-    var animes: Observable<[AnimeThumbnailDTO]> = Observable([])
+    var animes: Observable<[GenreAnimeMain.GenreAnime]> = Observable([])
 
     var loading: Observable<LoadingStyle?> = Observable(.none)
     
-    private var animeWS: GenreAnimeWebService
     
-    init(id: Int, animeWebService: GenreAnimeWebService = DefaultAnimeWebService()) {
+    private let useCase: GenreAnimesUseCase
+    
+    init(id: Int,
+         animeUseCase: GenreAnimesUseCase = DefaultGenreAnimesUseCase()) {
         self.id = id
-        self.animeWS = animeWebService
+        self.useCase = animeUseCase
     }
     
     func loadAnimes(page: Int = 1) {
         loading.value = .fullscreen
-        animeWS.fetchGenre(id: self.id, page: page) { [weak self] (result) in
+        
+        useCase.getAnimes(id: self.id, page: page) { [weak self] (result) in
             switch result {
             case .success(let genreMain):
-                self?.animes.value.append(contentsOf: genreMain.anime)
+                self?.animes.value.append(contentsOf: genreMain.animes)
             case .failure(let error):
                 print("Error: \(error)")
             }

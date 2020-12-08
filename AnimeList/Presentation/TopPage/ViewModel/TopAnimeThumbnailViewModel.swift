@@ -12,42 +12,13 @@ protocol TopAnimeThumbnailViewModel: AnimeThumbnailViewModel {
     var rank: String { get }
 }
 
-struct DefaultTopAnimeThumbnailViewModel: TopAnimeThumbnailViewModel {
-    
-    var id: Int
-    
-    var imageURL: URL
+class DefaultTopAnimeThumbnailViewModel: DefaultAnimeThumbnailViewModel, TopAnimeThumbnailViewModel {
     
     var rank: String
-    var title: String
-    var score: String
-    var members: String
-    var type: String
-    var episode: String
-    
-    init(animeInfo: TopAnimeMain.TopAnime) {
-        self.id = animeInfo.malID
-        
-        if let urlPath = animeInfo.imageURL {
-            self.imageURL = urlPath
-        } else {
-            self.imageURL = URL(string: "")!
-        }
-        
-        self.rank = String(animeInfo.rank)
-        
-        self.title = animeInfo.title
-        
-        if animeInfo.score == 0 {
-            self.score = "-" }
-        else {
-            self.score = validateLabel(animeInfo.score) }
-        
-        self.members = validateLabel(animeInfo.members)
-        
-        self.type = validateLabel(animeInfo.type?.rawValue, return: .none)
-        
-        self.episode = validateLabel(animeInfo.episodes)
+   
+    init(animeThumbnail: TopAnimeThumbnail) {
+        self.rank = String(animeThumbnail.rank)
+        super.init(animeThumbnail: animeThumbnail)
     }
     
 }

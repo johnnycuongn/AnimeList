@@ -72,7 +72,9 @@ extension GenreAnimesViewController: UICollectionViewDataSource {
         
         let anime = viewModel.animes.value[indexPath.row]
         
-        cell.config(with: anime)
+        let viewModel: AnimeThumbnailViewModel = DefaultAnimeThumbnailViewModel(animeThumbnail: anime)
+        
+        cell.fill(with: viewModel)
         
         return cell
     }

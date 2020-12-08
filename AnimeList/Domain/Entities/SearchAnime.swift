@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchAnimeMain {
     
-    struct SearchAnime {
+    struct SearchAnime: AnimeThumbnail {
         var malID: Int
         var imageURL: URL?
         var title: String

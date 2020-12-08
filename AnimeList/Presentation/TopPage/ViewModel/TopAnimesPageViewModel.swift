@@ -105,7 +105,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     }
     
     func topAnimeThumbnailViewModel(for topAnime: TopAnimeMain.TopAnime) -> TopAnimeThumbnailViewModel {
-        let viewModel: TopAnimeThumbnailViewModel = DefaultTopAnimeThumbnailViewModel(animeInfo: topAnime)
+        let viewModel: TopAnimeThumbnailViewModel = DefaultTopAnimeThumbnailViewModel(animeThumbnail: topAnime)
         return viewModel
     }
 }

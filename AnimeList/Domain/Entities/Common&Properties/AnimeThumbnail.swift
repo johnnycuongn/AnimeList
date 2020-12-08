@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct AnimeThumbnail {
-    var malID: Int
-    var imageURL: URL?
-    var title: String
-    var type: AnimeType?
-    var episodes: Int?
-    var members: Int?
-    var score: Double?
+protocol AnimeThumbnail {
+    var malID: Int { get set }
+    var imageURL: URL? { get set }
+    var title: String { get set }
+    var type: AnimeType? { get set }
+    var episodes: Int? { get set }
+    var members: Int? { get set }
+    var score: Double? { get set }
+}
+
+protocol TopAnimeThumbnail: AnimeThumbnail {
+    var rank: Int { get set }
 }

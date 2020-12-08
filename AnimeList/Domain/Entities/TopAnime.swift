@@ -11,7 +11,7 @@ import Foundation
 
 struct TopAnimeMain {
     
-    struct TopAnime {
+    struct TopAnime: TopAnimeThumbnail {
         var rank: Int
         
         var malID: Int

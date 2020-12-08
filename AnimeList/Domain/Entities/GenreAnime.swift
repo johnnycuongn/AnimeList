@@ -10,7 +10,7 @@ import Foundation
 
 struct GenreAnimeMain {
     
-    struct GenreAnime {
+    struct GenreAnime: AnimeThumbnail {
         var malID: Int
         var imageURL: URL?
         var title: String
