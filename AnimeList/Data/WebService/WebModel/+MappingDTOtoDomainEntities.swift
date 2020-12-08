@@ -35,11 +35,9 @@ extension TopAnimeDTO {
     }
 }
 
-
-
-// MARK: AnimeThumbnailDTO
-extension AnimeThumbnailDTO {
-    func toDomain() -> AnimeThumbnail {
+// MARK: Search
+extension SearchAnimeDTO {
+    func toDomain() -> SearchAnimeMain.SearchAnime {
         
         let domainType = type?.toDomain()
         
@@ -47,7 +45,35 @@ extension AnimeThumbnailDTO {
     }
 }
 
+extension SearchAnimesResponseDTO {
+    func toDomain() -> SearchAnimeMain {
+        
+        let domainAnimes = self.results.map { $0.toDomain() }
+        
+        return .init(animes: domainAnimes, lastPage: lastPage)
+    }
+}
 
+// MARK: Genre
+extension GenreAnimeDTO {
+    func toDomain() -> GenreAnimeMain.GenreAnime {
+        
+        let domainType = type?.toDomain()
+        
+        return .init(malID: malID, imageURL: imageURL, title: title, type: domainType, episodes: episodes, members: members, score: score)
+    }
+}
+
+extension GenreAnimesResponseDTO {
+    func toDomain() -> GenreAnimeMain {
+        
+        let domainAnimes = anime.map {
+            $0.toDomain()
+        }
+        
+        return .init(name: malURL.name, animes: domainAnimes, animesCount: itemCount)
+    }
+}
 
 // MARK: AnimeDetailsDTO
 extension AnimeDetailsDTO {

@@ -8,8 +8,11 @@
 
 import Foundation
 
+class GenreAnimeDTO: AnimeThumbnailDTO {
+}
+
 class GenreAnimesResponseDTO: Decodable {
-    var anime: [AnimeThumbnailDTO]
+    var anime: [GenreAnimeDTO]
     var malURL: ShortDisplayDTO
     var itemCount: Int
     
@@ -22,7 +25,7 @@ class GenreAnimesResponseDTO: Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.anime = try container.decode([AnimeThumbnailDTO].self, forKey: .anime)
+        self.anime = try container.decode([GenreAnimeDTO].self, forKey: .anime)
         self.malURL = try container.decode(ShortDisplayDTO.self, forKey: .malURL)
         self.itemCount = try container.decode(Int.self, forKey: .itemCount)
     }
