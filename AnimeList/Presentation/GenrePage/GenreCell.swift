@@ -21,4 +21,8 @@ class GenreCell: UICollectionViewCell {
         self.genreLabel.text = "\(genre)"
     }
     
+    func config(for title: String) {
+        self.genreLabel.text = title
+    }
+    
 }
