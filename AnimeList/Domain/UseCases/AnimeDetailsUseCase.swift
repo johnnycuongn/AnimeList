@@ -15,11 +15,9 @@ protocol AnimeDetailsUseCase {
 class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
     
     private let animeWS: AnimeDetailsWebService
-    private let animeStorage: PersonalAnimeStorageCreateDelete
     
-    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService(), animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
+    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService()) {
         self.animeWS = animeWebService
-        self.animeStorage = animeStorage
     }
     
     func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void) {
