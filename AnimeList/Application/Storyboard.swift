@@ -10,7 +10,6 @@ import Foundation
 
 struct TabBarIndex {
     static let topViewController = 0
-    static let searchViewController = 1
+    static let discoverViewController = 1
     static let randomViewController = 2
-    static let personalViewController = 3
 }

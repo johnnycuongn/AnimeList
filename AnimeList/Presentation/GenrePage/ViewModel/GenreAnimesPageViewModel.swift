@@ -42,8 +42,10 @@ class DefaultGenreAnimesPageViewModel: GenreAnimesPageViewModel {
             case .failure(let error):
                 print("Error: \(error)")
             }
+
+            self?.loading.value = .none
         }
         
-        loading.value = .none
+        
     }
 }
