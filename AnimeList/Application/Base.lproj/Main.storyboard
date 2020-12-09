@@ -11,19 +11,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover Page View Controller-->
+        <!--Discover-->
         <scene sceneID="Ozq-vu-9W4">
             <objects>
                 <viewController id="Qvq-JU-vKY" customClass="DiscoverPageViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Quy-bT-nD1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-l1-qev">
                                 <rect key="frame" x="188.66666666666666" y="75" width="37" height="37"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y35-14-nJA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <color key="backgroundColor" name="main-background-color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LD0-QS-GFc">
                                     <size key="itemSize" width="128" height="128"/>
@@ -93,6 +93,7 @@
                             <constraint firstItem="Y35-14-nJA" firstAttribute="top" secondItem="3Xr-q9-FSv" secondAttribute="top" id="zCo-RA-o9i"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass" catalog="system" id="CQk-9p-i1J"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="efe-Fg-EgZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="Her-RJ-1Ni"/>
                     </navigationItem>
@@ -103,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVy-Md-MKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679.7101449275362" y="818.47826086956525"/>
+            <point key="canvasLocation" x="1122" y="450"/>
         </scene>
         <!--Seach Animes View Controller-->
         <scene sceneID="qFc-2a-L5b">
@@ -156,18 +157,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo0-YK-6Yz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145" y="-543"/>
+            <point key="canvasLocation" x="-1001" y="-545"/>
         </scene>
-        <!--Top View Controller-->
+        <!--Top-->
         <scene sceneID="pkn-iC-znQ">
             <objects>
                 <viewController id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXU-Rd-t6y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pFe-SD-Ly0">
-                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="327.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K3V-Fl-0W3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -212,7 +213,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pmg-Uz-1vT">
-                                <rect key="frame" x="0.0" y="50" width="414" height="686"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="642"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Fu-Q3-98M">
@@ -247,6 +248,7 @@
                             <constraint firstItem="pmg-Uz-1vT" firstAttribute="leading" secondItem="4fp-hV-Gs0" secondAttribute="leading" id="ive-0t-yhV"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Top" image="list.bullet.indent" catalog="system" id="ue5-on-4zf"/>
                     <navigationItem key="navigationItem" id="5YJ-ZR-yEe"/>
                     <connections>
                         <outlet property="activityIndicator" destination="pFe-SD-Ly0" id="7PN-zE-fAB"/>
@@ -262,7 +264,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1679.7101449275362" y="-15.489130434782609"/>
+            <point key="canvasLocation" x="1123" y="-333"/>
         </scene>
         <!--Genre Animes View Controller-->
         <scene sceneID="RAZ-CX-fpV">
@@ -316,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAS-kf-Oow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="819"/>
+            <point key="canvasLocation" x="2145" y="450"/>
         </scene>
         <!--Anime Details View Controller-->
         <scene sceneID="YkM-NL-HAI">
@@ -773,37 +775,14 @@
                     </tabBar>
                     <connections>
                         <outlet property="searchBarButton" destination="w11-6h-hgO" id="NGg-4x-UoM"/>
-                        <segue destination="Xd1-VC-6ak" kind="relationship" relationship="viewControllers" id="joR-KB-j2e"/>
-                        <segue destination="ccW-u5-Dpo" kind="relationship" relationship="viewControllers" id="bj3-eo-0L6"/>
+                        <segue destination="t5b-Nb-KFA" kind="relationship" relationship="viewControllers" id="hUi-d4-X73"/>
+                        <segue destination="Qvq-JU-vKY" kind="relationship" relationship="viewControllers" id="LUp-PT-HD8"/>
                         <segue destination="xIA-KP-nvG" kind="relationship" relationship="viewControllers" id="2Eb-eN-Mw4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrO-oM-vhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-144" y="238"/>
-        </scene>
-        <!--Discover-->
-        <scene sceneID="LhI-Jz-TZt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ccW-u5-Dpo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass" catalog="system" id="oEd-do-9Oq"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="hLu-fI-MqH">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="tab-bar-color"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VUA-mr-hkO">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="Qvq-JU-vKY" kind="relationship" relationship="rootViewController" id="Jaq-YA-GLy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WGM-5j-dJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="774" y="820"/>
         </scene>
         <!--Saved Animes-->
         <scene sceneID="UO0-uM-dOe">
@@ -869,7 +848,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -925,14 +904,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoP-qu-pbL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-146" y="1013"/>
+            <point key="canvasLocation" x="-145" y="-545"/>
         </scene>
         <!--Random-->
         <scene sceneID="Hah-Zc-hXV">
             <objects>
                 <viewController id="xIA-KP-nvG" customClass="RandomViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kLp-SQ-mYN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9u-vG-cyc">
@@ -1241,33 +1220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMo-GF-MW1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="-737.77173913043487"/>
-        </scene>
-        <!--Anime-->
-        <scene sceneID="Y1a-b0-WnI">
-            <objects>
-                <navigationController title="Anime" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Xd1-VC-6ak" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top" image="list.bullet.indent" catalog="system" id="2z6-Gc-qFv"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="doN-nD-Btf">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="tab-bar-color"/>
-                        <textAttributes key="titleTextAttributes">
-                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GX6-FO-wgz">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="t5b-Nb-KFA" kind="relationship" relationship="rootViewController" id="QHS-tq-GJU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lbb-U1-U2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="774" y="-15"/>
+            <point key="canvasLocation" x="1122" y="1321"/>
         </scene>
     </scenes>
     <resources>
