@@ -88,12 +88,10 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
-    private var animeWS: AnimeDetailsWebService
-    private let animeStorage: PersonalAnimeStorageCreateDelete
+    private let animeUseCase: AnimeDetailsUseCase
     
-    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService(), animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
-        self.animeWS = animeWebService
-        self.animeStorage = animeStorage
+    init(animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase()) {
+        self.animeUseCase = animeUseCase
     }
     
     func loadAnime() {
@@ -102,7 +100,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
         RecommendService.shared.recommendID { (id) in
             self.loadingStyle.value = .fullscreen
     
-            self.animeWS.fetchAnimeDetails(id: id) { [weak self] (result) in
+            self.animeUseCase.getAnime(id: id) { [weak self] (result) in
                 switch result {
                 case .success(let animeInfo):
                 guard let strongSelf = self else { return }
@@ -120,7 +118,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
                     strongSelf.animeViewModel.value.score = validateLabel(animeInfo.score)
                     strongSelf.animeViewModel.value.members = validateLabel( animeInfo.members)
 
-                    strongSelf.animeViewModel.value.studios = validateLabel(animeInfo.studios[0].name)
+                    strongSelf.animeViewModel.value.studios = validateLabel(animeInfo.studios[0])
 
                     strongSelf.animeViewModel.value.type = validateLabel(animeInfo.type?.rawValue)
                     strongSelf.animeViewModel.value.episodes = validateLabel(animeInfo.episodes)
@@ -138,31 +136,28 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
                 self?.loadingStyle.value = .none
             }
         }
-        self.isIDExist(self.id)
         
-        
+        self.loadSave(id: self.id)
     }
     
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            if animeViewModel.value.animeImageData.value == nil  {
-                animeStorage.add(id: self.id,
-                                 imageData: nil,
-                                         title: animeViewModel.value.title,
-                                         date: Date())
+            animeUseCase.addToStorage(
+                id: self.id,
+                imageData: animeViewModel.value.animeImageData.value,
+                title: animeViewModel.value.title,
+                date: Date()) { [weak self] in
+                
+                self?.isAnimeSaved.value = true
+                
+                print("ViewModel: Anime is saved!!!")
+                
             }
-            else {
-                animeStorage.add(id: self.id,
-                                 imageData: animeViewModel.value.animeImageData.value!,
-                                         title: animeViewModel.value.title,
-                                         date: Date())
-            }
-            isAnimeSaved.value = true
         }
         else {
-            animeStorage.remove(id: self.id) {
-                self.isAnimeSaved.value = false
+            animeUseCase.removeFromStorage(id: id) { [weak self] in
+                self?.isAnimeSaved.value = false
             }
         }
     }
@@ -180,13 +175,17 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
         }.resume()
     }
     
-    private func isIDExist(_ id: Int) {
-        animeStorage.isIDExist(id) {[weak self] isExisted in
+    private func loadSave(id: Int) {
+        animeUseCase.loadSave(id: id) {
+        
+        [weak self] isExisted in
+            
             if isExisted {
                 self?.isAnimeSaved.value = true
             } else {
                 self?.isAnimeSaved.value = false
             }
+
         }
     }
     
