@@ -89,9 +89,9 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
     private let animeUseCase: AnimeDetailsUseCase
-    private let saveUseCase: SavingAnimeUseCase
+    private let saveUseCase: SaveOfflineUseCase
     
-    init(animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SavingAnimeUseCase = DefaultSavingAnimeUseCase()) {
+    init(animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SaveOfflineUseCase = DefaultSaveOfflineUseCase()) {
         self.animeUseCase = animeUseCase
         self.saveUseCase = saveUseCase
     }

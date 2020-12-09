@@ -36,10 +36,10 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     
     private let animeUseCase: AnimeDetailsUseCase
     
-    private let saveUseCase: SavingAnimeUseCase
+    private let saveUseCase: SaveOfflineUseCase
     
     init(animeID: Int,
-         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SavingAnimeUseCase = DefaultSavingAnimeUseCase()) {
+         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SaveOfflineUseCase = DefaultSaveOfflineUseCase()) {
         self.id = animeID
         
         self.animeUseCase = animeUseCase

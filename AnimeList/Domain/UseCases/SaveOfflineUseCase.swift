@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol SavingAnimeUseCase {
+protocol SaveOfflineUseCase {
     func loadSave(id: Int, completion: @escaping (Bool) -> Void)
     
     func addToStorage(id: Int, imageData: Data?, title: String, date: Date, completion: @escaping () -> Void)
     func removeFromStorage(id: Int, completion: @escaping () -> Void)
 }
 
-class DefaultSavingAnimeUseCase: SavingAnimeUseCase {
+class DefaultSaveOfflineUseCase: SaveOfflineUseCase {
     private let animeStorage: PersonalAnimeStorageCreateDelete
     
     init(animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
