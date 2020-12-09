@@ -89,9 +89,11 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
     private let animeUseCase: AnimeDetailsUseCase
+    private let saveUseCase: SavingAnimeUseCase
     
-    init(animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase()) {
+    init(animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SavingAnimeUseCase = DefaultSavingAnimeUseCase()) {
         self.animeUseCase = animeUseCase
+        self.saveUseCase = saveUseCase
     }
     
     func loadAnime() {
@@ -143,7 +145,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            animeUseCase.addToStorage(
+            saveUseCase.addToStorage(
                 id: self.id,
                 imageData: animeViewModel.value.animeImageData.value,
                 title: animeViewModel.value.title,
@@ -156,7 +158,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
             }
         }
         else {
-            animeUseCase.removeFromStorage(id: id) { [weak self] in
+            saveUseCase.removeFromStorage(id: id) { [weak self] in
                 self?.isAnimeSaved.value = false
             }
         }
@@ -176,7 +178,7 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     }
     
     private func loadSave(id: Int) {
-        animeUseCase.loadSave(id: id) {
+        saveUseCase.loadSave(id: id) {
         
         [weak self] isExisted in
             

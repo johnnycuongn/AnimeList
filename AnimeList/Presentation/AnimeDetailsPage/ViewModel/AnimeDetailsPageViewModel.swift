@@ -36,10 +36,14 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     
     private let animeUseCase: AnimeDetailsUseCase
     
+    private let saveUseCase: SavingAnimeUseCase
+    
     init(animeID: Int,
-         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase()) {
+         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SavingAnimeUseCase = DefaultSavingAnimeUseCase()) {
         self.id = animeID
+        
         self.animeUseCase = animeUseCase
+        self.saveUseCase = saveUseCase
     }
     
     func loadAnime(id: Int) {
@@ -90,7 +94,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     }
     
     private func loadSave(id: Int) {
-        animeUseCase.loadSave(id: id) {
+        saveUseCase.loadSave(id: id) {
         
         [weak self] isExisted in
             
@@ -119,7 +123,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            animeUseCase.addToStorage(
+            saveUseCase.addToStorage(
                 id: self.id,
                 imageData: animeDetailsViewModel.value.posterImageData.value,
                 title: animeDetailsViewModel.value.title,
@@ -132,7 +136,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
             }
         }
         else {
-            animeUseCase.removeFromStorage(id: id) { [weak self] in
+            saveUseCase.removeFromStorage(id: id) { [weak self] in
                 self?.isAnimeSaved.value = false
             }
         }

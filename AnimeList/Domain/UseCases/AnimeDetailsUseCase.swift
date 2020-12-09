@@ -10,11 +10,6 @@ import Foundation
 
 protocol AnimeDetailsUseCase {
     func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void)
-    
-    func loadSave(id: Int, completion: @escaping (Bool) -> Void)
-    
-    func addToStorage(id: Int, imageData: Data?, title: String, date: Date, completion: @escaping () -> Void)
-    func removeFromStorage(id: Int, completion: @escaping () -> Void)
 }
 
 class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
@@ -28,6 +23,7 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
     }
     
     func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void) {
+        
         animeWS.fetchAnimeDetails(id: id) { (result) in
             switch result {
             case .success(let responseDTO):
@@ -36,33 +32,7 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
                 completion(.failure(error))
             }
         }
+        
     }
     
-    func addToStorage(id: Int, imageData: Data?, title: String, date: Date, completion: @escaping () -> Void) {
-        if imageData == nil  {
-            animeStorage.add(id: id,
-                             imageData: nil,
-                             title: title,
-                             date: date)
-        }
-        else {
-            animeStorage.add(id: id,
-                             imageData: imageData!,
-                             title: title,
-                             date: date)
-        }
-        completion()
-    }
-    
-    func removeFromStorage(id: Int, completion: @escaping () -> Void) {
-        animeStorage.remove(id: id) {
-            completion()
-        }
-    }
-    
-    func loadSave(id: Int, completion: @escaping (Bool) -> Void) {
-        animeStorage.isIDExist(id) { (isExisted) in
-            completion(isExisted)
-        }
-    }
 }

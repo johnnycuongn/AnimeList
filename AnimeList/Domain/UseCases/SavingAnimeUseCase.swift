@@ -18,7 +18,7 @@ protocol SavingAnimeUseCase {
 class DefaultSavingAnimeUseCase: SavingAnimeUseCase {
     private let animeStorage: PersonalAnimeStorageCreateDelete
     
-    init(animeStorage: PersonalAnimeStorageCreateDelete) {
+    init(animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
         self.animeStorage = animeStorage
     }
     
