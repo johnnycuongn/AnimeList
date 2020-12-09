@@ -182,7 +182,7 @@ extension AnimeDetailsViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnimeGenreCollectionViewCell.identifier, for: indexPath) as! AnimeGenreCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreDisplayCollectionViewCell.identifier, for: indexPath) as! GenreDisplayCollectionViewCell
         
 
         cell.configure(with: viewModel.animeDetailsViewModel.value.genres[indexPath.row].name)

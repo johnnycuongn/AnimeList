@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AnimeGenreCollectionViewCell: UICollectionViewCell {
+class GenreDisplayCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = String(describing: AnimeGenreCollectionViewCell.self)
+    static let identifier = String(describing: GenreDisplayCollectionViewCell.self)
     
     @IBOutlet weak var genreLabel: UILabel!
     
