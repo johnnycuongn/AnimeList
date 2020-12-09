@@ -13,7 +13,7 @@ protocol AnimeDetailsWebService {
 }
 
 protocol TopAnimeWebService {
-    func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void)
+    func fetchTop(page: Int, subtype: AnimeTopSubtypeRequest, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void)
     var topItemsLoadPerPage: Int { get }
 }
 
@@ -75,7 +75,7 @@ class DefaultAnimeWebService: AnimeWebService {
     // MARK: TOP ANIMES
     var topItemsLoadPerPage: Int = 50
     
-    func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void) {
+    func fetchTop(page: Int, subtype: AnimeTopSubtypeRequest, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void) {
         
         let endpointURL = apiPath.top(at: page, subtype: subtype)
         print("Top Fetch URL: \(endpointURL)")

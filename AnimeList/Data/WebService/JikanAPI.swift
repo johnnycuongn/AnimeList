@@ -9,23 +9,23 @@
 import Foundation
 
 protocol APIPath {
-    func top(at page: Int, subtype: AnimeTopSubtype) -> URL
+    func top(at page: Int, subtype: AnimeTopSubtypeRequest) -> URL
     func anime(id: Int) -> URL
     func search(page: Int, text: String) -> URL
     func genre(id: Int, page: Int) -> URL
 }
 
 // MARK: TopSubtype
-enum AnimeTopSubtype: String {
-    case bydefault = "Rating"
-    case bypopularity = "Popularity"
-    case favorite = "Favorite"
-    case airing = "Airing"
-    case upcoming = "Upcoming"
-    case tv = "TV"
-    case movie = "Movie"
-    case ova = "OVA"
-    case special = "Special"
+enum AnimeTopSubtypeRequest {
+    case bydefault
+    case bypopularity
+    case favorite
+    case airing
+    case upcoming
+    case tv
+    case movie
+    case ova
+    case special
 }
 
 // MARK: Search
@@ -57,7 +57,7 @@ class JikanAnimeAPI {
 }
 
 extension JikanAnimeAPI: APIPath {
-    func top(at page: Int = 1, subtype: AnimeTopSubtype) -> URL {
+    func top(at page: Int = 1, subtype: AnimeTopSubtypeRequest) -> URL {
         var fetchURL = top.appendingPathComponent(String(page))
         
         switch subtype {

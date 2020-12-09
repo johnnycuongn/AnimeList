@@ -29,7 +29,7 @@ class RecommendService {
         let subtype: AnimeTopSubtype = subtypes[Int.random(in: 0..<subtypes.count)]
         
         let animeWS: AnimeWebService = DefaultAnimeWebService()
-        animeWS.fetchTop(page: page, subtype: subtype) { (result) in
+        animeWS.fetchTop(page: page, subtype: subtype.toDTO()) { (result) in
             switch result {
             case .success(let topAnimes):
                 id = topAnimes[Int.random(in: 0..<50)].malID

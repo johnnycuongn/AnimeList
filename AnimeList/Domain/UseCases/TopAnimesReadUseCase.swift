@@ -22,7 +22,7 @@ class DefaultTopAnimesReadUseCase: TopAnimesReadUseCase {
     
     func getAnimes(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void) {
         
-        animeWS.fetchTop(page: page, subtype: subtype) { (result) in
+        animeWS.fetchTop(page: page, subtype: subtype.toDTO()) { (result) in
             switch result {
             case .success(let topAnimesDTO):
                 completion(
