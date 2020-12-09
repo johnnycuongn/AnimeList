@@ -84,6 +84,7 @@
 		40EEEDE3257E45FD009DF86F /* AnimeDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDE2257E45FD009DF86F /* AnimeDetailsUseCase.swift */; };
 		40EEEDE7257E4772009DF86F /* SearchAnime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDE6257E4772009DF86F /* SearchAnime.swift */; };
 		40EEEDED257E4780009DF86F /* GenreAnime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDEC257E477F009DF86F /* GenreAnime.swift */; };
+		40EEEDF92580859A009DF86F /* SavingAnimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDF82580859A009DF86F /* SavingAnimeUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		40EEEDE2257E45FD009DF86F /* AnimeDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailsUseCase.swift; sourceTree = "<group>"; };
 		40EEEDE6257E4772009DF86F /* SearchAnime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnime.swift; sourceTree = "<group>"; };
 		40EEEDEC257E477F009DF86F /* GenreAnime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnime.swift; sourceTree = "<group>"; };
+		40EEEDF82580859A009DF86F /* SavingAnimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAnimeUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -641,6 +643,7 @@
 				40EEEDDA257E45C8009DF86F /* SearchAnimesUseCase.swift */,
 				40EEEDDE257E45E6009DF86F /* GenreAnimesUseCase.swift */,
 				40EEEDE2257E45FD009DF86F /* AnimeDetailsUseCase.swift */,
+				40EEEDF82580859A009DF86F /* SavingAnimeUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				4079A65A250F864B001A9D3B /* +TopAnimeCollectionDelegate(TopViewController).swift in Sources */,
 				400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */,
 				407A5F5A257214DA00533052 /* TopAnimesPageViewModel.swift in Sources */,
+				40EEEDF92580859A009DF86F /* SavingAnimeUseCase.swift in Sources */,
 				40EEEDED257E4780009DF86F /* GenreAnime.swift in Sources */,
 				407A5F612572294400533052 /* TopAnimeThumbnailViewModel.swift in Sources */,
 				4079A64A250E5846001A9D3B /* HTTPValidation.swift in Sources */,
