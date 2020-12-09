@@ -13,7 +13,8 @@ protocol AnimeDetailsUseCase {
     
     func loadSave(id: Int, completion: @escaping (Bool) -> Void)
     
-    func updateSave(id: Int, updatedValue: @escaping (Bool) -> Void)
+    func addToStorage(id: Int, imageData: Data?, title: String, date: Date, completion: @escaping () -> Void)
+    func removeFromStorage(id: Int, completion: @escaping () -> Void)
 }
 
 class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
@@ -37,8 +38,25 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
         }
     }
     
-    func updateSave(id: Int, updatedValue: @escaping (Bool) -> Void) {
-        
+    func addToStorage(id: Int, imageData: Data?, title: String, date: Date, completion: @escaping () -> Void) {
+        if imageData == nil  {
+            animeStorage.add(id: id,
+                             imageData: nil,
+                             title: title,
+                             date: date)
+        }
+        else {
+            animeStorage.add(id: id,
+                             imageData: imageData!,
+                             title: title,
+                             date: date)
+        }
+    }
+    
+    func removeFromStorage(id: Int, completion: @escaping () -> Void) {
+        animeStorage.remove(id: id) {
+            completion()
+        }
     }
     
     func loadSave(id: Int, completion: @escaping (Bool) -> Void) {

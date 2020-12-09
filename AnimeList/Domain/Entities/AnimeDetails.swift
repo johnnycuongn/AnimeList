@@ -32,4 +32,7 @@ struct AnimeDetails {
     var premieredDate: String?
     var rating: String?
     var status: String?
+    
+    var studios: [String]
+    var genres: [GenreDisplayDTO]
 }

@@ -34,20 +34,19 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
     
-    let animeWS: AnimeDetailsWebService = DefaultAnimeWebService()
-    let animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()
+    private let animeUseCase: AnimeDetailsUseCase
     
     init(animeID: Int,
-         animeWebService: AnimeDetailsWebService = DefaultAnimeWebService(),
-         animeStorage: PersonalAnimeStorageCreateDelete = PersonalAnimeCoreDataStorage()) {
+         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase()) {
         self.id = animeID
+        self.animeUseCase = animeUseCase
     }
     
     func loadAnime(id: Int) {
         loadingStyle.value = .fullscreen
         
         
-        animeWS.fetchAnimeDetails(id: self.id) {
+        animeUseCase.getAnime(id: id) {
         
         [weak self] (result) in
             print("AnimeDetailsPageViewModel: Anime Did Fetch - \(id)")
@@ -63,7 +62,8 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
             self?.animeDetailsViewModel.value.favorites = validateLabel(animeInfo.favorites)
 
             // FIXME: Should have multiple studios
-            self?.animeDetailsViewModel.value.studio = validateLabel(animeInfo.studios[0].name)
+            self?.animeDetailsViewModel.value.studio =
+                validateLabel(animeInfo.studios[0])
 
                 self?.animeDetailsViewModel.value.type = validateLabel(animeInfo.type?.rawValue)
             self?.animeDetailsViewModel.value.episodes = validateLabel(animeInfo.episodes)
@@ -78,7 +78,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
 
             self?.animeDetailsViewModel.value.synopsis = validateLabel(animeInfo.synopsis)
 
-            self?.animeDetailsViewModel.value.genres = animeInfo.genres
+                self?.animeDetailsViewModel.value.genres = animeInfo.genres
             
         self?.loadingStyle.value = .none
             case.failure(let error):
@@ -90,7 +90,7 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     }
     
     private func loadSave(id: Int) {
-        animeStorage.isIDExist(id) {
+        animeUseCase.loadSave(id: id) {
         
         [weak self] isExisted in
             
@@ -119,24 +119,21 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     func updateSave() {
         // If not saved, User want to add to DBs
         if isAnimeSaved.value == false {
-            if animeDetailsViewModel.value.posterImageData.value == nil  {
-                animeStorage.add(id: self.id,
-                                 imageData: nil,
-                                         title: animeDetailsViewModel.value.title,
-                                         date: Date())
+            animeUseCase.addToStorage(
+                id: self.id,
+                imageData: animeDetailsViewModel.value.posterImageData.value,
+                title: animeDetailsViewModel.value.title,
+                date: Date()) { [weak self] in
+                
+                self?.isAnimeSaved.value = true
+                
             }
-            else {
-                animeStorage.add(id: self.id,
-                                 imageData:  animeDetailsViewModel.value.posterImageData.value!,
-                                         title: animeDetailsViewModel.value.title,
-                                         date: Date())
-            }
-            isAnimeSaved.value = true
+            
             print("Viewmdel: Anime is saved!!!")
         }
         else {
-            animeStorage.remove(id: self.id) {
-                self.isAnimeSaved.value = false
+            animeUseCase.removeFromStorage(id: id) { [weak self] in
+                self?.isAnimeSaved.value = false
             }
         }
     }

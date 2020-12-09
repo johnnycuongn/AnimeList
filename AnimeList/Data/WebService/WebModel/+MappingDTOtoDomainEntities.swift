@@ -81,7 +81,7 @@ extension AnimeDetailsDTO {
         
         let domainType = type?.toDomain()
         
-        return .init(malID: malID, url: url, imageURL: imageURL, trailerURL: trailerURL, title: title, titleEnglish: titleEnglish, synopsis: synopsis, type: domainType, episodes: episodes, score: score, scoredBy: scoredBy, members: members, rank: rank, popularity: popularity, favorites: favorites, premieredDate: premieredDate, rating: rating, status: status)
+        return .init(malID: malID, url: url, imageURL: imageURL, trailerURL: trailerURL, title: title, titleEnglish: titleEnglish, synopsis: synopsis, type: domainType, episodes: episodes, score: score, scoredBy: scoredBy, members: members, rank: rank, popularity: popularity, favorites: favorites, premieredDate: premieredDate, rating: rating, status: status, studios: studios.map{$0.name}, genres: genres)
     }
 }
 
