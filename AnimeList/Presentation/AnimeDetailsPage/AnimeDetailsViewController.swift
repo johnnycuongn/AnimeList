@@ -133,12 +133,15 @@ class AnimeDetailsViewController: UIViewController {
     }
     
     private func updateSaveButton(_ isAnimeSaved: Bool) {
-        if isAnimeSaved == true {
-            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        DispatchQueue.main.async {
+            if isAnimeSaved == true {
+                self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            }
+            else {
+                self.saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            }
         }
-        else {
-            self.saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        }
+        
     }
     
     private func updateLoading(_ loadingStyle: LoadingStyle?) {

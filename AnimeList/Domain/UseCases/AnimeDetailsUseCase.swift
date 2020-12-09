@@ -51,6 +51,7 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
                              title: title,
                              date: date)
         }
+        completion()
     }
     
     func removeFromStorage(id: Int, completion: @escaping () -> Void) {

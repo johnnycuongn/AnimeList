@@ -127,9 +127,9 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
                 
                 self?.isAnimeSaved.value = true
                 
+                print("ViewModel: Anime is saved!!!")
+                
             }
-            
-            print("Viewmdel: Anime is saved!!!")
         }
         else {
             animeUseCase.removeFromStorage(id: id) { [weak self] in
