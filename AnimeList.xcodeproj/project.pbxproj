@@ -432,7 +432,6 @@
 				406C2B6E2510D59400C8740E /* SearchAnimeDTO.swift */,
 				4050C7B12542E2B200A480CF /* GenreAnimeDTO.swift */,
 				4079A63B250E3723001A9D3B /* AnimeDetailsDTO.swift */,
-				40EEEDAE257E1D63009DF86F /* +MappingDTOtoDomainEntities.swift */,
 			);
 			path = WebModel;
 			sourceTree = "<group>";
@@ -597,6 +596,7 @@
 		40EEED3C257A0772009DF86F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEDFE2580B475009DF86F /* MappingFromDTO */,
 				40EEEDC6257E2037009DF86F /* Common&Properties */,
 				40EEED3D257A0780009DF86F /* TopAnime.swift */,
 				40EEEDE6257E4772009DF86F /* SearchAnime.swift */,
@@ -610,8 +610,8 @@
 			isa = PBXGroup;
 			children = (
 				4079A63D250E3B9A001A9D3B /* EpisodeDTO.swift */,
-				400B138625519EE2001AE01A /* Genre&StudioDTO.swift */,
 				4082B6512552888800DC14A2 /* ShortDisplayDTO.swift */,
+				400B138625519EE2001AE01A /* Genre&StudioDTO.swift */,
 			);
 			path = ShortDisplayDTOs;
 			sourceTree = "<group>";
@@ -646,6 +646,14 @@
 				40EEEDF82580859A009DF86F /* SaveOfflineUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		40EEEDFE2580B475009DF86F /* MappingFromDTO */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEDAE257E1D63009DF86F /* +MappingDTOtoDomainEntities.swift */,
+			);
+			path = MappingFromDTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
