@@ -107,7 +107,7 @@ class DefaultAnimeWebService: AnimeWebService {
     
     // MARK: SEARCH ANIMES
     func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void) {
-        let endpointURL = apiPath.search(page: page, text: query)
+        let endpointURL = apiPath.search(page: page, query: query)
         print("Search Fetch URL: \(endpointURL)")
         
         networkManager.request(url: endpointURL) { (data,error) in

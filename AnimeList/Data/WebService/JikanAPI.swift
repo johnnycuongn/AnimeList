@@ -8,14 +8,15 @@
 
 import Foundation
 
+// MARK: <<APIPath>>
 protocol APIPath {
     func top(at page: Int, subtype: AnimeTopSubtypeRequest) -> URL
     func anime(id: Int) -> URL
-    func search(page: Int, text: String) -> URL
+    func search(page: Int, query: String) -> URL
     func genre(id: Int, page: Int) -> URL
 }
 
-// MARK: TopSubtype
+// MARK: TopSubtypeRequest
 enum AnimeTopSubtypeRequest {
     case bydefault
     case bypopularity
@@ -28,7 +29,7 @@ enum AnimeTopSubtypeRequest {
     case special
 }
 
-// MARK: Search
+// MARK: SearchParameter
 enum SearchParameter: String {
     case q
     case page
@@ -39,6 +40,7 @@ enum SearchParameter: String {
     case letter
 }
 
+// MARK: - JikanAPI
 class JikanAnimeAPI {
 
     private let path: String = "https://api.jikan.moe/v3"
@@ -57,6 +59,7 @@ class JikanAnimeAPI {
 }
 
 extension JikanAnimeAPI: APIPath {
+    // MARK: TOP
     func top(at page: Int = 1, subtype: AnimeTopSubtypeRequest) -> URL {
         var fetchURL = top.appendingPathComponent(String(page))
         
@@ -73,37 +76,40 @@ extension JikanAnimeAPI: APIPath {
         return fetchURL
     }
     
+    // MARK: ANIME
     func anime(id: Int) -> URL {
         let fetchURL = anime.appendingPathComponent(String(id))
         
         return fetchURL
     }
     
-    func search(page: Int, text: String) -> URL {
-        let query: [SearchParameter: String]
+    // MARK: SEARCH
+    func search(page: Int, query: String) -> URL {
+        let endQuery: [SearchParameter: String]
         
-        guard text.count != 0 else { return search }
+        guard query.count != 0 else { return search }
         
-        if text.count == 1 {
-            query = [
+        if query.count == 1 {
+            endQuery = [
                 .page: String(page),
-                .letter: text,
+                .letter: query,
                 .orderBy: "members"
             ]
         }
         else {
-            query = [
-                .q : text,
+            endQuery = [
+                .q : query,
                 .page: String(page)
                 
             ]
         }
         
-        let fetchURL = search.searchWithQueries(query)!
+        let fetchURL = search.searchWithQueries(endQuery)!
         
         return fetchURL
     }
     
+    // MARK: GENRE
     func genre(id: Int, page: Int = 1) -> URL {
         return genre
             .appendingPathComponent(String(id))
