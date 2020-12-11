@@ -22,6 +22,8 @@ struct TopAnimeMain {
         var members: Int?
         var score: Double?
     }
+    
+    static var topItemsLoadPerPage = 50
 
     
     var animes: [TopAnime]

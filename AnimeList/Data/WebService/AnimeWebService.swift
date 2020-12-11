@@ -15,9 +15,6 @@ protocol AnimeDetailsWebService {
 protocol TopAnimeWebService {
     func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void)
 }
-extension TopAnimeWebService {
-    var topItemsLoadPerPage: Int { return 50 }
-}
 
 protocol SearchAnimeWebService {
     func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void)

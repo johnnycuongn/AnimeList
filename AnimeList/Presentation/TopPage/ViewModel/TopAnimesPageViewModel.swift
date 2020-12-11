@@ -34,7 +34,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     var currentSubtype: AnimeTopSubtype = .bydefault
     
     var didLoadedPages: Int {
-        return topAnimes.value.count / 50
+        return topAnimes.value.count / TopAnimeMain.topItemsLoadPerPage
     }
     
     var loadingStyle: Observable<LoadingStyle?> = Observable(.none)
