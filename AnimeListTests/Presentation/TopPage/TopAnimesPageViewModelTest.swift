@@ -9,27 +9,109 @@
 import XCTest
 @testable import AnimeList
 
-class TopAnimeWebServiceMock: TopAnimeWebService {
-    func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void) {
-    }
-    
-    var topItemsLoadPerPage: Int = 50
-}
 
 class TopAnimesPageViewModelTest: XCTestCase {
     
     var sut: TopAnimesPageViewModel!
-    var topAnimeWebService: TopAnimeWebService = TopAnimeWebServiceMock()
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = DefaultTopAnimesPageViewModel(animeWebSerivce: topAnimeWebService)
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    var topAnimes: [TopAnimeMain.TopAnime] = {
+        let anime1 = TopAnimeMain.TopAnime(rank: 1, malID: 1, imageURL: nil, title: "anime1", type: .movie, episodes: 1, members: 1, score: 1)
+            
+        
+            return [anime1, anime1, anime1, anime1, anime1, anime1, anime1, anime1, anime1]
+    }()
+    
+    var topAnimesSecondPage: [TopAnimeMain.TopAnime] = {
+        let anime2 = TopAnimeMain.TopAnime(rank: 2, malID: 2, imageURL: nil, title: "anime1", type: .movie, episodes: 2, members: 2, score: 2)
+            
+        
+            return [anime2, anime2, anime2, anime2, anime2, anime2, anime2, anime2, anime2]
+    }()
+    
+    private enum TopAnimesUseCaseError: Error {
+        case someError
     }
     
+    class TopAnimesUseCaseMock: TopAnimesReadUseCase {
+        
+        var expectation: XCTestExpectation?
+        
+        var error: Error?
+        var topAnimes: [TopAnimeMain.TopAnime] = []
+        
+        init(expectation: XCTestExpectation?, fetchedTopAnimes: [TopAnimeMain.TopAnime], error: Error?) {
+            self.expectation = expectation
+            self.topAnimes = fetchedTopAnimes
+            self.error = error
+        }
+        
+        func getAnimes(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void) {
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                if page == 1 {
+                    completion(.success(topAnimes))
+                } else {
+                    completion(.success(topAnimesSecondPage))
+                }
+            }
+            expectation?.fulfill()
+        }
+    }
     
+    func test_whenGetAnimesFromUseCase_thenLoadAnimesWithoutError() {
+        
+        // given
+        let topAnimesUseCase = TopAnimesUseCaseMock(
+            expectation: self.expectation(description: "Successfully load animes from Use Case"),
+            fetchedTopAnimes: topAnimes,
+            error: nil)
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        
+        // when
+        sut.loadAnimes(page: 1, subtype: .movie)
+        
+        // then
+        waitForExpectations(timeout: 4, handler: nil)
+        XCTAssertTrue(!sut.topAnimes.value.isEmpty)
+        XCTAssertNil(sut.error.value)
+        
+    }
+    
+    func test_whenSubtypeIsSelected_thenViewModelCurrentSubtypeUpdate() {
+        // given
+        let topAnimesUseCase = TopAnimesUseCaseMock(
+            expectation: self.expectation(description: "Successfully load animes from Use Case"),
+            fetchedTopAnimes: topAnimes,
+            error: nil)
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        
+        // when
+        sut.didSelect(subtype: .airing)
+        
+        // then
+        waitForExpectations(timeout: 4, handler: nil)
+        XCTAssertEqual(sut.currentSubtype, .airing)
+    }
+    
+    func test_whenErrorIsInvoked_thenViewModelErrorUpdate() {
+        // given
+        let topAnimesUseCase = TopAnimesUseCaseMock(
+            expectation: self.expectation(description: "Failed to load animes from Use Case"),
+            fetchedTopAnimes: [],
+            error: TopAnimesUseCaseError.someError)
+        
+        sut =  DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        // when
+        sut.loadAnimes(page: 1, subtype: .bydefault)
+        
+        // then
+        waitForExpectations(timeout: 4, handler: nil)
+        XCTAssertNotNil(sut.error)
+    }
+    
+
 
 }

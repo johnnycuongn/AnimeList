@@ -15,7 +15,7 @@ class TopAnimeThumbnailViewModelMock: TopAnimeThumbnailViewModel {
     
     var id: Int
 
-    var imageURL: URL
+    var imageURL: URL?
     
     var title: String
     var score: String
