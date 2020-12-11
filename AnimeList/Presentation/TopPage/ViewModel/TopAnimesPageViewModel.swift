@@ -55,11 +55,11 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         loadingStyle.value = .fullscreen
         
         animeUseCase.getAnimes(page: page, subtype: subtype) { [weak self] (result) in
-            guard let strongSelf = self else { return }
             switch result {
+            
             case .success(let topAnimes):
-                self?.topAnimes.value.append(contentsOf: topAnimes.map({
-                    strongSelf.topAnimeThumbnailViewModel(for: $0)
+                self?.topAnimes.value.append(contentsOf: topAnimes.compactMap({
+                    DefaultTopAnimeThumbnailViewModel.init(animeThumbnail: $0)
                 }))
                 
                 
@@ -101,10 +101,5 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         
         self.currentSubtype = subtype
         loadAnimes(subtype: currentSubtype)
-    }
-    
-    func topAnimeThumbnailViewModel(for topAnime: TopAnimeMain.TopAnime) -> TopAnimeThumbnailViewModel {
-        let viewModel: TopAnimeThumbnailViewModel = DefaultTopAnimeThumbnailViewModel(animeThumbnail: topAnime)
-        return viewModel
     }
 }
