@@ -33,8 +33,10 @@ class TopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.create()
         bind(to: self.viewModel)
+        viewModel.loadAnimes(page: 1, subtype: viewModel.currentSubtype)
 
         
         topSubtypeCollectionView.dataSource = topSubtypeDataService

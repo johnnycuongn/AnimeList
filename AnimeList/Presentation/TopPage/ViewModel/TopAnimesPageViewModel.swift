@@ -46,7 +46,6 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase()
     ) {
         self.animeUseCase = animeUseCase
-        loadAnimes(page: 1, subtype: currentSubtype)
     }
     
     /// Fetch top animes from services
