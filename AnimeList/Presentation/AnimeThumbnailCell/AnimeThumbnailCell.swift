@@ -79,7 +79,9 @@ class AnimeThumbnailCell: UICollectionViewCell {
     }
     
     func fill(with viewModel: AnimeThumbnailViewModel, rank: String? = nil) {
-        self.animeImageView.loadUsingCache(with: viewModel.imageURL)
+        if let imageURL = viewModel.imageURL {
+            self.animeImageView.loadUsingCache(with: imageURL)
+        }
         
         if rank != nil {
             self.rankLabel.text = rank!

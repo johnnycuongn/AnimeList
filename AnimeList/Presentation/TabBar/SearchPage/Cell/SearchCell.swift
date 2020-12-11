@@ -45,9 +45,10 @@ class SearchCell: UICollectionViewCell {
 //    }
     
     func fill(with viewModel: AnimeThumbnailViewModel, rank: String? = nil) {
-
-        self.backgroundImageView.loadUsingCache(with: viewModel.imageURL)
-        self.imageView.loadUsingCache(with: viewModel.imageURL)
+        if let imageURL = viewModel.imageURL {
+            self.backgroundImageView.loadUsingCache(with: imageURL)
+            self.imageView.loadUsingCache(with: imageURL)
+        }
         
         self.titleLabel.text = viewModel.title
         self.scoreLabel.text = viewModel.score

@@ -12,7 +12,7 @@ protocol AnimeThumbnailViewModel {
     
     var id: Int { get }
     
-    var imageURL: URL { get }
+    var imageURL: URL? { get }
     var title: String { get }
     var score: String { get }
     var members: String { get }
@@ -23,7 +23,7 @@ protocol AnimeThumbnailViewModel {
 class DefaultAnimeThumbnailViewModel: AnimeThumbnailViewModel {
     var id: Int
     
-    var imageURL: URL
+    var imageURL: URL?
     var title: String
     
     var score: String
@@ -37,8 +37,6 @@ class DefaultAnimeThumbnailViewModel: AnimeThumbnailViewModel {
         
         if let urlPath = animeThumbnail.imageURL {
             self.imageURL = urlPath
-        } else {
-            self.imageURL = URL(string: "")!
         }
         
         self.title = animeThumbnail.title
