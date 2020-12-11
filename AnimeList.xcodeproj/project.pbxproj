@@ -87,6 +87,7 @@
 		40EEEDF92580859A009DF86F /* SaveOfflineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEDF82580859A009DF86F /* SaveOfflineUseCase.swift */; };
 		40EEEE022580B7C1009DF86F /* AnimeTopSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE012580B7C1009DF86F /* AnimeTopSubtype.swift */; };
 		40EEEE092580B8E6009DF86F /* +MappingDomainEntityToDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE082580B8E6009DF86F /* +MappingDomainEntityToDomain.swift */; };
+		40EEEE1825831BB9009DF86F /* TopAnimeUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE1725831BB9009DF86F /* TopAnimeUseCaseTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +185,7 @@
 		40EEEDF82580859A009DF86F /* SaveOfflineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOfflineUseCase.swift; sourceTree = "<group>"; };
 		40EEEE012580B7C1009DF86F /* AnimeTopSubtype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTopSubtype.swift; sourceTree = "<group>"; };
 		40EEEE082580B8E6009DF86F /* +MappingDomainEntityToDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+MappingDomainEntityToDomain.swift"; sourceTree = "<group>"; };
+		40EEEE1725831BB9009DF86F /* TopAnimeUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimeUseCaseTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +566,7 @@
 		40EEED202579FEE7009DF86F /* AnimeListTests */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEE0E25831B16009DF86F /* Domain */,
 				40EEED33257A0337009DF86F /* Presentation */,
 				40EEED2D2579FFB2009DF86F /* TopAnimeDTO+Stub.swift */,
 				40EEED232579FEE7009DF86F /* Info.plist */,
@@ -668,6 +671,14 @@
 				40EEEE082580B8E6009DF86F /* +MappingDomainEntityToDomain.swift */,
 			);
 			path = MappingToDTO;
+			sourceTree = "<group>";
+		};
+		40EEEE0E25831B16009DF86F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEE1725831BB9009DF86F /* TopAnimeUseCaseTest.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -854,6 +865,7 @@
 			files = (
 				40EEED2E2579FFB2009DF86F /* TopAnimeDTO+Stub.swift in Sources */,
 				40EEED222579FEE7009DF86F /* TopAnimeThumbnailViewModelTest.swift in Sources */,
+				40EEEE1825831BB9009DF86F /* TopAnimeUseCaseTest.swift in Sources */,
 				40EEED36257A0361009DF86F /* TopAnimesPageViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

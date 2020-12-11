@@ -22,13 +22,11 @@ class DefaultTopAnimesReadUseCase: TopAnimesReadUseCase {
     
     func getAnimes(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void) {
         
-        animeWS.fetchTop(page: page, subtype: subtype.toDTO()) { (result) in
+        animeWS.fetchTop(page: page, subtype: subtype) { (result) in
             switch result {
-            case .success(let topAnimesDTO):
+            case .success(let topAnimes):
                 completion(
-                    .success(
-                        topAnimesDTO.map { $0.toDomain() }
-                        )
+                    .success(topAnimes)
                 )
                 
             case .failure(let error):

@@ -13,8 +13,10 @@ protocol AnimeDetailsWebService {
 }
 
 protocol TopAnimeWebService {
-    func fetchTop(page: Int, subtype: AnimeTopSubtypeRequest, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void)
-    var topItemsLoadPerPage: Int { get }
+    func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void)
+}
+extension TopAnimeWebService {
+    var topItemsLoadPerPage: Int { return 50 }
 }
 
 protocol SearchAnimeWebService {
@@ -75,9 +77,9 @@ class DefaultAnimeWebService: AnimeWebService {
     // MARK: TOP ANIMES
     var topItemsLoadPerPage: Int = 50
     
-    func fetchTop(page: Int, subtype: AnimeTopSubtypeRequest, completion: @escaping (Result<[TopAnimeDTO], Error>) -> Void) {
+    func fetchTop(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void) {
         
-        let endpointURL = apiPath.top(at: page, subtype: subtype)
+        let endpointURL = apiPath.top(at: page, subtype: subtype.toDTO())
         print("Top Fetch URL: \(endpointURL)")
         
         networkManager.request(url: endpointURL) { (data,error)  in
@@ -95,7 +97,7 @@ class DefaultAnimeWebService: AnimeWebService {
                 let topAnimeMain = try JSONDecoder().decode(TopAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
-                    completion(.success(topAnimeMain.top))
+                    completion(.success(topAnimeMain.top.map{$0.toDomain()}))
                 }
             }
             catch let error {
