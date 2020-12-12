@@ -14,9 +14,9 @@ protocol GenreAnimesUseCase {
 
 class DefaultGenreAnimesUseCase: GenreAnimesUseCase {
     
-    private let animeWS: GenreAnimeWebService
+    private let animeWS: GenreAnimeRepository
     
-    init(animeWebService: GenreAnimeWebService = DefaultAnimeWebService()) {
+    init(animeWebService: GenreAnimeRepository = DefaultAnimeWebService()) {
         self.animeWS = animeWebService
     }
     

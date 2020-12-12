@@ -19,12 +19,12 @@ class TopAnimeUseCaseTest: XCTestCase {
     
     
     var sut: TopAnimesReadUseCase!
-    var topAnimeWebService: TopAnimeWebService!
+    var topAnimeWebService: TopAnimeRepository!
     
     var testedSubtype: AnimeTopSubtype = .movie
 
     //
-    class TopAnimeWebServiceMock: TopAnimeWebService {
+    class TopAnimeWebServiceMock: TopAnimeRepository {
         
         var result: Result<[TopAnimeMain.TopAnime], Error>
         init(result: Result<[TopAnimeMain.TopAnime], Error>) {

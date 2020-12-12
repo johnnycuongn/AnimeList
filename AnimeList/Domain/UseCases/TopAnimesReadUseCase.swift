@@ -14,9 +14,9 @@ protocol TopAnimesReadUseCase {
 
 class DefaultTopAnimesReadUseCase: TopAnimesReadUseCase {
     
-    private let animeWS: TopAnimeWebService
+    private let animeWS: TopAnimeRepository
     
-    init(animeWebService: TopAnimeWebService = DefaultAnimeWebService()) {
+    init(animeWebService: TopAnimeRepository = DefaultAnimeWebService()) {
         self.animeWS = animeWebService
     }
     

@@ -14,9 +14,9 @@ protocol AnimeDetailsUseCase {
 
 class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
     
-    private let animeWS: AnimeDetailsWebService
+    private let animeWS: AnimeDetailsRepository
     
-    init(animeWebService: AnimeDetailsWebService = DefaultAnimeWebService()) {
+    init(animeWebService: AnimeDetailsRepository = DefaultAnimeWebService()) {
         self.animeWS = animeWebService
     }
     

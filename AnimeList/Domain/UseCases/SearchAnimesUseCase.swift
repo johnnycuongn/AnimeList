@@ -14,9 +14,9 @@ protocol SearchAnimesUseCase {
 
 class DefaultSearchAnimesUseCase: SearchAnimesUseCase {
     
-    private let animeWS: SearchAnimeWebService
+    private let animeWS: SearchAnimeRepository
     
-    init(animeWebService: SearchAnimeWebService = DefaultAnimeWebService()) {
+    init(animeWebService: SearchAnimeRepository = DefaultAnimeWebService()) {
         self.animeWS = animeWebService
     }
     
