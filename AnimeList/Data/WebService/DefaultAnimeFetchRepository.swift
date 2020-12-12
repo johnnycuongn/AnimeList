@@ -110,7 +110,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
     }
     
     // MARK: GENRE ANIMES
-    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimesResponseDTO, Error>) -> Void) {
+    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void) {
         let endpointURL = apiPath.genre(id: id, page: page)
         print("Genre Fetch URL: \(endpointURL)")
         
@@ -121,10 +121,10 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
             }
             
             do {
-                let genreAnimeMain = try JSONDecoder().decode(GenreAnimesResponseDTO.self, from: data)
+                let genreReponseDTO = try JSONDecoder().decode(GenreAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
-                    completion(.success(genreAnimeMain))
+                    completion(.success(genreReponseDTO.toDomain()))
                 }
             }
             catch let error {

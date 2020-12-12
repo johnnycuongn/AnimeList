@@ -21,7 +21,7 @@ protocol SearchAnimeRepository {
 }
 
 protocol GenreAnimeRepository {
-    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimesResponseDTO, Error>) -> Void )
+    func fetchGenre(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void )
 }
 
 protocol AnimeFetchRepository: AnimeDetailsRepository,

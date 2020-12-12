@@ -24,8 +24,8 @@ class DefaultGenreAnimesUseCase: GenreAnimesUseCase {
         
         animeWS.fetchGenre(id: id, page: page) { (result) in
             switch result {
-            case .success(let reponseDTO):
-                completion(.success(reponseDTO.toDomain()))
+            case .success(let searchMain):
+                completion(.success(searchMain))
             case .failure(let error):
                 completion(.failure(error))
             }
