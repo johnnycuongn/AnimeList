@@ -24,8 +24,8 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
         
         animeWS.fetchAnimeDetails(id: id) { (result) in
             switch result {
-            case .success(let responseDTO):
-                completion(.success(responseDTO.toDomain()))
+            case .success(let animeDetails):
+                completion(.success(animeDetails))
             case .failure(let error):
                 completion(.failure(error))
             }

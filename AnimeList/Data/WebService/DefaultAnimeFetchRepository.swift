@@ -22,7 +22,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
     }
     
     // MARK: ANIME DETAILS
-    func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetailsDTO, Error>) -> Void) {
+    func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void) {
         let endpointURL = apiPath.anime(id: id)
         print("Fetch Anime URL - \(endpointURL)")
         
@@ -41,7 +41,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
                 let anime = try JSONDecoder().decode(AnimeDetailsDTO.self, from: data)
             
                 DispatchQueue.main.async {
-                    completion(.success(anime))
+                    completion(.success(anime.toDomain()))
                 }
             }
             catch let error {

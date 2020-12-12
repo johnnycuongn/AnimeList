@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AnimeDetailsRepository {
-    func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetailsDTO, Error>) -> Void)
+    func fetchAnimeDetails(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void)
 }
 
 protocol TopAnimeRepository {
