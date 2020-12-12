@@ -248,6 +248,7 @@
 		4079A646250E54B6001A9D3B /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				40EEEDFE2580B475009DF86F /* MappingFromDTOtoDomain */,
 				4082B6A725551EF000DC14A2 /* WebModel */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
 				40EEEC8625762190009DF86F /* DefaultAnimeFetchRepository.swift */,
@@ -607,7 +608,6 @@
 			isa = PBXGroup;
 			children = (
 				40EEEE072580B8C3009DF86F /* MappingToDTO */,
-				40EEEDFE2580B475009DF86F /* MappingFromDTO */,
 				40EEEDC6257E2037009DF86F /* Common&Properties */,
 				40EEED3D257A0780009DF86F /* TopAnime.swift */,
 				40EEEDE6257E4772009DF86F /* SearchAnime.swift */,
@@ -660,12 +660,12 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		40EEEDFE2580B475009DF86F /* MappingFromDTO */ = {
+		40EEEDFE2580B475009DF86F /* MappingFromDTOtoDomain */ = {
 			isa = PBXGroup;
 			children = (
 				40EEEDAE257E1D63009DF86F /* +MappingDTOtoDomainEntities.swift */,
 			);
-			path = MappingFromDTO;
+			path = MappingFromDTOtoDomain;
 			sourceTree = "<group>";
 		};
 		40EEEE072580B8C3009DF86F /* MappingToDTO */ = {
