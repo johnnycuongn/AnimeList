@@ -85,7 +85,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
     }
     
     // MARK: SEARCH ANIMES
-    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void) {
+    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void) {
         let endpointURL = apiPath.search(page: page, query: query)
         print("Search Fetch URL: \(endpointURL)")
         
@@ -96,10 +96,10 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
             }
             
             do {
-                let searchMain = try JSONDecoder().decode(SearchAnimesResponseDTO.self, from: data)
+                let searchReponseDTO = try JSONDecoder().decode(SearchAnimesResponseDTO.self, from: data)
                 
                 DispatchQueue.main.async {
-                    completion(.success(searchMain))
+                    completion(.success(searchReponseDTO.toDomain()))
                 }
             }
             catch let error {

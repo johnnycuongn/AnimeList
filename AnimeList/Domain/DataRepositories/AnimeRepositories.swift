@@ -17,7 +17,7 @@ protocol TopAnimeRepository {
 }
 
 protocol SearchAnimeRepository {
-    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimesResponseDTO, Error>) -> Void)
+    func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void)
 }
 
 protocol GenreAnimeRepository {
