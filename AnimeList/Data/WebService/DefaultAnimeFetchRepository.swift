@@ -11,7 +11,7 @@ import Foundation
 
 
 //MARK: - Default Implementation
-class DefaultAnimeWebService: AnimeFetchRepository {
+class DefaultAnimeFetchRepository: AnimeFetchRepository {
     
     private var networkManager: Networking
     private var apiPath: APIPath

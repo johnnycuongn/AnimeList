@@ -16,7 +16,7 @@ class DefaultTopAnimesReadUseCase: TopAnimesReadUseCase {
     
     private let animeWS: TopAnimeRepository
     
-    init(animeWebService: TopAnimeRepository = DefaultAnimeWebService()) {
+    init(animeWebService: TopAnimeRepository = DefaultAnimeFetchRepository()) {
         self.animeWS = animeWebService
     }
     

@@ -16,7 +16,7 @@ class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
     
     private let animeWS: AnimeDetailsRepository
     
-    init(animeWebService: AnimeDetailsRepository = DefaultAnimeWebService()) {
+    init(animeWebService: AnimeDetailsRepository = DefaultAnimeFetchRepository()) {
         self.animeWS = animeWebService
     }
     

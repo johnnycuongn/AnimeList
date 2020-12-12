@@ -56,7 +56,7 @@
 		40EEEC7325760827009DF86F /* SeachAnimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */; };
 		40EEEC76257609D7009DF86F /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EEEC75257609D7009DF86F /* SearchCell.xib */; };
 		40EEEC7925761424009DF86F /* +CollectionView(SearchAnimesViewController).swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */; };
-		40EEEC8725762190009DF86F /* AnimeFetchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC8625762190009DF86F /* AnimeFetchRepository.swift */; };
+		40EEEC8725762190009DF86F /* DefaultAnimeFetchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC8625762190009DF86F /* DefaultAnimeFetchRepository.swift */; };
 		40EEEC95257727B0009DF86F /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC94257727B0009DF86F /* Storyboard.swift */; };
 		40EEEC9925775E66009DF86F /* SearchAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */; };
 		40EEEC9F25776741009DF86F /* GenreAnimesPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */; };
@@ -153,7 +153,7 @@
 		40EEEC7225760827009DF86F /* SeachAnimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachAnimesViewController.swift; sourceTree = "<group>"; };
 		40EEEC75257609D7009DF86F /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		40EEEC7825761424009DF86F /* +CollectionView(SearchAnimesViewController).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+CollectionView(SearchAnimesViewController).swift"; sourceTree = "<group>"; };
-		40EEEC8625762190009DF86F /* AnimeFetchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeFetchRepository.swift; sourceTree = "<group>"; };
+		40EEEC8625762190009DF86F /* DefaultAnimeFetchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnimeFetchRepository.swift; sourceTree = "<group>"; };
 		40EEEC94257727B0009DF86F /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		40EEEC9825775E66009DF86F /* SearchAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnimesPageViewModel.swift; sourceTree = "<group>"; };
 		40EEEC9E25776741009DF86F /* GenreAnimesPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreAnimesPageViewModel.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 			children = (
 				4082B6A725551EF000DC14A2 /* WebModel */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
-				40EEEC8625762190009DF86F /* AnimeFetchRepository.swift */,
+				40EEEC8625762190009DF86F /* DefaultAnimeFetchRepository.swift */,
 				406C2B6B2510D48800C8740E /* Helpers */,
 			);
 			path = WebService;
@@ -737,7 +737,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Johnny;
 				TargetAttributes = {
 					40C90252250A35BA009D4225 = {
@@ -863,7 +863,7 @@
 				40EEEDCA257E20AB009DF86F /* AnimeDetails.swift in Sources */,
 				40EEEC95257727B0009DF86F /* Storyboard.swift in Sources */,
 				400B138D2551A520001AE01A /* GenreDisplayCollectionViewCell.swift in Sources */,
-				40EEEC8725762190009DF86F /* AnimeFetchRepository.swift in Sources */,
+				40EEEC8725762190009DF86F /* DefaultAnimeFetchRepository.swift in Sources */,
 				40EEECF325791052009DF86F /* PersonalAnimeDTO.swift in Sources */,
 				40EEED3E257A0780009DF86F /* TopAnime.swift in Sources */,
 				4079A65C250F8928001A9D3B /* ImageLoadHelper.swift in Sources */,
@@ -938,6 +938,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -998,6 +999,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

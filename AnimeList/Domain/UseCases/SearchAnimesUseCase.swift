@@ -16,7 +16,7 @@ class DefaultSearchAnimesUseCase: SearchAnimesUseCase {
     
     private let animeWS: SearchAnimeRepository
     
-    init(animeWebService: SearchAnimeRepository = DefaultAnimeWebService()) {
+    init(animeWebService: SearchAnimeRepository = DefaultAnimeFetchRepository()) {
         self.animeWS = animeWebService
     }
     

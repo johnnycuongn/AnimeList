@@ -16,7 +16,7 @@ class DefaultGenreAnimesUseCase: GenreAnimesUseCase {
     
     private let animeWS: GenreAnimeRepository
     
-    init(animeWebService: GenreAnimeRepository = DefaultAnimeWebService()) {
+    init(animeWebService: GenreAnimeRepository = DefaultAnimeFetchRepository()) {
         self.animeWS = animeWebService
     }
     
