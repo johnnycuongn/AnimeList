@@ -89,6 +89,7 @@
 		40EEEE092580B8E6009DF86F /* +MappingDomainEntityToDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE082580B8E6009DF86F /* +MappingDomainEntityToDomain.swift */; };
 		40EEEE1825831BB9009DF86F /* TopAnimeUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE1725831BB9009DF86F /* TopAnimeUseCaseTest.swift */; };
 		40EEEE2E2584A7ED009DF86F /* AnimeRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE2D2584A7ED009DF86F /* AnimeRepositories.swift */; };
+		40EEEE3F25872429009DF86F /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEEE3E25872429009DF86F /* AppDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		40EEEE082580B8E6009DF86F /* +MappingDomainEntityToDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+MappingDomainEntityToDomain.swift"; sourceTree = "<group>"; };
 		40EEEE1725831BB9009DF86F /* TopAnimeUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimeUseCaseTest.swift; sourceTree = "<group>"; };
 		40EEEE2D2584A7ED009DF86F /* AnimeRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeRepositories.swift; sourceTree = "<group>"; };
+		40EEEE3E25872429009DF86F /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +391,7 @@
 				40C90258250A35BA009D4225 /* SceneDelegate.swift */,
 				40EEEC94257727B0009DF86F /* Storyboard.swift */,
 				40C9025C250A35BA009D4225 /* Main.storyboard */,
+				40EEEE3D2587240C009DF86F /* DI */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -692,6 +695,14 @@
 			path = DataRepositories;
 			sourceTree = "<group>";
 		};
+		40EEEE3D2587240C009DF86F /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				40EEEE3E25872429009DF86F /* AppDIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -812,6 +823,7 @@
 				400B1371254FECBD001AE01A /* JikanAPI.swift in Sources */,
 				407A5F5A257214DA00533052 /* TopAnimesPageViewModel.swift in Sources */,
 				40EEEDF92580859A009DF86F /* SaveOfflineUseCase.swift in Sources */,
+				40EEEE3F25872429009DF86F /* AppDIContainer.swift in Sources */,
 				40EEEDED257E4780009DF86F /* GenreAnime.swift in Sources */,
 				407A5F612572294400533052 /* TopAnimeThumbnailViewModel.swift in Sources */,
 				4079A64A250E5846001A9D3B /* HTTPValidation.swift in Sources */,

@@ -27,14 +27,14 @@ class TopViewController: UIViewController {
     var viewModel: TopAnimesPageViewModel!
     let pageThumbnailCell = AnimeThumbnailCell.self
     
-    func create(viewModel: TopAnimesPageViewModel =  DefaultTopAnimesPageViewModel()) {
+    func loadController(with viewModel: TopAnimesPageViewModel) {
         self.viewModel = viewModel
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.create()
+//        self.create()
         bind(to: self.viewModel)
         viewModel.loadAnimes(page: 1, subtype: viewModel.currentSubtype)
 

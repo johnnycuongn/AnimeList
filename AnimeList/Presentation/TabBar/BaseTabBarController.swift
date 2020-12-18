@@ -12,8 +12,20 @@ class BaseTabBarController: UITabBarController {
 
     @IBOutlet weak var searchBarButton: UIBarButtonItem!
     
+    var appDIContainer = AppDIContainer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let viewControllers = self.viewControllers else { return }
+        
+        for vc in viewControllers {
+            (vc as? TopViewController)?
+                .loadController(with: appDIContainer.makeTopAnimesPageViewModel())
+            
+            (vc as? RandomViewController)?
+                .loadController(with: appDIContainer.makeRandomPageViewModel())
+        }
 
     }
     

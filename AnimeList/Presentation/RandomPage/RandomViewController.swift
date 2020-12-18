@@ -36,7 +36,11 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - View Controller's Variables
-    var viewModel: RandomPageViewModel = DefaultRandomPageViewModel()
+    var viewModel: RandomPageViewModel!
+    
+    func loadController(with viewModel: RandomPageViewModel) {
+        self.viewModel = viewModel
+    }
     
     // MARK: - Loading
     override func viewDidLoad() {

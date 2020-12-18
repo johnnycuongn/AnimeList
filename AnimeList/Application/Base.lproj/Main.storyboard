@@ -162,7 +162,7 @@
         <!--Top-->
         <scene sceneID="pkn-iC-znQ">
             <objects>
-                <viewController id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopViewController" id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXU-Rd-t6y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -746,7 +746,7 @@
         <!--Base Tab Bar Controller-->
         <scene sceneID="c8C-b8-Q7Z">
             <objects>
-                <tabBarController id="dxu-YB-47h" customClass="BaseTabBarController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="BaseTabBarController" id="dxu-YB-47h" customClass="BaseTabBarController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Na3-n1-uve">
                         <rightBarButtonItems>
                             <barButtonItem image="person.fill" catalog="system" id="sJ5-JD-FEr">
