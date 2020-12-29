@@ -14,18 +14,27 @@ class BaseTabBarController: UITabBarController {
     
     var appDIContainer = AppDIContainer()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func create(with dependency: BaseDI ) {
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        guard let tabbarVC = storyBoard.instantiateViewController(withIdentifier: "BaseTabBarController") as? BaseTabBarController else { fatalError() }
         
-        guard let viewControllers = self.viewControllers else { return }
+        guard let viewControllers = viewControllers else {
+            fatalError() }
         
         for vc in viewControllers {
             (vc as? TopViewController)?
-                .loadController(with: appDIContainer.makeTopAnimesPageViewModel())
+                .loadController(with: dependency.makeTopAnimesPageViewModel())
             
             (vc as? RandomViewController)?
-                .loadController(with: appDIContainer.makeRandomPageViewModel())
+                .loadController(with: dependency.makeRandomPageViewModel())
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        create(with: appDIContainer)
 
     }
     

@@ -8,7 +8,12 @@
 
 import Foundation
 
-class AppDIContainer {
+protocol BaseDI {
+    func makeTopAnimesPageViewModel() -> TopAnimesPageViewModel
+    func makeRandomPageViewModel() -> RandomPageViewModel
+}
+
+class AppDIContainer: BaseDI {
     
     let networkManager: Networking = NetworkManager()
     let apiPath: APIPath = JikanAnimeAPI()
