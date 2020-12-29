@@ -14,27 +14,41 @@ class BaseTabBarController: UITabBarController {
     
     var appDIContainer = AppDIContainer()
     
-    func create(with dependency: BaseDI ) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        guard let tabbarVC = storyBoard.instantiateViewController(withIdentifier: "BaseTabBarController") as? BaseTabBarController else { fatalError() }
+    static func initialize() -> BaseTabBarController {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        guard let viewControllers = viewControllers else {
+        guard let tabbarVC = storyBoard.instantiateViewController(withIdentifier: "BaseTabBarController") as? BaseTabBarController else { fatalError() }
+        
+        return tabbarVC
+    }
+    
+    func startFlow(with dependency: BaseDI, navigationController: UINavigationController) {
+
+        guard let baseViewControllers = viewControllers else {
             fatalError() }
         
-        for vc in viewControllers {
-            (vc as? TopViewController)?
-                .loadController(with: dependency.makeTopAnimesPageViewModel())
-            
-            (vc as? RandomViewController)?
-                .loadController(with: dependency.makeRandomPageViewModel())
+        let topFlow = appDIContainer.makeTopAnimesPageFlowCoordinatoor(navigationController: navigationController)
+        
+        func loadControllers(_ viewControllers: [UIViewController]) {
+            for vc in viewControllers {
+                (vc as? TopViewController)?
+                    .loadController(with: dependency.makeTopAnimesPageViewModel(actions: topFlow.topAnimeAction))
+                
+                (vc as? RandomViewController)?
+                    .loadController(with: dependency.makeRandomPageViewModel())
+            }
         }
+        
+        loadControllers(baseViewControllers)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        create(with: appDIContainer)
+        guard let baseNavigation = self.navigationController else {return}
+        
+        startFlow(with: appDIContainer, navigationController: baseNavigation)
 
     }
     

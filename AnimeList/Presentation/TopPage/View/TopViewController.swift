@@ -30,6 +30,17 @@ class TopViewController: UIViewController {
     func loadController(with viewModel: TopAnimesPageViewModel) {
         self.viewModel = viewModel
     }
+    
+    static func create(with viewModel: TopAnimesPageViewModel) -> TopViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "TopViewController") as? TopViewController else {
+            fatalError("Can't instantiate TopVC")
+        }
+        
+        vc.viewModel = viewModel
+        
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

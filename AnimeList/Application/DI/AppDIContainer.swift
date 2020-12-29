@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol BaseDI {
-    func makeTopAnimesPageViewModel() -> TopAnimesPageViewModel
+    func makeTopAnimesPageViewModel(actions: TopAnimesPageViewModelAction?) -> TopAnimesPageViewModel
     func makeRandomPageViewModel() -> RandomPageViewModel
 }
 
@@ -23,12 +24,12 @@ class AppDIContainer: BaseDI {
         return DefaultTopAnimesReadUseCase(animeWebService: makeTopAnimeRepository() )
     }
     
-    //    func makeTopViewController() -> TopViewController {
-    //        return TopViewController.create(viewModel: makeTopAnimesPageViewModel())
-    //    }
+    func makeTopViewController(actions: TopAnimesPageViewModelAction? = nil) -> TopViewController {
+        return TopViewController.create(with: makeTopAnimesPageViewModel(actions: actions))
+    }
     
-    func makeTopAnimesPageViewModel() -> TopAnimesPageViewModel {
-        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase())
+    func makeTopAnimesPageViewModel(actions: TopAnimesPageViewModelAction? = nil) -> TopAnimesPageViewModel {
+        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), actions: actions)
     }
 
     // MARK: - AnimeDetails && Random
@@ -67,4 +68,10 @@ class AppDIContainer: BaseDI {
         return PersonalAnimeCoreDataStorage(coreDataStorage: CoreDataStorage.shared)
     }
     
+}
+
+extension AppDIContainer {
+    func makeTopAnimesPageFlowCoordinatoor(navigationController: UINavigationController) -> TopAnimesPageFlowCoordinator {
+        return DefaultTopAnimesPageFlowCoordinator(navigationController: navigationController)
+    }
 }

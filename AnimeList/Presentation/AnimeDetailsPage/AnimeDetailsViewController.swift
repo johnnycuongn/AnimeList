@@ -156,7 +156,7 @@ class AnimeDetailsViewController: UIViewController {
     // MARK: - Button Action
     //------------------------
     @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {

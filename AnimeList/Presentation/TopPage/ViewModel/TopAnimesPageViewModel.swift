@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct TopAnimesPageViewModelAction {
+    var showAnimeDetails: (Int) -> Void
+}
+
 enum LoadingStyle {
     case fullscreen
 }
@@ -24,6 +28,8 @@ protocol TopAnimesPageViewModel {
     func loadAnimes(page: Int, subtype: AnimeTopSubtype)
     func loadNextPage(at indexPath: IndexPath)
     func didSelect(subtype: AnimeTopSubtype)
+    
+    func didSelectAnime(at index: Int)
 }
 
 // MARK: - Default Implementation
@@ -41,11 +47,14 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     var error: Observable<String?> = Observable(.none)
     
     private let animeUseCase: TopAnimesReadUseCase
+    private let actions: TopAnimesPageViewModelAction?
     
     init(
-        animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase()
+        animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase(),
+        actions: TopAnimesPageViewModelAction? = nil
     ) {
         self.animeUseCase = animeUseCase
+        self.actions = actions
     }
     
     /// Fetch top animes from services
@@ -101,5 +110,12 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         
         self.currentSubtype = subtype
         loadAnimes(subtype: currentSubtype)
+    }
+    
+    func didSelectAnime(at index: Int) {
+        let selectedAnime = topAnimes.value[index]
+        let selectedID = selectedAnime.id
+        
+        actions?.showAnimeDetails(selectedID)
     }
 }

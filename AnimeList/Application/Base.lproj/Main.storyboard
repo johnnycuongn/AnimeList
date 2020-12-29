@@ -723,10 +723,10 @@
             </objects>
             <point key="canvasLocation" x="-1823" y="237"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Root Navigation View Controller-->
         <scene sceneID="Knr-5u-23o">
             <objects>
-                <navigationController id="orm-mB-reL" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNavigationViewController" id="orm-mB-reL" customClass="RootNavigationViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KyG-X4-g3k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -848,7 +848,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-AA-Ta7">
-                                                                <rect key="frame" x="3" y="3" width="206" height="38"/>
+                                                                <rect key="frame" x="3" y="3" width="206" height="37.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
