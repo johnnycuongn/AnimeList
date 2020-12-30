@@ -13,8 +13,9 @@ class BaseTabBarController: UITabBarController {
     @IBOutlet weak var searchBarButton: UIBarButtonItem!
     
     var appDIContainer = AppDIContainer()
+    lazy var appFlowCoordinatoor = AppFlowCoordinatoor(navigationController: navigationController)
     
-    static func initialize() -> BaseTabBarController {
+    static func create() -> BaseTabBarController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         guard let tabbarVC = storyBoard.instantiateViewController(withIdentifier: "BaseTabBarController") as? BaseTabBarController else { fatalError() }
@@ -22,17 +23,16 @@ class BaseTabBarController: UITabBarController {
         return tabbarVC
     }
     
+        
     func startFlow(with dependency: BaseDI, navigationController: UINavigationController) {
 
         guard let baseViewControllers = viewControllers else {
             fatalError() }
         
-        let topFlow = appDIContainer.makeTopAnimesPageFlowCoordinatoor(navigationController: navigationController)
-        
         func loadControllers(_ viewControllers: [UIViewController]) {
             for vc in viewControllers {
                 (vc as? TopViewController)?
-                    .loadController(with: dependency.makeTopAnimesPageViewModel(flow: topFlow))
+                    .loadController(with: dependency.makeTopAnimesPageViewModel(flow: topPageFlow))
                 
                 (vc as? RandomViewController)?
                     .loadController(with: dependency.makeRandomPageViewModel())
@@ -42,11 +42,17 @@ class BaseTabBarController: UITabBarController {
         loadControllers(baseViewControllers)
     }
     
+    var topPageFlow: TopAnimesPageFlowCoordinator!
+
+    var searchAnimesPageFlow: SearchAnimesPageFlowCoordinatoor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let baseNavigation = self.navigationController else {return}
+        
+        topPageFlow = appFlowCoordinatoor.topPage
+        searchAnimesPageFlow = appFlowCoordinatoor.searchPage
         
         startFlow(with: appDIContainer, navigationController: baseNavigation)
 
@@ -54,9 +60,8 @@ class BaseTabBarController: UITabBarController {
     
     
     @IBAction func searchButtonDidTapped(_ sender: UIBarButtonItem) {
-        guard let searchVC = SeachAnimesViewController.create() else {
-            return
-        }
+        let searchVC = appDIContainer.makeSearchAnimesViewController(flow: searchAnimesPageFlow)
+        
         navigationController?.pushViewController(searchVC, animated: true)
     }
     

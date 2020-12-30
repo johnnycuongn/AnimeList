@@ -46,6 +46,20 @@ class AppDIContainer: BaseDI {
         return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
     }
     
+    // MARK: - Search
+    
+    func makeSearchAnimesViewController(flow: SearchAnimesPageFlowCoordinatoor) -> SeachAnimesViewController {
+        return SeachAnimesViewController.create(with: makeSearchAnimesPageViewModel(flow: flow))
+    }
+    
+    func makeSearchAnimesPageViewModel(flow: SearchAnimesPageFlowCoordinatoor) -> SearchAnimesPageViewModel {
+        return DefaultSearchAnimesPageViewModel(searchUseCase: makeSearchAnimesUseCase(), flow: flow)
+    }
+    
+    func makeSearchAnimesUseCase() -> SearchAnimesUseCase {
+        return DefaultSearchAnimesUseCase(animeWebService: makeSearchAnimeRepository())
+    }
+    
     // MARK: - Repository
 
     func makeTopAnimeRepository() -> TopAnimeRepository {
@@ -53,6 +67,10 @@ class AppDIContainer: BaseDI {
     }
     
     func makeAnimeDetailsRepository() -> AnimeDetailsRepository {
+        return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
+    }
+    
+    func makeSearchAnimeRepository() -> SearchAnimeRepository {
         return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
     }
     
@@ -66,10 +84,4 @@ class AppDIContainer: BaseDI {
         return PersonalAnimeCoreDataStorage(coreDataStorage: CoreDataStorage.shared)
     }
     
-}
-
-extension AppDIContainer {
-    func makeTopAnimesPageFlowCoordinatoor(navigationController: UINavigationController) -> TopAnimesPageFlowCoordinator {
-        return DefaultTopAnimesPageFlowCoordinator(navigationController: navigationController)
-    }
 }

@@ -50,10 +50,8 @@ extension SeachAnimesViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("isSearching Did Select: \(self.viewModel.animes.value[indexPath.row].title)")
-        weak var animeVC = AnimeDetailsViewController.initialize(with: self.viewModel.animes.value[indexPath.row].id)
-        guard animeVC != nil else { return }
-        self.present(animeVC!, animated: true, completion: nil)
+        
+        viewModel.didSelectAnime(at: indexPath.row)
         
     }
 }

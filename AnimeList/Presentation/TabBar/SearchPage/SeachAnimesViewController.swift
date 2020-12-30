@@ -10,10 +10,10 @@ import UIKit
 
 class SeachAnimesViewController: UIViewController {
     
-    static func create() -> SeachAnimesViewController? {
+    static func create(with viewModel: SearchAnimesPageViewModel) -> SeachAnimesViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let searchVC = storyBoard.instantiateViewController(withIdentifier: "SeachAnimesViewController") as? SeachAnimesViewController else { return nil }
-        searchVC.viewModel = DefaultSearchAnimesPageViewModel()
+        guard let searchVC = storyBoard.instantiateViewController(withIdentifier: "SeachAnimesViewController") as? SeachAnimesViewController else { fatalError() }
+        searchVC.viewModel = viewModel
         
         return searchVC
     }

@@ -17,6 +17,8 @@ protocol SearchAnimesPageViewModel {
 
     func loadSearch(page: Int, _ text: String)
     func loadSearch(for nextPage: Int)
+    
+    func didSelectAnime(at index: Int)
 }
 
 // MARK: -
@@ -32,9 +34,11 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
     
     
     private let searchUseCase: SearchAnimesUseCase
+    private let flow: SearchAnimesPageFlowCoordinatoor
     
-    init(searchUseCase: SearchAnimesUseCase = DefaultSearchAnimesUseCase()) {
+    init(searchUseCase: SearchAnimesUseCase = DefaultSearchAnimesUseCase(), flow: SearchAnimesPageFlowCoordinatoor) {
         self.searchUseCase = searchUseCase
+        self.flow = flow
     }
     
     func loadSearch(page: Int = 1, _ text: String) {
@@ -92,6 +96,13 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
             }
             
         }
+    }
+    
+    func didSelectAnime(at index: Int) {
+        let selectedAnime = animes.value[index]
+        let selectedID = selectedAnime.id
+        
+        flow.showAnimeDetails(id: selectedID)
     }
     
 }
