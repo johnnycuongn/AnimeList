@@ -20,10 +20,7 @@ class AppDIContainer: BaseDI {
     let apiPath: APIPath = JikanAnimeAPI()
     
     // MARK: - Top
-    func makeTopAnimesReadUseCase() -> TopAnimesReadUseCase {
-        return DefaultTopAnimesReadUseCase(animeWebService: makeTopAnimeRepository() )
-    }
-    
+
     func makeTopViewController(flow: TopAnimesPageFlowCoordinator) -> TopViewController {
         return TopViewController.create(with: makeTopAnimesPageViewModel(flow: flow))
     }
@@ -31,19 +28,23 @@ class AppDIContainer: BaseDI {
     func makeTopAnimesPageViewModel(flow: TopAnimesPageFlowCoordinator) -> TopAnimesPageViewModel {
         return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), flow: flow)
     }
+    
+    func makeTopAnimesReadUseCase() -> TopAnimesReadUseCase {
+        return DefaultTopAnimesReadUseCase(animeWebService: makeTopAnimeRepository() )
+    }
 
     // MARK: - AnimeDetails && Random
-    
-    func makeSaveOfflineUseCase() -> SaveOfflineUseCase {
-        return DefaultSaveOfflineUseCase(animeStorage: makePersonalAnimeStorageCreateDelete())
+
+    func makeRandomPageViewModel() -> RandomPageViewModel {
+        return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
     }
     
-    func makeAnimeDetailsUseCase() -> AnimeDetailsUseCase {
+    private func makeAnimeDetailsUseCase() -> AnimeDetailsUseCase {
         return DefaultAnimeDetailsUseCase(animeWebService: makeAnimeDetailsRepository())
     }
     
-    func makeRandomPageViewModel() -> RandomPageViewModel {
-        return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
+    func makeSaveOfflineUseCase() -> SaveOfflineUseCase {
+        return DefaultSaveOfflineUseCase(animeStorage: makePersonalAnimeStorageCreateDelete())
     }
     
     // MARK: - Search
@@ -56,31 +57,31 @@ class AppDIContainer: BaseDI {
         return DefaultSearchAnimesPageViewModel(searchUseCase: makeSearchAnimesUseCase(), flow: flow)
     }
     
-    func makeSearchAnimesUseCase() -> SearchAnimesUseCase {
+    private func makeSearchAnimesUseCase() -> SearchAnimesUseCase {
         return DefaultSearchAnimesUseCase(animeWebService: makeSearchAnimeRepository())
     }
     
     // MARK: - Repository
 
-    func makeTopAnimeRepository() -> TopAnimeRepository {
+    private func makeTopAnimeRepository() -> TopAnimeRepository {
         return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
     }
     
-    func makeAnimeDetailsRepository() -> AnimeDetailsRepository {
+    private func makeAnimeDetailsRepository() -> AnimeDetailsRepository {
         return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
     }
     
-    func makeSearchAnimeRepository() -> SearchAnimeRepository {
+    private func makeSearchAnimeRepository() -> SearchAnimeRepository {
         return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
     }
     
     // MARK: - Storage
     
-    func makePersonalAnimeStorageCreateDelete() -> PersonalAnimeStorageCreateDelete {
+    private func makePersonalAnimeStorageCreateDelete() -> PersonalAnimeStorageCreateDelete {
         return PersonalAnimeCoreDataStorage(coreDataStorage: CoreDataStorage.shared)
     }
     
-    func makePersonalAnimeStorageRead() -> PersonalAnimeStorageRead {
+    private func makePersonalAnimeStorageRead() -> PersonalAnimeStorageRead {
         return PersonalAnimeCoreDataStorage(coreDataStorage: CoreDataStorage.shared)
     }
     

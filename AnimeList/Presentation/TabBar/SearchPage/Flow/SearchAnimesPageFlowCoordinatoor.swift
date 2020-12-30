@@ -16,8 +16,6 @@ protocol SearchAnimesPageFlowCoordinatoor {
 
 class DefaultSearchAnimesPageFlowCoordinatoor: SearchAnimesPageFlowCoordinatoor {
     
-    var appDIContainer = AppDIContainer()
-    
     private weak var navigationController: UINavigationController?
     private var animeDetailsFlow: AnimeDetailsFlowCoordinatoor
     
