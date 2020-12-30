@@ -12,7 +12,7 @@ class BaseTabBarController: UITabBarController {
 
     @IBOutlet weak var searchBarButton: UIBarButtonItem!
     
-    var appDIContainer = AppDIContainer()
+    var appDIContainer = AppDelegate.appDIContainer
     lazy var appFlowCoordinatoor = AppFlowCoordinatoor(navigationController: navigationController)
     
     static func create() -> BaseTabBarController {

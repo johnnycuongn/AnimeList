@@ -16,8 +16,13 @@ protocol BaseDI {
 
 class AppDIContainer: BaseDI {
     
-    let networkManager: Networking = NetworkManager()
-    let apiPath: APIPath = JikanAnimeAPI()
+    let networkManager: Networking
+    let apiPath: APIPath
+    
+    init(networkManager: Networking, apiPath: APIPath) {
+        self.networkManager = networkManager
+        self.apiPath = apiPath
+    }
     
     // MARK: - Top
 

@@ -15,8 +15,6 @@ protocol TopAnimesPageFlowCoordinator {
 
 class DefaultTopAnimesPageFlowCoordinator: TopAnimesPageFlowCoordinator {
     
-    let dependency = AppDIContainer()
-    
     private weak var navigationController: UINavigationController?
     private var animeDetailsFlow: AnimeDetailsFlowCoordinatoor
     
