@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol TopAnimesPageFlowCoordinator {
-    var topAnimeAction: TopAnimesPageViewModelAction { get }
+    func showAnimeDetails(id: Int)
 }
 
 class DefaultTopAnimesPageFlowCoordinator: TopAnimesPageFlowCoordinator {
@@ -20,15 +20,16 @@ class DefaultTopAnimesPageFlowCoordinator: TopAnimesPageFlowCoordinator {
     private weak var navigationController: UINavigationController?
     private var animeDetailsFlow: AnimeDetailsFlowCoordinatoor
     
-    var topAnimeAction: TopAnimesPageViewModelAction
-    
     init(navigationController: UINavigationController) {
         
         self.navigationController = navigationController
         
         self.animeDetailsFlow = DefaultAnimeDetailsFlowCoordinatoor(navigationController: navigationController)
-        
-        self.topAnimeAction = TopAnimesPageViewModelAction(showAnimeDetails: animeDetailsFlow.showAnimeDetails)
+    
+    }
+    
+    func showAnimeDetails(id: Int) {
+        animeDetailsFlow.showAnimeDetails(id: id)
     }
     
 }

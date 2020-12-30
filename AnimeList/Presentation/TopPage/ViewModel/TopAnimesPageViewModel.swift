@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct TopAnimesPageViewModelAction {
-    var showAnimeDetails: (Int) -> Void
-}
-
 enum LoadingStyle {
     case fullscreen
 }
@@ -47,14 +43,15 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     var error: Observable<String?> = Observable(.none)
     
     private let animeUseCase: TopAnimesReadUseCase
-    private let actions: TopAnimesPageViewModelAction?
+
+    private let flow: TopAnimesPageFlowCoordinator
     
     init(
         animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase(),
-        actions: TopAnimesPageViewModelAction? = nil
+        flow: TopAnimesPageFlowCoordinator
     ) {
         self.animeUseCase = animeUseCase
-        self.actions = actions
+        self.flow = flow
     }
     
     /// Fetch top animes from services
@@ -116,6 +113,6 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         let selectedAnime = topAnimes.value[index]
         let selectedID = selectedAnime.id
         
-        actions?.showAnimeDetails(selectedID)
+        flow.showAnimeDetails(id: selectedID)
     }
 }

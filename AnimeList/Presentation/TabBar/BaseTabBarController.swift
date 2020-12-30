@@ -32,7 +32,7 @@ class BaseTabBarController: UITabBarController {
         func loadControllers(_ viewControllers: [UIViewController]) {
             for vc in viewControllers {
                 (vc as? TopViewController)?
-                    .loadController(with: dependency.makeTopAnimesPageViewModel(actions: topFlow.topAnimeAction))
+                    .loadController(with: dependency.makeTopAnimesPageViewModel(flow: topFlow))
                 
                 (vc as? RandomViewController)?
                     .loadController(with: dependency.makeRandomPageViewModel())

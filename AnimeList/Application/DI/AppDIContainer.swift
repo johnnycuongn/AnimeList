@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol BaseDI {
-    func makeTopAnimesPageViewModel(actions: TopAnimesPageViewModelAction?) -> TopAnimesPageViewModel
+    func makeTopAnimesPageViewModel(flow: TopAnimesPageFlowCoordinator) -> TopAnimesPageViewModel
     func makeRandomPageViewModel() -> RandomPageViewModel
 }
 
@@ -24,12 +24,12 @@ class AppDIContainer: BaseDI {
         return DefaultTopAnimesReadUseCase(animeWebService: makeTopAnimeRepository() )
     }
     
-    func makeTopViewController(actions: TopAnimesPageViewModelAction? = nil) -> TopViewController {
-        return TopViewController.create(with: makeTopAnimesPageViewModel(actions: actions))
+    func makeTopViewController(flow: TopAnimesPageFlowCoordinator) -> TopViewController {
+        return TopViewController.create(with: makeTopAnimesPageViewModel(flow: flow))
     }
     
-    func makeTopAnimesPageViewModel(actions: TopAnimesPageViewModelAction? = nil) -> TopAnimesPageViewModel {
-        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), actions: actions)
+    func makeTopAnimesPageViewModel(flow: TopAnimesPageFlowCoordinator) -> TopAnimesPageViewModel {
+        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), flow: flow)
     }
 
     // MARK: - AnimeDetails && Random
@@ -41,8 +41,6 @@ class AppDIContainer: BaseDI {
     func makeAnimeDetailsUseCase() -> AnimeDetailsUseCase {
         return DefaultAnimeDetailsUseCase(animeWebService: makeAnimeDetailsRepository())
     }
-    
-    // MARK: Random
     
     func makeRandomPageViewModel() -> RandomPageViewModel {
         return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
