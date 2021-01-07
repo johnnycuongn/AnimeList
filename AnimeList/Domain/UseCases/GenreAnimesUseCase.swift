@@ -14,15 +14,15 @@ protocol GenreAnimesUseCase {
 
 class DefaultGenreAnimesUseCase: GenreAnimesUseCase {
     
-    private let animeWS: GenreAnimeRepository
+    private let animeRepo: GenreAnimeRepository
     
-    init(animeWebService: GenreAnimeRepository = DefaultAnimeFetchRepository()) {
-        self.animeWS = animeWebService
+    init(animeRepository: GenreAnimeRepository = DefaultAnimeFetchRepository()) {
+        self.animeRepo = animeRepository
     }
     
     func getAnimes(id: Int, page: Int, completion: @escaping (Result<GenreAnimeMain, Error>) -> Void) {
         
-        animeWS.fetchGenre(id: id, page: page) { (result) in
+        animeRepo.fetchGenre(id: id, page: page) { (result) in
             switch result {
             case .success(let searchMain):
                 completion(.success(searchMain))

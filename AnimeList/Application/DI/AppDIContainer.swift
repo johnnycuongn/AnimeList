@@ -35,7 +35,7 @@ class AppDIContainer: BaseDI {
     }
     
     func makeTopAnimesReadUseCase() -> TopAnimesReadUseCase {
-        return DefaultTopAnimesReadUseCase(animeWebService: makeTopAnimeRepository() )
+        return DefaultTopAnimesReadUseCase(animeRepository: makeTopAnimeRepository() )
     }
 
     // MARK: - AnimeDetails && Random
@@ -45,7 +45,7 @@ class AppDIContainer: BaseDI {
     }
     
     private func makeAnimeDetailsUseCase() -> AnimeDetailsUseCase {
-        return DefaultAnimeDetailsUseCase(animeWebService: makeAnimeDetailsRepository())
+        return DefaultAnimeDetailsUseCase(animeRepository: makeAnimeDetailsRepository())
     }
     
     func makeSaveOfflineUseCase() -> SaveOfflineUseCase {
@@ -63,7 +63,7 @@ class AppDIContainer: BaseDI {
     }
     
     private func makeSearchAnimesUseCase() -> SearchAnimesUseCase {
-        return DefaultSearchAnimesUseCase(animeWebService: makeSearchAnimeRepository())
+        return DefaultSearchAnimesUseCase(animeRepository: makeSearchAnimeRepository())
     }
     
     // MARK: - Repository

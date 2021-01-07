@@ -14,15 +14,15 @@ protocol AnimeDetailsUseCase {
 
 class DefaultAnimeDetailsUseCase: AnimeDetailsUseCase {
     
-    private let animeWS: AnimeDetailsRepository
+    private let animeRepo: AnimeDetailsRepository
     
-    init(animeWebService: AnimeDetailsRepository = DefaultAnimeFetchRepository()) {
-        self.animeWS = animeWebService
+    init(animeRepository: AnimeDetailsRepository = DefaultAnimeFetchRepository()) {
+        self.animeRepo = animeRepository
     }
     
     func getAnime(id: Int, completion: @escaping (Result<AnimeDetails, Error>) -> Void) {
         
-        animeWS.fetchAnimeDetails(id: id) { (result) in
+        animeRepo.fetchAnimeDetails(id: id) { (result) in
             switch result {
             case .success(let animeDetails):
                 completion(.success(animeDetails))

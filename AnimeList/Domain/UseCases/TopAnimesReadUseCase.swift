@@ -14,15 +14,15 @@ protocol TopAnimesReadUseCase {
 
 class DefaultTopAnimesReadUseCase: TopAnimesReadUseCase {
     
-    private let animeWS: TopAnimeRepository
+    private let animeRepo: TopAnimeRepository
     
-    init(animeWebService: TopAnimeRepository = DefaultAnimeFetchRepository()) {
-        self.animeWS = animeWebService
+    init(animeRepository: TopAnimeRepository = DefaultAnimeFetchRepository()) {
+        self.animeRepo = animeRepository
     }
     
     func getAnimes(page: Int, subtype: AnimeTopSubtype, completion: @escaping (Result<[TopAnimeMain.TopAnime], Error>) -> Void) {
         
-        animeWS.fetchTop(page: page, subtype: subtype) { (result) in
+        animeRepo.fetchTop(page: page, subtype: subtype) { (result) in
             switch result {
             case .success(let topAnimes):
                 completion(

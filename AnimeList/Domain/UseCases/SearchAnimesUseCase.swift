@@ -14,15 +14,15 @@ protocol SearchAnimesUseCase {
 
 class DefaultSearchAnimesUseCase: SearchAnimesUseCase {
     
-    private let animeWS: SearchAnimeRepository
+    private let animeRepo: SearchAnimeRepository
     
-    init(animeWebService: SearchAnimeRepository = DefaultAnimeFetchRepository()) {
-        self.animeWS = animeWebService
+    init(animeRepository: SearchAnimeRepository = DefaultAnimeFetchRepository()) {
+        self.animeRepo = animeRepository
     }
     
     func getAnimes(page: Int, searchText: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void) {
         
-        animeWS.fetchSearch(page: page, query: searchText) { (result) in
+        animeRepo.fetchSearch(page: page, query: searchText) { (result) in
             switch result {
             case .success(let searchMain):
                 completion(.success(searchMain))

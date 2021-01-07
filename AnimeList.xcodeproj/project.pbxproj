@@ -289,16 +289,16 @@
 			path = PersistenceStorage;
 			sourceTree = "<group>";
 		};
-		4079A646250E54B6001A9D3B /* WebService */ = {
+		4079A646250E54B6001A9D3B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				40EEEDFE2580B475009DF86F /* MappingFromDTOtoDomain */,
-				4082B6A725551EF000DC14A2 /* WebModel */,
+				4082B6A725551EF000DC14A2 /* DTO */,
 				400B1370254FECBD001AE01A /* JikanAPI.swift */,
 				40EEEC8625762190009DF86F /* DefaultAnimeFetchRepository.swift */,
 				406C2B6B2510D48800C8740E /* Helpers */,
 			);
-			path = WebService;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		4079A64E250F73B7001A9D3B /* Assets */ = {
@@ -457,7 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				400B137A25514538001AE01A /* RecommendService */,
-				4079A646250E54B6001A9D3B /* WebService */,
+				4079A646250E54B6001A9D3B /* Repositories */,
 				4079A63A250E36FE001A9D3B /* PersistenceStorage */,
 			);
 			path = Data;
@@ -482,7 +482,7 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		4082B6A725551EF000DC14A2 /* WebModel */ = {
+		4082B6A725551EF000DC14A2 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
 				40EEEDBD257E1FC8009DF86F /* Common&Properties */,
@@ -491,7 +491,7 @@
 				4050C7B12542E2B200A480CF /* GenreAnimeDTO.swift */,
 				4079A63B250E3723001A9D3B /* AnimeDetailsDTO.swift */,
 			);
-			path = WebModel;
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		4082B6AA25551F1900DC14A2 /* CoreDataClass */ = {
