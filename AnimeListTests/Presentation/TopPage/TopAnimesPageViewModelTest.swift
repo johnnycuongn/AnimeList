@@ -49,13 +49,18 @@ class TopAnimesPageViewModelTest: XCTestCase {
             if let error = error {
                 completion(.failure(error))
             } else {
-                if page == 1 {
-                    completion(.success(topAnimes))
-                } else {
-                    completion(.success(topAnimesSecondPage))
-                }
+                completion(.success(topAnimes))
             }
             expectation?.fulfill()
+        }
+    }
+    
+    class TopAnimesPageFlowCoorMock: TopAnimesPageFlowCoordinator {
+        
+        var isShownAnimeDetails = false
+        
+        func showAnimeDetails(id: Int) {
+            isShownAnimeDetails = true
         }
     }
     
@@ -67,7 +72,9 @@ class TopAnimesPageViewModelTest: XCTestCase {
             fetchedTopAnimes: topAnimes,
             error: nil)
         
-        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let topAnimesFlow = TopAnimesPageFlowCoorMock()
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: topAnimesFlow)
         
         // when
         sut.loadAnimes(page: 1, subtype: .movie)
@@ -86,7 +93,9 @@ class TopAnimesPageViewModelTest: XCTestCase {
             fetchedTopAnimes: topAnimes,
             error: nil)
         
-        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let topAnimesFlow = TopAnimesPageFlowCoorMock()
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: topAnimesFlow)
         
         // when
         sut.didSelect(subtype: .airing)
@@ -103,7 +112,9 @@ class TopAnimesPageViewModelTest: XCTestCase {
             fetchedTopAnimes: [],
             error: TopAnimesUseCaseError.someError)
         
-        sut =  DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let topAnimesFlow = TopAnimesPageFlowCoorMock()
+        
+        sut =  DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: topAnimesFlow)
         // when
         sut.loadAnimes(page: 1, subtype: .bydefault)
         

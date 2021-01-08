@@ -53,7 +53,7 @@ class TopAnimeUseCaseTest: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         
         topAnimeWebService = TopAnimeWebServiceMock(result: .success(TopAnimeUseCaseTest.topAnimes))
-        sut = DefaultTopAnimesReadUseCase(animeWebService: topAnimeWebService)
+        sut = DefaultTopAnimesReadUseCase(animeRepository: topAnimeWebService)
         
         
         var willFetchedAnimes: [TopAnimeMain.TopAnime] = []
@@ -81,7 +81,7 @@ class TopAnimeUseCaseTest: XCTestCase {
         expectation.expectedFulfillmentCount = 2
         
         topAnimeWebService = TopAnimeWebServiceMock(result: .failure(HTTPError.invalidResponse))
-        sut = DefaultTopAnimesReadUseCase(animeWebService: topAnimeWebService)
+        sut = DefaultTopAnimesReadUseCase(animeRepository: topAnimeWebService)
         
 
         var willFetchedAnimes: [TopAnimeMain.TopAnime] = []
