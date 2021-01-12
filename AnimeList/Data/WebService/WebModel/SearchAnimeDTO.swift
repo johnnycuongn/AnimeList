@@ -28,3 +28,6 @@ class SearchAnimesResponseDTO: Decodable {
         self.lastPage = try container.decode(Int.self, forKey: .lastPage)
     }
 }
+
+
+
