@@ -43,19 +43,19 @@ enum SearchParameter: String {
 // MARK: - JikanAPI
 class JikanAnimeAPI {
 
-    private let path: String = "https://api.jikan.moe/v3"
+    private let baseURL: String = "https://api.jikan.moe/v3"
     
     private var anime: URL { return
-        URL(string: path + "/anime")! }
+        URL(string: baseURL + "/anime")! }
     
     private var top: URL {
-        return URL(string: path + "/top/anime")! }
+        return URL(string: baseURL + "/top/anime")! }
     
     private var search: URL {
-        return URL(string: path + "/search/anime")! }
+        return URL(string: baseURL + "/search/anime")! }
     
     private var genre: URL {
-        return URL(string: path + "/genre/anime")! }
+        return URL(string: baseURL + "/genre/anime")! }
 }
 
 extension JikanAnimeAPI: APIPath {

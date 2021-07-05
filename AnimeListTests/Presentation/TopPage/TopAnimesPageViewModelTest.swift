@@ -14,14 +14,14 @@ class TopAnimesPageViewModelTest: XCTestCase {
     
     var sut: TopAnimesPageViewModel!
     
-    var topAnimes: [TopAnimeMain.TopAnime] = {
+    static var topAnimes: [TopAnimeMain.TopAnime] = {
         let anime1 = TopAnimeMain.TopAnime(rank: 1, malID: 1, imageURL: nil, title: "anime1", type: .movie, episodes: 1, members: 1, score: 1)
             
         
             return [anime1, anime1, anime1, anime1, anime1, anime1, anime1, anime1, anime1]
     }()
     
-    var topAnimesSecondPage: [TopAnimeMain.TopAnime] = {
+    static var topAnimesSecondPage: [TopAnimeMain.TopAnime] = {
         let anime2 = TopAnimeMain.TopAnime(rank: 2, malID: 2, imageURL: nil, title: "anime1", type: .movie, episodes: 2, members: 2, score: 2)
             
         
@@ -30,6 +30,12 @@ class TopAnimesPageViewModelTest: XCTestCase {
     
     private enum TopAnimesUseCaseError: Error {
         case someError
+    }
+    
+    class TopAnimeFlowMock: TopAnimesPageFlowCoordinator {
+        func showAnimeDetails(id: Int) {
+            // show Anime
+        }
     }
     
     class TopAnimesUseCaseMock: TopAnimesReadUseCase {
@@ -64,10 +70,12 @@ class TopAnimesPageViewModelTest: XCTestCase {
         // given
         let topAnimesUseCase = TopAnimesUseCaseMock(
             expectation: self.expectation(description: "Successfully load animes from Use Case"),
-            fetchedTopAnimes: topAnimes,
+            fetchedTopAnimes: TopAnimesPageViewModelTest.topAnimes,
             error: nil)
         
-        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let flow = TopAnimeFlowMock()
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: flow)
         
         // when
         sut.loadAnimes(page: 1, subtype: .movie)
@@ -83,10 +91,12 @@ class TopAnimesPageViewModelTest: XCTestCase {
         // given
         let topAnimesUseCase = TopAnimesUseCaseMock(
             expectation: self.expectation(description: "Successfully load animes from Use Case"),
-            fetchedTopAnimes: topAnimes,
+            fetchedTopAnimes: TopAnimesPageViewModelTest.topAnimes,
             error: nil)
         
-        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let flow = TopAnimeFlowMock()
+        
+        sut = DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: flow)
         
         // when
         sut.didSelect(subtype: .airing)
@@ -103,7 +113,9 @@ class TopAnimesPageViewModelTest: XCTestCase {
             fetchedTopAnimes: [],
             error: TopAnimesUseCaseError.someError)
         
-        sut =  DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase)
+        let flow = TopAnimeFlowMock()
+        
+        sut =  DefaultTopAnimesPageViewModel(animeUseCase: topAnimesUseCase, flow: flow)
         // when
         sut.loadAnimes(page: 1, subtype: .bydefault)
         

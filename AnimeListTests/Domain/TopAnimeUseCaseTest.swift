@@ -13,18 +13,20 @@ class TopAnimeUseCaseTest: XCTestCase {
     
     static var topAnimes: [TopAnimeMain.TopAnime] = {
         let anime1 = TopAnimeMain.TopAnime(rank: 1, malID: 1, imageURL: nil, title: "anime1", type: .movie, episodes: 1, members: 1, score: 1)
+    
+        let anime2 = TopAnimeMain.TopAnime(rank: 2, malID: 2, imageURL: nil, title: "anime2", type: .movie, episodes: 1, members: 1000, score: 8.9)
         
         return [anime1]
     }()
     
     
     var sut: TopAnimesReadUseCase!
-    var topAnimeWebService: TopAnimeRepository!
+    var topAnimeWebRepository: TopAnimeRepository!
     
     var testedSubtype: AnimeTopSubtype = .movie
 
-    //
-    class TopAnimeWebServiceMock: TopAnimeRepository {
+    /// Mock Repository for TopAnimeRepostiory
+    class TopAnimeWebRepositoryMock: TopAnimeRepository {
         
         var result: Result<[TopAnimeMain.TopAnime], Error>
         init(result: Result<[TopAnimeMain.TopAnime], Error>) {
@@ -52,14 +54,14 @@ class TopAnimeUseCaseTest: XCTestCase {
         let expectation = self.expectation(description: "Top Animes is successfully handled")
         expectation.expectedFulfillmentCount = 2
         
-        topAnimeWebService = TopAnimeWebServiceMock(result: .success(TopAnimeUseCaseTest.topAnimes))
-        sut = DefaultTopAnimesReadUseCase(animeWebService: topAnimeWebService)
+        topAnimeWebRepository = TopAnimeWebRepositoryMock(result: .success(TopAnimeUseCaseTest.topAnimes))
+        sut = DefaultTopAnimesReadUseCase(animeRepository: topAnimeWebRepository)
         
         
         var willFetchedAnimes: [TopAnimeMain.TopAnime] = []
         
         // when
-        topAnimeWebService.fetchTop(page: 1, subtype: testedSubtype) { (result) in
+        topAnimeWebRepository.fetchTop(page: 1, subtype: testedSubtype) { (result) in
             expectation.fulfill()
         }
         
@@ -80,15 +82,15 @@ class TopAnimeUseCaseTest: XCTestCase {
         let expectation = self.expectation(description: "Failed To Fetch Anime")
         expectation.expectedFulfillmentCount = 2
         
-        topAnimeWebService = TopAnimeWebServiceMock(result: .failure(HTTPError.invalidResponse))
-        sut = DefaultTopAnimesReadUseCase(animeWebService: topAnimeWebService)
-        
+        topAnimeWebRepository = TopAnimeWebRepositoryMock(result: .failure(HTTPError.invalidResponse))
+        sut = DefaultTopAnimesReadUseCase(animeRepository: topAnimeWebRepository)
+
 
         var willFetchedAnimes: [TopAnimeMain.TopAnime] = []
         var willFetchedError: Error? = nil
         
         // when
-        topAnimeWebService.fetchTop(page: 1, subtype: testedSubtype) { (result) in
+        topAnimeWebRepository.fetchTop(page: 1, subtype: testedSubtype) { (result) in
             expectation.fulfill()
         }
 
