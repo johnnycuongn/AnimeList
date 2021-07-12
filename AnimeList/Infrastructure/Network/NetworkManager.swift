@@ -13,7 +13,7 @@ enum NetworkError: Error {
 }
 
 protocol Networking {
-    func request(url: URL, completion: @escaping (Data?, Error?) -> Void)
+    @discardableResult func request(url: URL, completion: @escaping (Data?, Error?) -> Void) -> URLSessionTask
 }
 
 final class NetworkManager: Networking {
@@ -23,8 +23,8 @@ final class NetworkManager: Networking {
         self.session = session
     }
     
-    func request(url: URL, completion: @escaping (Data?, Error?) -> Void) {
-        session.dataTask(with: url) { (data, response, error) in
+    @discardableResult func request(url: URL, completion: @escaping (Data?, Error?) -> Void) -> URLSessionTask {
+        let task = session.dataTask(with: url) { (data, response, error) in
             do {
                 try validate(response)
 
@@ -44,6 +44,10 @@ final class NetworkManager: Networking {
                 completion(nil, error)
                 print("Network Validation Error: \(error)")
             }
-        }.resume()
+        }
+        task.resume()
+        
+        return task
+        
     }
 }

@@ -85,11 +85,21 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
     }
     
     // MARK: SEARCH ANIMES
+    var currentSearchDataTask: URLSessionTask?
+    
     func fetchSearch(page: Int, query: String, completion: @escaping (Result<SearchAnimeMain, Error>) -> Void) {
+        currentSearchDataTask?.cancel()
+        
+        guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            completion(.success(SearchAnimeMain(animes: [], lastPage: 1)))
+            return
+        }
+        
         let endpointURL = apiPath.search(page: page, query: query)
         print("Search Fetch URL: \(endpointURL)")
         
-        networkManager.request(url: endpointURL) { (data,error) in
+
+        currentSearchDataTask = networkManager.request(url: endpointURL) { (data,error) in
             guard let data = data else {
                 print("SearchAnimeService: Unable to retrive data")
                 return

@@ -75,17 +75,11 @@ class SeachAnimesViewController: UIViewController {
 
 extension SeachAnimesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == "" || searchBar.text == nil {
-            self.collectionView.reloadData()
-        }
+        viewModel.loadSearch(page: 1, searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text == "" || searchBar.text == nil {
-            self.collectionView.reloadData()
-        } else {
-            viewModel.loadSearch(page: 1, searchBar.text!)
-        }
+        viewModel.loadSearch(page: 1, searchBar.text!)
         
         searchBar.endEditing(true)
     }
