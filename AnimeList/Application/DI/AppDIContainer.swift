@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol BaseDI {
-    func makeTopAnimesPageViewModel(flow: TopAnimesPageFlowCoordinator) -> TopAnimesPageViewModel
+    func makeTopAnimesPageViewModel(coordinator: Coordinator) -> TopAnimesPageViewModel
     func makeRandomPageViewModel() -> RandomPageViewModel
 }
 
@@ -18,20 +18,31 @@ class AppDIContainer: BaseDI {
     
     let networkManager: Networking
     let apiPath: APIPath
+    var appCoordinator: Coordinator?
+    
     
     init(networkManager: Networking, apiPath: APIPath) {
         self.networkManager = networkManager
         self.apiPath = apiPath
     }
     
+    func startAppCoordinator(navigation: UINavigationController) {
+        self.appCoordinator = AppFlowCoordinatoor(navigationController: navigation)
+        appCoordinator?.start()
+    }
+
+    
     // MARK: - Top
 
-    func makeTopViewController(flow: TopAnimesPageFlowCoordinator) -> TopViewController {
-        return TopViewController.create(with: makeTopAnimesPageViewModel(flow: flow))
+    func makeTopViewController() -> TopViewController {
+        guard let coordinator = appCoordinator else {
+            fatalError("Cant find coordinator")
+        }
+        return TopViewController.create(with: makeTopAnimesPageViewModel(coordinator: coordinator))
     }
     
-    func makeTopAnimesPageViewModel(flow: TopAnimesPageFlowCoordinator) -> TopAnimesPageViewModel {
-        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), flow: flow)
+    func makeTopAnimesPageViewModel(coordinator: Coordinator) -> TopAnimesPageViewModel {
+        return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), coordinator: coordinator)
     }
     
     func makeTopAnimesReadUseCase() -> TopAnimesReadUseCase {
@@ -54,12 +65,16 @@ class AppDIContainer: BaseDI {
     
     // MARK: - Search
     
-    func makeSearchAnimesViewController(flow: SearchAnimesPageFlowCoordinatoor) -> SeachAnimesViewController {
-        return SeachAnimesViewController.create(with: makeSearchAnimesPageViewModel(flow: flow))
+    func makeSearchAnimesViewController() -> SeachAnimesViewController {
+        guard let coordinator = appCoordinator else {
+            fatalError("Cant find coordinator")
+        }
+        
+        return SeachAnimesViewController.create(with: makeSearchAnimesPageViewModel(coordinator: coordinator))
     }
     
-    func makeSearchAnimesPageViewModel(flow: SearchAnimesPageFlowCoordinatoor) -> SearchAnimesPageViewModel {
-        return DefaultSearchAnimesPageViewModel(searchUseCase: makeSearchAnimesUseCase(), flow: flow)
+    func makeSearchAnimesPageViewModel(coordinator: Coordinator) -> SearchAnimesPageViewModel {
+        return DefaultSearchAnimesPageViewModel(searchUseCase: makeSearchAnimesUseCase(), coordinator: coordinator)
     }
     
     private func makeSearchAnimesUseCase() -> SearchAnimesUseCase {

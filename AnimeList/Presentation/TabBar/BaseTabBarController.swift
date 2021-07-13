@@ -12,11 +12,12 @@ class BaseTabBarController: UITabBarController {
 
     @IBOutlet weak var searchBarButton: UIBarButtonItem!
     
-    var appDIContainer = AppDelegate.appDIContainer
-    lazy var appFlowCoordinatoor = AppFlowCoordinatoor(navigationController: navigationController)
+    var appDIContainer = SceneDelegate.appDIContainer
+    
+    weak var coordinator: AppFlowCoordinatoor?
     
     static func create() -> BaseTabBarController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         guard let tabbarVC = storyBoard.instantiateViewController(withIdentifier: "BaseTabBarController") as? BaseTabBarController else { fatalError() }
         
@@ -24,45 +25,40 @@ class BaseTabBarController: UITabBarController {
     }
     
         
-    func startFlow(with dependency: BaseDI, navigationController: UINavigationController) {
-
-        guard let baseViewControllers = viewControllers else {
-            fatalError() }
-        
-        func loadControllers(_ viewControllers: [UIViewController]) {
-            for vc in viewControllers {
-                (vc as? TopViewController)?
-                    .loadController(with: dependency.makeTopAnimesPageViewModel(flow: topPageFlow))
-                
-                (vc as? RandomViewController)?
-                    .loadController(with: dependency.makeRandomPageViewModel())
-            }
+    func loadControllers(_ viewControllers: [UIViewController]) {
+        guard let coordinator = self.coordinator else {
+            return
         }
         
-        loadControllers(baseViewControllers)
+        for vc in viewControllers {
+            (vc as? TopViewController)?
+                .loadController(with: appDIContainer.makeTopAnimesPageViewModel(coordinator: coordinator))
+            
+            (vc as? RandomViewController)?
+                .loadController(with: appDIContainer.makeRandomPageViewModel())
+        }
     }
-    
-    var topPageFlow: TopAnimesPageFlowCoordinator!
+        
 
-    var searchAnimesPageFlow: SearchAnimesPageFlowCoordinatoor!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let baseNavigation = self.navigationController else {return}
+        guard let baseViewControllers = viewControllers else {
+            fatalError() }
         
-        topPageFlow = appFlowCoordinatoor.topPage
-        searchAnimesPageFlow = appFlowCoordinatoor.searchPage
-        
-        startFlow(with: appDIContainer, navigationController: baseNavigation)
+        loadControllers(baseViewControllers)
 
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     
     @IBAction func searchButtonDidTapped(_ sender: UIBarButtonItem) {
-        let searchVC = appDIContainer.makeSearchAnimesViewController(flow: searchAnimesPageFlow)
-        
-        navigationController?.pushViewController(searchVC, animated: true)
+        coordinator?.showSearch()
     }
     
 

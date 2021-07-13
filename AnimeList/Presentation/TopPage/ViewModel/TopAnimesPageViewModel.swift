@@ -44,14 +44,14 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
     
     private let animeUseCase: TopAnimesReadUseCase
 
-    private let flow: TopAnimesPageFlowCoordinator
+    private var coordinator: Coordinator
     
     init(
         animeUseCase: TopAnimesReadUseCase = DefaultTopAnimesReadUseCase(),
-        flow: TopAnimesPageFlowCoordinator
+        coordinator: Coordinator
     ) {
         self.animeUseCase = animeUseCase
-        self.flow = flow
+        self.coordinator = coordinator
     }
     
     /// Fetch top animes from services
@@ -113,6 +113,6 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         let selectedAnime = topAnimes.value[index]
         let selectedID = selectedAnime.id
         
-        flow.showAnimeDetails(id: selectedID)
+        coordinator.showAnimeDetail(id: selectedID)
     }
 }

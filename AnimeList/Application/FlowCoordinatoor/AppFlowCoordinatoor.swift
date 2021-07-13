@@ -9,10 +9,27 @@
 import Foundation
 import UIKit
 
-class AppFlowCoordinatoor {
-    
+protocol PageCoordinatoor {
+    func showAnimeDetail(id: Int)
+    func showSearch()
+}
 
-    private var navigationController: UINavigationController
+protocol Coordinator: AnyObject, PageCoordinatoor {
+    var childCoordinators: [Coordinator] {get set}
+    var navigationController: UINavigationController {get set}
+    
+    func start()
+}
+
+
+class AppFlowCoordinatoor: Coordinator {
+    
+    private let appDIContainer = SceneDelegate.appDIContainer
+    
+    var navigationController: UINavigationController
+    var childCoordinators: [Coordinator]
+    
+    private let baseVC = BaseTabBarController.create()
     
     init(navigationController: UINavigationController?) {
         guard let navigationController = navigationController else {
@@ -20,25 +37,28 @@ class AppFlowCoordinatoor {
         }
         
         self.navigationController = navigationController
+        self.childCoordinators = []
+        
     }
     
-    var topPage: TopAnimesPageFlowCoordinator {
-        return makeTopAnimesPageFlowCoordinatoor(navigationController: navigationController)
+    func start() {
+        baseVC.coordinator = self
+        navigationController.pushViewController(baseVC, animated: false)
     }
     
-    var searchPage: SearchAnimesPageFlowCoordinatoor {
-        return makeSearchAnimesPageFlowCoordinatoor(navigationController: navigationController)
+    func showAnimeDetail(id: Int) {
+        weak var animeVC =
+            AnimeDetailsViewController.initialize(with: id)
+        guard animeVC != nil else { return }
+        
+        navigationController.pushViewController(animeVC!, animated: true)
     }
     
-    
-    // MARK: private 'Make' method
-    
-    private func makeTopAnimesPageFlowCoordinatoor(navigationController: UINavigationController) -> TopAnimesPageFlowCoordinator {
-        return DefaultTopAnimesPageFlowCoordinator(navigationController: navigationController)
-    }
-    
-    private func makeSearchAnimesPageFlowCoordinatoor(navigationController: UINavigationController) -> SearchAnimesPageFlowCoordinatoor {
-        return DefaultSearchAnimesPageFlowCoordinatoor(navigationController: navigationController)
+    func showSearch() {
+        weak var searchVC = appDIContainer.makeSearchAnimesViewController()
+        guard searchVC != nil else { return }
+        
+        navigationController.pushViewController(searchVC!, animated: true)
     }
     
 }

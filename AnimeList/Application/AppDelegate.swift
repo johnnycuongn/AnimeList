@@ -10,11 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    private static let networkManager: Networking = NetworkManager()
-    private static let jikanAnimeAPI: APIPath = JikanAnimeAPI()
-
-    static let appDIContainer = AppDIContainer(networkManager: networkManager, apiPath: jikanAnimeAPI)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

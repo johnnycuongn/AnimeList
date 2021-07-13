@@ -34,11 +34,11 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
     
     
     private let searchUseCase: SearchAnimesUseCase
-    private let flow: SearchAnimesPageFlowCoordinatoor
+    private let coordinator: Coordinator
     
-    init(searchUseCase: SearchAnimesUseCase = DefaultSearchAnimesUseCase(), flow: SearchAnimesPageFlowCoordinatoor) {
+    init(searchUseCase: SearchAnimesUseCase = DefaultSearchAnimesUseCase(), coordinator: Coordinator) {
         self.searchUseCase = searchUseCase
-        self.flow = flow
+        self.coordinator = coordinator
     }
     
     func loadSearch(page: Int = 1, _ text: String) {
@@ -102,7 +102,7 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
         let selectedAnime = animes.value[index]
         let selectedID = selectedAnime.id
         
-        flow.showAnimeDetails(id: selectedID)
+        coordinator.showAnimeDetail(id: selectedID)
     }
     
 }

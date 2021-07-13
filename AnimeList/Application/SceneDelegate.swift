@@ -11,13 +11,29 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    private static let networkManager: Networking = NetworkManager()
+    private static let jikanAnimeAPI: APIPath = JikanAnimeAPI()
 
+    // Only 1 AppDIContainer initialize here
+    static let appDIContainer = AppDIContainer(networkManager: networkManager, apiPath: jikanAnimeAPI)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+       
+        let nav = RootNavigationViewController.create()
+        
+        // Start app coordinator
+        SceneDelegate.appDIContainer.startAppCoordinator(navigation: nav)
+        
+        // Manually create window
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
