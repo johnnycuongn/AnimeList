@@ -15,6 +15,7 @@ protocol GenreAnimesPageViewModel {
     var loading: Observable<LoadingStyle?> { get }
     
     func loadAnimes(page: Int)
+    func didSelectAnime(at index: Int)
 }
 
 class DefaultGenreAnimesPageViewModel: GenreAnimesPageViewModel {
@@ -25,11 +26,13 @@ class DefaultGenreAnimesPageViewModel: GenreAnimesPageViewModel {
     
     
     private let useCase: GenreAnimesUseCase
+    private let coordinator: Coordinator
     
     init(id: Int,
-         animeUseCase: GenreAnimesUseCase = DefaultGenreAnimesUseCase()) {
+         animeUseCase: GenreAnimesUseCase = DefaultGenreAnimesUseCase(), coordinator: Coordinator) {
         self.id = id
         self.useCase = animeUseCase
+        self.coordinator = coordinator
     }
     
     func loadAnimes(page: Int = 1) {
@@ -46,6 +49,12 @@ class DefaultGenreAnimesPageViewModel: GenreAnimesPageViewModel {
             self?.loading.value = .none
         }
         
+    }
+    
+    func didSelectAnime(at index: Int) {
+        let selectedAnime = animes.value[index]
+        let selectedID = selectedAnime.malID
         
+        coordinator.showAnimeDetails(id: selectedID)
     }
 }

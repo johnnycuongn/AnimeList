@@ -10,11 +10,11 @@ import UIKit
 
 class AnimeDetailsViewController: UIViewController {
     
-    static func initialize(with id: Int) -> AnimeDetailsViewController? {
+    static func create(with viewModel: AnimeDetailsPageViewModel) -> AnimeDetailsViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeDetailsViewController") as? AnimeDetailsViewController else { return nil }
+        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeDetailsViewController") as? AnimeDetailsViewController else { fatalError("Can't instantiate AnimeDetailsVC") }
         
-        animeVC.viewModel = DefaultAnimeDetailsPageViewModel(animeID: id)
+        animeVC.viewModel = viewModel
 
         animeVC.modalPresentationStyle = .overFullScreen
         
@@ -161,7 +161,7 @@ class AnimeDetailsViewController: UIViewController {
     // MARK: - Button Action
     //------------------------
     @IBAction func closeButtonTapped(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        viewModel.closePage()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {

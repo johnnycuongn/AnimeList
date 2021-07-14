@@ -10,11 +10,14 @@ import UIKit
 
 class GenreAnimesViewController: UIViewController {
     
-    private var id: Int = 0
-    
-    public func initialize(id: Int) {
-        self.viewModel = DefaultGenreAnimesPageViewModel(id: id)
-        self.id = id
+    static func create(viewModel: GenreAnimesPageViewModel) -> GenreAnimesViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let genreVC = storyboard.instantiateViewController(withIdentifier: "GenreViewController") as! GenreAnimesViewController
+        
+        genreVC.viewModel = viewModel
+        genreVC.title = String(describing: Genre(rawValue: viewModel.id)!)
+        
+        return genreVC
     }
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -83,9 +86,7 @@ extension GenreAnimesViewController: UICollectionViewDataSource {
 extension GenreAnimesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Genre Anime - \(viewModel.animes.value[indexPath.row].title)")
-        weak var animeVC = AnimeDetailsViewController.initialize(with: viewModel.animes.value[indexPath.row].malID)
-        guard animeVC != nil else { return }
-        self.present(animeVC!, animated: true, completion: nil)
+        viewModel.didSelectAnime(at: indexPath.row)
     }
 }
 

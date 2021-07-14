@@ -34,13 +34,13 @@ class AppDIContainer: BaseDI {
     
     // MARK: - Top
 
-    func makeTopViewController() -> TopViewController {
-        guard let coordinator = appCoordinator else {
-            fatalError("Cant find coordinator")
-        }
-        return TopViewController.create(with: makeTopAnimesPageViewModel(coordinator: coordinator))
-    }
-    
+//    func makeTopViewController() -> TopViewController {
+//        guard let coordinator = appCoordinator else {
+//            fatalError("Cant find coordinator")
+//        }
+//        return TopViewController.create(with: makeTopAnimesPageViewModel(coordinator: coordinator))
+//    }
+
     func makeTopAnimesPageViewModel(coordinator: Coordinator) -> TopAnimesPageViewModel {
         return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), coordinator: coordinator)
     }
@@ -50,6 +50,17 @@ class AppDIContainer: BaseDI {
     }
 
     // MARK: - AnimeDetails && Random
+    
+    func makeAnimeDetailsViewController(id: Int) -> AnimeDetailsViewController {
+        guard let coordinator = appCoordinator else {
+            fatalError("Cant find coordinator")
+        }
+        return AnimeDetailsViewController.create(with: makeAnimeDetailsPageViewModel(id: id, coordinator: coordinator))
+    }
+    
+    func makeAnimeDetailsPageViewModel(id: Int, coordinator: Coordinator) -> AnimeDetailsPageViewModel {
+        return DefaultAnimeDetailsPageViewModel(animeID: id, animeUseCase:  makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase(), coordinator: coordinator)
+    }
 
     func makeRandomPageViewModel() -> RandomPageViewModel {
         return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
@@ -81,6 +92,29 @@ class AppDIContainer: BaseDI {
         return DefaultSearchAnimesUseCase(animeRepository: makeSearchAnimeRepository())
     }
     
+    // MARK: - Discover
+    func makeDiscoverPageViewModel(coordinator: Coordinator) -> DiscoverPageViewModel {
+        return DefaultDiscoverPageViewModel(coordinator: coordinator)
+    }
+    
+    // MARK: - Genre
+    
+    func makeGenreAnimesViewController(genreID: Int) -> GenreAnimesViewController {
+        guard let coordinator = appCoordinator else {
+            fatalError("Cant find coorditor")
+        }
+        
+        return GenreAnimesViewController.create(viewModel: makeGenreAnimesPageViewModel(genreID: genreID, coordinator: coordinator))
+    }
+    
+    func makeGenreAnimesPageViewModel(genreID: Int, coordinator: Coordinator) -> GenreAnimesPageViewModel {
+        return DefaultGenreAnimesPageViewModel(id: genreID, animeUseCase: makeGenreAnimesUseCase(), coordinator: coordinator)
+    }
+    
+    private func makeGenreAnimesUseCase() -> GenreAnimesUseCase {
+        return DefaultGenreAnimesUseCase(animeRepository: makeGenreAnimeRepository())
+    }
+    
     // MARK: - Repository
 
     private func makeTopAnimeRepository() -> TopAnimeRepository {
@@ -92,6 +126,10 @@ class AppDIContainer: BaseDI {
     }
     
     private func makeSearchAnimeRepository() -> SearchAnimeRepository {
+        return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
+    }
+    
+    private func makeGenreAnimeRepository() -> GenreAnimeRepository {
         return DefaultAnimeFetchRepository(networkManager: self.networkManager, apiPath: self.apiPath)
     }
     

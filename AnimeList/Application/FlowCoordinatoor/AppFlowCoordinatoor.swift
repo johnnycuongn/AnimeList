@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 protocol PageCoordinatoor {
-    func showAnimeDetail(id: Int)
+    func showAnimeDetails(id: Int)
+    func closeAnimeDetails()
+    
     func showSearch()
+    func showGenreAnimes(genreID: Int)
 }
 
 protocol Coordinator: AnyObject, PageCoordinatoor {
@@ -46,12 +49,16 @@ class AppFlowCoordinatoor: Coordinator {
         navigationController.pushViewController(baseVC, animated: false)
     }
     
-    func showAnimeDetail(id: Int) {
+    func showAnimeDetails(id: Int) {
         weak var animeVC =
-            AnimeDetailsViewController.initialize(with: id)
+            appDIContainer.makeAnimeDetailsViewController(id: id)
         guard animeVC != nil else { return }
         
         navigationController.pushViewController(animeVC!, animated: true)
+    }
+    
+    func closeAnimeDetails() {
+        navigationController.popViewController(animated: true)
     }
     
     func showSearch() {
@@ -59,6 +66,13 @@ class AppFlowCoordinatoor: Coordinator {
         guard searchVC != nil else { return }
         
         navigationController.pushViewController(searchVC!, animated: true)
+    }
+    
+    func showGenreAnimes(genreID: Int) {
+        weak var genreAnimesVC = appDIContainer.makeGenreAnimesViewController(genreID: genreID)
+        guard genreAnimesVC != nil else {return}
+        
+        navigationController.pushViewController(genreAnimesVC!, animated: true)
     }
     
 }

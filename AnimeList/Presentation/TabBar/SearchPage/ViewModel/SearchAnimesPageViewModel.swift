@@ -102,7 +102,7 @@ class DefaultSearchAnimesPageViewModel: SearchAnimesPageViewModel {
         let selectedAnime = animes.value[index]
         let selectedID = selectedAnime.id
         
-        coordinator.showAnimeDetail(id: selectedID)
+        coordinator.showAnimeDetails(id: selectedID)
     }
     
 }

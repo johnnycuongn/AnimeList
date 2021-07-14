@@ -113,6 +113,7 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
         let selectedAnime = topAnimes.value[index]
         let selectedID = selectedAnime.id
         
-        coordinator.showAnimeDetail(id: selectedID)
+        coordinator.showAnimeDetails(id: selectedID)
     }
+    
 }

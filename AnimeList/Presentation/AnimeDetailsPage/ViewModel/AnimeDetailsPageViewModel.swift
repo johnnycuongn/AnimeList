@@ -20,6 +20,8 @@ protocol AnimeDetailsPageViewModel {
     
     func loadAnime(id: Int)
     func updateSave()
+    
+    func closePage()
 }
 
 // MARK: - DEFAULT VIEW MODEL
@@ -37,13 +39,15 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
     private let animeUseCase: AnimeDetailsUseCase
     
     private let saveUseCase: SaveOfflineUseCase
+    private let coordinator: Coordinator
     
     init(animeID: Int,
-         animeUseCase: AnimeDetailsUseCase = DefaultAnimeDetailsUseCase(), saveUseCase: SaveOfflineUseCase = DefaultSaveOfflineUseCase()) {
+         animeUseCase: AnimeDetailsUseCase, saveUseCase: SaveOfflineUseCase, coordinator: Coordinator) {
         self.id = animeID
         
         self.animeUseCase = animeUseCase
         self.saveUseCase = saveUseCase
+        self.coordinator = coordinator
     }
     
     func loadAnime(id: Int) {
@@ -142,5 +146,8 @@ class DefaultAnimeDetailsPageViewModel: AnimeDetailsPageViewModel {
         }
     }
     
+    func closePage() {
+        coordinator.closeAnimeDetails()
+    }
     
 }

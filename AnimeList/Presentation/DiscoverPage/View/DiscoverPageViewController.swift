@@ -19,6 +19,12 @@ class DiscoverPageViewController: UIViewController {
     
     var genres = Genre.allCases
     
+    var viewModel: DiscoverPageViewModel!
+    
+    func loadController(with viewModel: DiscoverPageViewModel) {
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
 
         pageCollectionView.delegate = self

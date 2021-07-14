@@ -78,16 +78,7 @@ extension DiscoverPageViewController: UICollectionViewDelegate {
         
         else {
             
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let genreID = genres[indexPath.row].rawValue
-            print("Genre Did Select: \(genres[indexPath.row])")
-            
-            let genreVC = storyBoard.instantiateViewController(withIdentifier: "GenreViewController") as! GenreAnimesViewController
-            genreVC.initialize(id: genreID)
-            genreVC.title = String(describing: genres[indexPath.row])
-            
-            self.navigationController?.pushViewController(genreVC, animated: true)
+            viewModel.didSelectGenre(at: indexPath.row)
             
         }
         

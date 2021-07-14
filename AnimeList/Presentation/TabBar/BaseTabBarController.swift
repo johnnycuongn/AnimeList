@@ -24,7 +24,7 @@ class BaseTabBarController: UITabBarController {
         return tabbarVC
     }
     
-        
+    /// Load tab bar's controllers with dependant view model
     func loadControllers(_ viewControllers: [UIViewController]) {
         guard let coordinator = self.coordinator else {
             return
@@ -36,6 +36,9 @@ class BaseTabBarController: UITabBarController {
             
             (vc as? RandomViewController)?
                 .loadController(with: appDIContainer.makeRandomPageViewModel())
+            
+            (vc as? DiscoverPageViewController)?
+                .loadController(with: appDIContainer.makeDiscoverPageViewModel(coordinator: coordinator))
         }
     }
         
