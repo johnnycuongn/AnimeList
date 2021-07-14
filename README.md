@@ -17,6 +17,7 @@ Ranking           |  Pagination
 - Handling fetching and loading data, images [Networking]
 - Core Data [Persistence]
 
+## Practice
 - Clean Code practice
 - SOLID Principle in mind
 
