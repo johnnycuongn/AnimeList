@@ -12,12 +12,13 @@ Ranking           |  Pagination
 
 ## Application
 
-- Clean Architecture Practice (DDD)
-- MVVM presentational architecture
-- REST API, Webservices
-- Handling caching, fetching and loading images
-- SOLID principle in mind
-- Core Data
+- MVVM Presentational Architecture
+- Coordinator Pattern
+- Handling fetching and loading data, images [Networking]
+- Core Data [Persistence]
+
+- Clean Code practice
+- SOLID Principle in mind
 
 ## Languages/ Frameworks
 
