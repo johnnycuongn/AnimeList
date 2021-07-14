@@ -9,12 +9,7 @@
 import Foundation
 import UIKit
 
-protocol BaseDI {
-    func makeTopAnimesPageViewModel(coordinator: Coordinator) -> TopAnimesPageViewModel
-    func makeRandomPageViewModel() -> RandomPageViewModel
-}
-
-class AppDIContainer: BaseDI {
+class AppDIContainer {
     
     let networkManager: Networking
     let apiPath: APIPath

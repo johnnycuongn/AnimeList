@@ -269,7 +269,7 @@
         <!--Genre Animes View Controller-->
         <scene sceneID="RAZ-CX-fpV">
             <objects>
-                <viewController storyboardIdentifier="GenreViewController" id="P6l-uR-Rd2" customClass="GenreAnimesViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenreAnimesViewController" id="P6l-uR-Rd2" customClass="GenreAnimesViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uq2-I4-Om6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -11,8 +11,9 @@ import UIKit
 class GenreAnimesViewController: UIViewController {
     
     static func create(viewModel: GenreAnimesPageViewModel) -> GenreAnimesViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let genreVC = storyboard.instantiateViewController(withIdentifier: "GenreViewController") as! GenreAnimesViewController
+        let storyboard = UIStoryboard.main
+
+        let genreVC = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! GenreAnimesViewController
         
         genreVC.viewModel = viewModel
         genreVC.title = String(describing: Genre(rawValue: viewModel.id)!)

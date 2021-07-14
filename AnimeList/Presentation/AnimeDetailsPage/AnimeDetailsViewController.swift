@@ -11,8 +11,8 @@ import UIKit
 class AnimeDetailsViewController: UIViewController {
     
     static func create(with viewModel: AnimeDetailsPageViewModel) -> AnimeDetailsViewController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: "AnimeDetailsViewController") as? AnimeDetailsViewController else { fatalError("Can't instantiate AnimeDetailsVC") }
+        let storyBoard = UIStoryboard.main
+        guard let animeVC = storyBoard.instantiateViewController(withIdentifier: String(describing: self)) as? AnimeDetailsViewController else { fatalError("Can't instantiate AnimeDetailsVC") }
         
         animeVC.viewModel = viewModel
 

@@ -32,8 +32,8 @@ class TopViewController: UIViewController {
     }
     
     static func create(with viewModel: TopAnimesPageViewModel) -> TopViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "TopViewController") as? TopViewController else {
+        let storyboard = UIStoryboard.main
+        guard let vc = storyboard.instantiateViewController(identifier: String(describing: self)) as? TopViewController else {
             fatalError("Can't instantiate TopVC")
         }
         
