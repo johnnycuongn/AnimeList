@@ -636,6 +636,7 @@
 		40EEED202579FEE7009DF86F /* AnimeListTests */ = {
 			isa = PBXGroup;
 			children = (
+				40E8F26426B13CC400E7076A /* CoordinatorMock.swift */,
 				40EEEE0E25831B16009DF86F /* Domain */,
 				40EEED33257A0337009DF86F /* Presentation */,
 				40EEED2D2579FFB2009DF86F /* TopAnimeDTO+Stub.swift */,
@@ -931,6 +932,7 @@
 			files = (
 				40EEED2E2579FFB2009DF86F /* TopAnimeDTO+Stub.swift in Sources */,
 				40EEED222579FEE7009DF86F /* TopAnimeThumbnailViewModelTest.swift in Sources */,
+				40E8F26526B13CC400E7076A /* CoordinatorMock.swift in Sources */,
 				40EEEE1825831BB9009DF86F /* TopAnimeUseCaseTest.swift in Sources */,
 				40EEED36257A0361009DF86F /* TopAnimesPageViewModelTest.swift in Sources */,
 			);
