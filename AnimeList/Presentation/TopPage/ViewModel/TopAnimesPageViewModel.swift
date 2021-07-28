@@ -64,6 +64,8 @@ class DefaultTopAnimesPageViewModel: TopAnimesPageViewModel {
             switch result {
             
             case .success(let topAnimes):
+                self?.error.value = nil
+                
                 self?.topAnimes.value.append(contentsOf: topAnimes.compactMap({
                     DefaultTopAnimeThumbnailViewModel.init(animeThumbnail: $0)
                 }))

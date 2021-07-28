@@ -81,7 +81,16 @@ class TopViewController: UIViewController {
     }
     
     private func updateError(_ error: String?) {
-        guard let error = error, !error.isEmpty else { return }
+        guard let error = error else {
+            topAnimeCollectionView.backgroundView = nil
+            return }
+        
+        let errorView = ErrorView().loadNib() as? ErrorView
+        errorView?.delegate = self
+        errorView?.errorLabel.text = error
+        
+        topAnimeCollectionView.backgroundView = errorView
+        
         print("TopVC Error: \(error)")
     }
     
@@ -95,6 +104,7 @@ class TopViewController: UIViewController {
     private func updateLoading(_ loadingStyle: LoadingStyle?) {
         switch loadingStyle {
         case .fullscreen:
+            self.topAnimeCollectionView.backgroundView = nil
             self.activityIndicator.startAnimating()
         case .none:
             self.activityIndicator.stopAnimating()
@@ -128,5 +138,11 @@ extension TopViewController: UITabBarControllerDelegate {
         if selectedIndex == 0 {
             self.topAnimeCollectionView.setContentOffset(CGPoint.zero, animated: true)
         }
+    }
+}
+
+extension TopViewController: ErrorViewDelegate {
+    func reload() {
+        viewModel.loadAnimes(page: 1, subtype: viewModel.currentSubtype)
     }
 }
