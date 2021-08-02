@@ -5,7 +5,7 @@
 - Discover anime to watch by randomly pick one.
 - Save plan-to-watch anime into offline storage.
 
-This app is built using [Jikan REST API](https://jikan.moe).
+This app is built using [`Jikan`](https://jikan.moe) REST API.
 
 <p>
     <img src=https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimePage.png width="24%"/> 
@@ -14,15 +14,13 @@ This app is built using [Jikan REST API](https://jikan.moe).
     <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/AnimeRandomPicker.png" width="24%"/>
 </p>
 
-## Application
+## 🏗 Application
 
 - `MVVM` + `Coordinator`
 - Networking: Handling fetching and loading data
 - Core Data
 
-## Practice
+## 👷🏼‍♂️ Practice
 - Clean Code
 - SOLID Principle
 - Protocol Oriented
-
-## 
