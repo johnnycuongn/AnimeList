@@ -1,31 +1,28 @@
 # AnimeList
+[![Build Status](https://img.shields.io/badge/Swift-5.1.1-orange.svg)](https://swift.org)
 
-## Project Scope
+- Explore anime series and movies from top ranking.
+- Discover anime to watch by randomly pick one.
+- Save plan-to-watch anime into offline storage.
 
+This app is built using [Jikan REST API](https://jikan.moe).
 
-- Explore anime series and movies from top ranking, top popularity, and much more. Discover anime to watch by randomly pick one.
-- Save plan-to-watch anime into offline storage
-
-Ranking           |  Pagination
-:-------------------------:|:-------------------------:
-![](https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimeGif.gif)  | ![](https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/PagniationAndDetails.gif)
+<p>
+    <img src=https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimePage.png width="24%"/> 
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/SearchAnimePage.png" width="24%"/> 
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/AnimeDetails.png" width="24%"/>
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/AnimeRandomPicker.png" width="24%"/>
+</p>
 
 ## Application
 
-- MVVM Presentational Architecture
-- Coordinator Pattern
-- Handling fetching and loading data, images [Networking]
-- Core Data [Persistence]
+- `MVVM` + `Coordinator`
+- Networking: Handling fetching and loading data
+- Core Data
 
 ## Practice
-- Clean Code practice
-- SOLID Principle in mind
+- Clean Code
+- SOLID Principle
+- Protocol Oriented
 
-## Languages/ Frameworks
-
-- Swift 5
-- CoreData
-
-## Credits
-
-**Cuong Duc Nguyen**
+## 
