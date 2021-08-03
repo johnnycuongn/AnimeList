@@ -14,9 +14,9 @@
         <!--Discover-->
         <scene sceneID="Ozq-vu-9W4">
             <objects>
-                <viewController id="Qvq-JU-vKY" customClass="DiscoverPageViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverPageViewController" id="Qvq-JU-vKY" customClass="DiscoverPageViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Quy-bT-nD1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-l1-qev">
@@ -164,7 +164,7 @@
             <objects>
                 <viewController storyboardIdentifier="TopViewController" id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXU-Rd-t6y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pFe-SD-Ly0">
@@ -909,9 +909,9 @@
         <!--Random-->
         <scene sceneID="Hah-Zc-hXV">
             <objects>
-                <viewController id="xIA-KP-nvG" customClass="RandomViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RandomViewController" id="xIA-KP-nvG" customClass="RandomViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kLp-SQ-mYN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9u-vG-cyc">

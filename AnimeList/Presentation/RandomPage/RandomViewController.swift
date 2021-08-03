@@ -10,6 +10,17 @@ import UIKit
 
 class RandomViewController: UIViewController, UIScrollViewDelegate {
     
+    static func create(with viewModel: RandomPageViewModel) -> RandomViewController {
+        let storyboard = UIStoryboard.main
+        guard let vc = storyboard.instantiateViewController(identifier: String(describing: self)) as? RandomViewController else {
+            fatalError("Can't instantiate TopVC")
+        }
+        
+        vc.viewModel = viewModel
+        
+        return vc
+    }
+    
     //MARK: - Outlets
     @IBOutlet weak var randomAnimeView: UIView!
     

@@ -23,33 +23,15 @@ class BaseTabBarController: UITabBarController {
         
         return tabbarVC
     }
-    
-    /// Load tab bar's controllers with dependant view model
-    func loadControllers(_ viewControllers: [UIViewController]) {
-        guard let coordinator = self.coordinator else {
-            return
-        }
-        
-        for vc in viewControllers {
-            (vc as? TopViewController)?
-                .loadController(with: appDIContainer.makeTopAnimesPageViewModel(coordinator: coordinator))
-            
-            (vc as? RandomViewController)?
-                .loadController(with: appDIContainer.makeRandomPageViewModel())
-            
-            (vc as? DiscoverPageViewController)?
-                .loadController(with: appDIContainer.makeDiscoverPageViewModel(coordinator: coordinator))
-        }
-    }
         
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let baseViewControllers = viewControllers else {
-            fatalError() }
-        
-        loadControllers(baseViewControllers)
+        self.viewControllers = [
+            appDIContainer.makeTopViewController(),
+            appDIContainer.makeDiscoverPageViewController(),
+            appDIContainer.makeRandomViewController()
+        ]
 
     }
     

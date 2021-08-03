@@ -29,12 +29,12 @@ class AppDIContainer {
     
     // MARK: - Top
 
-//    func makeTopViewController() -> TopViewController {
-//        guard let coordinator = appCoordinator else {
-//            fatalError("Cant find coordinator")
-//        }
-//        return TopViewController.create(with: makeTopAnimesPageViewModel(coordinator: coordinator))
-//    }
+    func makeTopViewController() -> TopViewController {
+        guard let coordinator = appCoordinator else {
+            fatalError("Cant find coordinator")
+        }
+        return TopViewController.create(with: makeTopAnimesPageViewModel(coordinator: coordinator))
+    }
 
     func makeTopAnimesPageViewModel(coordinator: Coordinator) -> TopAnimesPageViewModel {
         return DefaultTopAnimesPageViewModel(animeUseCase: makeTopAnimesReadUseCase(), coordinator: coordinator)
@@ -57,6 +57,9 @@ class AppDIContainer {
         return DefaultAnimeDetailsPageViewModel(animeID: id, animeUseCase:  makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase(), coordinator: coordinator)
     }
 
+    func makeRandomViewController() -> RandomViewController {
+        return RandomViewController.create(with: makeRandomPageViewModel())
+    }
     func makeRandomPageViewModel() -> RandomPageViewModel {
         return DefaultRandomPageViewModel(animeUseCase: makeAnimeDetailsUseCase(), saveUseCase: makeSaveOfflineUseCase())
     }
@@ -88,6 +91,10 @@ class AppDIContainer {
     }
     
     // MARK: - Discover
+    func makeDiscoverPageViewController() -> DiscoverPageViewController {
+        return DiscoverPageViewController.create()
+    }
+    
     func makeDiscoverPageViewModel(coordinator: Coordinator) -> DiscoverPageViewModel {
         return DefaultDiscoverPageViewModel(coordinator: coordinator)
     }

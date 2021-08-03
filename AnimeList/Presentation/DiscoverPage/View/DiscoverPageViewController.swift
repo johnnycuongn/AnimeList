@@ -11,6 +11,15 @@ import UIKit
 
 
 class DiscoverPageViewController: UIViewController {
+    
+    static func create() -> DiscoverPageViewController {
+        let storyboard = UIStoryboard.main
+        guard let vc = storyboard.instantiateViewController(identifier: String(describing: self)) as? DiscoverPageViewController else {
+            fatalError("Can't instantiate TopVC")
+        }
+        
+        return vc
+    }
 
     
     @IBOutlet weak var pageCollectionView: UICollectionView!
