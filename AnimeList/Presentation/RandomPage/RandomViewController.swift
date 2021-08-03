@@ -26,6 +26,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var descriptionView: UIVisualEffectView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var nextBtn: UIButton!
     
     @IBOutlet weak var visualEffectAnimeView: UIVisualEffectView!
     @IBOutlet weak var descriptionScrollView: UIScrollView!
@@ -57,6 +58,10 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Loading
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.color = .black
+        activityIndicator.style = .medium
+        
         descriptionScrollView.delegate = self
         
         genreCollectionView.delegate = self
@@ -117,8 +122,12 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         switch loadingStyle {
         case .fullscreen:
             self.activityIndicator.startAnimating()
+            nextBtn.isHidden = true
+            saveButton.isHidden = true
         case .none:
             self.activityIndicator.stopAnimating()
+            nextBtn.isHidden = false
+            saveButton.isHidden = false
         }
     }
     

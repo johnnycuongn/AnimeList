@@ -16,7 +16,7 @@
             <objects>
                 <viewController storyboardIdentifier="DiscoverPageViewController" id="Qvq-JU-vKY" customClass="DiscoverPageViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Quy-bT-nD1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-l1-qev">
@@ -164,7 +164,7 @@
             <objects>
                 <viewController storyboardIdentifier="TopViewController" id="t5b-Nb-KFA" customClass="TopViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXU-Rd-t6y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pFe-SD-Ly0">
@@ -911,7 +911,7 @@
             <objects>
                 <viewController storyboardIdentifier="RandomViewController" id="xIA-KP-nvG" customClass="RandomViewController" customModule="AnimeList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kLp-SQ-mYN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9u-vG-cyc">
@@ -1000,10 +1000,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="b1d-hN-yDJ" secondAttribute="trailing" id="zXY-1w-cpw"/>
                                                     </constraints>
                                                 </scrollView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-Lg-zGK">
-                                                    <rect key="frame" x="168.66666666666666" y="255.66666666666669" width="37" height="37"/>
-                                                    <color key="color" name="main-background-color"/>
-                                                </activityIndicatorView>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5K-Ah-a3s">
                                                     <rect key="frame" x="0.0" y="497" width="374" height="51"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6aj-ca-v8c">
@@ -1133,9 +1129,7 @@
                                                 <constraint firstItem="i2N-Dr-i4f" firstAttribute="top" secondItem="bt1-8I-fDl" secondAttribute="top" constant="8" id="3ki-FU-pBz"/>
                                                 <constraint firstAttribute="bottom" secondItem="i2N-Dr-i4f" secondAttribute="bottom" constant="8" id="6rN-yv-Q5F"/>
                                                 <constraint firstItem="i2N-Dr-i4f" firstAttribute="leading" secondItem="bt1-8I-fDl" secondAttribute="leading" constant="8" id="82k-P2-dkf"/>
-                                                <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerY" secondItem="bt1-8I-fDl" secondAttribute="centerY" id="bOX-f2-u1b"/>
                                                 <constraint firstAttribute="trailing" secondItem="i2N-Dr-i4f" secondAttribute="trailing" constant="8" id="biH-WH-8VL"/>
-                                                <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerX" secondItem="bt1-8I-fDl" secondAttribute="centerX" id="by9-nZ-i0Q"/>
                                             </constraints>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1183,13 +1177,19 @@
                                     <action selector="nextBtnTapped:" destination="xIA-KP-nvG" eventType="touchUpInside" id="sB6-mq-YAL"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-Lg-zGK">
+                                <rect key="frame" x="346.66666666666669" y="592.66666666666663" width="37" height="37"/>
+                                <color key="color" name="main-background-color"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fct-U0-vWj"/>
                         <color key="backgroundColor" name="main-background-color"/>
                         <constraints>
                             <constraint firstItem="A9u-vG-cyc" firstAttribute="top" secondItem="fct-U0-vWj" secondAttribute="top" constant="30" id="2ax-HU-zYL"/>
                             <constraint firstItem="Ctx-q2-EE3" firstAttribute="bottom" secondItem="nJD-8p-0iF" secondAttribute="bottom" id="7Qb-vb-Shu"/>
+                            <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerY" secondItem="Ctx-q2-EE3" secondAttribute="centerY" id="9wg-cW-kF4"/>
                             <constraint firstItem="nJD-8p-0iF" firstAttribute="centerX" secondItem="kLp-SQ-mYN" secondAttribute="centerX" id="HTN-rc-zfd"/>
+                            <constraint firstItem="hAK-Lg-zGK" firstAttribute="centerX" secondItem="Ctx-q2-EE3" secondAttribute="centerX" id="Q8w-NF-uFx"/>
                             <constraint firstItem="fct-U0-vWj" firstAttribute="bottom" secondItem="nJD-8p-0iF" secondAttribute="bottom" constant="15" id="bsD-VQ-RPu"/>
                             <constraint firstItem="A9u-vG-cyc" firstAttribute="leading" secondItem="fct-U0-vWj" secondAttribute="leading" constant="20" id="gfr-g3-UVY"/>
                             <constraint firstItem="Ctx-q2-EE3" firstAttribute="trailing" secondItem="A9u-vG-cyc" secondAttribute="trailing" constant="-10" id="lHi-to-T45"/>
@@ -1213,6 +1213,7 @@
                         <outlet property="descriptionScrollView" destination="i2N-Dr-i4f" id="RAw-I6-tbO"/>
                         <outlet property="genreCollectionView" destination="hlc-x9-CWk" id="ZP1-S4-lGT"/>
                         <outlet property="genreCollectionViewHeight" destination="u6V-B6-zRp" id="m01-wl-xn1"/>
+                        <outlet property="nextBtn" destination="Ctx-q2-EE3" id="0EA-bC-7Y7"/>
                         <outlet property="randomAnimeView" destination="A9u-vG-cyc" id="vrg-us-xjW"/>
                         <outlet property="saveButton" destination="nJD-8p-0iF" id="SAU-aV-gcA"/>
                         <outlet property="visualEffectAnimeView" destination="l4S-r3-HH0" id="tLn-pr-V0V"/>

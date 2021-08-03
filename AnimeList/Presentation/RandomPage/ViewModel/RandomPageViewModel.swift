@@ -98,9 +98,9 @@ class DefaultRandomPageViewModel: RandomPageViewModel {
     
     func loadAnime() {
         let startTime = NSDate()
-        
+        self.loadingStyle.value = .fullscreen
         RecommendService.shared.recommendID { (id) in
-            self.loadingStyle.value = .fullscreen
+            
     
             self.animeUseCase.getAnime(id: id) { [weak self] (result) in
                 switch result {
