@@ -23,6 +23,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var randomAnimeView: UIView!
+    @IBOutlet weak var descriptionView: UIVisualEffectView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -79,7 +80,7 @@ class RandomViewController: UIViewController, UIScrollViewDelegate {
         self.view.layoutIfNeeded()
         
         descriptionScrollView.contentInset.bottom = bottomView.frame.height
-        descriptionScrollView.contentInset.top = randomAnimeView.frame.height/2 + 50
+        configureGenreCLV()
         
         saveButton.layer.cornerRadius = 5
     }
@@ -167,5 +168,12 @@ extension RandomViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.configure(with: viewModel.animeViewModel.value.genres[indexPath.row].name)
         
         return cell
+    }
+}
+
+extension RandomViewController {
+    private func configureGenreCLV() {
+        descriptionScrollView.contentInset.top = randomAnimeView.bounds.height - bottomView.bounds.height - animeTitle.bounds.height - genreCollectionView.collectionViewLayout.collectionViewContentSize.height - 16 - 2
+        descriptionScrollView.contentOffset = CGPoint(x: 0, y: -descriptionScrollView.contentInset.top)
     }
 }
