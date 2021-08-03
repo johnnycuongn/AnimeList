@@ -31,4 +31,12 @@ extension TopViewController: UICollectionViewDelegate, SubtypeDataServiceDelegat
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         viewModel.loadNextPage(at: indexPath)
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if let refresh = self.topAnimeCollectionView.refreshControl, refresh.isRefreshing {
+            DispatchQueue.main.async {
+                self.topAnimeCollectionView.refreshControl?.endRefreshing()
+            }
+        }
+    }
 }

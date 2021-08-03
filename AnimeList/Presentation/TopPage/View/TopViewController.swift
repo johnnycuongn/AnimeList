@@ -60,6 +60,8 @@ class TopViewController: UIViewController {
         topAnimeCollectionView.register(UINib(nibName: pageThumbnailCell.identifier, bundle: nil), forCellWithReuseIdentifier:  pageThumbnailCell.identifier)
         topAnimeCollectionView.scrollsToTop = true
         
+        topAnimeCollectionView.refreshControl = UIRefreshControl()
+        topAnimeCollectionView.refreshControl?.addTarget(self, action: #selector(self.reloadPage), for: .valueChanged)
         
         self.tabBarController?.delegate = self
     }
@@ -111,6 +113,11 @@ class TopViewController: UIViewController {
         }
     }
     
+    @objc func reloadPage() {
+        viewModel.topAnimes.value = []
+        viewModel.loadAnimes(page: 1, subtype: viewModel.currentSubtype)
+    }
+    
 }
 
 extension TopViewController: UICollectionViewDelegateFlowLayout {
@@ -143,6 +150,6 @@ extension TopViewController: UITabBarControllerDelegate {
 
 extension TopViewController: ErrorViewDelegate {
     func reload() {
-        viewModel.loadAnimes(page: 1, subtype: viewModel.currentSubtype)
+        self.reloadPage()
     }
 }
