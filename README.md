@@ -5,7 +5,9 @@
 - Discover anime to watch by randomly pick one.
 - Save plan-to-watch anime into offline storage.
 
-This app is built using [`Jikan`](https://jikan.moe) REST API.
+💡 This app is built using [`Jikan`](https://jikan.moe) REST API.
+
+⚠️ No authentication or API key needed
 
 <p>
     <img src=https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimePage.png width="24%"/> 
@@ -19,6 +21,10 @@ This app is built using [`Jikan`](https://jikan.moe) REST API.
 - `MVVM` + `Coordinator`
 - Networking: Handling fetching and loading data
 - Core Data
+
+This project is designed and written on my own at the moment, which doesn't depend on any outside dependencies.
+
+For `data binding`, refer to my extension: [Observable](https://github.com/johnnycuongn/Swift-Helpers-Extensions/tree/main/Observable)
 
 ## 👷🏼‍♂️ Practice
 - Clean Code
