@@ -1,31 +1,32 @@
 # AnimeList
+[![Build Status](https://img.shields.io/badge/Swift-5.1.1-orange.svg)](https://swift.org)
 
-## Project Scope
+- Explore anime series and movies from top ranking.
+- Discover anime to watch by randomly pick one.
+- Save plan-to-watch anime into offline storage.
 
+💡 This app is built using [`Jikan`](https://jikan.moe) REST API.
 
-- Explore anime series and movies from top ranking, top popularity, and much more. Discover anime to watch by randomly pick one.
-- Save plan-to-watch anime into offline storage
+⚠️ No authentication or API key needed
 
-Ranking           |  Pagination
-:-------------------------:|:-------------------------:
-![](https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimeGif.gif)  | ![](https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/PagniationAndDetails.gif)
+<p>
+    <img src=https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/TopAnimePage.png width="24%"/> 
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/SearchAnimePage.png" width="24%"/> 
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/AnimeDetails.png" width="24%"/>
+    <img src="https://github.com/johnnycuongn/AnimeList/blob/master/READMEResources/AnimeRandomPicker.png" width="24%"/>
+</p>
 
-## Application
+## 🏗 Application
 
-- MVVM Presentational Architecture
-- Coordinator Pattern
-- Handling fetching and loading data, images [Networking]
-- Core Data [Persistence]
+- `MVVM` + `Coordinator`
+- Networking: Handling fetching and loading data
+- Core Data
 
-## Practice
-- Clean Code practice
-- SOLID Principle in mind
+This project is designed and written on my own at the moment, which doesn't depend on any outside dependencies.
 
-## Languages/ Frameworks
+For `data binding`, refer to my extension: [Observable](https://github.com/johnnycuongn/Swift-Helpers-Extensions/tree/main/Observable)
 
-- Swift 5
-- CoreData
-
-## Credits
-
-**Cuong Duc Nguyen**
+## 👷🏼‍♂️ Practice
+- Clean Code
+- SOLID Principle
+- Protocol Oriented
