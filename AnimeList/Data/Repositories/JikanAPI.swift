@@ -17,6 +17,10 @@ protocol APIPath {
     func search(_ types: SearchType...) -> URL
 }
 
+enum UserAnimeListFilter: String {
+    case all, watching, completed, onhold, dropped, plantowatch
+}
+
 enum SearchType {
     case query(String)
     case page(Int)
@@ -110,6 +114,10 @@ class JikanAnimeAPI {
     
     private var genre: URL {
         return URL(string: baseURL + "/genre/anime")! }
+    
+    private var user: URL {
+        return URL(string: baseURL + "/user")!
+    }
 }
 
 extension JikanAnimeAPI: APIPath {
@@ -220,4 +228,11 @@ extension JikanAnimeAPI: APIPath {
             .appendingPathComponent(String(page))
     }
     
+    // MARK: USER
+    func userAnime(_ username: String, list: UserAnimeListFilter ) -> URL {
+        var fetchedURL = user.appendingPathComponent(username).appendingPathComponent("animelist").appendingPathComponent(list.rawValue)
+        
+        
+        return fetchedURL
+    }
 }
