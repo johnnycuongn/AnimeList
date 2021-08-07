@@ -8,6 +8,9 @@
 
 import Foundation
 
+enum AnimeFetchError: Error {
+    case invalidData
+}
 
 
 //MARK: - Default Implementation
@@ -28,7 +31,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
         
         networkManager.request(url: endpointURL) { (data,error)  in
             guard let data = data else {
-                print("AnimeInfoService: Unable to retrieve data")
+                completion(.failure(AnimeFetchError.invalidData))
                 return
             }
             
@@ -66,7 +69,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
             }
             
             guard let data = data else {
-                print("TopAnimeService: Unable to retrive data")
+                completion(.failure(AnimeFetchError.invalidData))
                 return
             }
 
@@ -101,7 +104,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
 
         currentSearchDataTask = networkManager.request(url: endpointURL) { (data,error) in
             guard let data = data else {
-                print("SearchAnimeService: Unable to retrive data")
+                completion(.failure(AnimeFetchError.invalidData))
                 return
             }
             
@@ -126,7 +129,7 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
         
         networkManager.request(url: endpointURL) { (data,error)  in
             guard let data = data else {
-                print("GenreAnimeServicve: Unable to retrive data")
+                completion(.failure(AnimeFetchError.invalidData))
                 return
             }
             
@@ -144,6 +147,24 @@ class DefaultAnimeFetchRepository: AnimeFetchRepository {
         }
     }
     
-    
+    func fetchUserAnime(user: String, completion: @escaping (Result<[UserAnimeDTO], Error>) -> Void) {
+        let endpointURL = JikanAnimeAPI().userAnime(user, list: .completed)
+         
+        networkManager.request(url: endpointURL) { data, error in
+            guard let data = data else {
+                completion(.failure(AnimeFetchError.invalidData))
+                return
+            }
+            
+            do {
+                let userResponse = try JSONDecoder().decode(UserAnimeResponse.self, from: data)
+                
+                completion(.success(userResponse.anime))
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+        
+    }
     
 }
